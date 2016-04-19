@@ -10,6 +10,8 @@ var nav,
     initializeLoader();
     initializeDate();
     
+    $.tabs.onGroupSelected = setUI;
+    
     if (OS_IOS) {
         nav = createNavigationWindow();
     }

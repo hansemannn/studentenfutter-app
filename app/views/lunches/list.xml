@@ -5,9 +5,12 @@
 		
 		<ListView id="listView" defaultItemTemplate="CellItem">
 			<RefreshControl id="refresh" onRefreshstart="fetchData" />
+			<HeaderView>
+				<Require src="lunches/tabs" id="tabs" />
+			</HeaderView>
 			<Templates>
 				<ItemTemplate name="CellItem">
-					
+
 				</ItemTemplate>
 			</Templates>
 		</ListView>

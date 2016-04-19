@@ -1,0 +1,18 @@
+
+".container": {
+    height: 44,
+    backgroundColor: "#fff",
+    top: 0
+}
+
+"#tabbedBar": {
+    height : 30,
+    width: 200,
+    backgroundColor : Alloy.CFG.styles.tintColor
+}
+
+".sep": {
+    height: 1,
+    bottom: 0,
+    backgroundColor: "#e8e8e8"
+}

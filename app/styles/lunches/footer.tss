@@ -1,5 +1,5 @@
 ".footer": {
-    height: 43,
+    height: 44,
     bottom: 0,
     backgroundColor: "#fff"
 }

@@ -1,0 +1,11 @@
+<Alloy>
+    <View class="container">
+        <TabbedBar platform="ios" id="tabbedBar" onClick="toggleList">
+            <Labels>
+                <Label>L("student")</Label>
+                <Label>L("employee")</Label>
+            </Labels>
+        </TabbedBar>
+        <View class="sep" />
+    </View>
+</Alloy>

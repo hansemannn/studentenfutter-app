@@ -5,3 +5,12 @@
 "#rightButton": {
     image: "images/icons/rightArrow.png"
 }
+
+"#listView": {
+    tableSeparatorInsets: {
+        left: 72
+    },
+    backgroundColor : "#f4f4f4",
+    bottom : 44,
+    footerTitle: ""
+}
