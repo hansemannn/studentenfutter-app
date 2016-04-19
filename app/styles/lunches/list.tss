@@ -1,0 +1,7 @@
+"#leftButton": {
+    image: "images/icons/leftArrow.png"
+}
+
+"#rightButton": {
+    image: "images/icons/rightArrow.png"
+}

@@ -1,0 +1,48 @@
+".footer": {
+    height: 43,
+    bottom: 0,
+    backgroundColor: "#fff"
+}
+
+"#settings": {
+    left: 15,
+    image: "/images/icons/settings.png"
+}
+
+"#info": {
+    right: 15,
+    image: "/images/icons/info.png"
+}
+
+".center": {
+    height: 43,
+    top: 6,
+    width: 200,
+    layout: "vertical"
+}
+
+"#amount": {
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+    font : {
+        fontSize : 14
+    },
+    color : "#6b6b6b"
+}
+
+"#location": {
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+    font : {
+        fontSize : 10
+    },
+    color : "#aeaeae"
+}
+
+".button": {
+    tintColor: "#a4a4a4"
+}
+
+".sep": {
+    top: 0,
+    height: 1,
+    backgroundColor: "#e8e8e8"
+}

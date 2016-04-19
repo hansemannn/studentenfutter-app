@@ -1,5 +1,3 @@
 <Alloy>
-	<Window class="container">
-		<Label id="label" onClick="doClick">Viel Erfolg!</Label>
-	</Window>
+	<Require src="lunches/list" />
 </Alloy>

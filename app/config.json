@@ -1,5 +1,9 @@
 {
-	"global": {},
+	"global": {
+		"styles": {
+			"tintColor": "#51ccf3"
+		}
+	},
 	"env:development": {},
 	"env:test": {},
 	"env:production": {},

@@ -1,0 +1,16 @@
+<Alloy>
+	<Window id="window" onOpen="fetchData">
+		<LeftNavButton platform="ios" id="leftButton" onClick="togglePreviousDay" />
+		<RightNavButton platform="ios" id="rightButton" onClick="toggleNextDay" />
+		
+		<ListView id="listView" defaultItemTemplate="CellItem">
+			<RefreshControl id="refresh" onRefreshstart="fetchData" />
+			<Templates>
+				<ItemTemplate name="CellItem">
+					
+				</ItemTemplate>
+			</Templates>
+		</ListView>
+		<Require src="lunches/footer" id="footer" />
+	</Window>
+</Alloy>
