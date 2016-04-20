@@ -1,5 +1,5 @@
-var date = new Date(),
-	moment = require('alloy/moment');
+var moment = require('alloy/moment'),
+	date = moment(new Date());
 
 function setToday(newDate) {
 	date = newDate;
@@ -71,10 +71,8 @@ exports = {
 
 		return yesterday.format("DD.MM.YYYY");
 	},
-
-	getDateSlug : function(input) {
-		var slug = moment(input, "DD.MM.YYYY").format("YYYY-MM-DD");
-
-		return slug;
+	
+	getCurrentDateSlug: function() {
+		return date.format("YYYY-MM-DD");
 	}
 };

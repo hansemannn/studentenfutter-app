@@ -7,10 +7,193 @@
 }
 
 "#listView": {
-    tableSeparatorInsets: {
+    listSeparatorInsets: {
         left: 72
     },
+    separatorInsets: {
+        left: 20
+    },
+    style: Ti.UI.iPhone.ListViewStyle.GROUPED,
     backgroundColor : "#f4f4f4",
     bottom : 44,
     footerTitle: ""
+}
+
+".cell": {
+    height: Ti.UI.SIZE,
+}
+
+".titleView": {
+    left: 70,
+    right: 40,
+    height: Ti.UI.SIZE,
+    layout: "vertical",
+    top: 8,
+    bottom: 4
+}
+
+".titleView[platform=android]": {
+    top: 12
+}
+
+".titleInnerView": {
+    left: 2,
+    height: Ti.UI.SIZE,
+    layout: "horizontal"
+}
+
+".title": {
+    left: 4,
+    height: Ti.UI.SIZE,
+    right: 40,
+    font: {
+        fontSize: 14
+    },
+    color: "#606366",
+    text: "Spaghetti"
+}
+
+".lunchImage": {
+    image: "/images/image.png",
+    width: 17,
+    height: 13
+}
+
+".priceView": {
+    left: 0,
+    width: 55,
+    height: 40
+}
+
+".priceInnerView": {
+    width: 40,
+    height: 40,
+    zIndex: 8888,
+    left: 15,
+    backgroundImage: "/images/priceBg.png"
+}
+
+".price": {
+    zIndex: 9999,
+    color: "#FFFFFF",
+    width: 40,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+    font: {
+        fontSize: 12
+    },
+    text: "2.99"
+}
+
+".countView": {
+    height: 18,
+    width: 18,
+    left: 5,
+    zIndex: 9000,
+    visible: false,
+    top: 0,
+    backgroundColor: "#96e0f8",
+    borderRadius: 9
+}
+
+".count": {
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+    text: 0,
+    color: "#fff",
+    font: {
+        fontSize: 9,
+        fontWeight: "bold"
+    }
+}
+
+".button": {
+    right: 0,
+    width: 50,
+    zIndex: 9999,
+    height: 50
+}
+
+".buttonAdd": {
+    image: "/images/icons/addIcon.png"
+}
+
+".buttonRemove": {
+    image: "/images/icons/subIcon.png"
+}
+
+".ratingView": {
+    top: 2,
+    bottom: 0,
+    left: 0,
+    height: 28,
+    layout: "horizontal"
+}
+
+".additives": {
+    left : 2,
+    right : 5,
+    height: Ti.UI.SIZE,
+    font : {
+        fontSize : 8
+    },
+    color : "#de9855",
+    text : "Keine Zusätze"
+}
+
+".stars": {
+    height: Ti.UI.SIZE,
+    width: Ti.UI.SIZE,
+    layout: "horizontal",
+    top: 2
+}
+
+".starsInnerView": {
+    left: 0,
+    height: 10,
+    width: Ti.UI.SIZE,
+    layout: "horizontal"
+}
+
+".star": {
+    left: 2,
+    height: 10,
+    width: 10
+}
+
+".numberOfRatingsView": {
+    left: 6,
+    width: 50,
+    layout: "horizontal",
+    height: 10
+}
+
+".l1": {
+    color: "#6b6b6b",
+    left: 0,
+    top: 0,
+    font: {
+        fontSize: 8
+    }
+}
+
+".img1": {
+    width: 6,
+    height: 6,
+    left: 0,
+    image:  "/images/icons/stars/small/numberOfRatingsStar.png"
+}
+
+".l2": {
+    color: "#6b6b6b",
+    left: 3,
+    top: 0,
+    font: {
+        fontSize: 8
+    }
+}
+
+".img2": {
+    width: 6,
+    height: 6,
+    left: 0,
+    image:  "/images/icons/stars/small/numberOfRatingsPerson.png"
 }

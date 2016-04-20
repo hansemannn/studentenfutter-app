@@ -1,18 +1,17 @@
 
 /**
- *	Performs a password reset
- *	@param {Object} data The form data to be sent
+ *	Gets all lunches
+ *	@param {Object} data The GET parameter to form the URL
  *	@param {Callback} cb The callback to be invoked after the asyncronous request
  *	@return void
  */
-exports.postForgotPassword = function(data, cb) {
+exports.getLunches = function(params, cb) {
 	var RequestInstance = require("request");
 	var request = new RequestInstance({
-		url : "/users/forgot-password",
-		type : "POST",
-		data: data,
+		url : "/lunches/list/" + params.date + "/" + params.location,
+		type : "GET",
 		success : function(json) {
-			cb(_.extend({}, {success: true}));
+			cb(_.extend(json, {success: true}));
 		},
 		error : function() {
 			cb({success: false});

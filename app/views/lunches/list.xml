@@ -5,12 +5,52 @@
 		
 		<ListView id="listView" defaultItemTemplate="CellItem">
 			<RefreshControl id="refresh" onRefreshstart="fetchData" />
-			<HeaderView>
+			<!--<HeaderView>
 				<Require src="lunches/tabs" id="tabs" />
-			</HeaderView>
+			</HeaderView>-->
 			<Templates>
 				<ItemTemplate name="CellItem">
-
+					<View class="cell">
+						<!-- Title -->
+						<View class="titleView">
+							<View class="titleInnerView">
+								<ImageView class="lunchImage" bindId="image" />
+								<Label class="title" bindId="lunchTitle" />
+								<View class="ratingView">
+									<Label class="additives" bindId="lunchAdditives" />
+									<View class="stars">
+										<View class="starsInnerView">
+											<ImageView class="star" bindId="star1" />
+											<ImageView class="star" bindId="star2" />
+											<ImageView class="star" bindId="star3" />
+											<ImageView class="star" bindId="star4" />
+											<ImageView class="star" bindId="star5" />
+										</View>
+										<View class="numberOfRatingsView">
+											<Label class="l1" bindId="scoreOfRating" />
+											<ImageView class="img1" />
+											<Label class="l2" bindId="numberOfRating" />
+											<ImageView class="img2"/>
+										</View>
+									</View>
+								</View>
+							</View>
+						</View>
+						
+						<!-- Price -->
+						<View class="priceView">
+							<View class="priceInnerView">
+								<Label class="price" bindId="lunchPrice" />
+							</View>
+							<View class="countView">
+								<Label class="count" bindId="lunchCount" />
+							</View>
+						</View>
+						
+						<!-- Controls -->
+						<ImageView class="button buttonAdd" />
+						<ImageView class="button buttonRemove" />
+					</View>
 				</ItemTemplate>
 			</Templates>
 		</ListView>
