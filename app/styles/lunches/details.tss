@@ -13,7 +13,10 @@
 }
 
 "#list": {
-	top: 0
+	footerTitle: "",
+	listSeparatorInsets: {
+		left: 0
+	}
 }
 
 ".titleOverlay": {
@@ -25,7 +28,8 @@
 
 "#title": {
 	color: "white",
-	textAlign: "center",
+	textAlign: "left",
+	left: 15,
 	font: {
 		fontSize: 14,
 		fontWeight: "bold"
@@ -65,4 +69,40 @@
 	backgroundImage: "/images/lunch.jpg",
 	width: Ti.UI.FILL,
 	height: 230
+}
+
+".textLabel": {
+	left: 15,
+	font: {
+		fontSize: 16
+	}
+}
+
+".ratingImage": {
+	right: 5,
+	height: 25,
+	image: "/images/icons/stars/small/4_5.png"
+}
+
+".ratingRow": {
+	height: 45,
+	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+}
+
+".additivesRow": {
+	height: 45,
+	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+}
+
+".additives": {
+	width: 24,
+	height: 24,
+	backgroundColor: Alloy.CFG.styles.tintColor,
+	borderRadius: 12,
+	right: 5,
+	font: {
+		fontSize: 14	
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: "white"
 }

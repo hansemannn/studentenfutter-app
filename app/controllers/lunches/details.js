@@ -1,11 +1,14 @@
 var nav,
-	product;
+	product,
+	utils;
 
 /**
  *  Constructor
  */
 (function constructor(_product) {
 	product = _product;
+	utils = require("utils");
+	
 	if (OS_IOS) {
 		nav = Ti.UI.iOS.createNavigationWindow({
 			window: $.details
@@ -17,30 +20,25 @@ var nav,
 
 function setUI() {
 	$.title.setText(product.name);
+	
 	setImages();
+	setRating();
 }
 
 function setImages() {
 	var images = product.images || null;
 	var views = [];
-	
-	if (images.length < 2) {
-		$.images.setShowPagingControl(false);
-	}
-	
+		
 	if (!images || images.length == 0) {
 		return;
 	}
 	
-	$.images.removeAllChildren();
 	$.placeholder.hide();
 	
 	// TODO: Move to Alloy-based generation
 		
 	_.each(images, function(image) {
 		var view = Ti.UI.createView({
-			height: Ti.UI.SIZE,
-			width: Ti.UI.SIZE,
 			left: 15,
 			top: 10,
 			height: 165,
@@ -55,6 +53,7 @@ function setImages() {
 			borderRadius: 0,
 			image: image,
 		}));
+		
 		$.images.add(view);
 	});
 	 	
@@ -72,7 +71,25 @@ function setImages() {
 	
 	label.addEventListener("click", showCamera);	
 		
-	$.images.add(label);
+	$.images.add(label);	
+}
+
+function setRating() {
+	var section = $.list.sections[0];
+	var ratingCell = section.items[0];
+	var additivesCell = section.items[1];
+	var hasAdditives = product.additives && product.additives.length;
+	
+	ratingCell.rating.image = utils.formattedStars(product.rating, "big");
+	additivesCell.additives.text = hasAdditives ? product.additives.length : 0;
+	
+	if (!hasAdditives) {
+		additivesCell.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_NONE;
+		additivesCell.additives.right = 15;
+	}
+	
+	section.updateItemAt(0, ratingCell);
+	section.updateItemAt(1, additivesCell);
 }
 
 function close() {
@@ -93,4 +110,9 @@ exports.open = function(animated) {
 
 function showCamera(e) {
 	
+}
+
+function handleAction(e) {
+	
+	$.list.deselectItem(e.sectionIndex, e.itemIndex);
 }

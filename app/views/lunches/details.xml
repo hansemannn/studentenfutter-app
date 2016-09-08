@@ -2,7 +2,17 @@
 	<Window title="Details">
 		<LeftNavButton platform="ios" class="closeButton" onClick="close"></LeftNavButton>
 		<RightNavButton platform="ios" systemButton="CAMERA" onClick="showCamera"></RightNavButton>
-		<ListView id="list">
+		<ListView id="list" onItemclick="handleAction">
+			<Templates>
+				<ItemTemplate name="RatingCell">
+					<Label textid="rating" class="textLabel" />
+					<ImageView class="ratingImage" bindId="rating" />
+				</ItemTemplate>
+				<ItemTemplate name="AdditivesCell">
+					<Label textid="additives" class="textLabel" />
+					<Label class="additives" bindId="additives" />
+				</ItemTemplate>
+			</Templates>
 			<HeaderView>
 				<View class="imageContainer">
 					<BlurView class="placeholderBlur" />
@@ -16,6 +26,10 @@
 					</BlurView>		
 				</View>
 			</HeaderView>
+			<ListSection>
+				<ListItem class="ratingRow" rating:image="/images/icons/stars/small/0_0.png" template="RatingCell" />
+				<ListItem class="additivesRow" additives:text="0" template="AdditivesCell" />
+			</ListSection>
 		</ListView>
 	</Window>
 </Alloy>

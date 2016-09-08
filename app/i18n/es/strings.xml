@@ -95,4 +95,5 @@
 	<string name="general">General</string>
 	<string name="contact">Contact</string>
 	<string name="hours">Hours</string>
+	<string name="rating">Rating</string>
 </resources>

@@ -95,4 +95,5 @@
 	<string name="general">Allgemein</string>
 	<string name="contact">Kontakt</string>
 	<string name="hours">Öffnungszeiten</string>
+	<string name="rating">Bewertung</string>
 </resources>
