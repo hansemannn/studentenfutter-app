@@ -57,19 +57,29 @@ exports = {
 	setToday : setToday,
 
 	getToday : getToday,
+	
+	getFormattedDate: function() {
+		var tomorrow = moment(new Date).add(1, "day");
+		var yesterday = moment(new Date).subtract(1, "day");
+
+		if (date.isSame(moment(new Date()), "day")) {
+			return "Heute, " + date.format("DD.MM.YYYY");
+		} else if (date.isSame(tomorrow, "day")) {
+			return "Morgen, " + date.format("DD.MM.YYYY");
+		} else if (date.isSame(yesterday, "day")) {
+			return "Gestern, " + date.format("DD.MM.YYYY");
+		}
+		return date.format("dd[, ]DD.MM.YYYY");
+	},
 
 	increment : function() {
 		var tomorrow = moment(date).add("day", 1);
 		setToday(tomorrow);
-
-		return tomorrow.format("DD.MM.YYYY");
 	},
 
 	decrement : function() {
 		var yesterday = moment(date).subtract("day", 1);
 		setToday(yesterday);
-
-		return yesterday.format("DD.MM.YYYY");
 	},
 	
 	getCurrentDateSlug: function() {

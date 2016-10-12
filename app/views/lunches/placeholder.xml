@@ -1,0 +1,6 @@
+<Alloy>
+    <View id="placeholder">
+        <ImageView class="image" />
+        <Label id="title" />
+    </View>
+</Alloy>

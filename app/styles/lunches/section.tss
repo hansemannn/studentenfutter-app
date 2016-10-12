@@ -1,0 +1,17 @@
+
+".container": {
+    backgroundColor : "#f4f4f4",
+    top : 0,
+    height : 34,
+    bottom : 0
+}
+
+"#title": {
+    left : 15,
+    bottom : 8,
+    font : {
+        fontSize : 14
+    },
+    color : "#7d7d7d"
+
+}

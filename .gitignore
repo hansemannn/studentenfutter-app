@@ -5,3 +5,5 @@
 /build.log
 /.settings/com.appcelerator.titanium.core.prefs
 /.settings/com.appcelerator.titanium.mobile.prefs
+/i18n
+/platform

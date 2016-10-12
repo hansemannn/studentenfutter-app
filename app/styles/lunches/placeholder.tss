@@ -1,0 +1,24 @@
+
+"#placeholder": {
+    height : 165,
+    width : 200,
+    visible: false
+}
+
+".image": {
+    top : 0,
+    width : 126,
+    height : 126,
+    image : "/images/empty.png"
+
+}
+
+"#title": {
+    bottom : 0,
+    textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
+    font : {
+        fontSize : 14,
+    },
+    color : "#a6a6a6",
+    textid : L("no_menu_found")
+}

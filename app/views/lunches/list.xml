@@ -4,10 +4,10 @@
 		<RightNavButton platform="ios" id="rightButton" onClick="toggleNextDay" />
 		
 		<ListView id="listView" defaultItemTemplate="CellItem">
-			<RefreshControl id="refresh" onRefreshstart="fetchData" />
-			<!--<HeaderView>
+			<RefreshControl id="refresh" onRefreshstart="onRefreshStart" />
+			<HeaderView>
 				<Require src="lunches/tabs" id="tabs" />
-			</HeaderView>-->
+			</HeaderView>
 			<Templates>
 				<ItemTemplate name="CellItem">
 					<View class="cell">
@@ -18,13 +18,10 @@
 								<Label class="title" bindId="lunchTitle" />
 								<View class="ratingView">
 									<Label class="additives" bindId="lunchAdditives" />
-									<View class="stars">
+									<View class="starsOutterView">
 										<View class="starsInnerView">
-											<ImageView class="star" bindId="star1" />
-											<ImageView class="star" bindId="star2" />
-											<ImageView class="star" bindId="star3" />
-											<ImageView class="star" bindId="star4" />
-											<ImageView class="star" bindId="star5" />
+											<ImageView class="stars starsEmpty" />
+											<ImageView class="stars starsFull" bindId="fullStars" />
 										</View>
 										<View class="numberOfRatingsView">
 											<Label class="l1" bindId="scoreOfRating" />
@@ -48,12 +45,13 @@
 						</View>
 						
 						<!-- Controls -->
-						<ImageView class="button buttonAdd" />
-						<ImageView class="button buttonRemove" />
+						<Button class="button buttonAdd" bindId="buttonAdd" onClick="incrementPrice" />
+						<Button class="button buttonRemove" bindId="buttonRemove" onClick="decrementPrice" />
 					</View>
 				</ItemTemplate>
 			</Templates>
 		</ListView>
 		<Require src="lunches/footer" id="footer" />
+		<Require src="lunches/placeholder" id="placeholder" />
 	</Window>
 </Alloy>

@@ -4,25 +4,30 @@ var nav,
     dateutils,
     LunchState,
     currentLunchState,
+    cart,
     lunches;
 
 /**
  *  Constructor
  */
-(function constructor(args) {
-    initializeLoader();
-    initializeDate();
-    
+(function constructor(args) {    
     LunchState = {
         Student: 0,
-        Emloyee: 1
+        Employee: 1
     };
     
-    currentLunchState = LunchState.Student;        
-    
+    currentLunchState = LunchState.Student;      
+    cart = Alloy.Models.cart;     
+    dateutils = require("dateutils");
+    $.tabs.onGroupSelected(onGroupSelected);
+
     if (OS_IOS) {
         nav = createNavigationWindow();
     }
+    
+    initializeLoader();
+    initializeDate();
+
 })(arguments[0] || {});
 
 function onGroupSelected(state) {
@@ -36,8 +41,7 @@ function initializeLoader() {
 }
 
 function initializeDate() {
-    dateutils = require("dateutils");
-    $.window.setTitle("Heute, " + dateutils.getToday());
+    $.window.setTitle(dateutils.getFormattedDate());
 }
 
 function createNavigationWindow() {
@@ -46,14 +50,24 @@ function createNavigationWindow() {
     });
 }
 
+function onRefreshStart() {
+    fetchData({
+        force: true
+    });
+}
+
 function toggleNextDay() {
-    $.window.setTitle(dateutils.increment());
-    fetchData();
+    dateutils.increment();
+    fetchData({
+        force: false
+    });
 }
 
 function togglePreviousDay() {
-    $.window.setTitle(dateutils.decrement());
-    fetchData();
+    dateutils.decrement();
+    fetchData({
+        force: false
+    });
 }
 
 function handleListItemClick(e) {
@@ -65,8 +79,9 @@ function openDetails(id) {
     Ti.API.warn(id);
 }
 
-function fetchData() {
-    loader.show();
+function fetchData(args) {
+    !args.force && loader.show();
+    $.window.setTitle(L("loading"));
     
     var api = require("api");
     api.getLunches({
@@ -75,7 +90,7 @@ function fetchData() {
     }, function(e) {
         lunches = e;
         setUI();
-        loader.hide();
+        !args.force && loader.hide();
     });
 }
 
@@ -88,52 +103,43 @@ function setUI() {
     var sections = [];
     
     _.each(categories, function(category) {
-        var section = Ti.UI.createListSection({
-            headerTitle: category
-        });
+        var section = Alloy.createController("lunches/section", {
+            title: category
+        }).getView();
 
         var cells = [];
-        
+
         _.each(lunches, function(lunch) {
             if (L(lunch.category, lunch.category) != category) {
                 return;
             }
             
-            cells.push({
+            var hasAdditives = lunch.additives && lunch.additives.length;
+                        
+            var attr = {
+                itemId: lunch.id,
                 properties: {
-                    itemId: lunch.id,
                     height: Ti.UI.SIZE,
                     backgroundColor: "#fff",
+                    count: 0,
+                    price: currentLunchState == LunchState.Student ? Number(lunch.priceStudent.split("€")[0]) : Number(lunch.priceOfficial.split("€")[0]),
                     selectionStyle : (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : null,
                 },
                 image: {
-                    backgroundColor: "red",
                     width: lunch.images.length > 0 ? 17 : 0
                 },
                 lunchTitle: {
-                    left: lunch.images.length > 0 ? 10 : 0,
+                    left: lunch.images.length > 0 ? 5 : 0,
                     text: lunch.name
                 },
                 lunchAdditives: {
-                    text: lunch.additives ? lunch.additives.length + " Zusätze" : "Keine Zusätze"
+                    text: hasAdditives ? lunch.additives.length + " Zusätze" : "Keine Zusätze"
                 },
                 lunchPrice: {
                     text: currentLunchState == LunchState.Student ? lunch.priceStudent.split("€")[0] : lunch.priceOfficial.split("€")[0]
                 },
-                star1: {
-                    image: "/images/icons/stars/small/full_star.png"
-                },
-                star2: {
-                    image: "/images/icons/stars/small/full_star.png"
-                },
-                star3: {
-                    image: "/images/icons/stars/small/full_star.png"
-                },
-                star4: {
-                    image: "/images/icons/stars/small/full_star.png"
-                },
-                star5: {
-                    image: "/images/icons/stars/small/full_star.png"
+                fullStars: {
+                    width: getStarsImage(lunch.rating)
                 },
                 scoreOfRating: {
                     text: lunch.rating ? lunch.rating.value : "0"
@@ -141,13 +147,46 @@ function setUI() {
                 numberOfRating: {
                     text: lunch.rating ? lunch.rating.count : "0"
                 }
-            });        
+            };
+                                    
+            cells.push(attr);        
         });
         section.setItems(cells);
         section.getItems().length > 0 && sections.push(section);
     });
     
     $.listView.setSections(sections);
+    $.window.setTitle(dateutils.getFormattedDate());
+    $.placeholder[sections.length > 0 ? "hide" : "show"]();
+}
+
+function getStarsImage(rating) {
+    var stars = rating ? rating.value : 0;
+    var path = "images/icons/stars/";
+    
+    if(stars > 0 && stars < 0.75) {
+        return path + "0_5.png";
+    } else if(stars >= 0.75 && stars < 1.25) {
+        return path + "1_0.png";
+    } else if(stars >= 1.25 && stars < 1.75) {
+        return path + "1_5.png";
+    } else if(stars >= 1.75 && stars < 2.25) {
+        return path + "2_0.png";
+    } else if(stars >= 2.25 && stars < 2.75) {
+        return path + "2_5.png";
+    } else if(stars >= 2.75 && stars < 3.25) {
+        return path + "3_0.png";
+    } else if(stars >= 3.25 && stars < 3.75) {
+        return path + "3_5.png";
+    } else if(stars >= 3.75 && stars < 4.25) {
+        return path + "4_0.png";
+    } else if(stars >= 4.25 && stars < 4.75) {
+        return path + "4_5.png";
+    } else if(stars >= 4.75) {
+        return path + "5_0.png";
+    }
+    
+    return path + "0_0.png";
 }
 
 function open() {
@@ -158,4 +197,26 @@ function open() {
     }
 }
 
-exports.open = open;
+function incrementPrice(e) {
+    var item = e.section.getItemAt(e.itemId);
+    
+    item.properties.count++;
+    cart.increment(item.properties.price);
+
+    item.buttonRemove.visible = true;
+    e.section.updateItemAt(e.itemIndex, item);
+}
+
+function decrementPrice(e) {
+    var item = e.section.getItemAt(e.itemId);
+    
+    item.properties.count--;
+    cart.decrement(item.properties.price);
+    
+    if (item.properties.count == 0) {
+        item.buttonRemove.visible = false;
+        e.section.updateItemAt(e.itemIndex, item);    
+    }    
+}
+
+exports.open = open

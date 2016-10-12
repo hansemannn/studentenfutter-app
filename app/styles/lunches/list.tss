@@ -10,9 +10,6 @@
     listSeparatorInsets: {
         left: 72
     },
-    separatorInsets: {
-        left: 20
-    },
     style: Ti.UI.iPhone.ListViewStyle.GROUPED,
     backgroundColor : "#f4f4f4",
     bottom : 44,
@@ -54,9 +51,9 @@
 }
 
 ".lunchImage": {
-    image: "/images/image.png",
-    width: 17,
-    height: 13
+    image: "/images/icons/image.png",
+    width: 15,
+    height: 12
 }
 
 ".priceView": {
@@ -107,8 +104,9 @@
 
 ".button": {
     right: 0,
-    width: 50,
     zIndex: 9999,
+    tintColor: "#a4a4a4",
+    width: 50,
     height: 50
 }
 
@@ -139,7 +137,7 @@
     text : "Keine Zusätze"
 }
 
-".stars": {
+".starsOutterView": {
     height: Ti.UI.SIZE,
     width: Ti.UI.SIZE,
     layout: "horizontal",
@@ -149,14 +147,22 @@
 ".starsInnerView": {
     left: 0,
     height: 10,
-    width: Ti.UI.SIZE,
-    layout: "horizontal"
+    width: Ti.UI.SIZE
 }
 
-".star": {
+".stars": {
     left: 2,
-    height: 10,
-    width: 10
+    width: 48,
+    height: 9,
+    clipMode: Titanium.UI.iOS.CLIP_MODE_ENABLED
+}
+
+".starsEmpty": {
+    image: "/images/icons/emptyStars.png"
+}
+
+".starsFull": {
+
 }
 
 ".numberOfRatingsView": {
