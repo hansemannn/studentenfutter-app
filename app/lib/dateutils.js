@@ -52,7 +52,6 @@ function getToday() {
 }
 
 exports = {
-	// getDayName : getDayName,
 
 	setToday : setToday,
 
@@ -63,11 +62,11 @@ exports = {
 		var yesterday = moment(new Date).subtract(1, "day");
 
 		if (date.isSame(moment(new Date()), "day")) {
-			return "Heute, " + date.format("DD.MM.YYYY");
+			return L("today") + ", " + date.format("DD.MM.YYYY");
 		} else if (date.isSame(tomorrow, "day")) {
-			return "Morgen, " + date.format("DD.MM.YYYY");
+			return L("tomorrow") + ", " + date.format("DD.MM.YYYY");
 		} else if (date.isSame(yesterday, "day")) {
-			return "Gestern, " + date.format("DD.MM.YYYY");
+			return L("yesterday") + ", " + date.format("DD.MM.YYYY");
 		}
 		return date.format("dd[, ]DD.MM.YYYY");
 	},

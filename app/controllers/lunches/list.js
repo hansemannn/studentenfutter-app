@@ -133,19 +133,19 @@ function setUI() {
                     text: lunch.name
                 },
                 lunchAdditives: {
-                    text: hasAdditives ? lunch.additives.length + " Zusätze" : "Keine Zusätze"
+                    text: formattedAdditives(hasAdditives ? lunch.additives.length : 0)
                 },
                 lunchPrice: {
                     text: currentLunchState == LunchState.Student ? lunch.priceStudent.split("€")[0] : lunch.priceOfficial.split("€")[0]
                 },
                 fullStars: {
-                    width: getStarsImage(lunch.rating)
+                    width: formattedStars(lunch.rating)
                 },
                 scoreOfRating: {
-                    text: lunch.rating ? lunch.rating.value : "0"
+                    text: lunch.rating ? lunch.rating.value : 0
                 },
                 numberOfRating: {
-                    text: lunch.rating ? lunch.rating.count : "0"
+                    text: lunch.rating ? lunch.rating.count : 0
                 }
             };
                                     
@@ -160,7 +160,16 @@ function setUI() {
     $.placeholder[sections.length > 0 ? "hide" : "show"]();
 }
 
-function getStarsImage(rating) {
+function formattedAdditives(count) {
+    if (count == 0) {
+        return "Keine Zusätze";
+    } else if (count == 1) {
+        return "1 Zusatz";
+    }
+    return count + " Zusätze";
+}
+
+function formattedStars(rating) {
     var stars = rating ? rating.value : 0;
     var path = "images/icons/stars/";
     
