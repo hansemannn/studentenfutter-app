@@ -1,0 +1,23 @@
+<Alloy>
+	<Window id="window" titleid="settings" onClose="onClose">
+		<LeftNavButton platform="ios" titleid="close" onClick="close"></LeftNavButton>
+		<ListView id="list" onItemclick="selectAction">
+			<Templates>
+				<ItemTemplate name="SwitchItem">
+					<Label class="title" bindId="title" />
+					<Switch class="toggle" bindId="toggle" onChange="changePreference" />
+				</ItemTemplate>
+			</Templates>
+			<ListSection headerTitle="L('general')">
+				<ListItem template="SwitchItem" title:text="L('show_additives')" toggle:value="true" identifier="showAdditives" class="notSelectable" />
+				<ListItem template="SwitchItem" title:text="L('show_ratings')" toggle:value="true" identifier="showRatings" class="notSelectable" />
+				<ListItem title="L('select_canteen')" action="selectCanteen" class="selectable" />
+			</ListSection>
+			<ListSection headerTitle="L('contact')" footerTitle="Made with ⚒ in Osnabrooklyn">
+				<ListItem title="L('rate_app')" action="rateApp" class="selectable" />
+				<ListItem title="L('about')" action="openAbout" class="selectable" />
+				<ListItem title="L('report_error')" action="reportError" class="selectable" />
+			</ListSection>
+		</ListView>
+	</Window>
+</Alloy>

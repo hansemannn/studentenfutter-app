@@ -1,0 +1,8 @@
+<Alloy>
+	<Window id="window" titleid="select_canteen" onOpen="populateLocations">
+		<LeftNavButton platform="ios" titleid="close" onClick="close"></LeftNavButton>
+		<ListView id="list" onItemclick="selectLocation">
+			<ListSection id="section" />
+		</ListView>
+	</Window>
+</Alloy>

@@ -1,0 +1,21 @@
+"#list": {
+	style: Ti.UI.iOS.ListViewStyle.GROUPED,
+	listSeparatorInsets: {
+		left: 15
+	}
+}
+
+".title": {
+	left: 15,
+	font: {
+		fontSize: 17 // TODO: This is the default for iOS, might check Android manually
+	}
+}
+
+".toggle": {
+	right: 15
+}
+
+".notSelectable": {
+	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
+}

@@ -2,10 +2,9 @@
     <View class="footer">
         <View class="sep" />
         <View class="center" onClick="resetAmount">
-            <Label id="amount" text="Gesamtsumme: 0,00 €" />
-            <Label id="location" text="Mensa Schlossgarten" />
+            <Label id="amount" />
+            <Label id="location" />
         </View>
         <Button onClick="openSettings" class="button" id="settings" />
-        <Button onClick="openInfos" class="button" id="info" />
     </View>
 </Alloy>

@@ -7,7 +7,7 @@
 	<string name="select_canteen_message">Bienvenido a la Studentenfutter-App! ¿Quieres seleccione su cantina, ahora?</string>
 	<string name="show_location">Mostrar ubicación</string>
 	<string name="request_contact">Soporte contacto</string>
-	<string name="rate_app">Calificar aplicacion</string>
+	<string name="rate_app">Calificar Studentenfutter</string>
 	<string name="upload_process">Carga de imagen ...</string>
 	<string name="upload_success">Imagen subido correctamente!</string>
 	<string name="upload_success_msg">Su imagen se ha subido correctamente y será revisada , pronto. Gracias!</string>
@@ -28,6 +28,7 @@
 	<string name="choise_manually">Selección Manual</string>
 	<string name="choise_manually_text">Siempre se puede seleccionar la cantina manualmente por ir a "Configuración" en la esquina inferior izquierda!</string>
 	<string name="ok">Bueno</string>
+	<string name="settings">Configuración</string>
 	<string name="settings_saved">Configuración guardada!</string>
 	<string name="total_amount">Cantidad</string>
 	<string name="reset_total_amount">Restablecer cantidad</string>
@@ -82,8 +83,6 @@
 	<string name="Essen_Hochschulbedienstete">Empleados Almuerzo</string>
 	<string name="Eintopf_Teller">placa Stew</string>
 	<string name="Tagessalat">ensalada diaria</string>
-	<string name="pull_to_refresh">Tire para actualizar...</string>
-	<string name="last_update">Última actualización:</string>
 	<string name="release_to_refresh">Suelte para actualizar...</string>
 	<string name="updating">Actualizar...</string>
 	<string name="selected">seleccionado!</string>
@@ -91,4 +90,8 @@
 	<string name="already_voted_short">Ya valorados! :-)</string>
 	<string name="no_picture_found">Foto todavía no fue encontrado</string>
 	<string name="take_picture">+ Hacer foto</string>
+	<string name="report_error">Report Problem</string>
+	<string name="about">About Studentenfutter</string>
+	<string name="general">General</string>
+	<string name="contact">Contact</string>
 </resources>

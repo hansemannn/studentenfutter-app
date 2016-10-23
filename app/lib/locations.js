@@ -119,8 +119,8 @@ module.exports = {
 	getNameList : function(_args) {
 		var arr = [];
 
-		for (var i = 0; i < this.data.length; i++) {
-			arr.push(this.data[i].title);
+		for (var i = 0; i < data.length; i++) {
+			arr.push(data[i].title);
 		}
 
 		if (_args && _args.showCancel)
@@ -130,13 +130,13 @@ module.exports = {
 	},
 
 	getData : function() {
-		return this.data;
+		return data;
 	},
 
 	getLocationById : function(id) {
-		for (var i = 0; i < this.data.length; i++) {
-			if (this.data[i].id == id) {
-				return this.data[i].title;
+		for (var i = 0; i < data.length; i++) {
+			if (data[i].id == id) {
+				return data[i].title;
 			}
 		};
 	}

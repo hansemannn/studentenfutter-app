@@ -10,7 +10,7 @@
     listSeparatorInsets: {
         left: 72
     },
-    style: Ti.UI.iPhone.ListViewStyle.GROUPED,
+    style: Ti.UI.iOS.ListViewStyle.GROUPED,
     backgroundColor : "#f4f4f4",
     bottom : 44,
     footerTitle: ""

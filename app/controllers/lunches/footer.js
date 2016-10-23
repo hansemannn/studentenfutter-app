@@ -1,22 +1,30 @@
-var onSettingsClicked,
-    onInfosClicked;
+var onSettingsUpdated;
 
 /**
  *  Constructor
  */
 (function constructor(args) {
-    onSettingsClicked = args.onSettingsClicked || null;
-    onInfosClicked = args.onInfosClicked || null;
+    $.amount.setText(L('total_amount') + ": 0.00 €");
+    $.location.setText(Ti.App.Properties.getString("currentLocationName", Alloy.CFG.defaultCanteen.title));
 })(arguments[0] || {});
 
 function openSettings() {
-    onSettingsClicked && onSettingsClicked();
-}
-
-function openInfos() {
-    onInfosClicked && onInfosClicked();    
+    Alloy.createController("settings/index", {
+        onSettingsUpdated: function(e) {
+            switch(e.action) {
+                case "selectCanteen":
+                    $.location.setText(e.title);
+                    break;
+            }
+            onSettingsUpdated(e);
+        }
+    }).open();
 }
 
 function resetAmount() {
     
 }
+
+exports.onSettingsUpdated = function(_onSettingsUpdated) {
+    onSettingsUpdated = _onSettingsUpdated;
+};

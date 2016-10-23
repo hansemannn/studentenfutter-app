@@ -2,6 +2,10 @@
 	"global": {
 		"styles": {
 			"tintColor": "#51ccf3"
+		},
+		"defaultCanteen": {
+			"title": "Mensa Schlossgarten",
+			"id": 0
 		}
 	},
 	"env:development": {},

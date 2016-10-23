@@ -20,6 +20,7 @@ var nav,
     cart = Alloy.Models.cart;     
     dateutils = require("dateutils");
     $.tabs.onGroupSelected(onGroupSelected);
+    $.footer.onSettingsUpdated(onSettingsUpdated);
 
     if (OS_IOS) {
         nav = createNavigationWindow();
@@ -33,6 +34,16 @@ var nav,
 function onGroupSelected(state) {
     currentLunchState = state;
     setUI();
+}
+
+function onSettingsUpdated(e) {
+    switch(e.action) {
+        case "selectCanteen":
+            fetchData({
+                force: false
+            });
+            break;
+    }
 }
 
 function initializeLoader() {
@@ -86,7 +97,7 @@ function fetchData(args) {
     var api = require("api");
     api.getLunches({
         date: dateutils.getCurrentDateSlug(), 
-        location: 0
+        location: Ti.App.Properties.getString("currentLocationID", Alloy.CFG.defaultCanteen.id)
     }, function(e) {
         lunches = e;
         setUI();

@@ -18,3 +18,7 @@
         fontSize: 15
     }
 }
+
+".selectable": {
+	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+}

@@ -7,7 +7,7 @@
 	<string name="select_canteen_message">Willkommen in der Studentenfutter-App! Möchtst du jetzt deine Mensa auswählen?</string>
 	<string name="show_location">Standort anzeigen</string>
 	<string name="request_contact">Kontakt aufnehmen</string>
-	<string name="rate_app">App bewerten</string>
+	<string name="rate_app">Studentenfutter bewerten</string>
 	<string name="upload_process">Bild hochladen ...</string>
 	<string name="upload_success">Bild erfolgreich hochgeladen!</string>
 	<string name="upload_success_msg">Dein Bild wurde erfolgreich hochgeladen und wird in Kürze freigeschaltet. Vielen Dank!</string>
@@ -28,6 +28,7 @@
 	<string name="choise_manually">Manuelle Auswahl</string>
 	<string name="choise_manually_text">Du kannst deine Mensa jederzeit manuell unten links unter \"Einstellungen\" auswählen!</string>
 	<string name="ok">OK</string>
+	<string name="settings">Einstellungen</string>
 	<string name="settings_saved">Die Einstellungen wurden aktualisiert!</string>
 	<string name="total_amount">Gesamtsumme</string>
 	<string name="reset_total_amount">Gesamtsumme zurücksetzen</string>
@@ -82,8 +83,6 @@
 	<string name="Essen_Hochschulbedienstete">Essen Hochschulbedienstete</string>
 	<string name="Eintopf_Teller">Eintopf Teller</string>
 	<string name="Tagessalat">Tagessalat</string>
-	<string name="pull_to_refresh">Herunterziehen zum Aktualisieren...</string>
-	<string name="last_update">Letztes Update:</string>
 	<string name="release_to_refresh">Loslassen zum Aktualisieren...</string>
 	<string name="updating">Wird aktualisiert...</string>
 	<string name="selected">ausgewählt</string>
@@ -91,4 +90,8 @@
 	<string name="already_voted_short">Bereits bewertet</string>
 	<string name="no_picture_found">Noch kein Bild vorhanden.</string>
 	<string name="take_picture">+ Jetzt aufnehmen!</string>
+	<string name="report_error">Problem melden</string>
+	<string name="about">Über Studentenfutter</string>
+	<string name="general">Allgemein</string>
+	<string name="contact">Kontakt</string>
 </resources>
