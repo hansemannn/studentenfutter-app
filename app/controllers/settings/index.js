@@ -38,6 +38,9 @@ function configureCells() {
 
 function changePreference(e) {
     Ti.App.Properties.setBool(e.section.getItemAt(e.itemIndex).properties.identifier, e.value);    
+    onSettingsUpdated({
+        action: "changePreference"
+    });
 }
 
 function selectAction(e) {

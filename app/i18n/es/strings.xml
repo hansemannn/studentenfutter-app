@@ -7,7 +7,7 @@
 	<string name="select_canteen_message">Bienvenido a la Studentenfutter-App! ¿Quieres seleccione su cantina, ahora?</string>
 	<string name="show_location">Mostrar ubicación</string>
 	<string name="request_contact">Soporte contacto</string>
-	<string name="rate_app">Calificar Studentenfutter</string>
+	<string name="rate_app">Calificar</string>
 	<string name="upload_process">Carga de imagen ...</string>
 	<string name="upload_success">Imagen subido correctamente!</string>
 	<string name="upload_success_msg">Su imagen se ha subido correctamente y será revisada , pronto. Gracias!</string>
@@ -91,7 +91,7 @@
 	<string name="no_picture_found">Foto todavía no fue encontrado</string>
 	<string name="take_picture">+ Hacer foto</string>
 	<string name="report_error">Report Problem</string>
-	<string name="about">About Studentenfutter</string>
+	<string name="about">About</string>
 	<string name="general">General</string>
 	<string name="contact">Contact</string>
 </resources>

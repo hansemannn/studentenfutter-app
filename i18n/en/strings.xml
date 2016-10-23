@@ -7,7 +7,7 @@
 	<string name="select_canteen_message">Welcome to the Studentenfutter-App! Would you like to select your canteen, now?</string>	
 	<string name="show_location">Show location</string>
 	<string name="request_contact">Contact support</string>
-	<string name="rate_app">Rate Studentenfutter</string>
+	<string name="rate_app">Rate</string>
 	<string name="upload_process">Uploading image ...</string>
 	<string name="upload_success">Image successfully uploaded!</string>
 	<string name="upload_success_msg">Your image was uploaded successfully and will be reviewed, soon. Thank you!</string>
@@ -38,7 +38,7 @@
 	<string name="student">Student</string>
 	<string name="employee">Employee</string>
 	<string name="loading_menu">Loading menu...</string>
-	<string name="no_menu_found">No Lunch Menu\navailable</string>
+	<string name="no_menu_found">No Menu available</string>
 	<string name="monday">Monday</string>
 	<string name="tuesday">Tuesday</string>
 	<string name="wednesday">Wednesday</string>
@@ -91,7 +91,7 @@
 	<string name="no_picture_found">No Picture found, yet.</string>
 	<string name="take_picture">+ Take Picture!</string>
 	<string name="report_error">Report Problem</string>
-	<string name="about">About Studentenfutter</string>
+	<string name="about">About</string>
 	<string name="general">General</string>
 	<string name="contact">Contact</string>
 </resources>

@@ -20,7 +20,6 @@
 									<Label class="additives" bindId="lunchAdditives" />
 									<View class="starsOutterView">
 										<View class="starsInnerView">
-											<ImageView class="stars starsEmpty" />
 											<ImageView class="stars starsFull" bindId="fullStars" />
 										</View>
 										<View class="numberOfRatingsView">

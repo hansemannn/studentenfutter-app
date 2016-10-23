@@ -43,7 +43,10 @@ function onSettingsUpdated(e) {
                 force: false
             });
             break;
-    }
+        case "changePreference":
+            setUI();
+            break;
+    }    
 }
 
 function initializeLoader() {
@@ -110,6 +113,9 @@ function setUI() {
         $.refresh.endRefreshing();
     }
     
+    var showAdditives = Ti.App.Properties.getBool("showAdditives", true);
+    var showRatings = Ti.App.Properties.getBool("showRatings", true);
+    
     var categories = [L("Hauptgericht"), L("Beilagen"), L("Dessert"), L("Tagessalat"), L("Essen_Hochschulbedienstete", "Essen Hochschulbedienstete"), L("Eintopf_Teller", "Eintopf Teller")];
     var sections = [];
     
@@ -143,22 +149,34 @@ function setUI() {
                     left: lunch.images.length > 0 ? 5 : 0,
                     text: lunch.name
                 },
-                lunchAdditives: {
-                    text: formattedAdditives(hasAdditives ? lunch.additives.length : 0)
-                },
                 lunchPrice: {
                     text: currentLunchState == LunchState.Student ? lunch.priceStudent.split("€")[0] : lunch.priceOfficial.split("€")[0]
-                },
-                fullStars: {
-                    width: formattedStars(lunch.rating)
-                },
-                scoreOfRating: {
-                    text: lunch.rating ? lunch.rating.value : 0
-                },
-                numberOfRating: {
-                    text: lunch.rating ? lunch.rating.count : 0
                 }
             };
+            
+            if (showAdditives) {
+                attr["lunchAdditives"] = {
+                    text: formattedAdditives(hasAdditives ? lunch.additives.length : 0)
+                };
+            } else {
+                attr["lunchAdditives"] = null;
+            }
+            
+            if (showRatings) {
+                attr["fullStars"] = {
+                    image: formattedStars(lunch.rating)
+                };
+                attr["scoreOfRating"] = {
+                    text: lunch.rating ? lunch.rating.value : 0
+                };
+                attr["numberOfRating"] = {
+                    text: lunch.rating ? lunch.rating.count : 0
+                };
+            } else {
+                attr["fullStars"] = null;
+                attr["scoreOfRating"] = null;
+                attr["numberOfRating"] = null;
+            }
                                     
             cells.push(attr);        
         });
@@ -182,9 +200,9 @@ function formattedAdditives(count) {
 
 function formattedStars(rating) {
     var stars = rating ? rating.value : 0;
-    var path = "images/icons/stars/";
-    
-    if(stars > 0 && stars < 0.75) {
+    var path = "images/icons/stars/small/";
+
+    if (stars > 0 && stars < 0.75) {
         return path + "0_5.png";
     } else if(stars >= 0.75 && stars < 1.25) {
         return path + "1_0.png";

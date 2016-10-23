@@ -5,6 +5,10 @@
 	}
 }
 
+"#list[platform=ios]": {
+	top: -5
+}
+
 ".title": {
 	left: 15,
 	font: {

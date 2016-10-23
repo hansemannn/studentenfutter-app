@@ -7,7 +7,7 @@
 	<string name="select_canteen_message">Willkommen in der Studentenfutter-App! Möchtst du jetzt deine Mensa auswählen?</string>
 	<string name="show_location">Standort anzeigen</string>
 	<string name="request_contact">Kontakt aufnehmen</string>
-	<string name="rate_app">Studentenfutter bewerten</string>
+	<string name="rate_app">Bewerten</string>
 	<string name="upload_process">Bild hochladen ...</string>
 	<string name="upload_success">Bild erfolgreich hochgeladen!</string>
 	<string name="upload_success_msg">Dein Bild wurde erfolgreich hochgeladen und wird in Kürze freigeschaltet. Vielen Dank!</string>
@@ -91,7 +91,7 @@
 	<string name="no_picture_found">Noch kein Bild vorhanden.</string>
 	<string name="take_picture">+ Jetzt aufnehmen!</string>
 	<string name="report_error">Problem melden</string>
-	<string name="about">Über Studentenfutter</string>
+	<string name="about">Über</string>
 	<string name="general">Allgemein</string>
 	<string name="contact">Kontakt</string>
 </resources>
