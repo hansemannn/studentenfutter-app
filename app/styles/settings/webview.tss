@@ -1,0 +1,4 @@
+"WebView": {
+    enableZoomControls: false,
+    scalesPageToFit: true
+}

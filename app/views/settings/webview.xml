@@ -1,0 +1,5 @@
+<Alloy>
+	<Window onOpen="initializeWebView">
+		<WebView id="webView" />
+	</Window>
+</Alloy>

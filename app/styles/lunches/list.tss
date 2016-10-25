@@ -159,6 +159,7 @@
 ".numberOfRatingsView": {
     left: 6,
     width: 50,
+    top: 1,
     layout: "horizontal",
     height: 10
 }

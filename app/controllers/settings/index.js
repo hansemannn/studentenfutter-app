@@ -80,7 +80,7 @@ function rateApp() {
 }
 
 function openAbout() {
-    Alloy.createController("settings/about").open();
+    nav.openWindow(Alloy.createController("settings/webview", "about").getView());
 }
 
 function reportError() {

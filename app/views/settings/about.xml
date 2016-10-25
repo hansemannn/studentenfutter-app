@@ -1,5 +1,0 @@
-<Alloy>
-	<Window id="window" titleid="about">
-		<LeftNavButton platform="ios" titleid="close" onClick="close"></LeftNavButton>
-	</Window>
-</Alloy>
