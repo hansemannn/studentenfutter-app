@@ -1,4 +1,8 @@
 
 "#list": {
-	tintColor: Alloy.CFG.styles.tintColor
+	tintColor: Alloy.CFG.styles.tintColor,
+}
+
+"#list[platform=ios]": {
+	footerTitle: ""
 }

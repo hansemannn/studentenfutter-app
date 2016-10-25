@@ -35,7 +35,7 @@
 						
 						<!-- Price -->
 						<View class="priceView">
-							<View class="priceInnerView">
+							<View class="priceInnerView" bindId="lunchPriceContainer">
 								<Label class="price" bindId="lunchPrice" />
 							</View>
 							<View class="countView" bindId="lunchCountContainer">

@@ -168,6 +168,9 @@ function setUI() {
                 lunchCount: {
                     text: 0
                 },
+                lunchPriceContainer: {
+
+                },
                 lunchPrice: {
                     text: price
                 }
@@ -265,6 +268,7 @@ function incrementPrice(e) {
     if (item.count == 1) {
         item.buttonRemove.visible = true;
         item.lunchCountContainer.visible = true;
+        item.lunchPriceContainer.backgroundImage = "/images/priceBgSelected.png";
         item.properties.backgroundColor = "#f3fdff";
     }
     
@@ -282,6 +286,7 @@ function decrementPrice(e) {
     if (item.count == 0) {
         item.buttonRemove.visible = false;
         item.lunchCountContainer.visible = false;
+        item.lunchPriceContainer.backgroundImage = "/images/priceBg.png";
         item.properties.backgroundColor = "#fff";
     }    
 
