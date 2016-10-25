@@ -1,0 +1,24 @@
+
+"#list": {
+	top: 150,
+	backgroundColor: "#f4f4f4"
+}
+
+"#list[platform=ios]": {
+	style: Ti.UI.iOS.ListViewStyle.GROUPED,
+	allowsSelection: false,
+	footerTitle: ""
+}
+
+"#mapView": {
+	top: 0,
+	height: 150
+}
+
+"#map": {
+	touchEnabled: false,
+	animate: true,
+	userLocation: true,
+	userLocationButton: true,
+	animate: true
+}

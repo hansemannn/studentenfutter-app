@@ -11,7 +11,7 @@ var onSettingsUpdated;
 function openSettings() {
     Alloy.createController("settings/index", {
         onSettingsUpdated: function(e) {
-            switch(e.action) {
+            switch (e.action) {
                 case "selectCanteen":
                     $.location.setText(e.title);
                     break;
@@ -22,7 +22,7 @@ function openSettings() {
 }
 
 function openHours() {
-    
+    Alloy.createController("hours/index").open();
 }
 
 

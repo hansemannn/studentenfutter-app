@@ -3,7 +3,7 @@
 		<LeftNavButton platform="ios" id="leftButton" onClick="togglePreviousDay" />
 		<RightNavButton platform="ios" id="rightButton" onClick="toggleNextDay" />
 		
-		<ListView id="listView" defaultItemTemplate="CellItem">
+		<ListView id="listView" defaultItemTemplate="CellItem" onItemclick="handleListItemClick">
 			<RefreshControl id="refresh" onRefreshstart="onRefreshStart" />
 			<HeaderView>
 				<Require src="lunches/tabs" id="tabs" />

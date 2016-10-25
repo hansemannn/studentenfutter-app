@@ -44,7 +44,7 @@ function onGroupSelected(state) {
 }
 
 function onSettingsUpdated(e) {
-    switch(e.action) {
+    switch (e.action) {
         case "selectCanteen":
             fetchData({
                 force: false
@@ -92,12 +92,11 @@ function togglePreviousDay() {
 }
 
 function handleListItemClick(e) {
-    var id = e.itemId;
-    openDetails(id);
+    openDetails(e.itemId);
 }
 
-function openDetails(id) {
-    Ti.API.warn(id);
+function openDetails(itemId) {
+    Ti.API.warn(itemId);
 }
 
 function fetchData(args) {
@@ -107,7 +106,7 @@ function fetchData(args) {
     var api = require("api");
     api.getLunches({
         date: dateutils.getCurrentDateSlug(), 
-        location: Ti.App.Properties.getString("currentLocationID", Alloy.CFG.defaultCanteen.id)
+        location: Ti.App.Properties.getInt("currentLocationID", Alloy.CFG.defaultCanteen.id)
     }, function(e) {
         lunches = e;
         setUI();
@@ -148,6 +147,7 @@ function setUI() {
                 count: 0,
                 price: price,
                 properties: {
+                    itemId: lunch.id,
                     height: Ti.UI.SIZE,
                     backgroundColor: "#fff",
                     selectionStyle : (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : null,
