@@ -22,3 +22,9 @@
 	userLocationButton: true,
 	animate: true
 }
+
+".sep": {
+	height: 0.5,
+	backgroundColor: "#dfdfdf",
+	bottom: 0
+}

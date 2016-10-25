@@ -11,9 +11,9 @@ var nav,
         nav = Ti.UI.iOS.createNavigationWindow({
             window: $.window
         });
-        appStoreURL = "https://userpub.itunes.apple.com/WebObjects/MZUserPublishing.woa/wa/addUserReview?id=722993370";
+        appStoreIdentifier = "722993370";
     } else {
-        appStoreURL = "https://play.google.com/store/apps/details?id=de.ncn.mensaapp&reviewId=0";
+        appStoreIdentifier = "de.ncn.mensaapp";
     }
 
     configureCells();
@@ -76,7 +76,33 @@ function selectCanteen(e) {
 }
 
 function rateApp() {
-    Ti.Platform.openURL(appStoreURL);
+    if (OS_IOS) {
+        showProductDialog();
+    } else {
+        Ti.Platform.openURL("https://play.google.com/store/apps/details?id=" + appStoreIdentifier + "&reviewId=0");
+    }
+}
+
+function showProductDialog() {
+    var TiStoreView = require('com.dezinezync.storeview');
+    var LoaderInstance = require("loader");
+    var loader = new LoaderInstance($.window);
+     
+    TiStoreView.addEventListener('loading', function() {
+        loader.show();
+    });
+    
+    TiStoreView.addEventListener('error', function(e) {
+        Ti.API.error(e);
+    });
+    
+    TiStoreView.addEventListener('willshow', function() {
+        loader.hide();
+    });
+    
+    TiStoreView.showProductDialog({
+        'id': appStoreIdentifier
+    });
 }
 
 function openAbout() {

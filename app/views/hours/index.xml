@@ -3,6 +3,7 @@
 		<LeftNavButton platform="ios" titleid="close" onClick="close"></LeftNavButton>
 		<View id="mapView" onClick="askForRoute">
 			<Module id="map" module="ti.map" method="createView" />
+			<View class="sep" />
 		</View>
 		<ListView id="list">
 			<ListSection id="section" />

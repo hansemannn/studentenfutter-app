@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.1.0
+apiversion: 2
+description: My module
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2013-2016 by Your Company
+
+
+# these should not be edited
+name: TiStoreView
+moduleid: com.dezinezync.storeview
+guid: 1784b77a-5dd1-4dc0-8844-a18fdd1e56ee
+platform: iphone
+minsdk: 3.1.3.GA
