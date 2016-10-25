@@ -1,0 +1,4 @@
+
+"#list": {
+	tintColor: Alloy.CFG.styles.tintColor
+}

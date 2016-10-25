@@ -21,19 +21,19 @@ var nav,
 
 function configureCells() {
     var generalSection = $.list.getSections()[0];
-    var showAdditivesCell = generalSection.getItems()[0];
-    var showRatingsCell = generalSection.getItems()[1];
-    var selectCanteenCell = generalSection.getItems()[2];
+    // var showAdditivesCell = generalSection.getItems()[0];
+    // var showRatingsCell = generalSection.getItems()[1];
+    var selectCanteenCell = generalSection.getItems()[0];
     
-    showAdditivesCell.toggle.value = Ti.App.Properties.getBool("showAdditives", true);
-    showRatingsCell.toggle.value = Ti.App.Properties.getBool("showRatings", true);
+    // showAdditivesCell.toggle.value = Ti.App.Properties.getBool("showAdditives", true);
+    // showRatingsCell.toggle.value = Ti.App.Properties.getBool("showRatings", true);
     selectCanteenCell.properties.subtitle = Ti.App.Properties.getString("currentLocationName", Alloy.CFG.defaultCanteen.title);
     selectCanteenCell.template = Ti.UI.LIST_ITEM_TEMPLATE_SUBTITLE;
     selectCanteenCell.properties.subtitleColor = "#888";
     
-    generalSection.updateItemAt(0, showAdditivesCell);
-    generalSection.updateItemAt(1, showRatingsCell);
-    generalSection.updateItemAt(2, selectCanteenCell);
+    // generalSection.updateItemAt(0, showAdditivesCell);
+    // generalSection.updateItemAt(1, showRatingsCell);
+    generalSection.updateItemAt(0, selectCanteenCell);
 }
 
 function changePreference(e) {
@@ -64,11 +64,11 @@ function selectCanteen(e) {
     Alloy.createController("settings/selectCanteen", {
         selectedCanteen: function(e) {
             var generalSection = $.list.getSections()[0];
-            var selectCanteenCell = generalSection.getItems()[2];
+            var selectCanteenCell = generalSection.getItems()[0];
             
             selectCanteenCell.template = Ti.UI.LIST_ITEM_TEMPLATE_SUBTITLE;
             selectCanteenCell.properties.subtitle = e.title;
-            generalSection.updateItemAt(2, selectCanteenCell);   
+            generalSection.updateItemAt(0, selectCanteenCell);   
             
             onSettingsUpdated(e);         
         }

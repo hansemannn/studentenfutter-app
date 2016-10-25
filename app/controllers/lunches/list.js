@@ -26,6 +26,8 @@ var nav,
     cart.on("update", function(summary) {
         $.footer.updateTotalSummary(summary);
     });
+    
+    cart.on("reset", setUI);
 
     if (OS_IOS) {
         nav = createNavigationWindow();
@@ -124,7 +126,7 @@ function setUI() {
     var categories = [L("Hauptgericht"), L("Beilagen"), L("Dessert"), L("Tagessalat"), L("Essen_Hochschulbedienstete", "Essen Hochschulbedienstete"), L("Eintopf_Teller", "Eintopf Teller")];
     var sections = [];
     
-    cart.resetTotal();
+    cart.resetTotal(false);
 
     _.each(categories, function(category) {
         var section = Alloy.createController("lunches/section", {

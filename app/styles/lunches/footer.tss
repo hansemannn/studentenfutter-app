@@ -4,14 +4,18 @@
     backgroundColor: "#fff"
 }
 
+".button": {
+    tintColor: "#a4a4a4"
+}
+
 "#settings": {
     left: 15,
     image: "/images/icons/settings.png"
 }
 
-"#info": {
+"#hours": {
     right: 15,
-    image: "/images/icons/info.png"
+    image: "/images/icons/hours.png"
 }
 
 ".center": {
@@ -36,10 +40,6 @@
         fontSize : 10
     },
     color : "#aeaeae"
-}
-
-".button": {
-    tintColor: "#a4a4a4"
 }
 
 ".sep": {

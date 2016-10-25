@@ -9,8 +9,8 @@
 				</ItemTemplate>
 			</Templates>
 			<ListSection headerTitle="L('general')">
-				<ListItem template="SwitchItem" title:text="L('show_additives')" toggle:value="true" identifier="showAdditives" class="notSelectable" />
-				<ListItem template="SwitchItem" title:text="L('show_ratings')" toggle:value="true" identifier="showRatings" class="notSelectable" />
+				<!--<ListItem template="SwitchItem" title:text="L('show_additives')" toggle:value="true" identifier="showAdditives" class="notSelectable" />
+				<ListItem template="SwitchItem" title:text="L('show_ratings')" toggle:value="true" identifier="showRatings" class="notSelectable" />-->
 				<ListItem title="L('select_canteen')" action="selectCanteen" class="selectable" />
 			</ListSection>
 			<ListSection headerTitle="L('contact')" footerTitle="Made with ⚒ in Osnabrooklyn">

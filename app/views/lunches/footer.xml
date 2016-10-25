@@ -6,5 +6,6 @@
             <Label id="location" />
         </View>
         <Button onClick="openSettings" class="button" id="settings" />
+        <Button onClick="openHours" class="button" id="hours" />
     </View>
 </Alloy>

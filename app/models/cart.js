@@ -20,14 +20,15 @@ exports.definition = {
 				this.set("total", +this.get("total") - +this.castNumber(value));
 				this.trigger("update", this.getFormattedTotal());
             },
-			resetTotal: function() {
+			resetTotal: function(triggerReset) {
 				this.set("total", 0.0);
 				this.trigger("update", this.getFormattedTotal());
+				triggerReset && this.trigger("reset");
 			},
             getTotal: function() {
                 return this.get("total");
             },
-			getFormattedTotal: function() {
+			getFormattedTotal: function() {				
 				var val = this.get("total").toFixed(2);
 				if (val == 0) {
 					return "0,00 €";

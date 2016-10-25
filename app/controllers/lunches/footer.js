@@ -21,8 +21,13 @@ function openSettings() {
     }).open();
 }
 
-function resetAmount() {
+function openHours() {
     
+}
+
+
+function resetAmount() {
+    Alloy.Models.cart.resetTotal(true);
 }
 
 exports.onSettingsUpdated = function(_onSettingsUpdated) {
