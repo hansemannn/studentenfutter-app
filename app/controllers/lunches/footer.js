@@ -28,3 +28,7 @@ function resetAmount() {
 exports.onSettingsUpdated = function(_onSettingsUpdated) {
     onSettingsUpdated = _onSettingsUpdated;
 };
+
+exports.updateTotalSummary = function(_summary) {
+    $.amount.setText(L('total_amount') + ": " + _summary);
+};

@@ -26,6 +26,7 @@
     font : {
         fontSize : 14
     },
+    width: 200,
     color : "#6b6b6b"
 }
 

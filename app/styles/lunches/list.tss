@@ -93,7 +93,6 @@
 
 ".count": {
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-    text: 0,
     color: "#fff",
     font: {
         fontSize: 9,
@@ -114,7 +113,8 @@
 }
 
 ".buttonRemove": {
-    image: "/images/icons/subIcon.png"
+    image: "/images/icons/subIcon.png",
+    right: 30
 }
 
 ".ratingView": {

@@ -19,8 +19,13 @@ var nav,
     currentLunchState = LunchState.Student;      
     cart = Alloy.Models.cart;     
     dateutils = require("dateutils");
+   
     $.tabs.onGroupSelected(onGroupSelected);
     $.footer.onSettingsUpdated(onSettingsUpdated);
+    
+    cart.on("update", function(summary) {
+        $.footer.updateTotalSummary(summary);
+    });
 
     if (OS_IOS) {
         nav = createNavigationWindow();
@@ -119,6 +124,8 @@ function setUI() {
     var categories = [L("Hauptgericht"), L("Beilagen"), L("Dessert"), L("Tagessalat"), L("Essen_Hochschulbedienstete", "Essen Hochschulbedienstete"), L("Eintopf_Teller", "Eintopf Teller")];
     var sections = [];
     
+    cart.resetTotal();
+
     _.each(categories, function(category) {
         var section = Alloy.createController("lunches/section", {
             title: category
@@ -132,25 +139,35 @@ function setUI() {
             }
             
             var hasAdditives = lunch.additives && lunch.additives.length;
-                        
+            var price = currentLunchState == LunchState.Student ? lunch.priceStudent.split(" €")[0] : lunch.priceOfficial.split(" €")[0];
+                
             var attr = {
                 itemId: lunch.id,
+                count: 0,
+                price: price,
                 properties: {
                     height: Ti.UI.SIZE,
                     backgroundColor: "#fff",
-                    count: 0,
-                    price: currentLunchState == LunchState.Student ? Number(lunch.priceStudent.split("€")[0]) : Number(lunch.priceOfficial.split("€")[0]),
                     selectionStyle : (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : null,
                 },
                 image: {
                     width: lunch.images.length > 0 ? 17 : 0
                 },
+                buttonRemove: {
+                    visible: false
+                },
                 lunchTitle: {
                     left: lunch.images.length > 0 ? 5 : 0,
                     text: lunch.name
                 },
+                lunchCountContainer: {
+                    visible: false
+                },
+                lunchCount: {
+                    text: 0
+                },
                 lunchPrice: {
-                    text: currentLunchState == LunchState.Student ? lunch.priceStudent.split("€")[0] : lunch.priceOfficial.split("€")[0]
+                    text: price
                 }
             };
             
@@ -236,25 +253,37 @@ function open() {
 }
 
 function incrementPrice(e) {
-    var item = e.section.getItemAt(e.itemId);
+    var item = e.section.getItemAt(e.itemIndex);
     
-    item.properties.count++;
-    cart.increment(item.properties.price);
+    item.count++;
+    item.lunchCount.text = item.count;
+    cart.increment(item.price);
 
-    item.buttonRemove.visible = true;
+    // First Increment
+    if (item.count == 1) {
+        item.buttonRemove.visible = true;
+        item.lunchCountContainer.visible = true;
+        item.properties.backgroundColor = "#f3fdff";
+    }
+    
     e.section.updateItemAt(e.itemIndex, item);
 }
 
 function decrementPrice(e) {
-    var item = e.section.getItemAt(e.itemId);
+    var item = e.section.getItemAt(e.itemIndex);
+        
+    item.count--;
+    item.lunchCount.text = item.count;
+    cart.decrement(item.price);
     
-    item.properties.count--;
-    cart.decrement(item.properties.price);
-    
-    if (item.properties.count == 0) {
+    // Last Decrement
+    if (item.count == 0) {
         item.buttonRemove.visible = false;
-        e.section.updateItemAt(e.itemIndex, item);    
+        item.lunchCountContainer.visible = false;
+        item.properties.backgroundColor = "#fff";
     }    
+
+    e.section.updateItemAt(e.itemIndex, item);    
 }
 
 exports.open = open

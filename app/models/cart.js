@@ -4,20 +4,36 @@
 exports.definition = {
 	config : {
 		defaults : {
-			summary : 0
+			total : 0.0
 		}
 	},
 	extendModel : function(Model) {
 		_.extend(Model.prototype, {
-            increment: function(value) {
-                this.set("summary", this.get("summary") + value);
+			castNumber: function(value) {
+				return Number(value.replace(/,/g, '.')).toFixed(2);
+			},
+            increment: function(value) {     
+				this.set("total", +this.get("total") + +this.castNumber(value));
+				this.trigger("update", this.getFormattedTotal());
             },
             decrement: function(value) {
-                this.set("summary", this.get("summary") - value);
+				this.set("total", +this.get("total") - +this.castNumber(value));
+				this.trigger("update", this.getFormattedTotal());
             },
-            getSummary: function() {
-                return this.get("summary")
-            }
+			resetTotal: function() {
+				this.set("total", 0.0);
+				this.trigger("update", this.getFormattedTotal());
+			},
+            getTotal: function() {
+                return this.get("total");
+            },
+			getFormattedTotal: function() {
+				var val = this.get("total").toFixed(2);
+				if (val == 0) {
+					return "0,00 €";
+				}
+				return String(val).replace(".", ",") + " €";
+			}
 		});
 
 		return Model;
