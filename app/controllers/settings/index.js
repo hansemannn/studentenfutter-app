@@ -125,8 +125,12 @@ function close() {
     }
 }
 
+function onOpen() {
+    Ti.App.addEventListener("shortcut:canteenSelected", configureCells);
+}
+
 function onClose() {
-    
+    Ti.App.removeEventListener("shortcut:canteenSelected", configureCells);
 }
 
 exports.open = function() {

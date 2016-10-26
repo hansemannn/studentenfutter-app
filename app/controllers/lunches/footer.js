@@ -25,7 +25,6 @@ function openHours() {
     Alloy.createController("hours/index").open();
 }
 
-
 function resetAmount() {
     Alloy.Models.cart.resetTotal(true);
 }
@@ -37,3 +36,7 @@ exports.onSettingsUpdated = function(_onSettingsUpdated) {
 exports.updateTotalSummary = function(_summary) {
     $.amount.setText(L('total_amount') + ": " + _summary);
 };
+
+exports.updateCurrentCanteen = function(_text) {
+    $.location.setText(_text);
+}

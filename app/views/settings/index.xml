@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="window" titleid="settings" onClose="onClose">
+	<Window id="window" titleid="settings" onOpen="onOpen" onClose="onClose">
 		<LeftNavButton platform="ios" titleid="close" onClick="close"></LeftNavButton>
 		<ListView id="list" onItemclick="selectAction">
 			<Templates>

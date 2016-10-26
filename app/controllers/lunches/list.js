@@ -28,6 +28,11 @@ var nav,
     });
     
     cart.on("reset", setUI);
+    
+    Ti.App.addEventListener("shortcut:canteenSelected", function(e) {
+        $.footer.updateCurrentCanteen(e.title);
+        onSettingsUpdated(e);
+    });
 
     if (OS_IOS) {
         nav = createNavigationWindow();
