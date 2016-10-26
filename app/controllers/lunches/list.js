@@ -31,12 +31,58 @@ var nav,
 
     if (OS_IOS) {
         nav = createNavigationWindow();
+        $.listView.setPreviewContext(createPreviewContext());
     }
     
     initializeLoader();
     initializeDate();
 
 })(arguments[0] || {});
+
+function createPreviewContext() {	
+	
+    if (!OS_IOS || Ti.UI.iOS.forceTouchSupported === false) {
+        return;
+    }
+	
+    var previewContext = Ti.UI.iOS.createPreviewContext({
+		preview: createPreviewView(),
+		contentHeight: 400
+	});			
+	
+	previewContext.addEventListener("peek", function(e) {
+        var product = _.findWhere(lunches, {id: e.itemId});
+		var images = product ? product.images : null;
+		var preview = $.listView.getPreviewContext().preview;
+
+		if (images && images.length > 0) {
+			preview.children[0].setImage(images[0]);
+		} else {
+            preview.children[0].setImage("/images/noImage.png");
+        }
+	});
+
+	previewContext.addEventListener("pop", function(e) {
+        openDetails(e.itemId, false);
+	});    
+    
+    return previewContext;
+}
+
+function createPreviewView() {
+    var preview = Ti.UI.createView({
+		borderRadius: 20,
+		backgroundColor: "#fff",
+		height: Ti.UI.SIZE
+	});
+    	
+	preview.add(Ti.UI.createImageView({
+        borderRadius: 20,
+        defaultImage: "/images/noImage.png"
+    }));
+    
+    return preview;
+}
 
 function onGroupSelected(state) {
     currentLunchState = state;
@@ -92,11 +138,21 @@ function togglePreviousDay() {
 }
 
 function handleListItemClick(e) {
-    openDetails(e.itemId);
+    openDetails(e.itemId, true);
 }
 
-function openDetails(itemId) {
-    Ti.API.warn(itemId);
+function openDetails(itemId, animated) {
+    // TODO: Move all products to Models
+    var product = _.findWhere(lunches, {
+		id: itemId
+	});
+    
+    if (!product) {
+        Ti.API.error("Could not find product with ID = " + itemId);
+        return;
+    }
+    
+    Alloy.createController("lunches/details", product).open(animated);
 }
 
 function fetchData(args) {
