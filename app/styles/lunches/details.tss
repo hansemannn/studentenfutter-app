@@ -1,0 +1,68 @@
+
+"#images": {
+/*	showPagingControl: true,
+	pagingControlAlpha: 0.5,
+	currentPageIndicatorColor: Alloy.CFG.styles.tintColor,
+	pagingControlColor: "#f0f0f0",
+	pageIndicatorColor: "#888",*/
+	showVerticalScrollIndicator: false,
+    showHorizontalScrollIndicator: true,
+	layout: "horizontal",
+	height: 230,
+	width: Ti.UI.FILL
+}
+
+"#list": {
+	top: 0
+}
+
+".titleOverlay": {
+	bottom: 0,
+	height: 45,
+	width: Ti.UI.FILL,
+	effect: Ti.UI.iOS.BLUR_EFFECT_STYLE_DARK
+}
+
+"#title": {
+	color: "white",
+	textAlign: "center",
+	font: {
+		fontSize: 16,
+		fontWeight: "bold"
+	}
+}
+
+".placeholderImage": {
+	image: "/images/noImage.png",
+	width: 150,
+	height: 150,
+	opacity: 0.7,
+	top: 0
+}
+
+".placeholderText": {
+	bottom: 90,
+	color: "#fff",
+	opacity: 0.7,
+	font: {
+		fontWeight: "bold",
+		fontSize: 16
+	},
+	text: "Lade jetzt das erste Foto hoch ➡️"
+}
+
+"#placeholder": {
+	height: 230
+}
+
+".placeholderBlur": {
+	effect: Ti.UI.iOS.BLUR_EFFECT_STYLE_LIGHT,
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+}
+
+".imageContainer": {
+	backgroundImage: "/images/lunch.jpg",
+	width: Ti.UI.FILL,
+	height: 230
+}

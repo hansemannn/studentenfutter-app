@@ -1,5 +1,21 @@
 <Alloy>
 	<Window title="Details">
 		<LeftNavButton platform="ios" titleid="close" onClick="close"></LeftNavButton>
+		<RightNavButton platform="ios" systemButton="CAMERA" onClick="showCamera"></RightNavButton>
+		<ListView id="list">
+			<HeaderView>
+				<View class="imageContainer">
+					<BlurView class="placeholderBlur" />
+					<View id="placeholder" onClick="showCamera">
+						<ImageView class="placeholderImage" />
+						<Label class="placeholderText" />
+					</View>
+					<ScrollView id="images" />
+					<BlurView ns="Ti.UI.iOS" class="titleOverlay">
+						<Label id="title" />
+					</BlurView>		
+				</View>
+			</HeaderView>
+		</ListView>
 	</Window>
 </Alloy>
