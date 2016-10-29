@@ -27,7 +27,7 @@
 	color: "white",
 	textAlign: "center",
 	font: {
-		fontSize: 16,
+		fontSize: 14,
 		fontWeight: "bold"
 	}
 }

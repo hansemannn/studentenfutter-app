@@ -14,7 +14,6 @@
 						<!-- Title -->
 						<View class="titleView">
 							<View class="titleInnerView">
-								<ImageView class="lunchImage" bindId="image" />
 								<Label class="title" bindId="lunchTitle" />
 								<View class="ratingView">
 									<Label class="additives" bindId="lunchAdditives" />

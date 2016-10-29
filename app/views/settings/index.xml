@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="window" titleid="settings" onOpen="onOpen" onClose="onClose">
-		<LeftNavButton platform="ios" titleid="close" onClick="close"></LeftNavButton>
+		<LeftNavButton platform="ios" class="closeButton" onClick="close"></LeftNavButton>
 		<ListView id="list" onItemclick="selectAction">
 			<Templates>
 				<ItemTemplate name="SwitchItem">

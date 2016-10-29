@@ -213,15 +213,12 @@ function setUI() {
                     backgroundColor: "#fff",
                     selectionStyle : (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : null,
                 },
-                image: {
-                    width: lunch.images.length > 0 ? 17 : 0
-                },
                 buttonRemove: {
                     visible: false
                 },
                 lunchTitle: {
                     left: lunch.images.length > 0 ? 5 : 0,
-                    text: lunch.name
+                    text: ((lunch.images.length ? "📷" : "") + lunch.name)
                 },
                 lunchCountContainer: {
                     visible: false

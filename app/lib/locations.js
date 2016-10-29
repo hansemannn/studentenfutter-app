@@ -9,8 +9,8 @@ var data = [{
 		time : "12:00 - 13:00 Uhr"
 	}],
 	location : {
-		lat : "52.2708",
-		lon : "8.0450",
+		lat : 52.270128,
+		lon : 8.045089,
 		address: "Ritterstraße 10, Osnabrück"
 	}
 }, {
@@ -115,24 +115,9 @@ var data = [{
 }];
 
 module.exports = {
-
-	getNameList : function(_args) {
-		var arr = [];
-
-		for (var i = 0; i < data.length; i++) {
-			arr.push(data[i].title);
-		}
-
-		if (_args && _args.showCancel)
-			arr.push(L("cancel"));
-
-		return arr;
-	},
-
 	getData : function() {
 		return data;
 	},
-
 	getCurrentLocation : function() {
 		for (var i = 0; i < data.length; i++) {
 			if (data[i].id == Ti.App.Properties.getInt("currentLocationID",  Alloy.CFG.defaultCanteen.id)) {

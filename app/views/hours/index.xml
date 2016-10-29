@@ -1,6 +1,6 @@
 <Alloy>
 	<Window titleid="hours" onFocus="selectAnnotation">
-		<LeftNavButton platform="ios" titleid="close" onClick="close"></LeftNavButton>
+		<LeftNavButton platform="ios" class="closeButton" onClick="close"></LeftNavButton>
 		<View id="mapView" onClick="askForRoute">
 			<Module id="map" module="ti.map" method="createView" />
 			<View class="sep" />

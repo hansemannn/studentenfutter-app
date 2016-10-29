@@ -26,3 +26,11 @@
 ".selectable": {
 	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
 }
+
+".closeButton[platform=ios]": {
+	image: "/images/icons/close.png"
+}
+
+".closeButton[platform=android]": {
+	icon: "/images/icons/close.png"
+}
