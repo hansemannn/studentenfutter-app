@@ -6,10 +6,14 @@
  *	@return void
  */
 exports.getLunches = function(params, cb) {
-	var auth = require('/auth');
+	var auth = null;
 	
+	try {
+		auth = require('/auth');
+	} catch(e) {}
+		
 	// Hack local lunches for open-source project
-	if (!auth.hasCredentials()) {
+	if (!auth) {
 		var dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/lunches.json');
 						
 		try {
