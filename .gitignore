@@ -7,3 +7,4 @@
 /.settings/com.appcelerator.titanium.mobile.prefs
 /i18n
 /platform
+/app/lib/auth.js
