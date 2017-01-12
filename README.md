@@ -4,6 +4,8 @@ The Studentenfutter App is a cross-platform Titanium app initially made to check
 Osnabrück, Vechta and Lingen. It was made open source to share the concepts behind maken an advanced application and is still
 work-in-progress due to migrations from the classic Titanium structure to an Alloy based concept.
 
+<img alt="App Store" src="https://abload.de/img/screenshot2017-01-12aybs4e.png" width="900" />
+
 ### Download
 
 You can download the app for free from the iOS App Store and Android Play Store:
