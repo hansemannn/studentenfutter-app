@@ -246,7 +246,7 @@ function setUI() {
             
             if (showRatings) {
                 attr["fullStars"] = {
-                    image: utils.formattedStars(lunch.rating, "small")
+                  // image: utils.formattedStars(lunch.rating, "small")
                 };
                 attr["scoreOfRating"] = {
                     text: lunch.rating ? lunch.rating.value : 0

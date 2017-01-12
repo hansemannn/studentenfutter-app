@@ -79,8 +79,9 @@ function setRating() {
 	var ratingCell = section.items[0];
 	var additivesCell = section.items[1];
 	var hasAdditives = product.additives && product.additives.length;
-	
-	ratingCell.rating.image = utils.formattedStars(product.rating, "big");
+
+	// FIXME: This is throwing an error
+	// ratingCell.rating.image = utils.formattedStars(product.rating, "big");
 	additivesCell.additives.text = hasAdditives ? product.additives.length : 0;
 	
 	if (!hasAdditives) {
