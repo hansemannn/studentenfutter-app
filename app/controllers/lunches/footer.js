@@ -9,7 +9,7 @@ var onSettingsUpdated;
 })(arguments[0] || {});
 
 function openSettings() {
-    Alloy.createController("settings/index", {
+    Alloy.createController("/settings/index", {
         onSettingsUpdated: function(e) {
             switch (e.action) {
                 case "selectCanteen":
@@ -22,7 +22,7 @@ function openSettings() {
 }
 
 function openHours() {
-    Alloy.createController("hours/index").open();
+    Alloy.createController("/hours/index").open();
 }
 
 function resetAmount() {

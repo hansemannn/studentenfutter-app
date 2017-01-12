@@ -13,7 +13,7 @@
 })(arguments[0] || {});
 
 function openCanteenSelector() {
-    Alloy.createController("settings/selectCanteen", {
+    Alloy.createController("/settings/selectCanteen", {
         selectedCanteen: function(e) {
             Ti.App.fireEvent("shortcut:canteenSelected", e);              
         }

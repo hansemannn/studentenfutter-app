@@ -159,7 +159,7 @@ function openDetails(itemId, animated) {
         return;
     }
     
-    Alloy.createController("lunches/details", product).open(animated);
+    Alloy.createController("/lunches/details", product).open(animated);
 }
 
 function fetchData(args) {
@@ -191,7 +191,7 @@ function setUI() {
     cart.resetTotal(false);
 
     _.each(categories, function(category) {
-        var section = Alloy.createController("lunches/section", {
+        var section = Alloy.createController("/lunches/section", {
             title: category
         }).getView();
 

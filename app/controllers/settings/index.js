@@ -61,7 +61,7 @@ function selectAction(e) {
 }
 
 function selectCanteen(e) {
-    Alloy.createController("settings/selectCanteen", {
+    Alloy.createController("/settings/selectCanteen", {
         selectedCanteen: function(e) {
             var generalSection = $.list.getSections()[0];
             var selectCanteenCell = generalSection.getItems()[0];
@@ -106,7 +106,7 @@ function showProductDialog() {
 }
 
 function openAbout() {
-    nav.openWindow(Alloy.createController("settings/webview", "about").getView());
+    nav.openWindow(Alloy.createController("/settings/webview", "about").getView());
 }
 
 function reportError() {
