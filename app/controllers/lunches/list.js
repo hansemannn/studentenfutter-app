@@ -19,8 +19,8 @@ var nav,
     
     currentLunchState = LunchState.Student;      
     cart = Alloy.Models.cart;     
-    utils = require("utils");
-    dateutils = require("dateutils");
+    utils = require("/utils");
+    dateutils = require("/dateutils");
    
     $.tabs.onGroupSelected(onGroupSelected);
     $.footer.onSettingsUpdated(onSettingsUpdated);
@@ -110,7 +110,7 @@ function onSettingsUpdated(e) {
 }
 
 function initializeLoader() {
-    LoaderInstance = require("loader");
+    LoaderInstance = require("/loader");
     loader = new LoaderInstance($.window);
 }
 
@@ -166,7 +166,7 @@ function fetchData(args) {
     !args.force && loader.show();
     $.window.setTitle(L("loading"));
     
-    var api = require("api");
+    var api = require("/api");
     api.getLunches({
         date: dateutils.getCurrentDateSlug(), 
         location: Ti.App.Properties.getInt("currentLocationID", Alloy.CFG.defaultCanteen.id)

@@ -7,7 +7,7 @@ var nav,
  */
 (function constructor(_product) {
 	product = _product;
-	utils = require("utils");
+	utils = require("/utils");
 	
 	if (OS_IOS) {
 		nav = Ti.UI.iOS.createNavigationWindow({
