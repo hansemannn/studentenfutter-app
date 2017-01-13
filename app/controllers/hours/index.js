@@ -5,7 +5,7 @@ var nav,
  *  Constructor
  */
 (function constructor(args) {
-	location = require("locations").getCurrentLocation();
+	location = require("/locations").getCurrentLocation();
 
 	if (OS_IOS) {
 		nav = Ti.UI.iOS.createNavigationWindow({

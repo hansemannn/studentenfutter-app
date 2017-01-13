@@ -1,45 +1,40 @@
-var moment = require('alloy/moment'),
-	date = moment(new Date());
+var moment = require('alloy/moment');
+var date = moment(new Date());
 
-function setToday(newDate) {
+/**
+ * Public API
+ */
+exports.setToday = function(newDate) {
 	date = newDate;
-}
+};
 
-function getToday() {
+exports.getToday = function() {
 	return moment(new Date()).format("DD.MM.YYYY");
-}
+};
 
-exports = {
+exports.getFormattedDate = function() {
+	var tomorrow = moment(new Date).add(1, "day");
+	var yesterday = moment(new Date).subtract(1, "day");
 
-	setToday : setToday,
-
-	getToday : getToday,
-	
-	getFormattedDate: function() {
-		var tomorrow = moment(new Date).add(1, "day");
-		var yesterday = moment(new Date).subtract(1, "day");
-
-		if (date.isSame(moment(new Date()), "day")) {
-			return L("today") + ", " + date.format("DD.MM.YYYY");
-		} else if (date.isSame(tomorrow, "day")) {
-			return L("tomorrow") + ", " + date.format("DD.MM.YYYY");
-		} else if (date.isSame(yesterday, "day")) {
-			return L("yesterday") + ", " + date.format("DD.MM.YYYY");
-		}
-		return date.format("dd[, ]DD.MM.YYYY");
-	},
-
-	increment : function() {
-		var tomorrow = moment(date).add("day", 1);
-		setToday(tomorrow);
-	},
-
-	decrement : function() {
-		var yesterday = moment(date).subtract("day", 1);
-		setToday(yesterday);
-	},
-	
-	getCurrentDateSlug: function() {
-		return date.format("YYYY-MM-DD");
+	if (date.isSame(moment(new Date()), "day")) {
+		return L("today") + ", " + date.format("DD.MM.YYYY");
+	} else if (date.isSame(tomorrow, "day")) {
+		return L("tomorrow") + ", " + date.format("DD.MM.YYYY");
+	} else if (date.isSame(yesterday, "day")) {
+		return L("yesterday") + ", " + date.format("DD.MM.YYYY");
 	}
+	
+	return date.format("dd[, ]DD.MM.YYYY");
+};
+
+exports.increment = function() {
+	exports.setToday(moment(date).add("day", 1));
+};
+
+exports.decrement = function() {
+	exports.setToday(moment(date).subtract("day", 1));
+};
+
+exports.getCurrentDateSlug = function() {
+	return date.format("YYYY-MM-DD");
 };

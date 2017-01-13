@@ -85,7 +85,7 @@ function rateApp() {
 
 function showProductDialog() {
     var TiStoreView = require('com.dezinezync.storeview');
-    var LoaderInstance = require("loader");
+    var LoaderInstance = require("/loader");
     var loader = new LoaderInstance($.window);
      
     TiStoreView.addEventListener('loading', function() {

@@ -6,7 +6,7 @@ var nav,
  *  Constructor
  */
 (function constructor(args) {
-    locations = require("locations").getData();
+    locations = require("/locations").getData();
     selectedCanteen = args.selectedCanteen;
     
     if (OS_IOS) {
