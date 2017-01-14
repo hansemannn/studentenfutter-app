@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app
+  xmlns:ti="http://ti.appcelerator.org">
+  <id>de.hansknoechel.mensaapp</id>
+  <name>Mensa</name>
+  <version>3.0.0</version>
+  <publisher>Hans Knoechel</publisher>
+  <url>http://studentenfutter-os.de</url>
+  <description/>
+  <copyright>Copyright (c) 2012-2017 by Hans Knoechel</copyright>
+  <icon>appicon.png</icon>
+  <fullscreen>false</fullscreen>
+  <navbar-hidden>false</navbar-hidden>
+  <analytics>false</analytics>
+  <guid>11111111-1111-1111-1111-111111111111</guid>
+  <property name="run-on-main-thread" type="bool">false</property>
+  <property name="ti.ui.defaultunit" type="string">dip</property>
+  <ios>
+      <default-background-color>#3fc3ea</default-background-color>
+      <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+      <use-app-thinning>true</use-app-thinning>
+      <team-id>XXXXXXXXXX</team-id>
+      <plist>
+          <dict>
+              <key>UIApplicationShortcutItems</key>
+              <array>
+                  <dict>
+                      <key>UIApplicationShortcutItemIconType</key>
+                      <string>UIApplicationShortcutIconTypeSearch</string>
+                      <key>UIApplicationShortcutItemTitle</key>
+                      <string>select_canteen</string>
+                      <key>UIApplicationShortcutItemType</key>
+                      <string>SelectCanteen</string>
+                      <key>UIApplicationShortcutItemUserInfo</key>
+                      <dict/>
+                  </dict>
+              </array>
+              <key>UIStatusBarStyle</key>
+              <string>UIStatusBarStyleLightContent</string>
+          </dict>
+      </plist>
+      <!--<extensions>
+          <extension projectPath="extensions/Mensa/Mensa.xcodeproj">
+              <target name="Mensa WatchApp Extension">
+                  <provisioning-profiles>
+                      <dist-adhoc>83b6d491-5cf4-4214-b249-0f563d920a9a</dist-adhoc>
+                      <dist-appstore>83b6d491-5cf4-4214-b249-0f563d920a9a</dist-appstore>
+                      <device>09cd86f0-18ae-4231-99f6-392eece66900</device>
+                  </provisioning-profiles>
+              </target>
+              <target name="Mensa WatchApp">
+                  <provisioning-profiles>
+                      <dist-adhoc>83b6d491-5cf4-4214-b249-0f563d920a9a</dist-adhoc>
+                      <dist-appstore>83b6d491-5cf4-4214-b249-0f563d920a9a</dist-appstore>
+                      <device>09cd86f0-18ae-4231-99f6-392eece66900</device>
+                  </provisioning-profiles>
+              </target>
+          </extension>
+      </extensions>-->
+  </ios>
+  <android xmlns:android="http://schemas.android.com/apk/res/android"></android>
+  <modules>
+      <module platform="iphone,ipad" version="1.1.1">com.dezinezync.storeview</module>
+      <module platform="iphone,ipad" version="2.8.2">ti.map</module>
+  </modules>
+  <deployment-targets>
+    <target device="android">false</target>
+    <target device="ipad">true</target>
+    <target device="iphone">true</target>
+    <target device="mobileweb">false</target>
+  </deployment-targets>
+  <sdk-version>6.0.1.GA</sdk-version>
+  <plugins>
+    <plugin version="1.0">ti.alloy</plugin>
+  </plugins>
+</ti:app>
