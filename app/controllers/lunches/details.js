@@ -81,11 +81,11 @@ function setRating() {
 	var hasAdditives = product.additives && product.additives.length;
 
 	ratingCell.rating.image = utils.formattedStars(product.rating, "big");
-	additivesCell.additives.text = hasAdditives ? product.additives.length : 0;
+	additivesCell.additives.text = hasAdditives ? product.additives.length : "0";
 	
 	if (!hasAdditives) {
 		additivesCell.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_NONE;
-		additivesCell.additives.right = 15;
+		additivesCell.additivesBackground.right = 15;
 	}
 	
 	section.updateItemAt(0, ratingCell);

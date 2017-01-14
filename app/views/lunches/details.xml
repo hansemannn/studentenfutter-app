@@ -10,7 +10,7 @@
 				</ItemTemplate>
 				<ItemTemplate name="AdditivesCell">
 					<Label textid="additives" class="textLabel" />
-					<ImageView class="additivesBackground">
+					<ImageView class="additivesBackground" bindId="additivesBackground">
 						<Label class="additives" bindId="additives" />
 					</ImageView>
 				</ItemTemplate>
@@ -29,8 +29,8 @@
 				</View>
 			</HeaderView>
 			<ListSection>
-				<ListItem class="ratingRow" rating:image="/images/icons/stars/small/0_0.png" template="RatingCell" />
-				<ListItem class="additivesRow" additives:text="0" template="AdditivesCell" />
+				<ListItem class="ratingRow" rating:image="/images/icons/stars/0_0.png" template="RatingCell" />
+				<ListItem class="additivesRow" additivesBackground:right="5" additives:text="0" template="AdditivesCell" />
 			</ListSection>
 		</ListView>
 	</Window>

@@ -1,6 +1,6 @@
 exports.formattedStars = function(rating, size) {
     var stars = rating ? rating.value : 0;
-    var path = "images/icons/stars/" + size + "/";
+    var path = "images/icons/stars/";
 
     if (stars > 0 && stars < 0.75) {
         return path + "0_5.png";

@@ -80,8 +80,7 @@
 
 ".ratingImage": {
 	right: 5,
-	height: 25,
-	image: "/images/icons/stars/small/4_5.png"
+	height: 24
 }
 
 ".ratingRow": {
@@ -96,7 +95,6 @@
 
 
 ".additivesBackground": {
-	right: 5,
 	width: 24,
 	height: 24,
 	image: "/images/additivesBackground.png"
