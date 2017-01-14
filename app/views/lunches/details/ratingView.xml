@@ -1,0 +1,7 @@
+<Alloy>
+	<View onClick="hide" id="container">
+		<View class="inner">
+			<ImageView id="rating" onClick="setRating" />
+		</View>
+	</View>
+</Alloy>
