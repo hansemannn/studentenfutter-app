@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="warning">Precaución</string>
+	<string name="and">y</string>
 	<string name="camera_warning_text">Por favor, asegúrese de que Studentenfutter se le permite tomar fotos y vuelva a intentarlo!</string>
 	<string name="all_right">¡Muy bien!</string>
 	<string name="select_canteen">Seleccione cantina</string>
@@ -77,6 +78,7 @@
 	<string name="su">Do.</string>
 	<string name="additives">Accesorios</string>
 	<string name="one_additive">1 accesorio</string>
+	<string name="no_additives">No Accesorios</string>
 	<string name="Beilagen">Entremés</string>
 	<string name="Hauptgericht">Plato principal</string>
 	<string name="Dessert">Postre</string>

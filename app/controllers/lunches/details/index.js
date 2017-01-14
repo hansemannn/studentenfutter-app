@@ -134,7 +134,10 @@ function handleAction(e) {
 }
 
 function performRating() {
-	alert('TODO: Create own modal dialog to rate stars! 🚀');
+	Alloy.createController('/lunches/details/ratingView', {
+		parent: $.details,
+		productId: product.id
+	}).show();
 }
 
 function showAdditives() {
