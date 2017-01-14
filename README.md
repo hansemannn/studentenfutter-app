@@ -12,9 +12,14 @@ You can download the app for free from the iOS App Store and Android Play Store:
 
 <a href="https://itunes.apple.com/de/app/studentenfutter-die-mensa/id722993370?l=de" target="_blank"><img alt="App Store" src="https://abload.de/img/appstoreihsxg.png" height="40" /></a> <a href="https://play.google.com/store/apps/details?id=de.ncn.mensaapp" target="_blank"><img alt="Play Store" src="https://abload.de/img/playstoreres91.png" height="40" /></a>
 
-### Features
+### Features (Selection)
 
-TBA
+- [x] Cross-platform native App
+- [x] List Views
+- [x] Navigation Flows
+- [x] Image Processing & Upload
+- [x] REST-API Handling
+- [x] Star-based Rating System
 
 ### Running the App
 
