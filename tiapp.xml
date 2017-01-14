@@ -61,10 +61,10 @@
   <android xmlns:android="http://schemas.android.com/apk/res/android"></android>
   <modules>
       <module platform="ios">com.dezinezync.storeview</module>
-      <module>ti.map</module>
+      <module version="2.8.2" platform="iphone">ti.map</module>
   </modules>
   <deployment-targets>
-    <target device="android">true</target>
+    <target device="android">false</target>
     <target device="ipad">true</target>
     <target device="iphone">true</target>
     <target device="mobileweb">false</target>
