@@ -12,12 +12,16 @@ exports.getLunches = function(params, cb) {
 		auth = require('/auth');
 	} catch(e) {
 		var dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/lunches.json');
-						
-		try {
-			cb(_.extend(JSON.parse(dummyLunches.read()), {success: true}));
-		} catch(e) {
-			Ti.API.error('Unable to parse JSON: ' + e);
-		} 
+					
+		// Simulate HTTP request	
+		setTimeout(function() {
+			try {
+				cb(_.extend(JSON.parse(dummyLunches.read()), {success: true}));
+			} catch(e) {
+				Ti.API.error('Unable to parse JSON: ' + e);
+				cb({success: false});
+			} 
+		}, 1000);
 		
 		return;
 	}
