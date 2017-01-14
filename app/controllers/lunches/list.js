@@ -219,7 +219,7 @@ function setUI() {
                     visible: false
                 },
                 lunchTitle: {
-                    left: lunch.images.length > 0 ? 5 : 0,
+                    left: lunch.images.length > 0 ? 4 : 2,
                     text: ((lunch.images.length ? "📷" : "") + lunch.name)
                 },
                 lunchCountContainer: {
