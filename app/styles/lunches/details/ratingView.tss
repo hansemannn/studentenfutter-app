@@ -1,0 +1,16 @@
+"#container": {
+	backgroundColor: "#80000000", // 50 % opacity
+	opacity: 0.0
+}
+
+".inner": {
+	backgroundColor: "#fff",
+	width: 300,
+	height: 100,
+	borderRadius: 15
+}
+
+"#rating": {
+	image: "/images/icons/stars/0_0.png",
+	height: 40
+}

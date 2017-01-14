@@ -1,4 +1,4 @@
-exports.formattedStars = function(rating, size) {
+exports.formattedStars = function(rating) {
     var stars = rating ? rating.value : 0;
     var path = "images/icons/stars/";
 
