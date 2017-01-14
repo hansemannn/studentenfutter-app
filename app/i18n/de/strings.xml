@@ -96,4 +96,5 @@
 	<string name="contact">Kontakt</string>
 	<string name="hours">Öffnungszeiten</string>
 	<string name="rating">Bewertung</string>
+	<string name="upload_first_photo_now">Lade jetzt das erste Foto hoch ➡️</string>
 </resources>
