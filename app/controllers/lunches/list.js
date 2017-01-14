@@ -159,7 +159,7 @@ function openDetails(itemId, animated) {
         return;
     }
     
-    Alloy.createController("/lunches/details", product).open(animated);
+    Alloy.createController("/lunches/details/index", product).open(animated);
 }
 
 function fetchData(args) {
