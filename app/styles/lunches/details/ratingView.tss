@@ -3,14 +3,48 @@
 	opacity: 0.0
 }
 
-".inner": {
+"#content": {
 	backgroundColor: "#fff",
-	width: 300,
-	height: 100,
-	borderRadius: 15
+	width: 280,
+	height: 110,
+	borderRadius: 15,
+	bubbleParent: false
 }
 
 "#rating": {
-	image: "/images/icons/stars/0_0.png",
-	height: 40
+	top: 55,
+	layout: "horizontal",
+	height: 30,
+	width: 150
+}
+
+".button": {
+	enabled: false,
+	width: 100,
+	font: {
+		fontSize: 16
+	}
+}
+
+"#cancel": {
+	left: 20,
+	tintColor: "#bfbfbf"
+}
+
+"#submit": {
+	right: 20
+}
+
+".header": {
+	color: "#555",
+	top: 20,
+	font: {
+		fontSize: 16
+	}
+}
+
+"#buttons": {
+	height: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
+	bottom: 10
 }
