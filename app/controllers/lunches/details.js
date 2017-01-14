@@ -80,7 +80,7 @@ function setRating() {
 	var additivesCell = section.items[1];
 	var hasAdditives = product.additives && product.additives.length;
 
-	ratingCell.rating.image = utils.formattedStars(product.rating, "big");
+	ratingCell.rating.image = utils.formattedStars(product.rating);
 	additivesCell.additives.text = hasAdditives ? product.additives.length : "0";
 	
 	if (!hasAdditives) {
