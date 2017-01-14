@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="warning">Caution</string>
+	<string name="and">and</string>
 	<string name="camera_warning_text">Please make sure, that Studentenfutter is allowed to take photos and try again!</string>
 	<string name="all_right">Alright!</string>
 	<string name="select_canteen">Select Canteen</string>
@@ -77,6 +78,7 @@
 	<string name="su">Su.</string>
 	<string name="additives">Additives</string>
 	<string name="one_additive">1 Additive</string>
+	<string name="no_additives">No Additives</string>
 	<string name="Beilagen">Side Dishes</string>
 	<string name="Hauptgericht">Main Dish</string>
 	<string name="Dessert">Dessert</string>

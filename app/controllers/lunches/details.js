@@ -1,6 +1,7 @@
 var nav,
 	product,
-	utils;
+	utils,
+	ListAction;
 
 /**
  *  Constructor
@@ -14,6 +15,12 @@ var nav,
 			window: $.details
 		});
 	}
+	
+	// Mapped to the itemId's of the items
+	ListAction = {
+		PerformRating: 'rating',
+		ShowAdditives: 'additives'		
+	};
 	
 	setUI();
 })(arguments[0] || {});
@@ -113,6 +120,52 @@ function showCamera(e) {
 }
 
 function handleAction(e) {
+	switch (e.itemId) {
+		case ListAction.PerformRating:
+			performRating();
+		break;
+		
+		case ListAction.ShowAdditives:
+			showAdditives();
+		break;
+	}
 	
 	$.list.deselectItem(e.sectionIndex, e.itemIndex);
+}
+
+function performRating() {
+	alert('TODO: Create own modal dialog to rate stars! 🚀');
+}
+
+function showAdditives() {
+	var usedAdditives = product.additives || [];
+	
+	try {
+		var additives = JSON.parse(Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/additives.json').read());
+		var result = [];
+		
+		_.map(additives, function(additive) {
+			if (usedAdditives.indexOf(String(additive.id)) !== -1) {
+				result.push(additive.name);
+			}
+		})
+			
+		// Some nice hack: Remove the last commata with an "and"
+		var message = result.join(', ');
+		
+		if (message.lastIndexOf(', ') !== -1) {
+			message = setCharAt(message, message.lastIndexOf(', '), ' ' + L('and') + ' ');
+		}
+		
+		$.alert.setMessage(message);
+		$.alert.show();
+	} catch(e) {
+		Ti.API.error('No assets/json/additives.json available:'); 
+		Ti.API.error(e);
+	}	
+}
+
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substr(0,index) + chr + str.substr(index+1);
 }
