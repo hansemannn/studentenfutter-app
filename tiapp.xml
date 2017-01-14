@@ -60,8 +60,8 @@
   </ios>
   <android xmlns:android="http://schemas.android.com/apk/res/android"></android>
   <modules>
-      <module platform="ios">com.dezinezync.storeview</module>
-      <module version="2.8.2" platform="iphone">ti.map</module>
+      <module platform="ios" version="1.1.1">com.dezinezync.storeview</module>
+      <module  platform="ios" version="2.8.2">ti.map</module>
   </modules>
   <deployment-targets>
     <target device="android">false</target>
@@ -69,7 +69,7 @@
     <target device="iphone">true</target>
     <target device="mobileweb">false</target>
   </deployment-targets>
-  <sdk-version>6.0.1.GA</sdk-version>
+  <sdk-version>6.1.0</sdk-version>
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>
