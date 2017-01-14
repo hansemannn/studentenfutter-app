@@ -94,12 +94,15 @@
 	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
 }
 
-".additives": {
+
+".additivesBackground": {
+	right: 5,
 	width: 24,
 	height: 24,
-	backgroundColor: Alloy.CFG.styles.tintColor,
-	borderRadius: 12,
-	right: 5,
+	image: "/images/additivesBackground.png"
+}
+
+".additives": {
 	font: {
 		fontSize: 14	
 	},
