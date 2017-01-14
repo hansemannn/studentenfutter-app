@@ -14,7 +14,8 @@ You can download the app for free from the iOS App Store and Android Play Store:
 
 ### Features (Selection)
 
-- [x] Cross-platform native App
+- [x] Cross-Platform native App
+- [x] Multi-Language Support (en, de, es, pt)
 - [x] List Views
 - [x] Navigation Flows
 - [x] Image Processing & Upload
