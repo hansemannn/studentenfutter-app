@@ -10,7 +10,9 @@
 				</ItemTemplate>
 				<ItemTemplate name="AdditivesCell">
 					<Label textid="additives" class="textLabel" />
-					<Label class="additives" bindId="additives" />
+					<ImageView class="additivesBackground">
+						<Label class="additives" bindId="additives" />
+					</ImageView>
 				</ItemTemplate>
 			</Templates>
 			<HeaderView>
