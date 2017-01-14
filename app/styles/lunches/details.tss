@@ -52,7 +52,7 @@
 		fontWeight: "bold",
 		fontSize: 16
 	},
-	text: "Lade jetzt das erste Foto hoch ➡️"
+	textid: "upload_first_photo_now"
 }
 
 "#placeholder": {
