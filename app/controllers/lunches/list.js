@@ -273,11 +273,11 @@ function setUI() {
 
 function formattedAdditives(count) {
     if (count == 0) {
-        return "Keine Zusätze";
+        return L('no_additives');
     } else if (count == 1) {
-        return "1 Zusatz";
+        return L('one_additive');
     }
-    return count + " Zusätze";
+    return count + ' ' + L('additives');
 }
 
 function open() {
