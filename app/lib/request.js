@@ -181,7 +181,7 @@ var Request = function(_args) {
 		c.setRequestHeader('User-Agent', getUserAgent());
 
 		if (args.data) {
-			Ti.API.info("[DATA - " + args.data + "]");
+			Ti.API.info("[DATA - " + JSON.stringify(args.data) + "]");
 			c.send(args.data);
 		} else {
 			c.send();
