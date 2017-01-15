@@ -18,14 +18,14 @@
 			<HeaderView>
 				<View class="imageContainer">
 					<BlurView class="placeholderBlur" />
-					<View id="placeholder" onClick="showCamera">
-						<ImageView class="placeholderImage" />
-						<Label class="placeholderText" />
-					</View>
 					<ScrollView id="images" />
 					<BlurView ns="Ti.UI.iOS" class="titleOverlay">
 						<Label id="title" />
 					</BlurView>		
+					<View id="placeholder" onClick="showCamera">
+						<ImageView class="placeholderImage" />
+						<Label class="placeholderText" />
+					</View>
 				</View>
 			</HeaderView>
 			<ListSection>

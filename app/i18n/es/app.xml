@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="select_canteen">Seleccione cantina</string>
+	<string name="NSCameraUsageDescription">Can we use your camera so you can take pictures?</string>
 	<string name="NSLocationWhenInUseUsageDescription">¿Se nos permite usar su posición en el mapa para mostrar la distancia a su cantina?</string>
 </resources>
