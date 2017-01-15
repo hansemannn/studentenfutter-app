@@ -13,7 +13,40 @@ function performFallback(cb) {
 }
 
 /**
- *	Posts a new rating
+ *	Posts a new product image.
+ *	@param {Object} data The POST parameter containing the image data. 
+ *	@param {Callback} cb The callback to be invoked after the asyncronous request.
+ *	@return void
+ */
+exports.postProductImage = function(params, cb, onProcess) {
+	try {
+		var auth = require('/auth');
+		var RequestInstance = require('/request');
+				
+		var request = new RequestInstance({
+			url : "/images/new",
+			type : "POST",
+			data: params,
+			isFileUpload: true,
+			process: function(e) {
+				onProcess && onProcess(e);
+			},
+			success: function(json) {
+				cb(_.extend(json, {success: true}));
+			},
+			error: function() {
+				cb({success: false});
+			}
+		});
+		request.load();
+	} catch(e) {
+		performFallback(cb);
+		return;
+	}
+};
+
+/**
+ *	Posts a new rating.
  *	@param {Object} data The POST parameter containing the rating value. 
  *	@param {Callback} cb The callback to be invoked after the asyncronous request.
  *	@return void
