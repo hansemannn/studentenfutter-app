@@ -133,6 +133,16 @@ function showCamera() {
 		});
 	}
 	
+	// Send red sqare on Simulator
+	if (Ti.App.getDeployType() == 'development') {
+		sendProductImage(Ti.UI.createView({
+			width: 1000,
+			height: 1000,
+			backgroundColor: 'red'
+		}).toImage());
+		return;
+	}
+	
 	if (!Ti.Media.hasCameraPermissions()) {
 		Ti.Media.requestCameraPermissions(function(e) {
 			if (e.success) {
@@ -147,7 +157,25 @@ function showCamera() {
 }
 
 function sendProductImage(image) {
-	alert("TODO: Submit image!");
+	var api = require('/api');
+	
+	api.postProductImage({
+		'image[productId]': product.id,
+		'image[userId]': Ti.Platform.getId(),
+		'image[originalResource]': image
+	}, function(e) {
+		
+		if (!e.awaitingModeration) {
+			var dia = Ti.UI.createAlertDialog({
+				title: L("upload_success"),
+				message: L("upload_success_msg"),
+				buttonNames: [L("ok")]
+			});
+			dia.show();
+		}
+	}, function(e) {
+		Ti.API.info('Process:' + e.value);
+	});
 }
 
 function processImage(image) {
