@@ -158,6 +158,8 @@ function processImage(image) {
 	var outputImage;
 	var imageFactory = require("ti.imagefactory");
 	outputImage = imageFactory.compress(image, 0);
+	
+	Ti.API.debug('Image Size (before): ' + outputImage.length / 1000 + ' kb');
 
 	if (outputImage.length > 500000) {
 		var newWidth,
@@ -180,8 +182,10 @@ function processImage(image) {
 
 		if (outputImage.length > Alloy.Globals.images.maximumImageSize) {
 			outputImage = imageFactory.compress(image, 0);
-		}
+		}		
 	}
+	
+	Ti.API.debug('Image Size (after): ' + outputImage.length / 1000 + ' kb');
 
 	return outputImage;
 }

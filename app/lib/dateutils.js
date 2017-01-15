@@ -28,11 +28,11 @@ exports.getFormattedDate = function() {
 };
 
 exports.increment = function() {
-	exports.setToday(moment(date).add("day", 1));
+	exports.setToday(moment(date).add(1, "day"));
 };
 
 exports.decrement = function() {
-	exports.setToday(moment(date).subtract("day", 1));
+	exports.setToday(moment(date).subtract(1, "day"));
 };
 
 exports.getCurrentDateSlug = function() {
