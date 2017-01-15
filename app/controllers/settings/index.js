@@ -84,6 +84,11 @@ function rateApp() {
 }
 
 function showProductDialog() {
+    if (Ti.App.getDeployType() === 'development') {
+        Ti.API.warn('The Ti.StoreView dialog is only supposed to work on device!');
+        return;
+    }
+    
     var TiStoreView = require('com.dezinezync.storeview');
     var LoaderInstance = require("/loader");
     var loader = new LoaderInstance($.window);
