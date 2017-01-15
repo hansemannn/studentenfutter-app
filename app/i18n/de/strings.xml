@@ -88,7 +88,7 @@
 	<string name="release_to_refresh">Loslassen zum Aktualisieren...</string>
 	<string name="updating">Wird aktualisiert...</string>
 	<string name="selected">ausgewählt</string>
-	<string name="already_voted">Du hast das Gericht bereits in der Vergangenheit bewertet!</string>
+	<string name="already_voted">Du hast das Gericht bereits in der Vergangenheit bewertet! 😋</string>
 	<string name="already_voted_short">Bereits bewertet</string>
 	<string name="no_picture_found">Noch kein Bild vorhanden.</string>
 	<string name="take_picture">+ Jetzt aufnehmen!</string>
@@ -98,6 +98,6 @@
 	<string name="contact">Kontakt</string>
 	<string name="hours">Öffnungszeiten</string>
 	<string name="rating">Bewertung</string>
-	<string name="upload_first_photo_now">Lade jetzt das erste Foto hoch ➡️</string>
+	<string name="upload_first_photo_now">Lade jetzt das erste Foto hoch ...</string>
 	<string name="up_or_down">👍 oder 👎</string>
 </resources>

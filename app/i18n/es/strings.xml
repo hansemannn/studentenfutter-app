@@ -2,7 +2,7 @@
 <resources>
 	<string name="warning">Precaución</string>
 	<string name="and">y</string>
-	<string name="camera_warning_text">Por favor, asegúrese de que Studentenfutter se le permite tomar fotos y vuelva a intentarlo!</string>
+	<string name="camera_warning_text">Por favor, asegúrese de que la aplicación se le permite tomar fotos y vuelva a intentarlo!</string>
 	<string name="all_right">¡Muy bien!</string>
 	<string name="select_canteen">Seleccione cantina</string>
 	<string name="select_canteen_message">Bienvenido a la Studentenfutter-App! ¿Quieres seleccione su cantina, ahora?</string>
@@ -88,7 +88,7 @@
 	<string name="release_to_refresh">Suelte para actualizar...</string>
 	<string name="updating">Actualizar...</string>
 	<string name="selected">seleccionado!</string>
-	<string name="already_voted">Ya habías votado el almuerzo en el pasado! :-)</string>
+	<string name="already_voted">Ya habías votado el almuerzo en el pasado! 😋</string>
 	<string name="already_voted_short">Ya valorados! :-)</string>
 	<string name="no_picture_found">Foto todavía no fue encontrado</string>
 	<string name="take_picture">+ Hacer foto</string>
@@ -98,6 +98,6 @@
 	<string name="contact">Contacto</string>
 	<string name="hours">Horas</string>
 	<string name="rating">Clasificación</string>
-	<string name="upload_first_photo_now">Sube la primera foto ahora ➡️</string>
+	<string name="upload_first_photo_now">Sube la primera foto ahora ...</string>
 	<string name="up_or_down">👍 or 👎</string>
 </resources>

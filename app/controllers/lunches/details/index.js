@@ -93,6 +93,7 @@ function setRating() {
 	if (!hasAdditives) {
 		additivesCell.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_NONE;
 		additivesCell.additivesBackground.right = 15;
+		additivesCell.properties.selectionStyle = Ti.UI.iOS.ListViewCellSelectionStyle.NONE;
 	}
 	
 	section.updateItemAt(0, ratingCell);
@@ -115,8 +116,82 @@ exports.open = function(animated) {
     }
 };
 
-function showCamera(e) {
+function showCamera() {
+	function _showCamera() {
+		Ti.Media.showCamera({
+			allowEditing : true,
+			mediaTypes: [Ti.Media.MEDIA_TYPE_PHOTO],
+			saveToPhotoGallery : false,
+			success : function(e) {
+				if (e.media) {
+					sendProductImage(processImage(e.media));
+				} else {
+					showCameraError();
+				}
+			},
+			error : showCameraError
+		});
+	}
 	
+	if (!Ti.Media.hasCameraPermissions()) {
+		Ti.Media.requestCameraPermissions(function(e) {
+			if (e.success) {
+				_showCamera();
+			} else {
+				showCameraError();
+			}
+		});
+	} else {
+		_showCamera();			
+	}
+}
+
+function sendProductImage(image) {
+	alert("TODO: Submit image!");
+}
+
+function processImage(image) {
+	if (OS_ANDROID) {
+		return image.imageAsThumbnail(800);
+	}
+
+	var outputImage;
+	var imageFactory = require("ti.imagefactory");
+	outputImage = imageFactory.compress(image, 0);
+
+	if (outputImage.length > 500000) {
+		var newWidth,
+		    newHeight;
+
+		if (image.width > image.height) {
+			// Querformat-Bilder auf eine Breite von 1024 fixieren
+			newWidth = 1024;
+			newHeight = image.height / image.width * newWidth;
+		} else {
+			// Hochformat-Bilder auf eine Höhe von 1024 fixieren
+			newHeight = 1024;
+			newWidth = image.width / image.height * newHeight;
+		}
+
+		outputImage = imageFactory.imageAsResized(image, {
+			width : newWidth,
+			height : newHeight
+		});
+
+		if (outputImage.length > Alloy.Globals.images.maximumImageSize) {
+			outputImage = imageFactory.compress(image, 0);
+		}
+	}
+
+	return outputImage;
+}
+
+function showCameraError() {
+	Ti.UI.createAlertDialog({
+		title : L("warning"),
+		message : L("camera_warning_text"),
+		buttonNames : [L("all_right")]
+	}).show();
 }
 
 function handleAction(e) {
@@ -143,6 +218,10 @@ function performRating() {
 function showAdditives() {
 	var usedAdditives = product.additives || [];
 	
+	if (usedAdditives == 0) {
+		return;
+	}
+	
 	try {
 		var additives = JSON.parse(Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/additives.json').read());
 		var result = [];
@@ -168,7 +247,11 @@ function showAdditives() {
 	}	
 }
 
+// CREDITS: http://stackoverflow.com/a/1431110/5537752
 function setCharAt(str,index,chr) {
-    if(index > str.length-1) return str;
-    return str.substr(0,index) + chr + str.substr(index+1);
+    if (index > str.length - 1) {
+		return str;
+	}
+	
+    return str.substr(0, index) + chr + str.substr(index + 1);
 }

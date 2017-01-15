@@ -2,7 +2,7 @@
 <resources>
 	<string name="warning">Caution</string>
 	<string name="and">and</string>
-	<string name="camera_warning_text">Please make sure, that Studentenfutter is allowed to take photos and try again!</string>
+	<string name="camera_warning_text">Please make sure that this app is allowed to take photos and try again!</string>
 	<string name="all_right">Alright!</string>
 	<string name="select_canteen">Select Canteen</string>
 	<string name="select_canteen_message">Welcome to the Studentenfutter-App! Would you like to select your canteen, now?</string>	
@@ -98,6 +98,6 @@
 	<string name="contact">Contact</string>
 	<string name="hours">Hours</string>
 	<string name="rating">Rating</string>
-	<string name="upload_first_photo_now">Upload the first Photo now ➡️</string>
+	<string name="upload_first_photo_now">Upload first Photo now ...</string>
 	<string name="up_or_down">👍 or 👎</string>
 </resources>
