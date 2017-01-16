@@ -148,7 +148,7 @@ function showAdditives() {
 			if (usedAdditives.indexOf(String(additive.id)) !== -1) {
 				result.push(additive.name);
 			}
-		})
+		});
 			
 		// Some nice hack: Remove the last commata with an "and"
 		var message = result.join(', ');

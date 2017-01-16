@@ -148,7 +148,7 @@ function showCamera() {
 	}
 	
 	// Send red sqare on Simulator
-	if (Ti.App.getDeployType() == 'development') {
+	if (utils.isEmulator()) {
 		sendGeneratedDemoImage();
 		return;
 	}
