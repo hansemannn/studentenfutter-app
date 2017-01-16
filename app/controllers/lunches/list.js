@@ -300,6 +300,7 @@ function incrementPrice(e) {
     }
     
     e.section.updateItemAt(e.itemIndex, item);
+    utils.selectionChanged();    
 }
 
 function decrementPrice(e) {
@@ -318,6 +319,7 @@ function decrementPrice(e) {
     }    
 
     e.section.updateItemAt(e.itemIndex, item);    
+    utils.selectionChanged();
 }
 
 exports.open = open
