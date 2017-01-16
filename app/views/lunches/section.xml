@@ -1,7 +1,7 @@
 <Alloy>
     <ListSection>
         <HeaderView>
-            <View class="container">
+            <View id="container">
                 <Label id="title" />
             </View>    
         </HeaderView>

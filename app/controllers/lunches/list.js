@@ -185,9 +185,10 @@ function setUI() {
     
     cart.resetTotal(false);
 
-    _.each(categories, function(category) {
+    _.each(categories, function(category, index) {
         var section = Alloy.createController("/lunches/section", {
-            title: category
+            title: category,
+            index: index
         }).getView();
 
         var cells = [];
