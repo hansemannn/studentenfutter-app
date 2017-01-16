@@ -48,3 +48,16 @@
 	width: Ti.UI.FILL,
 	bottom: 10
 }
+
+"#innerContent": {
+
+}
+
+"#loader": {
+	visible: false,
+	style: Ti.UI.ActivityIndicatorStyle.BIG
+}
+
+"#loader[platform=ios]": {
+	indicatorColor: "#333"
+}

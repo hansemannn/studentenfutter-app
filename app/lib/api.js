@@ -69,7 +69,6 @@ exports.postRating = function(params, cb) {
 					cb(_.extend(json, {success: true}));
 				} else {
 					cb(_.extend(json, {success: false}));
-					Ti.UI.createAlertDialog({title: L("rating_error"), message: L("already_voted") + "\uE00E", buttonNames: [L("ok")]}).show();
 				}
 			},
 			error: function() {

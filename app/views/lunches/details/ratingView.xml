@@ -1,11 +1,14 @@
 <Alloy>
 	<View onClick="hide" id="container">
 		<View id="content">
-			<Label class="header" textid="up_or_down" />
-			<View id="rating" onClick="setRating" />
-			<View id="buttons">
-				<Button class="button" id="cancel" titleid="cancel" onClick="hide" />
-				<Button class="button" id="submit" titleid="rate" onClick="submitRating" />
+			<ActivityIndicator id="loader" />
+			<View id="innerContent">
+				<Label class="header" textid="up_or_down" />
+				<View id="rating" onClick="setRating" />
+				<View id="buttons">
+					<Button class="button" id="cancel" titleid="cancel" onClick="hide" />
+					<Button class="button" id="submit" titleid="rate" onClick="submitRating" />
+				</View>
 			</View>
 		</View>
 	</View>
