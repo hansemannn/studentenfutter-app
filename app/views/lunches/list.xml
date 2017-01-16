@@ -5,9 +5,6 @@
 		
 		<ListView id="listView" defaultItemTemplate="CellItem" onItemclick="handleListItemClick">
 			<RefreshControl id="refresh" onRefreshstart="onRefreshStart" />
-			<HeaderView>
-				<Require src="lunches/tabs" id="tabs" />
-			</HeaderView>
 			<Templates>
 				<ItemTemplate name="CellItem">
 					<View class="cell">
