@@ -1,4 +1,5 @@
 var nav,
+    utils,
     appStoreURL,
     onSettingsUpdated;
 
@@ -7,6 +8,8 @@ var nav,
  */
 (function constructor(args) {
     onSettingsUpdated = args.onSettingsUpdated;
+    utils = require('/utils');
+    
     if (OS_IOS) {
         nav = Ti.UI.iOS.createNavigationWindow({
             window: $.window
@@ -146,6 +149,8 @@ exports.open = function() {
 
 function togglePriceCategory(e) {
     Ti.App.Properties.setInt("currentPersonID", e.index);
+    
+    utils.selectionChanged();
     
     onSettingsUpdated({
         action: "changePreference"

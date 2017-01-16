@@ -30,6 +30,7 @@
 	color: "white",
 	textAlign: "left",
 	left: 15,
+	right: 15,
 	font: {
 		fontSize: 14,
 		fontWeight: "bold"
