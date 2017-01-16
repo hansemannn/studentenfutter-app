@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+	<string name="details">Details</string>
 	<string name="warning">Achtung</string>
 	<string name="and">und</string>
 	<string name="camera_warning_text">Bitte stelle sicher, dass Studentenfutter Fotos aufnehmen darf und versuche es erneut!</string>

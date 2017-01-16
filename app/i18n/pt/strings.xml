@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+	<string name="details">Details</string>
 	<string name="warning">Cuidado</string>
 	<string name="camera_warning_text">Certifique-se de que o aplicativo está autorizado a tirar fotos e tente novamente!</string>
 	<string name="all_right">Muito bem!</string>
