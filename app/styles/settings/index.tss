@@ -25,6 +25,6 @@
 }
 
 ".tabbedBar": {	
-	right: 20,
+	right: 15,
     backgroundColor : Alloy.CFG.styles.tintColor
 }

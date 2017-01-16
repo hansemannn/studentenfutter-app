@@ -41,17 +41,26 @@ function submitRating() {
 		return;
 	}
 	
-	var LoaderInstance = require('/loader');
 	var api = require('/api');
 	
-	var loader = new LoaderInstance(parent);
-	loader.show();
-	
+	$.innerContent.hide();
+	$.loader.setVisible(true);
+	$.loader.show();
+		
 	api.postRating({
 		productId: productId,
+		userId: Ti.Platform.getId(),
 		value: rating
-	}, function(e) {		
-		loader.hide();
+	}, function(e) {	
+		if (!e.success) {
+			Ti.UI.createAlertDialog({
+				title: L("rating_error"), 
+				message: L("already_voted") + "\uE00E", 
+				buttonNames: [L("ok")]
+			}).show();
+		}
+			
+		$.loader.hide();
 		hide();
 	});
 }
