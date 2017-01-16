@@ -55,11 +55,18 @@ function setImages() {
 			viewShadowColor: "#A6444444", // 65 %
 			viewShadowOffset: {x: 0, y: 2}
 		});
-		view.add(Ti.UI.createImageView({
+		
+		var productImage = Ti.UI.createImageView({
 			defaultImage: "/images/noImage.png",
 			borderRadius: 0,
 			image: image,
-		}));
+		});
+		
+		productImage.addEventListener('click', function(e) {
+			openFullscreenImage(image);
+		});
+		
+		view.add(productImage);
 		
 		$.images.add(view);
 	});
@@ -79,6 +86,13 @@ function setImages() {
 	label.addEventListener("click", showCamera);	
 		
 	$.images.add(label);	
+}
+
+function openFullscreenImage(image) {
+	Alloy.createController('/lunches/details/fullscreen', {
+		image: image,
+		title: product.name
+	}).show();
 }
 
 function setRating() {
@@ -133,6 +147,12 @@ function showCamera() {
 		});
 	}
 	
+	// Send red sqare on Simulator
+	if (Ti.App.getDeployType() == 'development') {
+		sendGeneratedDemoImage();
+		return;
+	}
+	
 	if (!Ti.Media.hasCameraPermissions()) {
 		Ti.Media.requestCameraPermissions(function(e) {
 			if (e.success) {
@@ -146,8 +166,48 @@ function showCamera() {
 	}
 }
 
+function sendGeneratedDemoImage() {
+	var dialog = Ti.UI.createAlertDialog({
+		title: 'Simulator',
+		message: 'You are currently running on the Simulator - without camera! We will generate a 1000x1000 red square now and try to send it to the server, do you really want to proceed?',
+		buttonNames: ['Cancel', 'Proceed'],
+		destructive: 1,
+		cancel: 0
+	});
+	
+	dialog.addEventListener('click', function(e) {
+		if (e.index == 1) {
+			sendProductImage(Ti.UI.createView({
+				width: 1000,
+				height: 1000,
+				backgroundColor: 'red'
+			}).toImage());
+		}
+	});
+	
+	dialog.show();
+}
+
 function sendProductImage(image) {
-	alert("TODO: Submit image!");
+	var api = require('/api');
+	
+	api.postProductImage({
+		'image[productId]': product.id,
+		'image[userId]': Ti.Platform.getId(),
+		'image[originalResource]': image
+	}, function(e) {
+		
+		if (!e.awaitingModeration) {
+			var dia = Ti.UI.createAlertDialog({
+				title: L("upload_success"),
+				message: L("upload_success_msg"),
+				buttonNames: [L("ok")]
+			});
+			dia.show();
+		}
+	}, function(e) {
+		Ti.API.info('Process:' + e.value);
+	});
 }
 
 function processImage(image) {

@@ -23,3 +23,8 @@
 ".notSelectable": {
 	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
 }
+
+".tabbedBar": {	
+	right: 20,
+    backgroundColor : Alloy.CFG.styles.tintColor
+}

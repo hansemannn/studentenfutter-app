@@ -22,7 +22,6 @@
     utils = require("/utils");
     dateutils = require("/dateutils");
    
-    $.tabs.onGroupSelected(onGroupSelected);
     $.footer.onSettingsUpdated(onSettingsUpdated);
     
     cart.on("update", function(summary) {
@@ -91,11 +90,6 @@ function createPreviewView() {
     return preview;
 }
 
-function onGroupSelected(state) {
-    currentLunchState = state;
-    setUI();
-}
-
 function onSettingsUpdated(e) {
     switch (e.action) {
         case "selectCanteen":
@@ -104,6 +98,7 @@ function onSettingsUpdated(e) {
             });
             break;
         case "changePreference":
+            currentLunchState = Ti.App.Properties.getInt('currentPersonID', 0);
             setUI();
             break;
     }    

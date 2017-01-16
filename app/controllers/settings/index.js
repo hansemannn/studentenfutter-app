@@ -21,19 +21,17 @@ var nav,
 
 function configureCells() {
     var generalSection = $.list.getSections()[0];
-    // var showAdditivesCell = generalSection.getItems()[0];
-    // var showRatingsCell = generalSection.getItems()[1];
-    var selectCanteenCell = generalSection.getItems()[0];
+    var selectedPriceCategory = generalSection.getItems()[0];
+    var selectCanteenCell = generalSection.getItems()[1];
     
-    // showAdditivesCell.toggle.value = Ti.App.Properties.getBool("showAdditives", true);
-    // showRatingsCell.toggle.value = Ti.App.Properties.getBool("showRatings", true);
+    selectedPriceCategory.tabbedBar.index = Ti.App.Properties.getInt("currentPersonID", 0);
+    
     selectCanteenCell.properties.subtitle = Ti.App.Properties.getString("currentLocationName", Alloy.CFG.defaultCanteen.title);
+    selectCanteenCell.properties.subtitleColor = "#888"; // 6.1.0+
     selectCanteenCell.template = Ti.UI.LIST_ITEM_TEMPLATE_SUBTITLE;
-    selectCanteenCell.properties.subtitleColor = "#888";
     
-    // generalSection.updateItemAt(0, showAdditivesCell);
-    // generalSection.updateItemAt(1, showRatingsCell);
-    generalSection.updateItemAt(0, selectCanteenCell);
+    generalSection.updateItemAt(0, selectedPriceCategory);
+    generalSection.updateItemAt(1, selectCanteenCell);
 }
 
 function changePreference(e) {
@@ -145,3 +143,11 @@ exports.open = function() {
         $.window.open();
     }
 };
+
+function togglePriceCategory(e) {
+    Ti.App.Properties.setInt("currentPersonID", e.index);
+    
+    onSettingsUpdated({
+        action: "changePreference"
+    });
+}
