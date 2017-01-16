@@ -154,10 +154,10 @@ var Request = function(_args) {
 			}
 		});
 
-		if(args.process) {
+		if (args.process) {
 			c.onsendstream = function(e) {
-				if(args.process) {
-					args.process(e.progress);
+				if (args.process) {
+					args.process({value: e.progress});
 				}
 			};
 		}
@@ -179,6 +179,10 @@ var Request = function(_args) {
 		}
 
 		c.setRequestHeader('User-Agent', getUserAgent());
+		
+		if (args.isFileUpload) {
+			c.setRequestHeader("enctype", "multipart/form-data");
+		}
 
 		if (args.data) {
 			Ti.API.info("[DATA - " + JSON.stringify(args.data) + "]");

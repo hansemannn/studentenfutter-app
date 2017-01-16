@@ -1,0 +1,11 @@
+
+"#window": {
+	backgroundColor: "black",
+	navBarHidden: true,
+	barColor: "#111",
+	translucent: false
+}
+
+"#image": {
+	width: Ti.UI.FILL
+}
