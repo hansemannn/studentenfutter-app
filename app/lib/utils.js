@@ -26,3 +26,11 @@ exports.formattedStars = function(rating) {
     
     return path + "0_0.png";
 };
+
+
+/*
+ * Detect whether we're running inside a simulator or not.
+ */
+exports.isEmulator = function() {
+    return (Ti.Platform.manufacturer == 'Genymotion' || Ti.Platform.model === 'Simulator' || Ti.Platform.model.indexOf('sdk') !== -1);
+};

@@ -39,4 +39,4 @@ exports.updateTotalSummary = function(_summary) {
 
 exports.updateCurrentCanteen = function(_text) {
     $.location.setText(_text);
-}
+};
