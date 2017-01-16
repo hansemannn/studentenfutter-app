@@ -1,11 +1,23 @@
 
 "#window": {
 	backgroundColor: "black",
-	navBarHidden: true,
 	barColor: "#111",
 	translucent: false
 }
 
 "#image": {
-	width: Ti.UI.FILL
+	width: Ti.Platform.displayCaps.platformWidth
+}
+
+".scrollView": {
+	contentWidth: 'auto',
+	contentHeight: 'auto',
+	top: 0,
+	bottom: 0,
+	backgroundColor: '#000',
+	showVerticalScrollIndicator: false,
+	showHorizontalScrollIndicator: false,
+	maxZoomScale: 2,
+	minZoomScale: 1,
+	zoomScale: 1,
 }

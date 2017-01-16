@@ -1,10 +1,12 @@
 <Alloy>
-	<Window id="window" titleid="details" onClick="toggleNavBar">
+	<Window id="window" titleid="details">
 		<LeftNavButton platform="ios" systemButton="CANCEL" onClick="close"></LeftNavButton>
 		
-		<!-- IMPROVEMENT: Allow to share images -->
+		<!-- FEATURE: Allow to share images -->
 		<!-- <RightNavButton platform="ios" systemButton="ACTION" onClick="share"></RightNavButton> -->
 		
-		<ImageView id="image" />
+		<ScrollView class="scrollView" onDoubletap="zoom">
+			<ImageView id="image" />
+		</ScrollView>
 	</Window>
 </Alloy>
