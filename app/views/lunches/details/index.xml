@@ -1,5 +1,5 @@
 <Alloy>
-	<Window title="Details" id="details">
+	<Window titleid="details" id="details">
 		<LeftNavButton platform="ios" class="closeButton" onClick="close"></LeftNavButton>
 		<RightNavButton platform="ios" systemButton="CAMERA" onClick="showCamera"></RightNavButton>
 		<ListView id="list" onItemclick="handleAction">

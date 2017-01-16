@@ -1,8 +1,8 @@
 # Studentenfutter-App
 
-The Studentenfutter App is a cross-platform Titanium app initially made to check the lunches of the German based Universities in
-Osnabrück, Vechta and Lingen. It was made open source to share the concepts behind maken an advanced application and is still
-work-in-progress due to migrations from the classic Titanium structure to an Alloy based concept.
+The Studentenfutter App is a cross-platform Titanium app initially made to check the lunches of the German based 
+Universities in Osnabrück, Vechta and Lingen. It is open source to share the concepts behind making an advanced 
+Titanium application and is still work-in-progress due to migrations from the classic structure to an Alloy based concept.
 
 <img alt="App Store" src="https://abload.de/img/screenshot2017-01-12aybs4e.png" width="900" />
 
@@ -16,11 +16,21 @@ You can download the app for free from the iOS App Store and Android Play Store:
 
 - [x] Cross-Platform native App
 - [x] Multi-Language Support (en, de, es, pt)
-- [x] List Views
-- [x] Navigation Flows
-- [x] Image Processing & Upload
+- [x] Advanced List Views
+- [x] Multi-Navigation Flows
+- [x] Image Capturing, Processing & Upload
 - [x] REST-API Handling
 - [x] Star-based Rating System
+
+### Used Titanum API's (Selection)
+
+#### Core API's
+`Ti.Media.Camera`, `Ti.App.iOS.ApplicationShortcuts`, `Ti.App.iOS.PreviewContext`, `Ti.Filesystem`,
+`Ti.UI.iOS.TabbedBar`, `Ti.UI.iOS.NavigationWindow`, `Ti.UI.ListView`, `Ti.App.iOS.PreviewContext`,
+`Ti.UI.iOS.BlurView`, `Ti.UI.ProgressBar`, `Ti.UI.Switch`, `Ti.UI.Slider`, `Ti.UI.RefreshControl`, ...
+
+#### Modules
+[Ti.Map](github.com/appcelerator-modules/ti.map), [Ti.StoreView](https://github.com/dezinezync/TiStoreView) and [Ti.ImageFactory](https://github.com/appcelerator-modules/ti.imagefactory)
 
 ### Running the App
 
