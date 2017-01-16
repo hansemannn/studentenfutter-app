@@ -30,7 +30,7 @@ You can download the app for free from the iOS App Store and Android Play Store:
 `Ti.UI.iOS.BlurView`, `Ti.UI.ProgressBar`, `Ti.UI.Switch`, `Ti.UI.Slider`, `Ti.UI.RefreshControl`, ...
 
 #### Modules
-`[Ti.Map](github.com/appcelerator-modules/ti.map)`, `[Ti.StoreView](https://github.com/dezinezync/TiStoreView)` and `[Ti.ImageFactory](https://github.com/appcelerator-modules/ti.imagefactory)`
+[Ti.Map](github.com/appcelerator-modules/ti.map), [Ti.StoreView](https://github.com/dezinezync/TiStoreView) and [Ti.ImageFactory](https://github.com/appcelerator-modules/ti.imagefactory)
 
 ### Running the App
 
