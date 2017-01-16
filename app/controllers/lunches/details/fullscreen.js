@@ -31,15 +31,8 @@ function share() {
 	alert('TODO: Share!');
 }
 
-function toggleNavBar(e) {
-	// FIXME: Hide Android action bar and make it toggleable on click?
-	if (OS_ANDROID) {
-		return;
-	}
-	
-	if ($.window.getNavBarHidden()) {
-		$.window.showNavBar({animated: true});
-	} else {
-		$.window.hideNavBar({animated: true});
-	}
+function zoom() {
+	this.setZoomScale((this.getZoomScale() == 1) ? 2 : 1, {
+		animated:true
+	});
 }
