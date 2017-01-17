@@ -19,7 +19,6 @@
 }
 
 ".button": {
-	enabled: false,
 	width: 100,
 	font: {
 		fontSize: 16
@@ -32,6 +31,7 @@
 }
 
 "#submit": {
+	enabled: false,
 	right: 20
 }
 
