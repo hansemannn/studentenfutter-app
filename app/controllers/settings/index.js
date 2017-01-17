@@ -1,6 +1,7 @@
 var nav,
     utils,
     appStoreURL,
+    priceCategories,
     onSettingsUpdated;
 
 /**
@@ -9,6 +10,7 @@ var nav,
 (function constructor(args) {
     onSettingsUpdated = args.onSettingsUpdated;
     utils = require('/utils');
+    priceCategories = [L('student'), L('employee')];
     
     if (OS_IOS) {
         nav = Ti.UI.iOS.createNavigationWindow({
@@ -17,6 +19,12 @@ var nav,
         appStoreIdentifier = "722993370";
     } else {
         appStoreIdentifier = Ti.App.getId();
+
+        var item = $.list.sections[0].items[0];
+        item.selectedCategory.text = priceCategories[Ti.App.Properties.getInt("currentPersonID", 0)];
+        item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
+                
+        $.list.sections[0].updateItemAt(0, item);
     }
 
     configureCells();
@@ -127,7 +135,7 @@ function openContributors() {
     if (OS_IOS) {
         nav.openWindow(contributorsPage);
     } else {
-        aboutPage.open();
+        contributorsPage.open();
     }
 }
 
@@ -171,4 +179,27 @@ function togglePriceCategory(e) {
     onSettingsUpdated({
         action: "changePreference"
     });
+}
+
+function togglePriceCategoryAndroid() {
+    var options = Ti.UI.createOptionDialog({
+        options: priceCategories.concat([L('cancel')]),
+        cancel: 2
+    });
+    
+    options.addEventListener('click', function(e) {
+        if (e.cancel) {
+            return;
+        }
+        
+        togglePriceCategory(e);
+        
+        var item = $.list.sections[0].items[0];
+        item.selectedCategory.text = priceCategories[e.index];
+        item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
+                
+        $.list.sections[0].updateItemAt(0, item);
+    });
+    
+    options.show();
 }

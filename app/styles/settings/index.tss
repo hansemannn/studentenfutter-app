@@ -43,11 +43,20 @@
 	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
 }
 
-".tabbedBar": {	
-	right: 15,
-    backgroundColor : Alloy.CFG.styles.tintColor
+".tabbedBar[platform=ios]": {	
+    backgroundColor : Alloy.CFG.styles.tintColor,
+	right: 15
+}
+
+".selectedCategory[platform=android]": {	
+    right: 25,
+	color: Alloy.CFG.styles.tintColor
 }
 
 ".contactSection[platform=ios]": {
 	footerTitle: "Made with ⚒ in Osnabrooklyn" // TODO: Localize properly
+}
+
+"#picker": {
+	right: 15
 }
