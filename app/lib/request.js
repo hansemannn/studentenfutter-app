@@ -164,7 +164,8 @@ var Request = function(_args) {
 
 		c.open(reqType, url);
 		
-		c.setRequestHeader('Authorization', 'Basic ' + getCredentials());
+		//getCredentials() call "auth"lib and because at this moment this lib not exists some network call faill, it is comment out for now.
+		//c.setRequestHeader('Authorization', 'Basic ' + getCredentials());
 				
 		_.each(args.headers, function(header) {
 			if (header.length != 2) {
