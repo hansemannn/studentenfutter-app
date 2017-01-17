@@ -58,7 +58,7 @@ function selectAction(e) {
         Ti.API.error(e);
     }
     
-    $.list.deselectItem(e.sectionIndex, e.itemIndex);
+    OS_IOS && $.list.deselectItem(e.sectionIndex, e.itemIndex);
 }
 
 function selectCanteen(e) {
@@ -87,6 +87,11 @@ function rateApp() {
 function showProductDialog() {
     if (Ti.App.getDeployType() === 'development') {
         Ti.API.warn('The Ti.StoreView dialog is only supposed to work on device!');
+        return;
+    }
+    
+    if (OS_ANDROID) {
+        Ti.Platform.openURL('https://play.google.com/store/apps/details?id=' + Ti.App.getId() + '&reviewId=0');
         return;
     }
     

@@ -38,6 +38,18 @@
     if (OS_IOS) {
         nav = createNavigationWindow();
         $.listView.setPreviewContext(createPreviewContext());
+    } else if (OS_ANDROID) {
+        /**
+         * FIXME: Crashes for some reason?
+        var swipeRefreshModule = require('com.rkam.swiperefreshlayout');
+        var swipeRefresh = swipeRefreshModule.createSwipeRefresh({
+            view: $.listView,
+            height: Ti.UI.FILL,
+            width: Ti.UI.FILL
+        });
+        
+        $.window.add(swipeRefresh);
+        */
     }
     
     initializeLoader();
@@ -145,12 +157,18 @@ function handleListItemClick(e) {
 
 function openDetails(itemId, animated) {
     // TODO: Move all products to Models
-    var product = _.findWhere(lunches, {
-		id: itemId
-	});
+    var product = null
+    
+    // FIXME: Use better underscore-method to find the ID. Problem was Android here
+    _.each(lunches, function(lunch) {
+        if (lunch.id == itemId) {
+            product = lunch;
+        }
+    });
     
     if (!product) {
         Ti.API.error("Could not find product with ID = " + itemId);
+        Ti.API.error(JSON.stringify(lunches));
         return;
     }
     

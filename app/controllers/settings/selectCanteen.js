@@ -29,13 +29,28 @@ function populateLocations() {
     var currentCanteenName = Ti.App.Properties.getString("currentLocationName", Alloy.CFG.defaultCanteen.title);
 
 	for (var i = 0; i < locations.length; i++) {
-		items.push({
+        var attrs = {
 			properties: {
                 itemId: locations[i].id,
 				title: locations[i].title,
                 accessoryType: Ti.UI[((currentCanteenName == locations[i].title) ? "LIST_ACCESSORY_TYPE_CHECKMARK" : "LIST_ACCESSORY_TYPE_DISCLOSURE")]
 			}
-		});
+		};
+        
+        if (OS_ANDROID) {
+            attrs = {
+                properties: _.extend(attrs.properties, {
+                    left: 15,
+            	    height: 43,
+            	    color: "#000",
+            	    font: {
+                    	fontSize: 15
+                    }
+                })
+            };
+        }
+        
+        items.push(attrs);
 	}
 	
 	$.section.setItems(items);

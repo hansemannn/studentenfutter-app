@@ -18,6 +18,11 @@ var nav,
 })(arguments[0] || {});
 
 function setMap() {
+	if (!Alloy.Globals.isGooglePlayServicesAvailable) {
+		Ti.API.warn('Google Maps is not configured correctly. Please set your API key in the tiapp.xml, clean and try again!');
+		return;
+	}
+	
 	var pin = Alloy.Globals.Map.createAnnotation({
 		latitude: location.location.lat,
 		longitude: location.location.lon,
@@ -60,15 +65,29 @@ function setUI() {
 	for (var i = 0; i < openings.length;i++) {
 		var opening = openings[i];
 		var items = [];
+		
+		var attrs = {
+			properties: {
+				height: 43,
+				title: opening.time
+			}
+		};
+		
+		if (OS_ANDROID) {
+			attrs = {
+				properties: _.extend(attrs.properties, {
+					left: 15,
+					color: "#000",
+					font: {
+						fontSize: 15
+					}
+				})
+			};
+		}
 
 		var section = Ti.UI.createListSection({
 			headerTitle: opening.date,
-			items: [{
-				properties: {
-					height: 43,
-					title: opening.time
-				}
-			}]
+			items: [attrs]
 		});
 		sections.push(section);
 	}
@@ -93,5 +112,9 @@ exports.open = function() {
 };
 
 function selectAnnotation(e) {
+	if (!Alloy.Globals.isGooglePlayServicesAvailable) {
+		return;
+	}
+	
 	$.map.selectAnnotation($.map.annotations[0]);
 }

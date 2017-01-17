@@ -2,7 +2,8 @@
 	<Window titleid="hours" onFocus="selectAnnotation">
 		<LeftNavButton platform="ios" class="closeButton" onClick="close"></LeftNavButton>
 		<View id="mapView" onClick="askForRoute">
-			<Module id="map" module="ti.map" method="createView" />
+			<Module if="Alloy.Globals.isGooglePlayServicesAvailable" id="map" module="ti.map" method="createView" />
+			<Label if="!Alloy.Globals.isGooglePlayServicesAvailable" class="noPlayServices" textid="no_play_services" />
 			<View class="sep" />
 		</View>
 		<ListView id="list">
