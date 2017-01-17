@@ -164,8 +164,10 @@ var Request = function(_args) {
 
 		c.open(reqType, url);
 		
-		c.setRequestHeader('Authorization', 'Basic ' + getCredentials());
-				
+		if (!args.external){
+			c.setRequestHeader('Authorization', 'Basic ' + getCredentials());
+		}
+			
 		_.each(args.headers, function(header) {
 			if (header.length != 2) {
 				Ti.API.error("request header needs to have 2 arguments ");
