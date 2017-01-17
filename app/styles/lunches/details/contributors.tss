@@ -1,0 +1,34 @@
+"#list": {
+	style: Ti.UI.iOS.ListViewStyle.GROUPED,
+	listSeparatorInsets: {
+		left: 15
+	}
+}
+
+"#list[platform=ios]": {
+	top: -5
+}
+
+".title": {
+	left: 60,
+	font: {
+		fontSize: 17 // TODO: This is the default for iOS, might check Android manually
+	}
+}
+
+".avatar": {
+  width: 80,
+  left: -18
+}
+
+".notSelectable": {
+	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
+}
+
+"ListItem": {
+  selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE,
+	listSeparatorInsets: {
+		left: 0
+	},
+  height: 80
+}

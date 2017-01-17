@@ -1,0 +1,13 @@
+<Alloy>
+	<Window id="window" titleid="contributors" onOpen="populateContributors">
+	<ListView id="list" defaultItemTemplate="contrib">
+		<Templates>
+			<ItemTemplate name="contrib" class="notSelectable">
+				<ImageView class="avatar" bindId="avatar" />
+				<Label class="title" bindId="title" />
+			</ItemTemplate>
+		</Templates>
+		<ListSection id="section" headerTitle="L('contributors')" />
+	</ListView>
+</Window>
+</Alloy>

@@ -1,0 +1,42 @@
+[
+  {
+    "login": "hansemannn",
+    "id": 10667698,
+    "avatar_url": "https://avatars.githubusercontent.com/u/10667698?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/hansemannn",
+    "html_url": "https://github.com/hansemannn",
+    "followers_url": "https://api.github.com/users/hansemannn/followers",
+    "following_url": "https://api.github.com/users/hansemannn/following{/other_user}",
+    "gists_url": "https://api.github.com/users/hansemannn/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/hansemannn/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/hansemannn/subscriptions",
+    "organizations_url": "https://api.github.com/users/hansemannn/orgs",
+    "repos_url": "https://api.github.com/users/hansemannn/repos",
+    "events_url": "https://api.github.com/users/hansemannn/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/hansemannn/received_events",
+    "type": "User",
+    "site_admin": false,
+    "contributions": 73
+  },
+  {
+    "login": "nuno",
+    "id": 38348,
+    "avatar_url": "https://avatars.githubusercontent.com/u/38348?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/nuno",
+    "html_url": "https://github.com/nuno",
+    "followers_url": "https://api.github.com/users/nuno/followers",
+    "following_url": "https://api.github.com/users/nuno/following{/other_user}",
+    "gists_url": "https://api.github.com/users/nuno/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/nuno/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/nuno/subscriptions",
+    "organizations_url": "https://api.github.com/users/nuno/orgs",
+    "repos_url": "https://api.github.com/users/nuno/repos",
+    "events_url": "https://api.github.com/users/nuno/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/nuno/received_events",
+    "type": "User",
+    "site_admin": false,
+    "contributions": 8
+  }
+]
