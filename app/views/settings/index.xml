@@ -10,11 +10,13 @@
 			                <Label>L("student")</Label>
 			                <Label>L("employee")</Label>
 			            </Labels>
-			        </TabbedBar>				
+			        </TabbedBar>		
+					<Label bindId="selectedCategory" class="selectedCategory" platform="android" onClick="togglePriceCategoryAndroid" />
+		
 				</ItemTemplate>
 			</Templates>
 			<ListSection headerTitle="L('general')">
-				<ListItem title:text="L('price')" tabbedBar:index="0" template="TabbedItem" class="notSelectable" />
+				<ListItem title:text="L('price')" selectedCategory:text="" tabbedBar:index="0" template="TabbedItem" class="notSelectable" />
 				<ListItem title="L('select_canteen')" action="selectCanteen" class="selectable" />
 			</ListSection>
 			<ListSection headerTitle="L('contact')" class="contactSection">
