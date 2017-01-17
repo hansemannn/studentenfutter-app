@@ -3,6 +3,10 @@
 	tintColor: Alloy.CFG.styles.tintColor,
 }
 
+"#list[platform=android]": {
+	backgroundColor: "white"
+}
+
 "#list[platform=ios]": {
 	footerTitle: ""
 }

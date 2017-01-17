@@ -106,8 +106,8 @@ function setRating() {
 	
 	if (!hasAdditives) {
 		additivesCell.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_NONE;
-		additivesCell.additivesBackground.right = 15;
-		additivesCell.properties.selectionStyle = Ti.UI.iOS.ListViewCellSelectionStyle.NONE;
+		additivesCell.additivesBackground.right = OS_IOS ? 15 : 30;
+		additivesCell.properties.selectionStyle = (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : null;
 	}
 	
 	section.updateItemAt(0, ratingCell);
@@ -269,7 +269,7 @@ function handleAction(e) {
 		break;
 	}
 	
-	$.list.deselectItem(e.sectionIndex, e.itemIndex);
+	OS_IOS && $.list.deselectItem(e.sectionIndex, e.itemIndex);
 }
 
 function performRating() {

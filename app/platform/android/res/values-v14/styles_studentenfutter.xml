@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File created by the Android Action Bar Style Generator
+
+     Copyright (C) 2011 The Android Open Source Project
+     Copyright (C) 2012 readyState Software Ltd
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+   <style name="Theme.NoActionBar" parent="@style/Theme.AppCompat">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    <style name="Theme.Studentenfutter" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_studentenfutter</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Studentenfutter</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Studentenfutter</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Studentenfutter</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Studentenfutter</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Studentenfutter</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_studentenfutter</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_studentenfutter</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Studentenfutter</item>
+        
+		<!-- Light.DarkActionBar specific -->
+		<item name="android:actionBarWidgetTheme">@style/Theme.Studentenfutter.Widget</item>
+
+	    <item name="android:alertDialogTheme">@style/Theme.AlertDialog</item>
+
+		<!-- Custom Dialog Theming -->
+	    <item name="android:dialogTheme">@style/Theme.Studentenfutter.DialogTheme</item>
+		
+		<!-- Custom Android 5 Theming -->
+		<item name="colorPrimary">#51ccf3</item>
+		<item name="colorPrimaryDark">#51ccf3</item>
+		<item name="colorAccent">#51ccf3</item>
+    </style>
+	
+	<style name="Theme.AlertDialog" parent="android:Theme.Material.Light.Dialog.Alert">
+	    <item name="android:colorPrimary">#51ccf3</item>
+	    <item name="android:colorPrimaryDark">#51ccf3</item>
+	    <item name="android:colorAccent">#51ccf3</item>
+	</style>
+
+    <style name="ActionBar.Solid.Studentenfutter" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_solid_studentenfutter</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_studentenfutter</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_studentenfutter</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Studentenfutter</item>
+    </style>
+
+	<!-- Custom Dialog Theming -->
+	<style name="Theme.Studentenfutter.DialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+		<item name="colorPrimary">#51ccf3</item>
+		<item name="colorPrimaryDark">#51ccf3</item>
+		<item name="colorAccent">#51ccf3</item>
+	</style>
+
+    <style name="ActionBar.Transparent.Studentenfutter" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_studentenfutter</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Studentenfutter</item>
+    </style>
+    
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Studentenfutter.Widget" parent="@style/Theme.AppCompat">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Studentenfutter</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Studentenfutter</item>
+    </style>
+
+</resources>

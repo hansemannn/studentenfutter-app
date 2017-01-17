@@ -103,4 +103,5 @@
 	<string name="up_or_down">👍 or 👎</string>
 	<string name="price">Price</string>
 	<string name="contributors">Contributors</string>
+	<string name="no_play_services">No valid Google Maps API Key provided</string>
 </resources>

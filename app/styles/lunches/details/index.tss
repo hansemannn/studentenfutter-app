@@ -12,7 +12,7 @@
 	width: Ti.UI.FILL
 }
 
-"#list": {
+"#list[platform=ios]": {
 	footerTitle: "",
 	listSeparatorInsets: {
 		left: 0
@@ -23,6 +23,13 @@
 	bottom: 0,
 	height: 45,
 	width: Ti.UI.FILL,
+}
+
+".titleOverlay[platform=android]": {
+	backgroundColor: "#6D000000"
+}
+
+".titleOverlay[platform=ios]": {
 	effect: Ti.UI.iOS.BLUR_EFFECT_STYLE_DARK
 }
 
@@ -61,9 +68,12 @@
 }
 
 ".placeholderBlur": {
-	effect: Ti.UI.iOS.BLUR_EFFECT_STYLE_LIGHT,
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL
+}
+
+".placeholderBlur[platform=ios]": {
+	effect: Ti.UI.iOS.BLUR_EFFECT_STYLE_LIGHT
 }
 
 ".imageContainer": {
@@ -76,12 +86,17 @@
 	left: 15,
 	font: {
 		fontSize: 16
-	}
+	},
+	color: "#000"
 }
 
 ".ratingImage": {
 	right: 5,
 	height: 24
+}
+
+".ratingImage[platform=android]": {
+	right: 30
 }
 
 ".ratingRow": {
@@ -94,11 +109,14 @@
 	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
 }
 
-
 ".additivesBackground": {
 	width: 24,
 	height: 24,
 	image: "/images/additivesBackground.png"
+}
+
+".additivesBackground[platform=android]": {
+	right: 30
 }
 
 ".additives": {
@@ -106,5 +124,7 @@
 		fontSize: 14	
 	},
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	color: "white"
+	color: "white",
+	width: 24,
+	height: 24
 }

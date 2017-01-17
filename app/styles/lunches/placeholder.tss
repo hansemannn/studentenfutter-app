@@ -20,5 +20,5 @@
         fontSize : 14,
     },
     color : "#a6a6a6",
-    textid : L("no_menu_found")
+    textid : "no_menu_found"
 }
