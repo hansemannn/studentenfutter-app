@@ -1,0 +1,39 @@
+"#list[platform=ios]": {
+    style: Ti.UI.iOS.ListViewStyle.GROUPED,
+    listSeparatorInsets: {
+        left: 60
+	},
+}
+
+".title": {
+	left: 60,
+    top: 8,
+    color: "#000",
+	font: {
+        fontSize: 15
+	}
+}
+
+".subtitle": {
+    left: 60,
+    bottom: 8,
+    color: "#aaa",
+    font: {
+        fontSize: 12
+    }
+}
+
+".avatar": {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    left: 10
+}
+
+".cell": {
+    height: 50
+}
+
+".cell[platform=ios]": {
+	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
+}

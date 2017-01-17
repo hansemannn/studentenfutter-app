@@ -121,8 +121,14 @@ function openAbout() {
     }
 }
 
-function openContributors(e){
-  nav.openWindow(Alloy.createController("/lunches/details/contributors", "contributors").getView());
+function openContributors() {
+    var contributorsPage = Alloy.createController("/settings/contributors").getView();
+
+    if (OS_IOS) {
+        nav.openWindow(contributorsPage);
+    } else {
+        aboutPage.open();
+    }
 }
 
 function reportError() {
