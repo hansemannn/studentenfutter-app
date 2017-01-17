@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app
   xmlns:ti="http://ti.appcelerator.org">
-  <id>de.hansknoechel.mensaapp</id>
+  <id>de.ncn.mensaapp</id>
   <name>Mensa</name>
   <version>3.0.0</version>
   <publisher>Hans Knoechel</publisher>
@@ -14,7 +14,7 @@
   <analytics>false</analytics>
   <guid>11111111-1111-1111-1111-111111111111</guid>
   <property name="run-on-main-thread" type="bool">false</property>
-  <property name="ti.ui.defaultunit" type="string">dip</property>
+  <property name="ti.ui.defaultunit" type="string">dp</property>
   <ios>
       <default-background-color>#3fc3ea</default-background-color>
       <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
@@ -34,7 +34,7 @@
                       <key>UIApplicationShortcutItemUserInfo</key>
                       <dict/>
                   </dict>
-              </array>
+              </array>              
               <key>UIStatusBarStyle</key>
               <string>UIStatusBarStyleLightContent</string>
           </dict>
@@ -58,11 +58,31 @@
           </extension>
       </extensions>-->
   </ios>
-  <android xmlns:android="http://schemas.android.com/apk/res/android"></android>
+  <android xmlns:android="http://schemas.android.com/apk/res/android">
+      <manifest android:installLocation="preferExternal" android:versionCode="20" android:versionName="3.0.0" package="de.ncn.mensaapp">
+          <supports-screens android:anyDensity="true"/>
+          <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23" />
+          <uses-permission android:name="android.permission.INTERNET"/>
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+          <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+          <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+          <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+          <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+          <uses-permission android:name="de.ncn.mensaapp.permission.MAPS_RECEIVE"/>
+          <permission android:name="de.ncn.mensaapp.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+          <application android:screenOrientation="portrait" android:theme="@style/Theme.Studentenfutter">
+              <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="<GOOGLE-MAPS-API-KEY>"/>
+          </application>
+      </manifest>
+  </android>
   <modules>
       <module platform="iphone,ipad" version="1.1.1">com.dezinezync.storeview</module>
       <module platform="iphone,ipad" version="2.8.2">ti.map</module>
       <module platform="iphone,ipad" version="1.2.1">ti.imagefactory</module>
+      <module platform="android" version="3.1.0">ti.map</module>
+      <module platform="android" version="3.0.0">ti.imagefactory</module>
+      <!-- Download from https://github.com/propelics/Ti.SwipeRefreshLayout/releases/tag/v1.0 -->
+      <module platform="android" version="1.0">com.rkam.swiperefreshlayout</module>
   </modules>
   <deployment-targets>
     <target device="android">false</target>

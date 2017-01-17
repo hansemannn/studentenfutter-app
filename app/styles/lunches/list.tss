@@ -10,8 +10,11 @@
     listSeparatorInsets: {
         left: 72
     },
-    style: Ti.UI.iOS.ListViewStyle.GROUPED,
     bottom : 44,
+}
+
+"#listView[platform=ios]":{
+    style: Ti.UI.iOS.ListViewStyle.GROUPED,
     footerTitle: ""
 }
 
@@ -98,7 +101,16 @@
     zIndex: 9999,
     tintColor: "#a4a4a4",
     width: 50,
-    height: 50
+    height: 50,
+    bubbleParent: false
+}
+
+".button[platform=android]": {
+    right: 10
+}
+
+".buttonRemove[platform=android]": {
+    right: 40
 }
 
 ".buttonAdd": {
@@ -126,7 +138,7 @@
         fontSize : 8
     },
     color : "#de9855",
-    text : "Keine Zusätze"
+    width: Ti.UI.FILL
 }
 
 ".starsOutterView": {
@@ -145,8 +157,7 @@
 ".stars": {
     left: 2,
     width: 48,
-    height: 10,
-    clipMode: Titanium.UI.iOS.CLIP_MODE_ENABLED
+    height: 10
 }
 
 ".numberOfRatingsView": {

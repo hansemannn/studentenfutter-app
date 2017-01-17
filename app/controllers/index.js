@@ -2,7 +2,7 @@
  *  Constructor
  */
 (function constructor(args) {        
-    Ti.App.iOS.addEventListener("shortcutitemclick", function(e) {
+    OS_IOS && Ti.App.iOS.addEventListener("shortcutitemclick", function(e) {
         switch (e.itemtype) {
             case "SelectCanteen": openCanteenSelector();
             break;

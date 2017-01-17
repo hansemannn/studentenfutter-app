@@ -1,13 +1,17 @@
 
 "#list": {
-	top: 150,
-	backgroundColor: "#f4f4f4"
+	top: 150
 }
 
 "#list[platform=ios]": {
+	backgroundColor: "#f4f4f4",
 	style: Ti.UI.iOS.ListViewStyle.GROUPED,
 	allowsSelection: false,
 	footerTitle: ""
+}
+
+"#list[platform=android]": {
+	backgroundColor: "white"
 }
 
 "#mapView": {
@@ -27,4 +31,8 @@
 	height: 0.5,
 	backgroundColor: "#dfdfdf",
 	bottom: 0
+}
+
+".noPlayServices": {
+	color: "#555"
 }

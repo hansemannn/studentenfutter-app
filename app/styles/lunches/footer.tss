@@ -8,12 +8,17 @@
     tintColor: "#a4a4a4"
 }
 
-"#settings": {
+".button[platform=android]": {
+    width: 35,
+    height: 35
+}
+
+".settings": {
     left: 15,
     image: "/images/icons/settings.png"
 }
 
-"#hours": {
+".hours": {
     right: 15,
     image: "/images/icons/hours.png"
 }

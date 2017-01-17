@@ -17,11 +17,20 @@
 			</Templates>
 			<HeaderView>
 				<View class="imageContainer">
-					<BlurView class="placeholderBlur" />
+					<!-- iOS-only -->
+					<BlurView platform="ios" class="placeholderBlur" />
 					<ScrollView id="images" />
-					<BlurView ns="Ti.UI.iOS" class="titleOverlay">
+					
+					<!-- iOS-only -->
+					<BlurView platform="ios" class="titleOverlay">
 						<Label id="title" />
-					</BlurView>		
+					</BlurView>	
+					
+					<!-- Android-only -->
+					<!-- FIXME: Write CommonJS module to unify BlurView for Android -->
+					<View platform="android" class="titleOverlay">
+						<Label id="title" />
+					</View>
 					<View id="placeholder" onClick="showCamera">
 						<ImageView class="placeholderImage" />
 						<Label class="placeholderText" />
