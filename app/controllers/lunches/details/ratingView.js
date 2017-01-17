@@ -31,7 +31,6 @@ function setRating(e) {
 		} 	
 	}	
 
-	$.cancel.setEnabled(true);
 	$.submit.setEnabled(true);
 }
 

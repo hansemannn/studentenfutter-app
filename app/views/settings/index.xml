@@ -19,8 +19,7 @@
 			</ListSection>
 			<ListSection headerTitle="L('contact')" class="contactSection">
 				<ListItem title="L('rate_app')" action="rateApp" class="selectable" />
-				<ListItem title="L('about')" action="openAbout" class="selectable" />
-				<ListItem title="L('contributors')" action="openContributors" />
+				<!--<ListItem title="L('about')" action="openAbout" class="selectable" />-->
 				<ListItem title="L('report_error')" action="reportError" class="selectable" />
 			</ListSection>
 		</ListView>
