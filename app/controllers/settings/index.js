@@ -121,6 +121,10 @@ function openAbout() {
     }
 }
 
+function openContributors(e){
+  nav.openWindow(Alloy.createController("/lunches/details/contributors", "contributors").getView());
+}
+
 function reportError() {
     var mail = Ti.UI.createEmailDialog({
         subject : "Studentenfutter " + Ti.App.getVersion(),
