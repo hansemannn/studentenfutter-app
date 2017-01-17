@@ -16,7 +16,7 @@ var nav,
         });
         appStoreIdentifier = "722993370";
     } else {
-        appStoreIdentifier = "de.ncn.mensaapp";
+        appStoreIdentifier = Ti.App.getId();
     }
 
     configureCells();
@@ -85,13 +85,8 @@ function rateApp() {
 }
 
 function showProductDialog() {
-    if (Ti.App.getDeployType() === 'development') {
+    if (utils.isEmulator()) {
         Ti.API.warn('The Ti.StoreView dialog is only supposed to work on device!');
-        return;
-    }
-    
-    if (OS_ANDROID) {
-        Ti.Platform.openURL('https://play.google.com/store/apps/details?id=' + Ti.App.getId() + '&reviewId=0');
         return;
     }
     
@@ -117,7 +112,13 @@ function showProductDialog() {
 }
 
 function openAbout() {
-    nav.openWindow(Alloy.createController("/settings/webview", "about").getView());
+    var aboutPage = Alloy.createController("/settings/webview", "about").getView();
+    
+    if (OS_IOS) {
+        nav.openWindow(aboutPage);
+    } else {
+        aboutPage.open();
+    }
 }
 
 function reportError() {
