@@ -130,7 +130,7 @@ function handleAction(e) {
 		break;
 	}
 	
-	$.list.deselectItem(e.sectionIndex, e.itemIndex);
+	OS_IOS && $.list.deselectItem(e.sectionIndex, e.itemIndex);
 }
 
 function performRating() {

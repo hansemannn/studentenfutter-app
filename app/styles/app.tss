@@ -1,12 +1,5 @@
 "Window": {
-	backgroundColor: "#fff",
-	navTintColor: "#fff",
-	barColor: Alloy.CFG.styles.tintColor,
-	backButtonTitle: "",
-	translucent: false,
-	titleAttributes: {
-		color: "#fff"
-	}
+	backgroundColor: "#fff"
 }
 
 "Button": {
@@ -27,8 +20,47 @@
 	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
 }
 
+/** iOS **/
+
+"Window[platform=ios]": {
+	navTintColor: "#fff",
+	barColor: Alloy.CFG.styles.tintColor,
+	backButtonTitle: "",
+	translucent: false,
+	titleAttributes: {
+		color: "#fff"
+	}
+}
+
 ".closeButton[platform=ios]": {
 	image: "/images/icons/close.png"
+}
+
+/** Android **/
+
+"Window[platform=android]": {
+	windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN
+}
+
+"MenuItem[platform=android]": {
+	showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
+}
+
+"TextField[platform=android]": {
+	// softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS
+}
+
+"Button[platform=android]": {
+	borderRadius: 0,
+	backgroundColor: "transparent",
+	borderWidth: 0,
+	color: "#000",
+	width: Ti.UI.SIZE
+}
+
+"ActionBar": {
+	displayHomeAsUp: true,
+	homeButtonEnabled: true
 }
 
 ".closeButton[platform=android]": {

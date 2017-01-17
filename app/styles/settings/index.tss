@@ -1,30 +1,53 @@
 "#list": {
-	style: Ti.UI.iOS.ListViewStyle.GROUPED,
 	listSeparatorInsets: {
 		left: 15
 	}
 }
 
+"#list[platform=android]": {
+	backgroundColor: "white"
+}
+
+"ListItem[platform=android]": {
+	left: 15,
+	height: 43,
+	font: {
+		fontSize: 15
+	},
+	color: "#000"
+}
+
 "#list[platform=ios]": {
+	style: Ti.UI.iOS.ListViewStyle.GROUPED,
 	top: -5
 }
 
-".title": {
+".title[platform=ios]": {
 	left: 15,
 	font: {
-		fontSize: 17 // TODO: This is the default for iOS, might check Android manually
+		fontSize: 17
 	}
+}
+
+// The padding is set by the ListItem on Android
+".title[platform=android]": {
+	left: 0,
+	color: "#000"
 }
 
 ".toggle": {
 	right: 15
 }
 
-".notSelectable": {
+".notSelectable[platform=ios]": {
 	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
 }
 
 ".tabbedBar": {	
 	right: 15,
     backgroundColor : Alloy.CFG.styles.tintColor
+}
+
+".contactSection[platform=ios]": {
+	footerTitle: "Made with ⚒ in Osnabrooklyn" // TODO: Localize properly
 }

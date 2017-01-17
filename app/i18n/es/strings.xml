@@ -102,4 +102,5 @@
 	<string name="upload_first_photo_now">Sube la primera foto ahora ...</string>
 	<string name="up_or_down">👍 o 👎</string>
 	<string name="price">Precio</string>
+	<string name="no_play_services">No valid Google Maps API Key provided</string>
 </resources>

@@ -1,10 +1,18 @@
 <Alloy>
 	<Window id="window" onOpen="fetchData">
+		
+		<!-- iOS-only -->
 		<LeftNavButton platform="ios" id="leftButton" onClick="togglePreviousDay" />
 		<RightNavButton platform="ios" id="rightButton" onClick="toggleNextDay" />
 		
+		<!-- Android-only -->
+		<Menu platform="android">
+			<MenuItem icon="/images/icons/leftArrow.png" onClick="togglePreviousDay"></MenuItem>
+			<MenuItem icon="/images/icons/rightArrow.png" onClick="toggleNextDay"></MenuItem>
+		</Menu>
+		
 		<ListView id="listView" defaultItemTemplate="CellItem" onItemclick="handleListItemClick">
-			<RefreshControl id="refresh" onRefreshstart="onRefreshStart" />
+			<RefreshControl platform="ios" id="refresh" onRefreshstart="onRefreshStart" />
 			<Templates>
 				<ItemTemplate name="CellItem">
 					<View class="cell">
