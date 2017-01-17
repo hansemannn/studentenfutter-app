@@ -5,6 +5,10 @@
 	},
 }
 
+"#list": {
+    defaultItemTemplate: "contrib"
+}
+
 ".title": {
 	left: 60,
     top: 8,
@@ -32,8 +36,4 @@
 
 ".cell": {
     height: 50
-}
-
-".cell[platform=ios]": {
-	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
 }
