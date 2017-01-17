@@ -1,34 +1,26 @@
-"#list": {
-	style: Ti.UI.iOS.ListViewStyle.GROUPED,
-	listSeparatorInsets: {
-		left: 15
-	}
-}
-
 "#list[platform=ios]": {
-	top: -5
+    style: Ti.UI.iOS.ListViewStyle.GROUPED,
+    listSeparatorInsets: {
+        left: 0
+	},
 }
 
 ".title": {
-	left: 60,
+	left: 80,
 	font: {
-		fontSize: 17 // TODO: This is the default for iOS, might check Android manually
+        fontSize: 17 // TODO: This is the default for iOS, might check Android manually
 	}
 }
 
 ".avatar": {
-  width: 80,
-  left: -18
+    width: 70,
+    left: 0
 }
 
-".notSelectable": {
+".notSelectable[platform=ios]": {
 	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
 }
 
-"ListItem": {
-  selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE,
-	listSeparatorInsets: {
-		left: 0
-	},
-  height: 80
+".cell": {
+    height: 70
 }

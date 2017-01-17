@@ -13,15 +13,15 @@ function performFallback(cb) {
 }
 
 /**
- * Faillback for contributors
+ * Fallback for contributors
  */
 function contribFallback(cb) {
-	var dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/contributors.json');
+	var dummyContrib = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/contributors.json');
 				
 	// Simulate HTTP request	
 	setTimeout(function() {
 		try {
-			cb(_.extend(JSON.parse(dummyLunches.read()), {success: true}));
+			cb(_.extend(JSON.parse(dummyContrib.read()), {success: true}));
 		} catch(e) {
 			Ti.API.error('Unable to parse JSON: ' + e);
 			cb({success: false});
@@ -58,7 +58,6 @@ exports.postProductImage = function(params, cb, onProcess) {
 		request.load();
 	} catch(e) {
 		performFallback(cb);
-		return;
 	}
 };
 
@@ -95,7 +94,6 @@ exports.postRating = function(params, cb) {
 		request.load();
 	} catch(e) {
 		performFallback(cb);
-		return;
 	}
 };
 
@@ -123,20 +121,18 @@ exports.getLunches = function(params, cb) {
 		request.load();
 	} catch(e) {
 		performFallback(cb);
-		return;
 	}
 };
 
 /**
  * Get all contributors
- *	@param {Object} params The GET parameter to form the URL.
- *	@param {Callback} cb The callback to be invoked after the asyncronous request.
- *	@return void
+ * @param {Object} params The GET parameter to form the URL.
+ * @param {Callback} cb The callback to be invoked after the asyncronous request.
+ * @return void
  */
-exports.getContrib = function(params, cb) {
+exports.getContrib = function(cb) {
 	try {
 		var RequestInstance = require('/request');
-		
 		var request = new RequestInstance({
 			url : 'https://api.github.com/repos/hansemannn/studentenfutter-app/contributors',
 			external: true,
@@ -151,7 +147,5 @@ exports.getContrib = function(params, cb) {
 		request.load();
 	} catch(ex) {
 		contribFallback(cb);
-		console.warn(ex);
-		return;
 	}
 };
