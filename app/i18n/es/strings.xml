@@ -103,6 +103,6 @@
 	<string name="up_or_down">👍 o 👎</string>
 	<string name="price">Precio</string>
 	<string name="contributors">Colaboradores</string>
-	<string name="contributions">Contributions</string>
+	<string name="contributions">Contribuciones</string>
 	<string name="no_play_services">No valid Google Maps API Key provided</string>
 </resources>
