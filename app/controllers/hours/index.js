@@ -11,7 +11,9 @@ var nav,
 		nav = Ti.UI.iOS.createNavigationWindow({
 			window: $.index
 		});
-	}
+	} else if (OS_ANDROID) {
+        Alloy.Globals.setAndroidBackButton($.index);
+    }
 	
 	setMap();
 	setUI();

@@ -14,7 +14,9 @@ var nav,
 		nav = Ti.UI.iOS.createNavigationWindow({
 			window: $.details
 		});
-	}
+	} else if (OS_ANDROID) {
+        Alloy.Globals.setAndroidBackButton($.details);
+    }
 	
 	// Mapped to the itemId's of the items
 	ListAction = {

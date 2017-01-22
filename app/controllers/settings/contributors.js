@@ -2,7 +2,9 @@
 *  Constructor
 */
 (function constructor(args) {    
-
+    if (OS_ANDROID) {
+        Alloy.Globals.setAndroidBackButton($.window);
+    }
 })(arguments[0] || {});
    
 function populateContributors() {
@@ -36,7 +38,7 @@ function populateContributors() {
         
         $.section.setItems(items);
         loader.hide();
-    });
+    });    
 }
 
 function showContributorPage(e) {

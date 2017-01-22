@@ -13,6 +13,8 @@ var nav,
         nav = Ti.UI.iOS.createNavigationWindow({
             window: $.window
         });
+    } else if (OS_ANDROID) {
+        Alloy.Globals.setAndroidBackButton($.window);
     }
 })(arguments[0] || {});
 

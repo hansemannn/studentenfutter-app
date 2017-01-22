@@ -25,6 +25,7 @@ var nav,
         item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
                 
         $.list.sections[0].updateItemAt(0, item);
+        OS_ANDROID && Alloy.Globals.setAndroidBackButton($.window);
     }
 
     configureCells();

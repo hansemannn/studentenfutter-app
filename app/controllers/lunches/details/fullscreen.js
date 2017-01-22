@@ -5,7 +5,10 @@ var nav;
  */
 (function constructor(args) {
 	$.image.setImage(args.image);
-//	$.window.setTitle(args.title);
+	
+	if (OS_ANDROID) {
+   		Alloy.Globals.setAndroidBackButton($.window);
+   	}
 })(arguments[0] || {});
 
 function close() {
