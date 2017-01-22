@@ -6,6 +6,10 @@ var pathIdentifier;
 (function constructor(_pathIdentifier) {
 	pathIdentifier = _pathIdentifier;
 	$.webview.setTitle(L(pathIdentifier) || "");
+	
+	if (OS_ANDROID) {
+		Alloy.Globals.setAndroidBackButton($.webview);
+	}
 })(arguments[0] || null);
 
 function initializeWebView() {

@@ -8,7 +8,7 @@ var Loader = function(_view) {
 
 		if (Ti.Platform.osname == "android") {
 			loggingInView = Ti.UI.Android.createProgressIndicator({
-				message : "Laden ...",
+				message : L('loading'),
 				location : Ti.UI.Android.PROGRESS_INDICATOR_DIALOG, // display in dialog
 				type : Ti.UI.Android.PROGRESS_INDICATOR_INDETERMINANT, // display a spinner
 				cancelable : true
