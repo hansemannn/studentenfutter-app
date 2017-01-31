@@ -4,6 +4,8 @@ The Studentenfutter App is a cross-platform Titanium app initially made to check
 Universities in Osnabrück, Vechta and Lingen. It is open source to share the concepts behind making an advanced 
 Titanium application and is still work-in-progress due to migrations from the classic structure to an Alloy based concept.
 
+Also check out the Swift 3 based tvOS-version of this app in [hansemannn/studentenfutter-tvos](https://github.com/hansemannn/studentenfutter-tvos) :rocket:.
+
 <img alt="App Store" src="https://abload.de/img/screenshot2017-01-12aybs4e.png" width="900" />
 
 ### Download
