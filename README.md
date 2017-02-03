@@ -1,5 +1,7 @@
 # Studentenfutter-App
 
+[![Contact](http://hans-knoechel.de/shields/shield-twitter.svg)](http://twitter.com/hansemannnn)
+
 The Studentenfutter App is a cross-platform Titanium app initially made to check the lunches of the German based 
 Universities in Osnabrück, Vechta and Lingen. It is open source to share the concepts behind making an advanced 
 Titanium application and is still work-in-progress due to migrations from the classic structure to an Alloy based concept.
