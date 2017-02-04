@@ -1,5 +1,11 @@
 {
 	"global": {
+		"languages": [
+			"en",
+			"de",
+			"es",
+			"pt"			
+		],
 		"styles": {
 			"tintColor": "#51ccf3"
 		},
