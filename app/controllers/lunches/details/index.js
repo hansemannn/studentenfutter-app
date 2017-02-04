@@ -31,7 +31,8 @@ function setUI() {
 	$.title.setText(product.name);
 	
 	setImages();
-	setRating();
+	setRating(product.rating);
+	setAdditives();
 }
 
 function setImages() {
@@ -97,13 +98,19 @@ function openFullscreenImage(image) {
 	}).show();
 }
 
-function setRating() {
+function setRating(rating) {
 	var section = $.list.sections[0];
 	var ratingCell = section.items[0];
+
+	ratingCell.rating.image = utils.formattedStars(rating);
+	section.updateItemAt(0, ratingCell);
+}
+
+function setAdditives() {
+	var section = $.list.sections[0];
 	var additivesCell = section.items[1];
 	var hasAdditives = product.additives && product.additives.length;
 
-	ratingCell.rating.image = utils.formattedStars(product.rating);
 	additivesCell.additives.text = hasAdditives ? product.additives.length : "0";
 	
 	if (!hasAdditives) {
@@ -112,7 +119,6 @@ function setRating() {
 		additivesCell.properties.selectionStyle = (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : null;
 	}
 	
-	section.updateItemAt(0, ratingCell);
 	section.updateItemAt(1, additivesCell);
 }
 
@@ -277,7 +283,10 @@ function handleAction(e) {
 function performRating() {
 	Alloy.createController('/lunches/details/ratingView', {
 		parent: $.details,
-		productId: product.id
+		productId: product.id,
+		onRatingUpdated: function(newRating) {
+			setRating({value: newRating});
+		}
 	}).show();
 }
 
