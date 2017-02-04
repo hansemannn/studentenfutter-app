@@ -1,5 +1,12 @@
 var moment = require('alloy/moment');
-var date = moment(new Date());
+var date;
+
+(function constructor() {
+	var currentLanguage = Ti.Locale.currentLanguage;
+	
+	moment.locale(Alloy.CFG.languages.indexOf(currentLanguage) === -1 ? 'en' : currentLanguage);
+	date = moment(new Date());
+})();
 
 /**
  * Public API
