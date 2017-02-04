@@ -1,6 +1,7 @@
 var parent,
 	productId,
-	rating;
+	rating,
+	onRatingUpdated;
 
 /**
  *  Constructor
@@ -8,6 +9,7 @@ var parent,
 (function constructor(args) {	
 	parent = args.parent;	
 	productId = args.productId;
+	onRatingUpdated = args.onRatingUpdated;
 	
 	generateRatingUI();
 })(arguments[0] || {});
@@ -49,7 +51,7 @@ function submitRating() {
 	api.postRating({
 		productId: productId,
 		userId: Ti.Platform.getId(),
-		value: rating
+		rating: rating
 	}, function(e) {	
 		if (!e.success) {
 			Ti.UI.createAlertDialog({
@@ -57,6 +59,8 @@ function submitRating() {
 				message: L("already_voted") + "\uE00E", 
 				buttonNames: [L("ok")]
 			}).show();
+		} else {
+			onRatingUpdated(rating);
 		}
 			
 		$.loader.hide();
