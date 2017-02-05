@@ -1,13 +1,15 @@
 var nav,
 	product,
 	utils,
+	onRatingUpdated,
 	ListAction;
 
 /**
  *  Constructor
  */
-(function constructor(_product) {
-	product = _product;
+(function constructor(args) {
+	product = args.product;
+	onRatingUpdated = args.onRatingUpdated;
 	utils = require("/utils");
 	
 	if (OS_IOS) {
@@ -286,6 +288,7 @@ function performRating() {
 		productId: product.id,
 		onRatingUpdated: function(newRating) {
 			setRating({value: newRating});
+			onRatingUpdated();
 		}
 	}).show();
 }
