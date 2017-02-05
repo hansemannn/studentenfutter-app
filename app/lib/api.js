@@ -68,6 +68,13 @@ exports.postProductImage = function(params, cb, onProcess) {
  *	@return void
  */
 exports.postRating = function(params, cb) {
+	var productIdentifier = 'rating-' + params.productId + '-' + Ti.Platform.id;
+	
+	if (Ti.App.Properties.getBool(productIdentifier, false)) {
+		cb({success: false});
+		return;
+	}
+	
 	try {
 		var auth = require('/auth');
 		var RequestInstance = require('/request');
@@ -81,6 +88,7 @@ exports.postRating = function(params, cb) {
 				value: params.rating
 			},
 			success: function(json) {
+				Ti.App.Properties.setBool(productIdentifier, true);
 				cb(json);
 			},
 			error: function() {
