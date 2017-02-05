@@ -185,7 +185,11 @@ function onRatingUpdated(e) {
 }
 
 function fetchData(args) {
-    !args.force && loader.show();
+    if (!args.force) {
+        $.placeholder.hide();
+        loader.show();
+    }
+    
     $.window.setTitle(L("loading"));
     
     var api = require("/api");
