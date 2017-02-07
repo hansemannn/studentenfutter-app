@@ -38,7 +38,7 @@
 ".titleInnerView": {
     left: 2,
     height: Ti.UI.SIZE,
-    layout: "horizontal"
+    layout: "vertical"
 }
 
 ".title": {
