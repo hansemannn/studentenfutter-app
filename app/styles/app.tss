@@ -16,7 +16,7 @@
 	backgroundColor : "#f4f4f4"
 }
 
-".selectable": {
+".selectable[platform=ios]": {
 	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
 }
 

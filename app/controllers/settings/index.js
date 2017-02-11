@@ -22,7 +22,10 @@ var nav,
 
         var item = $.list.sections[0].items[0];
         item.selectedCategory.text = priceCategories[Ti.App.Properties.getInt("currentPersonID", 0)];
-        item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
+        
+        if (OS_IOS) {
+            item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
+        }
                 
         $.list.sections[0].updateItemAt(0, item);
         OS_ANDROID && Alloy.Globals.setAndroidBackButton($.window);
@@ -197,7 +200,10 @@ function togglePriceCategoryAndroid() {
         
         var item = $.list.sections[0].items[0];
         item.selectedCategory.text = priceCategories[e.index];
-        item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
+
+        if (OS_IOS) {
+            item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
+        }
                 
         $.list.sections[0].updateItemAt(0, item);
     });

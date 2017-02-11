@@ -96,27 +96,22 @@
 }
 
 ".ratingImage[platform=android]": {
-	right: 30
+	right: 15
 }
 
-".ratingRow": {
-	height: 45,
-	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
-}
-
-".additivesRow": {
-	height: 45,
-	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE,
+".staticRow": {
+	height: 45
 }
 
 ".additivesBackground": {
 	width: 24,
 	height: 24,
-	image: "/images/additivesBackground.png"
+	backgroundImage: "/images/additivesBackground.png",
+	right: 5
 }
 
 ".additivesBackground[platform=android]": {
-	right: 30
+	right: 15
 }
 
 ".additives": {
@@ -124,7 +119,5 @@
 		fontSize: 14	
 	},
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	color: "white",
-	width: 24,
-	height: 24
+	color: "white"
 }

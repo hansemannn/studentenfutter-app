@@ -1,18 +1,26 @@
 <Alloy>
 	<Window titleid="details" id="details">
+		
+		<!-- iOS only -->
 		<LeftNavButton platform="ios" class="closeButton" onClick="close"></LeftNavButton>
 		<RightNavButton platform="ios" systemButton="CAMERA" onClick="showCamera"></RightNavButton>
+		
+		<!-- Android-only -->
+		<Menu platform="android">
+			<MenuItem icon="/images/icons/camera.png" onClick="showCamera"></MenuItem>
+		</Menu>
+		
 		<ListView id="list" onItemclick="handleAction">
 			<Templates>
 				<ItemTemplate name="RatingCell">
-					<Label textid="rating" class="textLabel" />
+					<Label text="L('rating')" class="textLabel" />
 					<ImageView class="ratingImage" bindId="rating" />
 				</ItemTemplate>
 				<ItemTemplate name="AdditivesCell">
-					<Label textid="additives" class="textLabel" />
-					<ImageView class="additivesBackground" bindId="additivesBackground">
+					<Label text="L('additives')" class="textLabel" />
+					<View class="additivesBackground" bindId="additivesBackground">
 						<Label class="additives" bindId="additives" />
-					</ImageView>
+					</View>
 				</ItemTemplate>
 			</Templates>
 			<HeaderView>
@@ -38,8 +46,8 @@
 				</View>
 			</HeaderView>
 			<ListSection>
-				<ListItem class="ratingRow" itemId="rating" rating:image="/images/icons/stars/0_0.png" template="RatingCell" />
-				<ListItem class="additivesRow" itemId="additives" additivesBackground:right="5" additives:text="0" template="AdditivesCell" />
+				<ListItem class="staticRow selectable" itemId="rating" rating:image="/images/icons/stars/0_0.png" template="RatingCell" />
+				<ListItem class="staticRow selectable" itemId="additives" additives:text="0" template="AdditivesCell" />
 			</ListSection>
 		</ListView>
 		

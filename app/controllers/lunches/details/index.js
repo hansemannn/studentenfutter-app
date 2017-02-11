@@ -67,7 +67,8 @@ function setImages() {
 			image: image,
 		});
 		
-		productImage.addEventListener('click', function(e) {
+		// Android currently doesn't support this due to TIMOB-24379
+		OS_IOS && productImage.addEventListener('click', function(e) {
 			openFullscreenImage(image);
 		});
 		
@@ -112,14 +113,13 @@ function setAdditives() {
 	var section = $.list.sections[0];
 	var additivesCell = section.items[1];
 	var hasAdditives = product.additives && product.additives.length;
-
-	additivesCell.additives.text = hasAdditives ? product.additives.length : "0";
 	
 	if (!hasAdditives) {
-		additivesCell.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_NONE;
-		additivesCell.additivesBackground.right = OS_IOS ? 15 : 30;
-		additivesCell.properties.selectionStyle = (OS_IOS) ? Ti.UI.iOS.ListViewCellSelectionStyle.NONE : null;
+		section.deleteItemsAt(1, 1);
+		return;
 	}
+	
+	additivesCell.additives.text = hasAdditives ? product.additives.length : "0";
 	
 	section.updateItemAt(1, additivesCell);
 }
