@@ -43,9 +43,9 @@
 	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
 }
 
-/*".detailNoSelectable[platform=android]": {
+".detailNoSelectable[platform=android]": {
 	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DETAIL
-}*/
+}
 
 ".tabbedBar[platform=ios]": {	
     backgroundColor : Alloy.CFG.styles.tintColor,
@@ -53,7 +53,7 @@
 }
 
 ".selectedCategory[platform=android]": {	
-    right: 15,
+    right: 30,
 	color: Alloy.CFG.styles.tintColor
 }
 
