@@ -60,7 +60,7 @@ function selectAction(e) {
     var item = e.section.getItemAt(e.itemIndex);
     var action = item.properties.action;
     
-    if (!action) {
+    if (!action || (OS_IOS && action == 'togglePriceCategoryAndroid')) {
         return;
     }
     
