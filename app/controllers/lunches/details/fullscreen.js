@@ -1,10 +1,12 @@
-var nav;
+var nav,
+	image;
 
 /**
  *  Constructor
  */
 (function constructor(args) {
-	$.image.setImage(args.image);
+	image = args.image;
+	$.image.setImage(image);
 	
 	if (OS_ANDROID) {
    		Alloy.Globals.setAndroidBackButton($.window);
@@ -12,6 +14,8 @@ var nav;
 })(arguments[0] || {});
 
 function close() {
+	image = null;
+
 	if (OS_IOS) {
 		nav.close();
 	} else {

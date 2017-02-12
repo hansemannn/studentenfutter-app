@@ -22,5 +22,7 @@
 	"os:ios": {},
 	"os:mobileweb": {},
 	"os:windows": {},
-	"dependencies": {}
+	"dependencies": {
+		"nl.fokkezb.pullToRefresh": "3.0.0"
+	}
 }

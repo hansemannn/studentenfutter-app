@@ -204,9 +204,7 @@ function fetchData(args) {
 }
 
 function setUI() {
-    if (OS_IOS) {
-        $.refresh.endRefreshing();
-    }
+    $.refresh.hide();
     
     var showAdditives = Ti.App.Properties.getBool("showAdditives", true);
     var showRatings = Ti.App.Properties.getBool("showRatings", true);
