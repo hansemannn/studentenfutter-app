@@ -94,12 +94,14 @@
 	<string name="report_error">Reportar Problema</string>
 	<string name="about">Sobre</string>
 	<string name="general">Geral</string>
+	<string name="generalUpper">GERAL</string>
 	<string name="contact">Contato</string>
+	<string name="contactUpper">CONTATO</string>
 	<string name="hours">Horas</string>
 	<string name="rating">Avaliação</string>
 	<string name="upload_first_photo_now">Carregar a primeira foto agora ...</string>
 	<string name="up_or_down">👍 ou 👎</string>
-	<string name="price">Preço</string>
+	<string name="price_category">Preço</string>
 	<string name="contributors">Colaboradores</string>
 	<string name="contributions">Contribuições</string>
 	<string name="no_play_services">No valid Google Maps API Key provided</string>

@@ -1,8 +1,8 @@
 <Alloy>
     <ListSection>
         <HeaderView>
-            <View id="container">
-                <Label id="title" />
+            <View id="container" class="sectionContainer">
+                <Label id="title" class="sectionTitle" />
             </View>    
         </HeaderView>
     </ListSection>

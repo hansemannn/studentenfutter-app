@@ -15,10 +15,20 @@
 				</ItemTemplate>
 			</Templates>
 			<ListSection headerTitle="L('general')">
-				<ListItem title:text="L('price')" selectedCategory:text="" tabbedBar:index="0" template="TabbedItem"  action="togglePriceCategoryAndroid" class="detailNoSelectable" />
+				<HeaderView platform="android">
+					<View class="sectionContainer">
+						<Label textid="generalUpper" class="sectionTitle" />
+					</View>    
+				</HeaderView>
+				<ListItem title:text="L('price_category')" selectedCategory:text="" tabbedBar:index="0" template="TabbedItem"  action="togglePriceCategoryAndroid" class="detailNoSelectable" />
 				<ListItem title="L('select_canteen')" action="selectCanteen" class="selectable" />
 			</ListSection>
 			<ListSection headerTitle="L('contact')" class="contactSection">
+				<HeaderView platform="android">
+					<View class="sectionContainer">
+						<Label textid="contactUpper" class="sectionTitle" />
+					</View>    
+				</HeaderView>
 				<ListItem title="L('rate_app')" action="rateApp" class="selectable" />
 				<ListItem title="L('contributors')" action="openContributors" class="selectable" />-->
 				<ListItem title="L('report_error')" action="reportError" class="selectable" />
