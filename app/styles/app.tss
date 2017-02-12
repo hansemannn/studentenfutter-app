@@ -66,3 +66,19 @@
 ".closeButton[platform=android]": {
 	icon: "/images/icons/close.png"
 }
+
+".sectionContainer": {
+    backgroundColor : "#f4f4f4",
+    top : 0,
+    height : 34,
+    bottom : 0
+}
+
+".sectionTitle": {
+	left : 15,
+	bottom : 8,
+	font : {
+		fontSize : 14
+	},
+	color : "#7d7d7d"
+}
