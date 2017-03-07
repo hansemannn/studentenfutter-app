@@ -6,3 +6,5 @@
 .settings
 /i18n
 /platform
+keystore
+/dist

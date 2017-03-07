@@ -82,7 +82,13 @@ var Request = function(_args) {
 				}
 
 				var json = this.responseText;
-				var response = (json) ? JSON.parse(json) : null;
+				var response = null;
+				
+				try {
+					response = (json) ? JSON.parse(json) : null;
+				} catch (e) {
+					response = [];
+				}
 
 				var file = (parseJsonFile(args.cacheName)) ? parseJsonFile(args.cacheName) : null;
 
