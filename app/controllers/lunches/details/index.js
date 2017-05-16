@@ -208,9 +208,12 @@ function sendProductImage(image) {
 	}, function(e) {
 		
 		if (!e.awaitingModeration) {
+			var title = L(e.feedbackTitle || 'upload_success', 'upload_success');
+			var message = L(e.feedbackMessage || 'upload_success_msg', 'upload_success_msg');
+			
 			var dia = Ti.UI.createAlertDialog({
-				title: L("upload_success"),
-				message: L("upload_success_msg"),
+				title: title,
+				message: message,
 				buttonNames: [L("ok")]
 			});
 			dia.show();
@@ -227,21 +230,24 @@ function processImage(image) {
 
 	var outputImage;
 	var imageFactory = require("ti.imagefactory");
+	var maxImageSize = 500000;
+	var maxImageWidth = 1024;
+
 	outputImage = imageFactory.compress(image, 0);
 	
 	Ti.API.debug('Image Size (before): ' + outputImage.length / 1000 + ' kb');
 
-	if (outputImage.length > 500000) {
+	if (outputImage.length > maxImageSize) {
 		var newWidth,
 		    newHeight;
 
 		if (image.width > image.height) {
 			// Querformat-Bilder auf eine Breite von 1024 fixieren
-			newWidth = 1024;
+			newWidth = maxImageWidth;
 			newHeight = image.height / image.width * newWidth;
 		} else {
 			// Hochformat-Bilder auf eine Höhe von 1024 fixieren
-			newHeight = 1024;
+			newHeight = maxImageWidth;
 			newWidth = image.width / image.height * newHeight;
 		}
 
@@ -250,7 +256,7 @@ function processImage(image) {
 			height : newHeight
 		});
 
-		if (outputImage.length > Alloy.Globals.images.maximumImageSize) {
+		if (outputImage.length > maxImageSize) {
 			outputImage = imageFactory.compress(image, 0);
 		}		
 	}

@@ -107,4 +107,6 @@
 	<string name="contributors">Colaboradores</string>
 	<string name="contributions">Contribuciones</string>
 	<string name="no_play_services">No valid Google Maps API Key provided</string>
+	<string name="upload_message_no_food">Wait a second, this is no food! Sorry, cannot take it!</string>
+	<string name="upload_message_person">Delicious as food, but still a person, not food. Sorry, cannot take it!</string>
 </resources>
