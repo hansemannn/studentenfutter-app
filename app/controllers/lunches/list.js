@@ -208,9 +208,16 @@ function setUI() {
     
     var showAdditives = Ti.App.Properties.getBool("showAdditives", true);
     var showRatings = Ti.App.Properties.getBool("showRatings", true);
-    
-    var categories = [L("Hauptgericht"), L("Beilagen"), L("Dessert"), L("Tagessalat"), L("Essen_Hochschulbedienstete", "Essen Hochschulbedienstete"), L("Eintopf_Teller", "Eintopf Teller")];
     var sections = [];
+    
+    var categories = [
+        L("Hauptgericht"), 
+        L("Beilagen"), 
+        L("Dessert"), 
+        L("Tagessalat"), 
+        L("Essen_Hochschulbedienstete", "Essen Hochschulbedienstete"), 
+        L("Eintopf_Teller", "Eintopf Teller")
+    ];
     
     cart.resetTotal(false);
 

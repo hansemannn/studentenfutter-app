@@ -107,4 +107,7 @@
 	<string name="contributors">Mitwirkende</string>
 	<string name="contributions">Beiträge</string>
 	<string name="no_play_services">Kein gültiger Google Maps API-Key vorhanden</string>
+	<string name="upload_title_whoops">Whooops!</string>
+	<string name="upload_message_no_food">Moment mal, das ist aber kein Essen! Sorry, können wir nicht bringen!</string>
+	<string name="upload_message_person">Sieht spitze, aber ist immer noch eine Person, kein Essen. Sorry, können wir nicht bringen!</string>
 </resources>
