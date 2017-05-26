@@ -1,0 +1,19 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0
+apiversion: 3
+description: Similar to Ti.UI.iOS.RefreshControl, but for Android
+author: Raymond Kam
+architectures: armeabi-v7a x86
+license: Specify your license
+copyright: Copyright (c) 2017 by Your Company
+
+
+# these should not be edited
+name: swiperefreshlayout
+moduleid: com.rkam.swiperefreshlayout
+guid: fc0f2168-ac27-4239-bcb0-c51d7683eb05
+platform: android
+minsdk: 6.0.1.GA
