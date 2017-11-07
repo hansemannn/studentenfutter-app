@@ -39,7 +39,7 @@ function share() {
 }
 
 function zoom() {
-	this.setZoomScale((this.getZoomScale() == 1) ? 2 : 1, {
+	this.setZoomScale((this.getZoomScale() === 1) ? 2 : 1, {
 		animated:true
 	});
 }

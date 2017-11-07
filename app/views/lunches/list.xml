@@ -11,51 +11,52 @@
 			<MenuItem icon="/images/icons/rightArrow.png" onClick="toggleNextDay"></MenuItem>
 		</Menu>
 		
-		<Widget id="refresh" src="nl.fokkezb.pullToRefresh" onRelease="onRefreshStart">
-			<ListView id="listView" defaultItemTemplate="CellItem" onItemclick="handleListItemClick">
-				<Templates>
-					<ItemTemplate name="CellItem">
-						<View class="cell">
-							<!-- Title -->
-							<View class="titleView">
-								<View class="titleInnerView">
-									<Label class="title" bindId="lunchTitle" />
-									<View class="ratingView">
-										<Label class="additives" bindId="lunchAdditives" />
-										<View class="starsOutterView">
-											<View class="starsInnerView">
-												<ImageView class="stars starsFull" bindId="fullStars" />
-											</View>
-											<View class="numberOfRatingsView">
-												<Label class="l1" bindId="scoreOfRating" />
-												<ImageView class="img1" />
-												<Label class="l2" bindId="numberOfRating" />
-												<ImageView class="img2"/>
-											</View>
+		<ListView id="listView" defaultItemTemplate="CellItem" onItemclick="handleListItemClick">
+			<Templates>
+				<ItemTemplate name="CellItem">
+					<View class="cell">
+						<!-- Title -->
+						<View class="titleView">
+							<View class="titleInnerView">
+								<Label class="title" bindId="lunchTitle" />
+								<View class="ratingView">
+									<Label class="additives" bindId="lunchAdditives" />
+									<View class="starsOutterView">
+										<View class="starsInnerView">
+											<ImageView class="stars starsFull" bindId="fullStars" />
+										</View>
+										<View class="numberOfRatingsView">
+											<Label class="l1" bindId="scoreOfRating" />
+											<ImageView class="img1" />
+											<Label class="l2" bindId="numberOfRating" />
+											<ImageView class="img2"/>
 										</View>
 									</View>
 								</View>
 							</View>
-							
-							<!-- Price -->
-							<View class="priceView">
-								<View class="priceInnerView" bindId="lunchPriceContainer">
-									<Label class="price" bindId="lunchPrice" />
-								</View>
-								<View class="countView" bindId="lunchCountContainer">
-									<Label class="count" bindId="lunchCount" />
-								</View>
-							</View>
-							
-							<!-- Controls -->
-							<Button class="button buttonAdd" bindId="buttonAdd" onClick="incrementPrice" />
-							<Button class="button buttonRemove" bindId="buttonRemove" onClick="decrementPrice" />
 						</View>
-					</ItemTemplate>
-				</Templates>
-			</ListView>
-		</Widget>
+						
+						<!-- Price -->
+						<View class="priceView">
+							<View class="priceInnerView" bindId="lunchPriceContainer">
+								<Label class="price" bindId="lunchPrice" />
+							</View>
+							<View class="countView" bindId="lunchCountContainer">
+								<Label class="count" bindId="lunchCount" />
+							</View>
+						</View>
+						
+						<!-- Controls -->
+						<Button class="button buttonAdd" bindId="buttonAdd" onClick="incrementPrice" />
+						<Button class="button buttonRemove" bindId="buttonRemove" onClick="decrementPrice" />
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<RefreshControl id="refresh" onRefreshstart="onRefreshStart" />
+		</ListView>
+		
 		<Require src="lunches/footer" id="footer" />
+		
 		<Require src="lunches/placeholder" id="placeholder" />
 	</Window>
 </Alloy>

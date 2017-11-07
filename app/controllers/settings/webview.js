@@ -5,7 +5,7 @@ var pathIdentifier;
  **/
 (function constructor(_pathIdentifier) {
 	pathIdentifier = _pathIdentifier;
-	$.webview.setTitle(L(pathIdentifier) || "");
+	$.webview.setTitle(L(pathIdentifier) || '');
 	
 	if (OS_ANDROID) {
 		Alloy.Globals.setAndroidBackButton($.webview);
@@ -13,10 +13,10 @@ var pathIdentifier;
 })(arguments[0] || null);
 
 function initializeWebView() {
-    var path = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), "html/" + pathIdentifier + ".html");
+    var path = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'html/' + pathIdentifier + '.html');
     
     if (!path.exists()) {
-        Ti.API.error("File at path not found: " + path.nativePath);
+        Ti.API.error('File at path not found: ' + path.nativePath);
         return;
     }
     

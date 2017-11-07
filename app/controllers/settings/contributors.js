@@ -8,10 +8,10 @@
 })(arguments[0] || {});
    
 function populateContributors() {
-    var LoaderInstance = require("/loader");
+    var LoaderInstance = require('/loader');
     var loader = new LoaderInstance($.window);
 
-    var api = require("/api");
+    var api = require('/api');
     loader.show();
 
     api.getContrib(function(e) {

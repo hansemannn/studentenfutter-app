@@ -10,7 +10,7 @@ var nav,
 (function constructor(args) {
 	product = args.product;
 	onRatingUpdated = args.onRatingUpdated;
-	utils = require("/utils");
+	utils = require('/utils');
 	
 	if (OS_IOS) {
 		nav = Ti.UI.iOS.createNavigationWindow({
@@ -41,7 +41,7 @@ function setImages() {
 	var images = product.images || null;
 	var views = [];
 		
-	if (!images || images.length == 0) {
+	if (!images || images.length===0) {
 		return;
 	}
 	
@@ -57,12 +57,12 @@ function setImages() {
 			width: 165,
 			borderRadius: 0,
 			viewShadowRadius: 2,
-			viewShadowColor: "#A6444444", // 65 %
+			viewShadowColor: '#A6444444', // 65 %
 			viewShadowOffset: {x: 0, y: 2}
 		});
 		
 		var productImage = Ti.UI.createImageView({
-			defaultImage: "/images/noImage.png",
+			defaultImage: '/images/noImage.png',
 			borderRadius: 0,
 			image: image,
 		});
@@ -78,18 +78,18 @@ function setImages() {
 	});
 	 	
 	var label = Ti.UI.createLabel({
-		text: "+ ",
-		color: "#fff",
+		text: '+ ',
+		color: '#fff',
 		opacity: 0.3,
 		top: 40,
 		left: 10,
 		font: {
 			fontSize: 80,
-			fontWeight: "bold"
+			fontWeight: 'bold'
 		}
 	});
 	
-	label.addEventListener("click", showCamera);	
+	label.addEventListener('click', showCamera);	
 		
 	$.images.add(label);	
 }
@@ -119,7 +119,7 @@ function setAdditives() {
 		return;
 	}
 	
-	additivesCell.additives.text = hasAdditives ? product.additives.length : "0";
+	additivesCell.additives.text = hasAdditives ? product.additives.length : '0';
 	
 	section.updateItemAt(1, additivesCell);
 }
@@ -186,7 +186,7 @@ function sendGeneratedDemoImage() {
 	});
 	
 	dialog.addEventListener('click', function(e) {
-		if (e.index == 1) {
+		if (e.index===1) {
 			sendProductImage(Ti.UI.createView({
 				width: 1000,
 				height: 1000,
@@ -214,7 +214,7 @@ function sendProductImage(image) {
 			var dia = Ti.UI.createAlertDialog({
 				title: title,
 				message: message,
-				buttonNames: [L("ok")]
+				buttonNames: [L('ok')]
 			});
 			dia.show();
 		}
@@ -229,7 +229,7 @@ function processImage(image) {
 	}
 
 	var outputImage;
-	var imageFactory = require("ti.imagefactory");
+	var imageFactory = require('ti.imagefactory');
 	var maxImageSize = 500000;
 	var maxImageWidth = 1024;
 
@@ -268,9 +268,9 @@ function processImage(image) {
 
 function showCameraError() {
 	Ti.UI.createAlertDialog({
-		title : L("warning"),
-		message : L("camera_warning_text"),
-		buttonNames : [L("all_right")]
+		title : L('warning'),
+		message : L('camera_warning_text'),
+		buttonNames : [L('all_right')]
 	}).show();
 }
 
@@ -302,7 +302,7 @@ function performRating() {
 function showAdditives() {
 	var usedAdditives = product.additives || [];
 	
-	if (usedAdditives == 0) {
+	if (usedAdditives===0) {
 		return;
 	}
 	
@@ -316,7 +316,7 @@ function showAdditives() {
 			}
 		})
 			
-		// Some nice hack: Remove the last commata with an "and"
+		// Some nice hack: Remove the last commata with an 'and'
 		var message = result.join(', ');
 		
 		if (message.lastIndexOf(', ') !== -1) {

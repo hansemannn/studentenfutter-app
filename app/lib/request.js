@@ -124,7 +124,7 @@ var Request = function(_args) {
 					response = null;
 				}
 
-				if(status == 400 && response && response.error && response.error.code == 104) {
+				if(status===400 && response && response.error && response.error.code===104) {
 					var api = require('/api');
 					api.reauth(function() {
 						_this.load();

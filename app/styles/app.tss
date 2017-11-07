@@ -27,6 +27,7 @@
 	barColor: Alloy.CFG.styles.tintColor,
 	backButtonTitle: "",
 	translucent: false,
+	largeTitleEnabled: true,
 	titleAttributes: {
 		color: "#fff"
 	}

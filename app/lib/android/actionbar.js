@@ -15,7 +15,7 @@
 * limitations under the License.
 */
 
-var OS_ANDROID = Ti.Platform.osname == "android";
+var OS_ANDROID = Ti.Platform.osname==="android";
 
 var actionBarHelper=function(win){
 	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){

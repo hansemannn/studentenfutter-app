@@ -6,7 +6,7 @@ var Loader = function(_view) {
 
 	this.show = function() {
 
-		if (Ti.Platform.osname == "android") {
+		if (Ti.Platform.osname==="android") {
 			loggingInView = Ti.UI.Android.createProgressIndicator({
 				message : L('loading'),
 				location : Ti.UI.Android.PROGRESS_INDICATOR_DIALOG, // display in dialog

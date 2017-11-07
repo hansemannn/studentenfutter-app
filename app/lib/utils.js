@@ -38,7 +38,7 @@ exports.formattedStars = function(rating) {
  * @return _TRUE_ when running on emulator, _FALSE_ otherwise.
  */
 exports.isEmulator = function() {
-    return (Ti.Platform.manufacturer == 'Genymotion' || Ti.Platform.model === 'Simulator' || Ti.Platform.model.indexOf('sdk') !== -1);
+    return (Ti.Platform.manufacturer==='Genymotion' || Ti.Platform.model === 'Simulator' || Ti.Platform.model.indexOf('sdk') !== -1);
 };
 
 /**
