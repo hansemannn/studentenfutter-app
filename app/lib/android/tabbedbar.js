@@ -48,7 +48,7 @@ function mixin(/*Object*/ target, /*Object*/ source){
 var osname = Ti.Platform.osname;
 
 exports.makeTabbedBar = function(/*map*/_params, /*function*/ _fn){
-    if (osname == 'android') {
+    if (osname==='android') {
 		// build pseudo tabbed bar for Android
         var wrapper = Ti.UI.createView({
         	id: "root",

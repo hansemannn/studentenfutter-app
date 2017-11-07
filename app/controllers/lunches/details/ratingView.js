@@ -55,9 +55,9 @@ function submitRating() {
 	}, function(e) {	
 		if (!e.success) {
 			Ti.UI.createAlertDialog({
-				title: L("rating_error"), 
-				message: L("already_voted") + "\uE00E", 
-				buttonNames: [L("ok")]
+				title: L('rating_error'), 
+				message: L('already_voted') + '\uE00E', 
+				buttonNames: [L('ok')]
 			}).show();
 		} else {
 			onRatingUpdated(rating);

@@ -6,7 +6,7 @@ var nav,
  *  Constructor
  */
 (function constructor(args) {
-    locations = require("/locations").getData();
+    locations = require('/locations').getData();
     selectedCanteen = args.selectedCanteen;
     
     if (OS_IOS) {
@@ -28,7 +28,7 @@ function close() {
 
 function populateLocations() {
 	var items = [];
-    var currentCanteenName = Ti.App.Properties.getString("currentLocationName", Alloy.CFG.defaultCanteen.title);
+    var currentCanteenName = Ti.App.Properties.getString('currentLocationName', Alloy.CFG.defaultCanteen.title);
 
 	for (var i = 0; i < locations.length; i++) {
         var attrs = {
@@ -38,7 +38,7 @@ function populateLocations() {
 			}
 		};
         
-        if (currentCanteenName == locations[i].title) {
+        if (currentCanteenName===locations[i].title) {
             attrs.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK;
         } else if (OS_IOS) {
             attrs.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE; // No custom disclosure on Android
@@ -49,7 +49,7 @@ function populateLocations() {
                 properties: _.extend(attrs.properties, {
                     left: 15,
             	    height: 43,
-            	    color: "#000",
+            	    color: '#000',
             	    font: {
                     	fontSize: 15
                     }
@@ -66,11 +66,11 @@ function populateLocations() {
 function selectLocation(e) {
 	var item = e.section.getItemAt(e.itemIndex);
 		
-	Ti.App.Properties.setString("currentLocationName", item.properties.title);
-	Ti.App.Properties.setInt("currentLocationID", e.itemId);
+	Ti.App.Properties.setString('currentLocationName', item.properties.title);
+	Ti.App.Properties.setInt('currentLocationID', e.itemId);
 
     selectedCanteen && selectedCanteen({
-        action: "selectCanteen",
+        action: 'selectCanteen',
         title: item.properties.title,
         id: e.itemId
     });

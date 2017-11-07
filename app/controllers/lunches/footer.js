@@ -21,10 +21,6 @@ function openSettings() {
     }).open();
 }
 
-function openHours() {
-    Alloy.createController("/hours/index").open();
-}
-
 function resetAmount() {
     Alloy.Models.cart.resetTotal(true);
 }

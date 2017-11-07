@@ -77,9 +77,12 @@
 }
 
 ".imageContainer": {
-	backgroundImage: "/images/lunch.jpg",
 	width: Ti.UI.FILL,
 	height: 230
+}
+
+".imageContainer[platform=ios]": {
+	backgroundImage: "/images/lunch.jpg",
 }
 
 ".textLabel": {

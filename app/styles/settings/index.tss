@@ -9,7 +9,7 @@
 }
 
 "ListItem[platform=android]": {
-	left: 15,
+	left: 10,
 	height: 43,
 	font: {
 		fontSize: 15
@@ -22,17 +22,16 @@
 	top: -5
 }
 
+".title": {
+	left: 5,
+	color: "#000"
+}
+
 ".title[platform=ios]": {
 	left: 15,
 	font: {
 		fontSize: 17
 	}
-}
-
-// The padding is set by the ListItem on Android
-".title[platform=android]": {
-	left: 0,
-	color: "#000"
 }
 
 ".toggle": {

@@ -20,11 +20,7 @@
 }
 
 "#map": {
-	touchEnabled: false,
-	animate: true,
-	userLocation: true,
-	userLocationButton: true,
-	animate: true
+	touchEnabled: false
 }
 
 ".sep": {

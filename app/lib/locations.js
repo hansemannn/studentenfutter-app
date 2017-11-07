@@ -120,7 +120,7 @@ module.exports = {
 	},
 	getCurrentLocation : function() {
 		for (var i = 0; i < data.length; i++) {
-			if (data[i].id == Ti.App.Properties.getInt("currentLocationID",  Alloy.CFG.defaultCanteen.id)) {
+			if (data[i].id===Ti.App.Properties.getInt("currentLocationID",  Alloy.CFG.defaultCanteen.id)) {
 				return data[i];
 			}
 		};

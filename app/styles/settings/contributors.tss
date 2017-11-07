@@ -1,7 +1,7 @@
 "#list[platform=ios]": {
     style: Ti.UI.iOS.ListViewStyle.GROUPED,
     listSeparatorInsets: {
-        left: 60
+        left: 40
 	},
 }
 
@@ -10,7 +10,7 @@
 }
 
 ".title": {
-	left: 60,
+	left: 40,
     top: 8,
     color: "#000",
 	font: {
@@ -19,7 +19,7 @@
 }
 
 ".subtitle": {
-    left: 60,
+    left: 40,
     bottom: 8,
     color: "#aaa",
     font: {
@@ -28,10 +28,11 @@
 }
 
 ".avatar": {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    left: 10
+    width: 24,
+    height: 24,
+    defaultImage: 'images/profile-small.png',
+    borderRadius: 12,
+    left: 8
 }
 
 ".cell": {

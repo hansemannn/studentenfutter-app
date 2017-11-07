@@ -1,19 +1,14 @@
-var nav,
-	location;
+var location;
 
 /**
  *  Constructor
  */
 (function constructor(args) {
-	location = require("/locations").getCurrentLocation();
+	location = require('/locations').getCurrentLocation();
 
-	if (OS_IOS) {
-		nav = Ti.UI.iOS.createNavigationWindow({
-			window: $.index
-		});
-	} else if (OS_ANDROID) {
-        Alloy.Globals.setAndroidBackButton($.index);
-    }
+	if (OS_ANDROID) {
+  		Alloy.Globals.setAndroidBackButton($.index);
+  }
 	
 	setMap();
 	setUI();
@@ -43,17 +38,17 @@ function setMap() {
 
 function askForRoute() {
 	var dia = Ti.UI.createAlertDialog({
-		title: L("show_route"),
-		message: L("show_route_msg"),
-		buttonNames: [L("cancel"), L("show")],
+		title: L('show_route'),
+		message: L('show_route_msg'),
+		buttonNames: [L('cancel'), L('show')],
 		preferred: 1,
 		cancel: 0
 	});
 
-	dia.addEventListener("click", function(e) {
-		if(e.index == 1) {
-			var prefix = (OS_ANDROID) ? "http://maps.google.com/?" : "maps:";
-			Ti.Platform.openURL(prefix + "f=d&hl=en&geocode=&saddr=&sll=&daddr=" +  encodeURIComponent(location.location.address))
+	dia.addEventListener('click', function(e) {
+		if(e.index === 1) {
+			var prefix = (OS_ANDROID) ? 'http://maps.google.com/?' : 'maps:';
+			Ti.Platform.openURL(prefix + 'f=d&hl=en&geocode=&saddr=&sll=&daddr=' +  encodeURIComponent(location.location.address))
 		}
 	});
 
@@ -79,7 +74,7 @@ function setUI() {
 			attrs = {
 				properties: _.extend(attrs.properties, {
 					left: 15,
-					color: "#000",
+					color: '#000',
 					font: {
 						fontSize: 15
 					}
@@ -97,25 +92,19 @@ function setUI() {
 	$.list.setSections(sections);
 }
 
-function close() {
-    if (OS_IOS) {
-        nav.close();
-    } else {
-        $.index.close();
-    }
-}
-
-exports.open = function() {
-    if (OS_IOS) {
-        nav.open({modal: true});
-    } else {
-        $.index.open();
-    }
-};
-
 function selectAnnotation(e) {
 	if (!Alloy.Globals.isGooglePlayServicesAvailable) {
 		return;
+	}
+	
+	// Requires Ti.Map 3.1.0, ignored on lower versions
+	if (OS_IOS) {
+		$.map.visibleMapRect = {
+			animated: true,
+			padding: {
+				top: 50
+			}
+		};
 	}
 	
 	$.map.selectAnnotation($.map.annotations[0]);

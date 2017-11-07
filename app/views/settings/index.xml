@@ -6,11 +6,11 @@
 				<ItemTemplate name="TabbedItem">
 					<Label class="title" bindId="title" />
 					<TabbedBar platform="ios" bindId="tabbedBar" class="tabbedBar" onClick="togglePriceCategory">
-			            <Labels>
-			                <Label>L("student")</Label>
-			                <Label>L("employee")</Label>
-			            </Labels>
-			        </TabbedBar>		
+            <Labels>
+              <Label>L("student")</Label>
+              <Label>L("employee")</Label>
+            </Labels>
+			    </TabbedBar>		
 					<Label bindId="selectedCategory" class="selectedCategory" platform="android" />	
 				</ItemTemplate>
 			</Templates>
@@ -20,8 +20,9 @@
 						<Label textid="generalUpper" class="sectionTitle" />
 					</View>    
 				</HeaderView>
-				<ListItem title:text="L('price_category')" selectedCategory:text="" tabbedBar:index="0" template="TabbedItem"  action="togglePriceCategoryAndroid" class="detailNoSelectable" />
+				<ListItem height="43" title:text="L('price_category')" selectedCategory:text="" tabbedBar:index="0" template="TabbedItem"  action="togglePriceCategoryAndroid" class="detailNoSelectable" />
 				<ListItem title="L('select_canteen')" action="selectCanteen" class="selectable" />
+				<ListItem title="L('hours')" action="openHours" class="selectable" />
 			</ListSection>
 			<ListSection headerTitle="L('contact')" class="contactSection">
 				<HeaderView platform="android">
