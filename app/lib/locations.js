@@ -112,6 +112,18 @@ var data = [{
 		lon : 8.0240,
 		address: "Barbarastraße 20, Osnabrück"
 	}
+}, {
+	title : "Snackbar Schlossgarten",
+	id : 8,
+	openings : [{
+		date : L("monday") + " - " + L("friday"),
+		time : "11:45 - 14:15 Uhr"
+	}],
+	location : {
+		lat : 52.270128,
+		lon : 8.045089,
+		address: "Ritterstraße 10, Osnabrück"
+	}
 }];
 
 module.exports = {
