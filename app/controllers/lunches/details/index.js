@@ -134,7 +134,10 @@ function close() {
 
 exports.open = function(animated) {
     if (OS_IOS) {
-        nav.open({modal: animated});
+        nav.open({
+					modal: animated, 
+					modalStyle: Ti.UI.iOS.MODAL_PRESENTATION_FORMSHEET
+				});
     } else {
         $.details.open();
     }

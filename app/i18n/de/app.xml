@@ -2,5 +2,7 @@
 <resources>
 	<string name="select_canteen">Mensa auswählen</string>
 	<string name="NSCameraUsageDescription">Dürfen wir auf deine Kamera zugreifen, damit du Fotos aufnehmen kannst?</string>
+	<string name="NSPhotoLibraryUsageDescription">Dürfen wir auf deine Fotobibliothek zugreifen, damit du Fotos auswählen kannst?</string>
+	<string name="NSAppleMusicUsageDescription">Dürfen wir auf deine Musikbibliothek zugreifen, damit du Audio-Dateien auswählen kannst?</string>
 	<string name="NSLocationWhenInUseUsageDescription">Dürfen wir deinen Standort auf dieser Karte nutzen, um dir die Entfernung zur deiner Mensa zu zeigen?</string>
 </resources>

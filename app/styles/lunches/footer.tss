@@ -1,7 +1,12 @@
-".footer": {
-    height: 44,
+".footerWrapper": {
+    height: Alloy.Globals.footerHeight,
     bottom: 0,
     backgroundColor: "#fff"
+}
+
+".footer": {
+    height: 44,
+    top: 0
 }
 
 ".button": {

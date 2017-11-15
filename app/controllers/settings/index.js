@@ -64,10 +64,24 @@ function selectAction(e) {
         return;
     }
     
-    try {
-        eval(action).call();
-    } catch(e) {
-        Ti.API.error(e);
+    switch (action) {
+      case "selectCanteen": 
+      selectCanteen();
+      break;
+      case "openHours": 
+      openHours();
+      break;
+      case "rateApp": 
+      rateApp();
+      break;
+      case "openContributors": 
+      openContributors();
+      break;
+      case "reportError": 
+      reportError();
+      break;
+      default:
+      console.log(action);
     }
     
     OS_IOS && $.list.deselectItem(e.sectionIndex, e.itemIndex);
@@ -186,7 +200,10 @@ function onClose() {
 
 exports.open = function() {
     if (OS_IOS) {
-        nav.open({modal: true});
+      nav.open({
+        modal: true, 
+        modalStyle: Ti.UI.iOS.MODAL_PRESENTATION_FORMSHEET
+      });
     } else {
         $.window.open();
     }

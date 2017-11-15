@@ -79,7 +79,10 @@ function selectLocation(e) {
 
 exports.open = function() {
     if (OS_IOS) {
-        nav.open({modal: true});
+      nav.open({
+        modal: true, 
+        modalStyle: Ti.UI.iOS.MODAL_PRESENTATION_FORMSHEET
+      });
     } else {
         $.window.open();
     }

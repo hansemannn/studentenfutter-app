@@ -1,10 +1,12 @@
 <Alloy>
+  <View class="footerWrapper">
     <View class="footer">
-        <View class="sep" />
-        <View class="center" onClick="resetAmount">
-            <Label id="amount" />
-            <Label id="location" />
-        </View>
-        <Button onClick="openSettings" class="button settings" />
-    </View>
+          <View class="sep" />
+          <View class="center" onClick="resetAmount">
+              <Label id="amount" />
+              <Label id="location" />
+          </View>
+          <Button onClick="openSettings" class="button settings" />
+      </View>
+  </View>
 </Alloy>

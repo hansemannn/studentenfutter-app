@@ -1,8 +1,12 @@
 
 "#window": {
 	backgroundColor: "black",
-	barColor: "#111",
-	translucent: false
+	barColor: "#111"
+}
+
+"#window[platform=ios]": {
+	translucent: true,
+	largeTitleEnabled: false
 }
 
 "#image": {

@@ -1,3 +1,7 @@
+"Window[platform=ios]": {
+	modalStyle: Ti.UI.iOS.MODAL_PRESENTATION_FORMSHEET
+}
+
 "#list": {
 	listSeparatorInsets: {
 		left: 15
