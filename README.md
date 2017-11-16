@@ -18,13 +18,15 @@ You can download the app for free from the iOS App Store and Android Play Store:
 
 ### Features (Selection)
 
-- [x] Cross-Platform native App
-- [x] Multi-Language Support (en, de, es, pt)
-- [x] Advanced List Views
-- [x] Multi-Navigation Flows
+- [x] Cross-Platform native app
+- [x] Multi-Language support (en, de, es, pt)
+- [x] Advanced list-views
+- [x] Multi-Navigation flows
 - [x] Image Capturing, Processing & Upload
-- [x] REST-API Handling
-- [x] Star-based Rating System
+- [x] REST-API / JSON
+- [x] iPhone X / iOS 11+ support
+- [x] Latest Titanium SDK compatible
+
 
 ### Used Titanum API's (Selection)
 
@@ -34,7 +36,9 @@ You can download the app for free from the iOS App Store and Android Play Store:
 `Ti.UI.iOS.BlurView`, `Ti.UI.ProgressBar`, `Ti.UI.Switch`, `Ti.UI.Slider`, `Ti.UI.RefreshControl`, ...
 
 #### Modules
-[Ti.Map](github.com/appcelerator-modules/ti.map), [Ti.StoreView](https://github.com/dezinezync/TiStoreView) and [Ti.ImageFactory](https://github.com/appcelerator-modules/ti.imagefactory)
+- [Ti.Map](github.com/appcelerator-modules/ti.map)
+- [Ti.StoreView](https://github.com/dezinezync/TiStoreView)
+- [Ti.ImageFactory](https://github.com/appcelerator-modules/ti.imagefactory)
 
 ### Running the App
 
@@ -50,16 +54,19 @@ You can download the app for free from the iOS App Store and Android Play Store:
 #### Via CLI
 
 1. Clone the repository:
-
-		git clone https://github.com/hansemannn/studentenfutter-app
+```
+git clone https://github.com/hansemannn/studentenfutter-app
+```
 
 2. To run it with `appc run` first import it to the platform:
-
-		appc new --import --no-services
+```
+appc new --import --no-services
+```
 
 3. Build to Simulator or Device:
-
-		[appc run | ti build] -p ios [-T device]
+```
+[appc run | ti build] -p ios [-T device]
+```
 
 ### Author
 
