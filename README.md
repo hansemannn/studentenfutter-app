@@ -8,7 +8,7 @@ Titanium application and is still work-in-progress due to migrations from the cl
 
 Also check out the Swift 3 based tvOS-version of this app in [hansemannn/studentenfutter-tvos](https://github.com/hansemannn/studentenfutter-tvos) :rocket:.
 
-<img alt="App Store" src="https://abload.de/img/screenshot2017-01-12aybs4e.png" width="900" />
+<img alt="App Store" src="https://abload.de/img/iphone-2854305_12804wans.jpg" width="900" />
 
 ### Download
 
