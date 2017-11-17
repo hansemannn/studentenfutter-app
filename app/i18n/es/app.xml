@@ -2,7 +2,7 @@
 <resources>
 	<string name="select_canteen">Seleccione cantina</string>
 	<string name="NSCameraUsageDescription">¿Podemos usar su cámara para que pueda tomar fotos?</string>
-	<string name="NSPhotoLibraryUsageDescription">¿Podemos usar su rollo de fotos para que pueda seleccionar imágenes?</string>
-	<string name="NSAppleMusicUsageDescription">¿Podemos usar su rollo de música para que pueda seleccionar música?</string>
-	<string name="NSLocationWhenInUseUsageDescription">¿Se nos permite usar su posición en el mapa para mostrar la distancia a su cantina?</string>
+	<string name="NSPhotoLibraryUsageDescription">¿Podemos usar su carrete de fotos para que pueda seleccionar imágenes?</string>
+	<string name="NSAppleMusicUsageDescription">¿Podemos usar su carpeta de música para que pueda seleccionar música?</string>
+	<string name="NSLocationWhenInUseUsageDescription">¿Nos permite usar su posición en el mapa para mostrar la distancia a su cantina?</string>
 </resources>
