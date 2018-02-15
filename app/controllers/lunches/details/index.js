@@ -48,8 +48,9 @@ function setImages() {
 	$.placeholder.hide();
 	
 	// TODO: Move to Alloy-based generation
-		
-	_.each(images, function(image) {
+	var index = 0;
+	images.forEach(function(image) {
+		var _index = index;
 		var view = Ti.UI.createView({
 			left: 15,
 			top: 10,
@@ -69,12 +70,13 @@ function setImages() {
 		
 		// Android currently doesn't support this due to TIMOB-24379
 		OS_IOS && productImage.addEventListener('click', function(e) {
-			openFullscreenImage(image);
+			openFullscreenImage(images, _index);
 		});
 		
 		view.add(productImage);
 		
 		$.images.add(view);
+		index++;
 	});
 	 	
 	var label = Ti.UI.createLabel({
@@ -94,9 +96,10 @@ function setImages() {
 	$.images.add(label);	
 }
 
-function openFullscreenImage(image) {
+function openFullscreenImage(images, index) {
 	Alloy.createController('/lunches/details/fullscreen', {
-		image: image,
+		images: images,
+		currentIndex: index,
 		title: product.name
 	}).show();
 }
