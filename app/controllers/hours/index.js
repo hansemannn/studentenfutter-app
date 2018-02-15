@@ -1,10 +1,12 @@
-var location;
+var location,
+		firstOpenDone;
 
 /**
  *  Constructor
  */
 (function constructor(args) {
 	location = require('/locations').getCurrentLocation();
+	firstOpenDone = false;
 
 	if (OS_ANDROID) {
   		Alloy.Globals.setAndroidBackButton($.index);
@@ -93,11 +95,12 @@ function setUI() {
 }
 
 function selectAnnotation(e) {
-	if (!Alloy.Globals.isGooglePlayServicesAvailable) {
+	if (!Alloy.Globals.isGooglePlayServicesAvailable || firstOpenDone) {
 		return;
 	}
 	
-	// Requires Ti.Map 3.1.0, ignored on lower versions
+	firstOpenDone = true;
+	
 	if (OS_IOS) {
 		$.map.visibleMapRect = {
 			animated: true,
