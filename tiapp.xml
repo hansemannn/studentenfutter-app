@@ -3,7 +3,7 @@
   xmlns:ti="http://ti.appcelerator.org">
   <id>de.ncn.mensaapp</id>
   <name>Mensa</name>
-  <version>5.0.1.1</version>
+  <version>5.1.0.1</version>
   <publisher>Hans Knoechel</publisher>
   <url>http://studentenfutter-os.de</url>
   <description>not specified</description>
@@ -75,7 +75,7 @@
     <target device="iphone">true</target>
     <target device="mobileweb">false</target>
   </deployment-targets>
-  <sdk-version>6.3.0.GA</sdk-version>
+  <sdk-version>7.0.2.GA</sdk-version>
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>
