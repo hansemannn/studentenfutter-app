@@ -187,6 +187,7 @@ function onRatingUpdated(e) {
 function fetchData(args) {
     if (!args.force) {
         $.placeholder.hide();
+        loader.hide();
         loader.show();
     }
     
