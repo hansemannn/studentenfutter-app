@@ -223,8 +223,9 @@ function togglePriceCategory(e) {
 
 function togglePriceCategoryAndroid() {
     const options = Ti.UI.createOptionDialog({
-        options: priceCategories.concat([L('cancel')]),
-        cancel: 2
+      title: L('price_category'),
+      options: priceCategories.concat([L('cancel')]),
+      cancel: 2
     });
     
     options.addEventListener('click', (e) => {
