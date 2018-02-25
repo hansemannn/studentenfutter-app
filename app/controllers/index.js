@@ -2,7 +2,7 @@
  *  Constructor
  */
 (function constructor(args) {        
-    OS_IOS && Ti.App.iOS.addEventListener('shortcutitemclick', function(e) {
+    OS_IOS && Ti.App.iOS.addEventListener('shortcutitemclick', (e) => {
         switch (e.itemtype) {
             case 'SelectCanteen': openCanteenSelector();
             break;
@@ -14,7 +14,7 @@
 
 function openCanteenSelector() {
     Alloy.createController('/settings/selectCanteen', {
-        selectedCanteen: function(e) {
+        selectedCanteen: (e) => {
             Ti.App.fireEvent('shortcut:canteenSelected', e);              
         }
     }).open();

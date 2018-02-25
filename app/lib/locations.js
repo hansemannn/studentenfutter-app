@@ -127,10 +127,10 @@ const data = [{
 }];
 
 module.exports = {
-	getData : function() {
+	getData : () => {
 		return data;
 	},
-	getCurrentLocation : function() {
+	getCurrentLocation : () => {
 		for (let i = 0; i < data.length; i++) {
 			if (data[i].id === Ti.App.Properties.getInt('currentLocationID',  Alloy.CFG.defaultCanteen.id)) {
 				return data[i];

@@ -89,7 +89,7 @@ function selectAction(e) {
 
 function selectCanteen(e) {
     Alloy.createController('/settings/selectCanteen', {
-        selectedCanteen: function(e) {
+        selectedCanteen: (e) => {
             const generalSection = $.list.getSections()[0];
             const selectCanteenCell = generalSection.getItems()[1];
             
@@ -134,15 +134,15 @@ function showProductDialog() {
         const LoaderInstance = require('/loader');
         const loader = new LoaderInstance($.window);
          
-        TiStoreView.addEventListener('loading', function() {
+        TiStoreView.addEventListener('loading', () => {
             loader.show();
         });
         
-        TiStoreView.addEventListener('error', function(e) {
+        TiStoreView.addEventListener('error', (e) => {
             Ti.API.error(e);
         });
         
-        TiStoreView.addEventListener('willshow', function() {
+        TiStoreView.addEventListener('willshow', () => {
             loader.hide();
         });
         
@@ -225,7 +225,7 @@ function togglePriceCategoryAndroid() {
         cancel: 2
     });
     
-    options.addEventListener('click', function(e) {
+    options.addEventListener('click', (e) => {
         if (e.cancel) {
             return;
         }

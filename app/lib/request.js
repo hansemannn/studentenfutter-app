@@ -74,15 +74,15 @@ const Request = function(_args) {
 			cache: false,
 			timeout: 10000,
 			validatesSecureCertificate: false,
-			onload: function(e) {
-				Ti.API.info('[' + this.getStatus() + ' ' + url + ']');
+			onload: (e) => {
+				Ti.API.info('[' + httpClient.getStatus() + ' ' + url + ']');
 
 				if (args.clearContentType) {
-					args.success(this.responseData);
+					args.success(httpClient.responseData);
 					return;
 				}
 
-				const json = this.responseText;
+				const json = httpClient.responseText;
 				let response = null;
 				
 				try {
@@ -94,9 +94,9 @@ const Request = function(_args) {
 				const file = (parseJsonFile(args.cacheName)) ? parseJsonFile(args.cacheName) : null;
 
 				if (args.cacheName) {
-					if (dataHasChanged(this.responseText)) {
+					if (dataHasChanged(httpClient.responseText)) {
 						const f = Titanium.Filesystem.getFile(getCacheDir(), args.cacheName);
-						f.write(this.responseText);
+						f.write(httpClient.responseText);
 
 						Ti.API.info('-> [Cache updated - ' + args.cacheName + ']');
 
@@ -114,14 +114,14 @@ const Request = function(_args) {
 					args.anyway();
 			},
 
-			onerror: function(e) {
+			onerror: (e) => {
 				let response;
-				const status = this.getStatus();
+				const status = httpClient.getStatus();
 
 				Ti.API.error('[' + status + ' ' + url + ']');
 
 				try {
-					response = JSON.parse(this.responseText);
+					response = JSON.parse(httpClient.responseText);
 				} catch(e) {
 					response = null;
 				}
@@ -176,7 +176,7 @@ const Request = function(_args) {
 			httpClient.setRequestHeader('Authorization', 'Basic ' + getCredentials());
 		}
 			
-		_.each(args.headers, function(header) {
+		args.headers && args.headers.forEach(header => {
 			if (header.length != 2) {
 				Ti.API.error('request header needs to have 2 arguments ');
 				return;

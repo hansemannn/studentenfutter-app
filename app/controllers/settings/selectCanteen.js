@@ -47,13 +47,13 @@ function populateLocations() {
         
         if (OS_ANDROID) {
             attrs = {
-                properties: _.extend(attrs.properties, {
+                properties: Object.assign(attrs.properties, {
                     left: 15,
-            	    height: 43,
-            	    color: '#000',
-            	    font: {
-                    	fontSize: 15
-                    }
+            	       height: 43,
+            	       color: '#000',
+            	       font: {
+                         fontSize: 15
+                     }
                 })
             };
         }

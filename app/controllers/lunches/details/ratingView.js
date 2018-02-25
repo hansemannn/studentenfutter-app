@@ -52,7 +52,7 @@ function submitRating() {
 		productId: productId,
 		userId: Ti.Platform.getId(),
 		rating: rating
-	}, function(e) {	
+	}, (e) => {	
 		if (!e.success) {
 			Ti.UI.createAlertDialog({
 				title: L('rating_error'), 
@@ -72,7 +72,7 @@ function hide() {
 	$.container.animate({
 		opacity: 0,
 		duration: 500
-	}, function() {
+	}, () => {
 		parent.remove($.container);
 	});
 }

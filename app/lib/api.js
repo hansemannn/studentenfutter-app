@@ -1,10 +1,12 @@
+import RequestInstance from '/request';
+
 function performFallback(cb) {
 	const dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/lunches.json');
 				
 	// Simulate HTTP request	
 	setTimeout(function() {
 		try {
-			cb(_.extend(JSON.parse(dummyLunches.read()), {success: true}));
+			cb(Object.assign(JSON.parse(dummyLunches.read()), {success: true}));
 		} catch(e) {
 			Ti.API.error('Unable to parse JSON: ' + e);
 			cb({success: false});
@@ -21,7 +23,7 @@ function contribFallback(cb) {
 	// Simulate HTTP request	
 	setTimeout(function() {
 		try {
-			cb(_.extend(JSON.parse(dummyContrib.read()), {success: true}));
+			cb(Object.assign(JSON.parse(dummyContrib.read()), {success: true}));
 		} catch(e) {
 			Ti.API.error('Unable to parse JSON: ' + e);
 			cb({success: false});
@@ -38,20 +40,19 @@ function contribFallback(cb) {
 exports.postProductImage = function(params, cb, onProcess) {
 	try {
 		const auth = require('/auth');
-		const RequestInstance = require('/request');
 				
 		const request = new RequestInstance({
 			url : '/images/new',
 			type : 'POST',
 			data: params,
 			isFileUpload: true,
-			process: function(e) {
+			process: (e) => {
 				onProcess && onProcess(e);
 			},
-			success: function(json) {
-				cb(_.extend(json, {success: true}));
+			success: json => {
+				cb(Object.assign(json, {success: true}));
 			},
-			error: function() {
+			error: () => {
 				cb({success: false});
 			}
 		});
@@ -77,7 +78,6 @@ exports.postRating = function(params, cb) {
 	
 	try {
 		const auth = require('/auth');
-		const RequestInstance = require('/request');
 				
 		const request = new RequestInstance({
 			url : '/ratings/new',
@@ -87,11 +87,11 @@ exports.postRating = function(params, cb) {
 				userId: Ti.Platform.id,
 				value: params.rating
 			},
-			success: function(json) {
+			success: json => {
 				Ti.App.Properties.setBool(productIdentifier, true);
 				cb(json);
 			},
-			error: function() {
+			error: () => {
 				cb({success: false});
 			}
 		});
@@ -110,15 +110,14 @@ exports.postRating = function(params, cb) {
 exports.getLunches = function(params, cb) {
 	try {
 		const auth = require('/auth');
-		const RequestInstance = require('/request');
 		
 		const request = new RequestInstance({
 			url : '/lunches/list/' + params.date + '/' + params.location,
 			type : 'GET',
-			success : function(json) {
-				cb(_.extend(json, {success: true}));
+			success: json => {
+				cb(Object.assign(json, {success: true}));
 			},
-			error : function() {
+			error : () => {
 				cb({success: false});
 			}
 		});
@@ -139,15 +138,14 @@ exports.getLunches = function(params, cb) {
  */
 exports.getContrib = function(cb) {
 	try {
-		const RequestInstance = require('/request');
 		const request = new RequestInstance({
 			url : 'https://api.github.com/repos/hansemannn/studentenfutter-app/contributors',
 			external: true,
 			type : 'GET',
-			success : function(json) {
-				cb(_.extend(json, {success: true}));
+			success: json => {
+				cb(Object.assign(json, {success: true}));
 			},
-			error : function() {
+			error : () => {
 				cb({success: false});
 			}
 		});
