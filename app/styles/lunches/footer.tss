@@ -1,59 +1,59 @@
-".footerWrapper": {
+'.footerWrapper': {
     height: Alloy.Globals.footerHeight,
     bottom: 0,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
 }
 
-".footer": {
+'.footer': {
     height: 44,
     top: 0
 }
 
-".button": {
-    tintColor: "#a4a4a4"
+'.button': {
+    tintColor: '#a4a4a4'
 }
 
-".button[platform=android]": {
+'.button[platform=android]': {
     width: 35,
     height: 35
 }
 
-".settings": {
+'.settings': {
     left: 15,
-    image: "/images/icons/settings.png"
+    image: '/images/icons/settings.png'
 }
 
-".hours": {
+'.hours': {
     right: 15,
-    image: "/images/icons/hours.png"
+    image: '/images/icons/hours.png'
 }
 
-".center": {
+'.center': {
     height: 43,
     top: 6,
     width: 200,
-    layout: "vertical"
+    layout: 'vertical'
 }
 
-"#amount": {
+'#amount': {
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
     font : {
         fontSize : 14
     },
     width: 200,
-    color : "#6b6b6b"
+    color : '#6b6b6b'
 }
 
-"#location": {
+'#location': {
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
     font : {
         fontSize : 10
     },
-    color : "#aeaeae"
+    color : '#aeaeae'
 }
 
-".sep": {
+'.sep': {
     top: 0,
     height: 1,
-    backgroundColor: "#e8e8e8"
+    backgroundColor: '#e8e8e8'
 }

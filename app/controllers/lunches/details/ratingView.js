@@ -1,7 +1,9 @@
-var parent,
-	productId,
-	rating,
-	onRatingUpdated;
+import api from '/api';
+
+let parent;
+let productId;
+let rating;
+let onRatingUpdated;
 
 /**
  *  Constructor
@@ -23,12 +25,12 @@ function setRating(e) {
 		
 	// TODO: Find smarter way for this midnight hacking!
 	
-	for (var i = 1; i <= rating; i++) {
+	for (let i = 1; i <= rating; i++) {
 		$.rating.children[i - 1].setImage('/images/icons/singleStarFull.png');
 	}
 	
 	if (rating < 5) {
-		for (var i = rating + 1; i <= 5; i++) {
+		for (let i = rating + 1; i <= 5; i++) {
 			$.rating.children[i - 1].setImage('/images/icons/singleStarEmpty.png');
 		} 	
 	}	
@@ -41,8 +43,6 @@ function submitRating() {
 		Ti.API.error('State error: Should have selected at least 1 at this point!');
 		return;
 	}
-	
-	var api = require('/api');
 	
 	$.innerContent.hide();
 	$.loader.setVisible(true);
@@ -78,7 +78,7 @@ function hide() {
 }
 
 function generateRatingUI() {
-	for (var i = 1; i <= 5; i++) {
+	for (let i = 1; i <= 5; i++) {
 		$.rating.add(Ti.UI.createImageView({
 			image: '/images/icons/singleStarEmpty.png',
 			userData: {

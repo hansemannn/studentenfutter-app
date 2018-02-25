@@ -1,16 +1,16 @@
-var nav,
-    utils,
-    appStoreURL,
-    priceCategories,
-    onSettingsUpdated;
+import utils from '/utils';
+
+const priceCategories = [L('student'), L('employee')];
+
+let nav;
+let onSettingsUpdated;
+let appStoreIdentifier;
 
 /**
  *  Constructor
  */
 (function constructor(args) {
     onSettingsUpdated = args.onSettingsUpdated;
-    utils = require('/utils');
-    priceCategories = [L('student'), L('employee')];
     
     if (OS_IOS) {
         nav = Ti.UI.iOS.createNavigationWindow({
@@ -20,7 +20,7 @@ var nav,
     } else {
         appStoreIdentifier = Ti.App.getId();
 
-        var item = $.list.sections[0].items[0];
+        let item = $.list.sections[0].items[0];
         item.selectedCategory.text = priceCategories[Ti.App.Properties.getInt('currentPersonID', 0)];
         
         if (OS_IOS) {
@@ -35,9 +35,9 @@ var nav,
 })(arguments[0] || {});
 
 function configureCells() {
-    var generalSection = $.list.getSections()[0];
-    var selectedPriceCategory = generalSection.getItems()[0];
-    var selectCanteenCell = generalSection.getItems()[1];
+    const generalSection = $.list.getSections()[0];
+    const selectedPriceCategory = generalSection.getItems()[0];
+    const selectCanteenCell = generalSection.getItems()[1];
     
     selectedPriceCategory.tabbedBar.index = Ti.App.Properties.getInt('currentPersonID', 0);
     
@@ -57,27 +57,27 @@ function changePreference(e) {
 }
 
 function selectAction(e) {
-    var item = e.section.getItemAt(e.itemIndex);
-    var action = item.properties.action;
+    const item = e.section.getItemAt(e.itemIndex);
+    const action = item.properties.action;
     
     if (!action || (OS_IOS && action === 'togglePriceCategoryAndroid')) {
         return;
     }
     
     switch (action) {
-      case "selectCanteen": 
+      case 'selectCanteen': 
       selectCanteen();
       break;
-      case "openHours": 
+      case 'openHours': 
       openHours();
       break;
-      case "rateApp": 
+      case 'rateApp': 
       rateApp();
       break;
-      case "openContributors": 
+      case 'openContributors': 
       openContributors();
       break;
-      case "reportError": 
+      case 'reportError': 
       reportError();
       break;
       default:
@@ -90,8 +90,8 @@ function selectAction(e) {
 function selectCanteen(e) {
     Alloy.createController('/settings/selectCanteen', {
         selectedCanteen: function(e) {
-            var generalSection = $.list.getSections()[0];
-            var selectCanteenCell = generalSection.getItems()[1];
+            const generalSection = $.list.getSections()[0];
+            const selectCanteenCell = generalSection.getItems()[1];
             
             selectCanteenCell.template = Ti.UI.LIST_ITEM_TEMPLATE_SUBTITLE;
             selectCanteenCell.properties.subtitle = e.title;
@@ -103,7 +103,7 @@ function selectCanteen(e) {
 }
 
 function openHours() {
-    var hours = Alloy.createController("/hours/index").getView();
+    const hours = Alloy.createController('/hours/index').getView();
     
     if (OS_IOS) {
         nav.openWindow(hours);
@@ -121,8 +121,8 @@ function rateApp() {
 }
 
 function showProductDialog() {
-    var TiStoreView = require('com.dezinezync.storeview');
-    var TiReviewDialog = require('ti.reviewdialog');
+    const TiStoreView = require('com.dezinezync.storeview');
+    const TiReviewDialog = require('ti.reviewdialog');
     
     if (!TiReviewDialog.isSupported() && utils.isEmulator()) {
         Ti.API.warn('The Ti.StoreView dialog is only supposed to work on device!');
@@ -130,9 +130,9 @@ function showProductDialog() {
     }
     
     if (!TiReviewDialog.isSupported()) {
-        var TiStoreView = require('com.dezinezync.storeview');
-        var LoaderInstance = require('/loader');
-        var loader = new LoaderInstance($.window);
+        const TiStoreView = require('com.dezinezync.storeview');
+        const LoaderInstance = require('/loader');
+        const loader = new LoaderInstance($.window);
          
         TiStoreView.addEventListener('loading', function() {
             loader.show();
@@ -155,7 +155,7 @@ function showProductDialog() {
 }
 
 function openAbout() {
-    var aboutPage = Alloy.createController('/settings/webview', 'about').getView();
+    const aboutPage = Alloy.createController('/settings/webview', 'about').getView();
     
     if (OS_IOS) {
         nav.openWindow(aboutPage);
@@ -165,7 +165,7 @@ function openAbout() {
 }
 
 function openContributors() {
-    var contributorsPage = Alloy.createController('/settings/contributors').getView();
+    const contributorsPage = Alloy.createController('/settings/contributors').getView();
 
     if (OS_IOS) {
         nav.openWindow(contributorsPage);
@@ -175,7 +175,7 @@ function openContributors() {
 }
 
 function reportError() {
-    var mail = Ti.UI.createEmailDialog({
+    const mail = Ti.UI.createEmailDialog({
         subject : 'Studentenfutter ' + Ti.App.getVersion(),
         toRecipients : ['apps@hans-knoechel.de']
     });
@@ -220,7 +220,7 @@ function togglePriceCategory(e) {
 }
 
 function togglePriceCategoryAndroid() {
-    var options = Ti.UI.createOptionDialog({
+    const options = Ti.UI.createOptionDialog({
         options: priceCategories.concat([L('cancel')]),
         cancel: 2
     });
@@ -232,7 +232,7 @@ function togglePriceCategoryAndroid() {
         
         togglePriceCategory(e);
         
-        var item = $.list.sections[0].items[0];
+        let item = $.list.sections[0].items[0];
         item.selectedCategory.text = priceCategories[e.index];
 
         if (OS_IOS) {

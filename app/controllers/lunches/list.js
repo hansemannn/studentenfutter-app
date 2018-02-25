@@ -1,27 +1,22 @@
- var nav,
-    loader,
-    LoaderInstance,
-    utils,
-    dateutils,
-    LunchState,
-    currentLunchState,
-    cart,
-    lunches;
+import utils from '/utils';
+import dateutils from '/dateutils';
+  
+const cart = Alloy.Models.cart;     
+const LunchState = {
+    Student: 0,
+    Employee: 1
+};
+
+let nav;
+let loader;
+let LoaderInstance;
+let lunches;
+let currentLunchState = LunchState.Student;      
 
 /**
  *  Constructor
  */
-(function constructor(args) {    
-    LunchState = {
-        Student: 0,
-        Employee: 1
-    };
-    
-    currentLunchState = LunchState.Student;      
-    cart = Alloy.Models.cart;     
-    utils = require('/utils');
-    dateutils = require('/dateutils');
-   
+(function constructor(args) {     
     $.footer.onSettingsUpdated(onSettingsUpdated);
     
     cart.on('update', function(summary) {
@@ -41,8 +36,8 @@
     } else if (OS_ANDROID) {
         /**
          * FIXME: Crashes for some reason?
-        var swipeRefreshModule = require('com.rkam.swiperefreshlayout');
-        var swipeRefresh = swipeRefreshModule.createSwipeRefresh({
+        const swipeRefreshModule = require('com.rkam.swiperefreshlayout');
+        const swipeRefresh = swipeRefreshModule.createSwipeRefresh({
             view: $.listView,
             height: Ti.UI.FILL,
             width: Ti.UI.FILL
@@ -63,15 +58,15 @@ function createPreviewContext() {
         return;
     }
 	
-    var previewContext = Ti.UI.iOS.createPreviewContext({
+    const previewContext = Ti.UI.iOS.createPreviewContext({
 		preview: createPreviewView(),
 		contentHeight: 400
 	});			
 	
 	previewContext.addEventListener('peek', function(e) {
-        var product = _.findWhere(lunches, {id: e.itemId});
-		var images = product ? product.images : null;
-		var preview = $.listView.getPreviewContext().preview;
+        const product = _.findWhere(lunches, {id: e.itemId});
+		const images = product ? product.images : null;
+		const preview = $.listView.getPreviewContext().preview;
 
 		if (images && images.length > 0) {
 			preview.children[0].setImage(images[0]);
@@ -88,7 +83,7 @@ function createPreviewContext() {
 }
 
 function createPreviewView() {
-    var preview = Ti.UI.createView({
+    const preview = Ti.UI.createView({
 		borderRadius: 20,
 		backgroundColor: '#fff',
 		height: Ti.UI.SIZE
@@ -157,11 +152,11 @@ function handleListItemClick(e) {
 
 function openDetails(itemId, animated) {
     // TODO: Move all products to Models
-    var product = null
+    let product;
     
     // FIXME: Use better underscore-method to find the ID. Problem was Android here
     _.each(lunches, function(lunch) {
-        if (lunch.id===itemId) {
+        if (lunch.id === itemId) {
             product = lunch;
         }
     });
@@ -193,7 +188,7 @@ function fetchData(args) {
     
     $.window.setTitle(L('loading'));
     
-    var api = require('/api');
+    const api = require('/api');
     api.getLunches({
         date: dateutils.getCurrentDateSlug(), 
         location: Ti.App.Properties.getInt('currentLocationID', Alloy.CFG.defaultCanteen.id)
@@ -207,11 +202,11 @@ function fetchData(args) {
 function setUI() {
     $.refresh.endRefreshing();
     
-    var showAdditives = Ti.App.Properties.getBool('showAdditives', true);
-    var showRatings = Ti.App.Properties.getBool('showRatings', true);
-    var sections = [];
+    const showAdditives = Ti.App.Properties.getBool('showAdditives', true);
+    const showRatings = Ti.App.Properties.getBool('showRatings', true);
+    let sections = [];
     
-    var categories = [
+    const categories = [
         L('Hauptgericht'), 
         L('Beilagen'), 
         L('Dessert'), 
@@ -223,22 +218,22 @@ function setUI() {
     cart.resetTotal(false);
 
     _.each(categories, function(category, index) {
-        var section = Alloy.createController('/lunches/section', {
+        const section = Alloy.createController('/lunches/section', {
             title: category,
             index: index
         }).getView();
 
-        var cells = [];
+        let cells = [];
 
         _.each(lunches, function(lunch) {
             if (L(lunch.category, lunch.category) != category) {
                 return;
             }
             
-            var hasAdditives = lunch.additives && lunch.additives.length;
-            var price = currentLunchState===LunchState.Student ? lunch.priceStudent.split(' €')[0] : lunch.priceOfficial.split(' €')[0];
+            const hasAdditives = lunch.additives && lunch.additives.length;
+            const price = currentLunchState===LunchState.Student ? lunch.priceStudent.split(' €')[0] : lunch.priceOfficial.split(' €')[0];
                 
-            var attr = {
+            const attr = {
                 itemId: lunch.id,
                 count: 0,
                 price: price,
@@ -305,9 +300,9 @@ function setUI() {
 }
 
 function formattedAdditives(count) {
-    if (count===0) {
+    if (count === 0) {
         return L('no_additives');
-    } else if (count===1) {
+    } else if (count === 1) {
         return L('one_additive');
     }
     return count + ' ' + L('additives');
@@ -322,14 +317,14 @@ function open() {
 }
 
 function incrementPrice(e) {
-    var item = e.section.getItemAt(e.itemIndex);
+    const item = e.section.getItemAt(e.itemIndex);
     
     item.count++;
     item.lunchCount.text = item.count;
     cart.increment(item.price);
 
     // First Increment
-    if (item.count===1) {
+    if (item.count === 1) {
         item.buttonRemove.visible = true;
         item.lunchCountContainer.visible = true;
         item.lunchPriceContainer.backgroundImage = '/images/priceBgSelected.png';
@@ -341,14 +336,14 @@ function incrementPrice(e) {
 }
 
 function decrementPrice(e) {
-    var item = e.section.getItemAt(e.itemIndex);
+    const item = e.section.getItemAt(e.itemIndex);
         
     item.count--;
     item.lunchCount.text = item.count;
     cart.decrement(item.price);
     
     // Last Decrement
-    if (item.count===0) {
+    if (item.count === 0) {
         item.buttonRemove.visible = false;
         item.lunchCountContainer.visible = false;
         item.lunchPriceContainer.backgroundImage = '/images/priceBg.png';

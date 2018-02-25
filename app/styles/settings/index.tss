@@ -1,69 +1,69 @@
-"Window[platform=ios]": {
+'Window[platform=ios]': {
 	modalStyle: Ti.UI.iOS.MODAL_PRESENTATION_FORMSHEET
 }
 
-"#list": {
+'#list': {
 	listSeparatorInsets: {
 		left: 15
 	}
 }
 
-"#list[platform=android]": {
-	backgroundColor: "white"
+'#list[platform=android]': {
+	backgroundColor: 'white'
 }
 
-"ListItem[platform=android]": {
+'ListItem[platform=android]': {
 	left: 10,
 	height: 43,
 	font: {
 		fontSize: 15
 	},
-	color: "#000"
+	color: '#000'
 }
 
-"#list[platform=ios]": {
+'#list[platform=ios]': {
 	style: Ti.UI.iOS.ListViewStyle.GROUPED,
 	top: -5
 }
 
-".title": {
+'.title': {
 	left: 5,
-	color: "#000"
+	color: '#000'
 }
 
-".title[platform=ios]": {
+'.title[platform=ios]': {
 	left: 15,
 	font: {
 		fontSize: 17
 	}
 }
 
-".toggle": {
+'.toggle': {
 	right: 15
 }
 
-".detailNoSelectable[platform=ios]": {
+'.detailNoSelectable[platform=ios]': {
 	selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
 }
 
-".detailNoSelectable[platform=android]": {
+'.detailNoSelectable[platform=android]': {
 	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DETAIL
 }
 
-".tabbedBar[platform=ios]": {	
+'.tabbedBar[platform=ios]': {	
     backgroundColor : Alloy.CFG.styles.tintColor,
 	right: 15
 }
 
-".selectedCategory[platform=android]": {	
+'.selectedCategory[platform=android]': {	
     right: 30,
 	color: Alloy.CFG.styles.tintColor
 }
 
-".contactSection[platform=ios]": {
-	footerTitle: "Made with ⚒ in Osnabrück, 🇩🇪" // TODO: Localize properly
+'.contactSection[platform=ios]': {
+	footerTitle: 'Made with ⚒ in Osnabrück, 🇩🇪' // TODO: Localize properly
 }
 
-"#picker": {
+'#picker': {
 	right: 15
 }

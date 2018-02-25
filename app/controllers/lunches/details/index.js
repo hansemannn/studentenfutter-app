@@ -1,10 +1,16 @@
-var nav,
-	product,
-	onRatingUpdated,
-	ListAction,
-	utils = require('/utils'),
-	LoaderInstance = require('/loader'),
-	api = require('/api');
+import utils from '/utils';
+import LoaderInstance from '/loader';
+import api from '/api';
+import { ImageFactory } from 'ti.imagefactory';
+
+const ListAction = {
+	PerformRating: 'rating',
+	ShowAdditives: 'additives'		
+};
+
+let nav;
+let product;
+let onRatingUpdated;
 
 /**
  *  Constructor
@@ -21,12 +27,6 @@ var nav,
         Alloy.Globals.setAndroidBackButton($.details);
     }
 	
-	// Mapped to the itemId's of the items
-	ListAction = {
-		PerformRating: 'rating',
-		ShowAdditives: 'additives'		
-	};
-	
 	setUI();
 })(arguments[0] || {});
 
@@ -39,20 +39,20 @@ function setUI() {
 }
 
 function setImages() {
-	var images = product.images || null;
-	var views = [];
+	const images = product.images || null;
+	let views = [];
 		
-	if (!images || images.length===0) {
+	if (!images || images.length === 0) {
 		return;
 	}
 	
 	$.placeholder.hide();
 	
 	// TODO: Move to Alloy-based generation
-	var index = 0;
+	let index = 0;
 	images.forEach(function(image) {
-		var _index = index;
-		var view = Ti.UI.createView({
+		const _index = index;
+		const view = Ti.UI.createView({
 			left: 15,
 			top: 10,
 			height: 165,
@@ -63,7 +63,7 @@ function setImages() {
 			viewShadowOffset: {x: 0, y: 2}
 		});
 		
-		var productImage = Ti.UI.createImageView({
+		const productImage = Ti.UI.createImageView({
 			defaultImage: '/images/noImage.png',
 			borderRadius: 0,
 			image: image,
@@ -80,7 +80,7 @@ function setImages() {
 		index++;
 	});
 	 	
-	var label = Ti.UI.createLabel({
+	const label = Ti.UI.createLabel({
 		text: '+ ',
 		color: '#fff',
 		opacity: 0.3,
@@ -106,17 +106,17 @@ function openFullscreenImage(images, index) {
 }
 
 function setRating(rating) {
-	var section = $.list.sections[0];
-	var ratingCell = section.items[0];
+	const section = $.list.sections[0];
+	const ratingCell = section.items[0];
 
 	ratingCell.rating.image = utils.formattedStars(rating);
 	section.updateItemAt(0, ratingCell);
 }
 
 function setAdditives() {
-	var section = $.list.sections[0];
-	var additivesCell = section.items[1];
-	var hasAdditives = product.additives && product.additives.length;
+	const section = $.list.sections[0];
+	const additivesCell = section.items[1];
+	const hasAdditives = product.additives && product.additives.length;
 	
 	if (!hasAdditives) {
 		section.deleteItemsAt(1, 1);
@@ -184,7 +184,7 @@ function showCamera() {
 }
 
 function sendGeneratedDemoImage() {
-	var dialog = Ti.UI.createAlertDialog({
+	const dialog = Ti.UI.createAlertDialog({
 		title: 'Simulator',
 		message: 'You are currently running on the Simulator - without camera! We will generate a 1000x1000 red square now and try to send it to the server, do you really want to proceed?',
 		buttonNames: ['Cancel', 'Proceed'],
@@ -193,7 +193,7 @@ function sendGeneratedDemoImage() {
 	});
 	
 	dialog.addEventListener('click', function(e) {
-		if (e.index===1) {
+		if (e.index === 1) {
 			sendProductImage(Ti.UI.createView({
 				width: 1000,
 				height: 1000,
@@ -217,10 +217,10 @@ function sendProductImage(image) {
 		loader.hide();
 		
 		if (!e.awaitingModeration) {
-			var title = L(e.feedbackTitle || 'upload_success', 'upload_success');
-			var message = L(e.feedbackMessage || 'upload_success_msg', 'upload_success_msg');
+			const title = L(e.feedbackTitle || 'upload_success', 'upload_success');
+			const message = L(e.feedbackMessage || 'upload_success_msg', 'upload_success_msg');
 			
-			var dia = Ti.UI.createAlertDialog({
+			const dia = Ti.UI.createAlertDialog({
 				title: title,
 				message: message,
 				buttonNames: [L('ok')]
@@ -237,18 +237,16 @@ function processImage(image) {
 		return image.imageAsThumbnail(800);
 	}
 
-	var outputImage;
-	var imageFactory = require('ti.imagefactory');
-	var maxImageSize = 500000;
-	var maxImageWidth = 1024;
+	const maxImageSize = 500000;
+	const maxImageWidth = 1024;
 
-	outputImage = imageFactory.compress(image, 0);
+	let outputImage = ImageFactory.compress(image, 0);
 	
 	Ti.API.debug('Image Size (before): ' + outputImage.length / 1000 + ' kb');
 
 	if (outputImage.length > maxImageSize) {
-		var newWidth,
-		    newHeight;
+		let newWidth;
+		let newHeight;
 
 		if (image.width > image.height) {
 			// Querformat-Bilder auf eine Breite von 1024 fixieren
@@ -260,13 +258,13 @@ function processImage(image) {
 			newWidth = image.width / image.height * newHeight;
 		}
 
-		outputImage = imageFactory.imageAsResized(image, {
+		outputImage = ImageFactory.imageAsResized(image, {
 			width : newWidth,
 			height : newHeight
 		});
 
 		if (outputImage.length > maxImageSize) {
-			outputImage = imageFactory.compress(image, 0);
+			outputImage = ImageFactory.compress(image, 0);
 		}		
 	}
 	
@@ -309,15 +307,15 @@ function performRating() {
 }
 
 function showAdditives() {
-	var usedAdditives = product.additives || [];
+	const usedAdditives = product.additives || [];
 	
-	if (usedAdditives===0) {
+	if (usedAdditives === 0) {
 		return;
 	}
 	
 	try {
-		var additives = JSON.parse(Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/additives.json').read());
-		var result = [];
+		const additives = JSON.parse(Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/additives.json').read());
+		let result = [];
 		
 		_.map(additives, function(additive) {
 			if (usedAdditives.indexOf(String(additive.id)) !== -1) {
@@ -326,7 +324,7 @@ function showAdditives() {
 		})
 			
 		// Some nice hack: Remove the last commata with an 'and'
-		var message = result.join(', ');
+		let message = result.join(', ');
 		
 		if (message.lastIndexOf(', ') !== -1) {
 			message = setCharAt(message, message.lastIndexOf(', '), ' ' + L('and') + ' ');
