@@ -112,7 +112,7 @@ exports.makeTabbedBar = function(/*map*/_params, /*function*/ _fn) {
 			btnArray.push(subBtn);
 			wrapper.add(subBtn);
 		}
-        wrapper.addEventListener('click', function(e) {
+        wrapper.addEventListener('click', (e) => {
 			for (let i=0; i < numButtons; i++) {
 				btnArray[i].children[0].setColor('#51ccf3');
 				btnArray[i].children[1].backgroundColor = (_params.backgroundColor) ? _params.backgroundColor : DEFAULTS.backgroundColor;

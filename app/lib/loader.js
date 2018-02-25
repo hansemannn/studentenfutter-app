@@ -57,7 +57,7 @@ const Loader = function(_view) {
 				spinner.animate({
 					opacity : 0,
 					duration : 250
-				}, function() {
+				}, () => {
 					view.remove(loggingInView);
 				});
 			}

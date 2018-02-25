@@ -59,7 +59,7 @@ exports.show = function() {
 };
 
 function zoom() {
-	this.setZoomScale((this.getZoomScale() === 1) ? 2 : 1, {
+	$.images.setZoomScale(($.images.getZoomScale() === 1) ? 2 : 1, {
 		animated:true
 	});
 }

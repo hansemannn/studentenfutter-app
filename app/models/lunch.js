@@ -18,14 +18,10 @@ exports.definition = {
 		}
 	},
 
-	extendModel : function(Model) {
-		_.extend(Model.prototype, {
-			// extended functions and properties go here
-		});
-
+	extendModel: Model => {
 		return Model;
 	},
-	extendCollection : function(Collection) {
+	extendCollection: Collection => {
 	
 	}
 };

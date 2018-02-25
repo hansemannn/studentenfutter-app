@@ -70,7 +70,7 @@ function setImages() {
 		});
 		
 		// Android currently doesn't support this due to TIMOB-24379
-		OS_IOS && productImage.addEventListener('click', function(e) {
+		OS_IOS && productImage.addEventListener('click', (e) => {
 			openFullscreenImage(images, _index);
 		});
 		
@@ -153,7 +153,7 @@ function showCamera() {
 			allowEditing : true,
 			mediaTypes: [Ti.Media.MEDIA_TYPE_PHOTO],
 			saveToPhotoGallery : false,
-			success : function(e) {
+			success : (e) => {
 				if (e.media) {
 					sendProductImage(processImage(e.media));
 				} else {
@@ -192,7 +192,7 @@ function sendGeneratedDemoImage() {
 		cancel: 0
 	});
 	
-	dialog.addEventListener('click', function(e) {
+	dialog.addEventListener('click', (e) => {
 		if (e.index === 1) {
 			sendProductImage(Ti.UI.createView({
 				width: 1000,
@@ -213,7 +213,7 @@ function sendProductImage(image) {
 		'image[productId]': product.id,
 		'image[userId]': Ti.Platform.getId(),
 		'image[originalResource]': image
-	}, function(e) {
+	}, (e) => {
 		loader.hide();
 		
 		if (!e.awaitingModeration) {
@@ -227,7 +227,7 @@ function sendProductImage(image) {
 			});
 			dia.show();
 		}
-	}, function(e) {
+	}, (e) => {
 		Ti.API.info('Process:' + e.value);
 	});
 }
@@ -299,7 +299,7 @@ function performRating() {
 	Alloy.createController('/lunches/details/ratingView', {
 		parent: $.details,
 		productId: product.id,
-		onRatingUpdated: function(newRating) {
+		onRatingUpdated: newRating => {
 			setRating({value: newRating});
 			onRatingUpdated();
 		}
@@ -317,11 +317,11 @@ function showAdditives() {
 		const additives = JSON.parse(Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/additives.json').read());
 		let result = [];
 		
-		_.map(additives, function(additive) {
+		additives.forEach(additive => {
 			if (usedAdditives.indexOf(String(additive.id)) !== -1) {
 				result.push(additive.name);
 			}
-		})
+		});
 			
 		// Some nice hack: Remove the last commata with an 'and'
 		let message = result.join(', ');

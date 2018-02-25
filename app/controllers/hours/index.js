@@ -1,3 +1,5 @@
+import Map from 'ti.map';
+
 let location,
 		firstOpenDone;
 
@@ -22,7 +24,7 @@ function setMap() {
 		return;
 	}
 	
-	const pin = Alloy.Globals.Map.createAnnotation({
+	const pin = Map.createAnnotation({
 		latitude: location.location.lat,
 		longitude: location.location.lon,
 		title: location.title,
@@ -47,7 +49,7 @@ function askForRoute() {
 		cancel: 0
 	});
 
-	dia.addEventListener('click', function(e) {
+	dia.addEventListener('click', (e) => {
 		if (e.index === 1) {
 			const prefix = (OS_ANDROID) ? 'http://maps.google.com/?' : 'maps:';
 			Ti.Platform.openURL(prefix + 'f=d&hl=en&geocode=&saddr=&sll=&daddr=' +  encodeURIComponent(location.location.address))
@@ -74,7 +76,7 @@ function setUI() {
 		
 		if (OS_ANDROID) {
 			attrs = {
-				properties: _.extend(attrs.properties, {
+				properties: Object.assign(attrs.properties, {
 					left: 15,
 					color: '#000',
 					font: {

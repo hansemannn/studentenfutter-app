@@ -33,18 +33,6 @@ let currentLunchState = LunchState.Student;
     if (OS_IOS) {
         nav = createNavigationWindow();
         $.listView.setPreviewContext(createPreviewContext());
-    } else if (OS_ANDROID) {
-        /**
-         * FIXME: Crashes for some reason?
-        const swipeRefreshModule = require('com.rkam.swiperefreshlayout');
-        const swipeRefresh = swipeRefreshModule.createSwipeRefresh({
-            view: $.listView,
-            height: Ti.UI.FILL,
-            width: Ti.UI.FILL
-        });
-        
-        $.window.add(swipeRefresh);
-        */
     }
     
     initializeLoader();

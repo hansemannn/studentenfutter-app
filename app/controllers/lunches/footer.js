@@ -4,13 +4,13 @@ let onSettingsUpdated;
  *  Constructor
  */
 (function constructor(args) {
-    $.amount.setText(L('total_amount') + ': 0.00 €');
+    $.amount.setText(`${L('total_amount')}: 0.00 €`);
     $.location.setText(Ti.App.Properties.getString('currentLocationName', Alloy.CFG.defaultCanteen.title));
 })(arguments[0] || {});
 
 function openSettings() {
     Alloy.createController('/settings/index', {
-        onSettingsUpdated: function(e) {
+        onSettingsUpdated: (e) => {
             switch (e.action) {
                 case 'selectCanteen':
                     $.location.setText(e.title);
@@ -30,7 +30,7 @@ exports.onSettingsUpdated = function(_onSettingsUpdated) {
 };
 
 exports.updateTotalSummary = function(_summary) {
-    $.amount.setText(L('total_amount') + ': ' + _summary);
+    $.amount.setText(`${L('total_amount')}: ${_summary}`);
 };
 
 exports.updateCurrentCanteen = function(_text) {
