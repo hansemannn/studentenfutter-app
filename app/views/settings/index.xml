@@ -11,7 +11,7 @@
 			              <Label>L("employee")</Label>
 			            </Labels>
 					</TabbedBar>		
-					<Label bindId="selectedCategory" class="selectedCategory" platform="android" />	
+					<Label bindId="selectedCategory" onClick="togglePriceCategoryAndroid" class="selectedCategory" platform="android" />	
 				</ItemTemplate>
 			</Templates>
 			<ListSection headerTitle="L('general')">

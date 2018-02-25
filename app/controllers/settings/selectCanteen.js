@@ -2,6 +2,7 @@ import Locations from '/locations';
 
 let nav;
 let selectedCanteen;
+let locations;
 
 /**
  *  Constructor
