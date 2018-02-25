@@ -49,18 +49,19 @@ const Loader = function(_view) {
 	};
 
 	this.hide = function(_type) {
+		if (!loggingInView) {
+			return;
+		}
 
 		if (OS_ANDROID) {
 			loggingInView.hide();
 		} else {
-			if (loggingInView != undefined) {
-				spinner.animate({
-					opacity : 0,
-					duration : 250
-				}, () => {
-					view.remove(loggingInView);
-				});
-			}
+			spinner.animate({
+				opacity : 0,
+				duration : 250
+			}, () => {
+				view.remove(loggingInView);
+			});
 		}
 		
 		this.setVisible(false);
