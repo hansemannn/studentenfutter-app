@@ -1,5 +1,5 @@
 function performFallback(cb) {
-	var dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/lunches.json');
+	const dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/lunches.json');
 				
 	// Simulate HTTP request	
 	setTimeout(function() {
@@ -16,7 +16,7 @@ function performFallback(cb) {
  * Fallback for contributors
  */
 function contribFallback(cb) {
-	var dummyContrib = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/contributors.json');
+	const dummyContrib = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/contributors.json');
 				
 	// Simulate HTTP request	
 	setTimeout(function() {
@@ -37,10 +37,10 @@ function contribFallback(cb) {
  */
 exports.postProductImage = function(params, cb, onProcess) {
 	try {
-		var auth = require('/auth');
-		var RequestInstance = require('/request');
+		const auth = require('/auth');
+		const RequestInstance = require('/request');
 				
-		var request = new RequestInstance({
+		const request = new RequestInstance({
 			url : '/images/new',
 			type : 'POST',
 			data: params,
@@ -68,7 +68,7 @@ exports.postProductImage = function(params, cb, onProcess) {
  *	@return void
  */
 exports.postRating = function(params, cb) {
-	var productIdentifier = 'rating-' + params.productId + '-' + Ti.Platform.id;
+	const productIdentifier = 'rating-' + params.productId + '-' + Ti.Platform.id;
 	
 	if (Ti.App.Properties.getBool(productIdentifier, false)) {
 		cb({success: false});
@@ -76,10 +76,10 @@ exports.postRating = function(params, cb) {
 	}
 	
 	try {
-		var auth = require('/auth');
-		var RequestInstance = require('/request');
+		const auth = require('/auth');
+		const RequestInstance = require('/request');
 				
-		var request = new RequestInstance({
+		const request = new RequestInstance({
 			url : '/ratings/new',
 			type : 'POST',
 			data: {
@@ -109,10 +109,10 @@ exports.postRating = function(params, cb) {
  */
 exports.getLunches = function(params, cb) {
 	try {
-		var auth = require('/auth');
-		var RequestInstance = require('/request');
+		const auth = require('/auth');
+		const RequestInstance = require('/request');
 		
-		var request = new RequestInstance({
+		const request = new RequestInstance({
 			url : '/lunches/list/' + params.date + '/' + params.location,
 			type : 'GET',
 			success : function(json) {
@@ -124,6 +124,9 @@ exports.getLunches = function(params, cb) {
 		});
 		request.load();
 	} catch(e) {
+		alert(e);
+		Ti.API.error(e);
+
 		performFallback(cb);
 	}
 };
@@ -136,8 +139,8 @@ exports.getLunches = function(params, cb) {
  */
 exports.getContrib = function(cb) {
 	try {
-		var RequestInstance = require('/request');
-		var request = new RequestInstance({
+		const RequestInstance = require('/request');
+		const request = new RequestInstance({
 			url : 'https://api.github.com/repos/hansemannn/studentenfutter-app/contributors',
 			external: true,
 			type : 'GET',

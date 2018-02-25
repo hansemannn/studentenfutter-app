@@ -1,14 +1,14 @@
-var nav;
+let nav;
 
 /**
  *  Constructor
  */
 (function constructor(args) {
-	var images = args.images;
-	var index = args.currentIndex;
+	const images = args.images;
+	const index = args.currentIndex;
 	
 	images.forEach(function(image) {
-		var scrollView = Ti.UI.createScrollView({
+		const scrollView = Ti.UI.createScrollView({
 			contentWidth: 'auto',
 			contentHeight: 'auto',
 			top: 0,

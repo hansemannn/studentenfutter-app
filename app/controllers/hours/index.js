@@ -1,4 +1,4 @@
-var location,
+let location,
 		firstOpenDone;
 
 /**
@@ -22,7 +22,7 @@ function setMap() {
 		return;
 	}
 	
-	var pin = Alloy.Globals.Map.createAnnotation({
+	const pin = Alloy.Globals.Map.createAnnotation({
 		latitude: location.location.lat,
 		longitude: location.location.lon,
 		title: location.title,
@@ -39,7 +39,7 @@ function setMap() {
 }
 
 function askForRoute() {
-	var dia = Ti.UI.createAlertDialog({
+	const dia = Ti.UI.createAlertDialog({
 		title: L('show_route'),
 		message: L('show_route_msg'),
 		buttonNames: [L('cancel'), L('show')],
@@ -48,8 +48,8 @@ function askForRoute() {
 	});
 
 	dia.addEventListener('click', function(e) {
-		if(e.index === 1) {
-			var prefix = (OS_ANDROID) ? 'http://maps.google.com/?' : 'maps:';
+		if (e.index === 1) {
+			const prefix = (OS_ANDROID) ? 'http://maps.google.com/?' : 'maps:';
 			Ti.Platform.openURL(prefix + 'f=d&hl=en&geocode=&saddr=&sll=&daddr=' +  encodeURIComponent(location.location.address))
 		}
 	});
@@ -58,14 +58,14 @@ function askForRoute() {
 }
 
 function setUI() {
-	var openings = location.openings;
-	var sections = [];
+	const openings = location.openings;
+	let sections = [];
 	
-	for (var i = 0; i < openings.length;i++) {
-		var opening = openings[i];
-		var items = [];
+	for (let i = 0; i < openings.length;i++) {
+		const opening = openings[i];
+		let items = [];
 		
-		var attrs = {
+		let attrs = {
 			properties: {
 				height: 43,
 				title: opening.time
@@ -84,7 +84,7 @@ function setUI() {
 			};
 		}
 
-		var section = Ti.UI.createListSection({
+		const section = Ti.UI.createListSection({
 			headerTitle: opening.date,
 			items: [attrs]
 		});

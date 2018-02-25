@@ -1,3 +1,6 @@
+import api from '/api';
+import LoaderInstance from '/loader';
+
 /**
 *  Constructor
 */
@@ -8,14 +11,12 @@
 })(arguments[0] || {});
    
 function populateContributors() {
-    var LoaderInstance = require('/loader');
-    var loader = new LoaderInstance($.window);
+    const loader = new LoaderInstance($.window);
 
-    var api = require('/api');
     loader.show();
 
     api.getContrib(function(e) {
-        var items = [];
+        let items = [];
         
         e.map(function(contributor) {
             items.push({
@@ -42,14 +43,14 @@ function populateContributors() {
 }
 
 function showContributorPage(e) {
-    var item = e.section.getItemAt(e.itemIndex);
-    var username = item.properties.username;
-    var githubURL = 'https://github.com/' + username;
+    const item = e.section.getItemAt(e.itemIndex);
+    const username = item.properties.username;
+    const githubURL = 'https://github.com/' + username;
     
     if (OS_ANDROID) {
         Ti.Platform.openURL(githubURL);
     } else {    
-        var safariDialog = require('ti.safaridialog');
+        const safariDialog = require('ti.safaridialog');
         
         if (!safariDialog.isSupported()) {
             Ti.Platform.openURL(githubURL);

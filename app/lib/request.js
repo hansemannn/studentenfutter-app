@@ -1,16 +1,17 @@
-var Request = function(_args) {
-	var base = "https://api.studentenfutter-os.de";
-	var c;
-	var args = _args;
-	var url = (args.url) ? (args.external === true) ? args.url : base + args.url : null;
-	var reqType = (args.type) ? args.type.toUpperCase() : "GET";
-	var _this = this;
+const Request = function(_args) {
+	const args = _args;
+	const reqType = (args.type) ? args.type.toUpperCase() : 'GET';
+	const _this = this;
+
+	let base = 'https://api.studentenfutter-os.de';
+	let httpClient;
+	let url = (args.url) ? (args.external === true) ? args.url : base + args.url : null;
 
 	function dataHasChanged(input) {
-		var data1 = Ti.Filesystem.getFile(Ti.Filesystem.getApplicationCacheDirectory(), args.cacheName);
-		var data2 = input;
+		let data1 = Ti.Filesystem.getFile(Ti.Filesystem.getApplicationCacheDirectory(), args.cacheName);
+		const data2 = input;
 
-		if(!data1.exists()) {
+		if (!data1.exists()) {
 			return true;
 		} else {
 			data1 = data1.read().text;
@@ -20,7 +21,7 @@ var Request = function(_args) {
 	}
 
 	function getUserAgent() {
-		return (Ti.App.getName() + " (" + Ti.App.getVersion() + "), " + Ti.Platform.getName() + " (" + Ti.Platform.getVersion() + ")");
+		return (Ti.App.getName() + ' (' + Ti.App.getVersion() + '), ' + Ti.Platform.getName() + ' (' + Ti.Platform.getVersion() + ')');
 	}
 
 	function getCacheDir() {
@@ -28,17 +29,17 @@ var Request = function(_args) {
 	}
 
 	function parseJsonFile(name) {
-		var jsonFile = Titanium.Filesystem.getFile(getCacheDir() + Titanium.Filesystem.getSeparator() + name);
+		const jsonFile = Titanium.Filesystem.getFile(getCacheDir() + Titanium.Filesystem.getSeparator() + name);
 
 		if (jsonFile.exists()) {
 
 			try {
-				var f = jsonFile.read();
+				const f = jsonFile.read();
 
-				var returnValue = (f.text.length > 0) ? JSON.parse(f) : null;
+				const returnValue = (f.text.length > 0) ? JSON.parse(f) : null;
 				return returnValue;
 			} catch(e) {
-				Ti.API.error("JSON-Parse-Error: " + e);
+				Ti.API.error('JSON-Parse-Error: ' + e);
 			}
 		}
 
@@ -47,19 +48,19 @@ var Request = function(_args) {
 
 	function showNoNetworkWarning() {
 		Ti.UI.createAlertDialog({
-			title : "No Internet Connection",
-			message: "You are currently not connected to the internet.",
-			buttonNames: ["OK"]
+			title : 'No Internet Connection',
+			message: 'You are currently not connected to the internet.',
+			buttonNames: ['OK']
 		}).show();
 
-		if(args.anyway)
+		if (args.anyway)
 			args.anyway();
 
 		if (args.error) {
-			args.error("-> [" + JSON.stringify({
+			args.error('-> [' + JSON.stringify({
 				code : 0,
-				message : "No Internet Connection"
-			}) + "]");
+				message : 'No Internet Connection'
+			}) + ']');
 		}
 	};
 	
@@ -69,20 +70,20 @@ var Request = function(_args) {
 	};
 
 	function refreshCache() {
-		c = Titanium.Network.createHTTPClient({
+		httpClient = Titanium.Network.createHTTPClient({
 			cache: false,
 			timeout: 10000,
 			validatesSecureCertificate: false,
 			onload: function(e) {
-				Ti.API.info("[" + this.getStatus() + " " + url + "]");
+				Ti.API.info('[' + this.getStatus() + ' ' + url + ']');
 
-				if(args.clearContentType) {
+				if (args.clearContentType) {
 					args.success(this.responseData);
 					return;
 				}
 
-				var json = this.responseText;
-				var response = null;
+				const json = this.responseText;
+				let response = null;
 				
 				try {
 					response = (json) ? JSON.parse(json) : null;
@@ -90,33 +91,34 @@ var Request = function(_args) {
 					response = [];
 				}
 
-				var file = (parseJsonFile(args.cacheName)) ? parseJsonFile(args.cacheName) : null;
+				const file = (parseJsonFile(args.cacheName)) ? parseJsonFile(args.cacheName) : null;
 
 				if (args.cacheName) {
 					if (dataHasChanged(this.responseText)) {
-						var f = Titanium.Filesystem.getFile(getCacheDir(), args.cacheName);
+						const f = Titanium.Filesystem.getFile(getCacheDir(), args.cacheName);
 						f.write(this.responseText);
 
-						Ti.API.info("-> [Cache updated - " + args.cacheName + "]");
+						Ti.API.info('-> [Cache updated - ' + args.cacheName + ']');
 
 						// Neue Daten -> Callback
 						args.success(response);
 					} else {
-						Ti.API.info("-> [Cache not updated - No change]");
+						Ti.API.info('-> [Cache not updated - No change]');
 					}
 				} else {
 					// Neue Daten -> Callback
 					args.success(response);
 				}
 
-				if(args.anyway)
+				if (args.anyway)
 					args.anyway();
 			},
-			onerror: function(e) {
-				var response;
-				var status = this.getStatus();
 
-				Ti.API.error("[" + status + " " + url + "]");
+			onerror: function(e) {
+				let response;
+				const status = this.getStatus();
+
+				Ti.API.error('[' + status + ' ' + url + ']');
 
 				try {
 					response = JSON.parse(this.responseText);
@@ -124,15 +126,15 @@ var Request = function(_args) {
 					response = null;
 				}
 
-				if(status===400 && response && response.error && response.error.code===104) {
-					var api = require('/api');
+				if (status === 400 && response && response.error && response.error.code === 104) {
+					const api = require('/api');
 					api.reauth(function() {
 						_this.load();
 					});
 					return;
 				}
 
-				var errorResponse = {
+				const errorResponse = {
 					code : e.code,
 					response : response,
 					evt : e
@@ -143,82 +145,82 @@ var Request = function(_args) {
 				}
 				
 				try {
-					Ti.API.error("-> [Error: " + JSON.stringify(errorResponse) + "]");
+					Ti.API.error('-> [Error: ' + JSON.stringify(errorResponse) + ']');
 				} catch(e) {}
 
 				// Cache? => alte datei zurückliefern als Fallback
 				if (args.cacheName) {
-					var file = parseJsonFile(args.cacheName);
+					const file = parseJsonFile(args.cacheName);
 					if (file) {
-						Ti.API.info("-> [Cache available - " + args.cacheName + "]");
+						Ti.API.info('-> [Cache available - ' + args.cacheName + ']');
 						args.success(file);
 					}
 				}
 
-				if(args.anyway)
+				if (args.anyway)
 					args.anyway();
 			}
 		});
 
 		if (args.process) {
-			c.onsendstream = function(e) {
+			httpClient.onsendstream = function(e) {
 				if (args.process) {
 					args.process({value: e.progress});
 				}
 			};
 		}
 
-		c.open(reqType, url);
+		httpClient.open(reqType, url);
 		
-		if (!args.external){
-			c.setRequestHeader('Authorization', 'Basic ' + getCredentials());
+		if (!args.external) {
+			httpClient.setRequestHeader('Authorization', 'Basic ' + getCredentials());
 		}
 			
 		_.each(args.headers, function(header) {
 			if (header.length != 2) {
-				Ti.API.error("request header needs to have 2 arguments ");
+				Ti.API.error('request header needs to have 2 arguments ');
 				return;
 			}
-			c.setRequestHeader(header[0], header[1]);
+			httpClient.setRequestHeader(header[0], header[1]);
 		});
 
-		if(args.contentType) {
-			c.setRequestHeader('Content-Type', args.contentType);
+		if (args.contentType) {
+			httpClient.setRequestHeader('Content-Type', args.contentType);
 		}
 
-		c.setRequestHeader('User-Agent', getUserAgent());
+		httpClient.setRequestHeader('User-Agent', getUserAgent());
 		
 		if (args.isFileUpload) {
-			c.setRequestHeader("enctype", "multipart/form-data");
+			httpClient.setRequestHeader('enctype', 'multipart/form-data');
 		}
 
 		if (args.data) {
-			Ti.API.info("[DATA - " + JSON.stringify(args.data) + "]");
-			c.send(args.data);
+			Ti.API.info('[DATA - ' + JSON.stringify(args.data) + ']');
+			httpClient.send(args.data);
 		} else {
-			c.send();
+			httpClient.send();
 		}
 	}
 
 	this.load = function() {
-		var post = (args.data) ? " ~ "+JSON.stringify(args.data) : "";
-		Ti.API.info("["+reqType+" "+url+post+"]");
+		const post = (args.data) ? ' ~ '+JSON.stringify(args.data) : '';
+		Ti.API.info('['+reqType+' '+url+post+']');
 
-		if(args.cacheName && (!args.forceRefresh || !Ti.Network.online)) {
+		if (args.cacheName && (!args.forceRefresh || !Ti.Network.online)) {
 
-			var file = Titanium.Filesystem.getFile(Ti.Filesystem.getApplicationCacheDirectory(), args.cacheName);
-			if(file.exists() && (file.modificationTimestamp() >= Ti.App.Properties.getInt('starttime') * 1000 || !Ti.Network.online) && !args.clearContentType) {
-				Ti.API.info("-> [Cache available - "+args.cacheName+"]");
-				var f = file.read();
+			const file = Titanium.Filesystem.getFile(Ti.Filesystem.getApplicationCacheDirectory(), args.cacheName);
+			if (file.exists() && (file.modificationTimestamp() >= Ti.App.Properties.getInt('starttime') * 1000 || !Ti.Network.online) && !args.clearContentType) {
+				Ti.API.info('-> [Cache available - '+args.cacheName+']');
+				const f = file.read();
 				args.success((f.text.length > 0) ? JSON.parse(f) : null);
 
-				if(Ti.Network.online)
+				if (Ti.Network.online)
 					refreshCache();
 			} else {
 				(Ti.Network.online) ? refreshCache() : showNoNetworkWarning();
 			}
 		} else {
-			if(Ti.Network.online) {
+			if (Ti.Network.online) {
 				refreshCache();
 			} else {
 				showNoNetworkWarning();
@@ -235,9 +237,9 @@ var Request = function(_args) {
 	};
 
 	this.abort = function() {
-		if(c != null){
-			c.abort();
-			Ti.API.info("-> [Request abgebrochen]");
+		if (c != null) {
+			httpClient.abort();
+			Ti.API.info('-> [Request abgebrochen]');
 		}
 	};
 };

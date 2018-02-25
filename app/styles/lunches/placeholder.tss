@@ -1,24 +1,24 @@
 
-"#placeholder": {
+'#placeholder': {
     height : 165,
     width : 200,
     visible: false
 }
 
-".image": {
+'.image': {
     top : 0,
     width : 126,
     height : 126,
-    image : "/images/empty.png"
+    image : '/images/empty.png'
 
 }
 
-"#title": {
+'#title': {
     bottom : 0,
     textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
     font : {
         fontSize : 14,
     },
-    color : "#a6a6a6",
-    textid : "no_menu_found"
+    color : '#a6a6a6',
+    textid : 'no_menu_found'
 }

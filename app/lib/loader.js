@@ -1,12 +1,12 @@
-var Loader = function(_view) {
-	var view = _view;
-	var loggingInView = null;
-	var spinner = null;
-	var visible = false;
+const Loader = function(_view) {
+	const view = _view;
+	let loggingInView = null;
+	let spinner = null;
+	let visible = false;
 
 	this.show = function() {
 
-		if (Ti.Platform.osname==="android") {
+		if (Ti.Platform.osname === 'android') {
 			loggingInView = Ti.UI.Android.createProgressIndicator({
 				message : L('loading'),
 				location : Ti.UI.Android.PROGRESS_INDICATOR_DIALOG, // display in dialog
@@ -21,7 +21,7 @@ var Loader = function(_view) {
 				width : 52,
 				height : 52,
 				borderRadius: 26,
-				backgroundColor: "#CC000000",
+				backgroundColor: '#CC000000',
 				zIndex : 8888
 			});
 

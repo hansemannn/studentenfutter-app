@@ -1,175 +1,175 @@
-"#leftButton": {
-    image: "images/icons/leftArrow.png"
+'#leftButton': {
+    image: 'images/icons/leftArrow.png'
 }
 
-"#rightButton": {
-    image: "images/icons/rightArrow.png"
+'#rightButton': {
+    image: 'images/icons/rightArrow.png'
 }
 
-"#listView": {
+'#listView': {
     listSeparatorInsets: {
         left: 72
     },
     bottom : 44,
 }
 
-"#listView[platform=ios]":{
+'#listView[platform=ios]':{
     style: Ti.UI.iOS.ListViewStyle.GROUPED,
-    footerTitle: ""
+    footerTitle: ''
 }
 
-".cell": {
+'.cell': {
     height: Ti.UI.SIZE,
 }
 
-".titleView": {
+'.titleView': {
     left: 70,
     right: 40,
     height: Ti.UI.SIZE,
-    layout: "vertical",
+    layout: 'vertical',
     top: 8,
     bottom: 4
 }
 
-".titleView[platform=android]": {
+'.titleView[platform=android]': {
     top: 12
 }
 
-".titleInnerView": {
+'.titleInnerView': {
     left: 2,
     height: Ti.UI.SIZE,
-    layout: "vertical"
+    layout: 'vertical'
 }
 
-".title": {
+'.title': {
     height: Ti.UI.SIZE,
     right: 40,
     font: {
         fontSize: 14
     },
-    color: "#606366",
-    text: "Spaghetti"
+    color: '#606366',
+    text: 'Spaghetti'
 }
 
-".priceView": {
+'.priceView': {
     left: 0,
     width: 55,
     height: 40
 }
 
-".priceInnerView": {
+'.priceInnerView': {
     width: 40,
     height: 40,
     zIndex: 8888,
     left: 15,
-    backgroundImage: "/images/priceBg.png"
+    backgroundImage: '/images/priceBg.png'
 }
 
-".price": {
+'.price': {
     zIndex: 9999,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     width: 40,
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
     font: {
         fontSize: 12
     },
-    text: "2.99"
+    text: '2.99'
 }
 
-".countView": {
+'.countView': {
     height: 18,
     width: 18,
     left: 5,
     zIndex: 9000,
     visible: false,
     top: 0,
-    backgroundColor: "#96e0f8",
+    backgroundColor: '#96e0f8',
     borderRadius: 9
 }
 
-".count": {
+'.count': {
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-    color: "#fff",
+    color: '#fff',
     font: {
         fontSize: 9,
-        fontWeight: "bold"
+        fontWeight: 'bold'
     }
 }
 
-".button": {
+'.button': {
     right: 0,
     zIndex: 9999,
-    tintColor: "#a4a4a4",
+    tintColor: '#a4a4a4',
     width: 50,
     height: 50,
     bubbleParent: false
 }
 
-".button[platform=android]": {
+'.button[platform=android]': {
     right: 10
 }
 
-".buttonRemove[platform=android]": {
+'.buttonRemove[platform=android]': {
     right: 40
 }
 
-".buttonAdd": {
-    image: "/images/icons/addIcon.png"
+'.buttonAdd': {
+    image: '/images/icons/addIcon.png'
 }
 
-".buttonRemove": {
-    image: "/images/icons/subIcon.png",
+'.buttonRemove': {
+    image: '/images/icons/subIcon.png',
     right: 30
 }
 
-".ratingView": {
+'.ratingView': {
     top: 2,
     bottom: 0,
     left: 0,
     height: 28,
-    layout: "horizontal"
+    layout: 'horizontal'
 }
 
-".additives": {
+'.additives': {
     left : 4,
     right : 5,
     height: Ti.UI.SIZE,
     font : {
         fontSize : 8
     },
-    color : "#de9855",
+    color : '#de9855',
     width: Ti.UI.FILL
 }
 
-".starsOutterView": {
+'.starsOutterView': {
     height: Ti.UI.SIZE,
     width: Ti.UI.SIZE,
-    layout: "horizontal",
+    layout: 'horizontal',
     top: 2
 }
 
-".starsInnerView": {
+'.starsInnerView': {
     left: 0,
     height: 10,
     width: Ti.UI.SIZE
 }
 
-".stars": {
+'.stars': {
     left: 2,
     width: 48,
     height: 10
 }
 
-".numberOfRatingsView": {
+'.numberOfRatingsView': {
     left: 6,
     width: 100, // Could Ti.UI.SIZE this, but this keeps the performance up
     top: 1,
-    layout: "horizontal",
+    layout: 'horizontal',
     height: 10
 }
 
-".l1": {
-    color: "#6b6b6b",
+'.l1': {
+    color: '#6b6b6b',
     left: 0,
     top: 0,
     font: {
@@ -177,15 +177,15 @@
     }
 }
 
-".img1": {
+'.img1': {
     width: 6,
     height: 6,
     left: 0,
-    image:  "/images/icons/numberOfRatingsStar.png"
+    image:  '/images/icons/numberOfRatingsStar.png'
 }
 
-".l2": {
-    color: "#6b6b6b",
+'.l2': {
+    color: '#6b6b6b',
     left: 3,
     top: 0,
     font: {
@@ -193,9 +193,9 @@
     }
 }
 
-".img2": {
+'.img2': {
     width: 6,
     height: 6,
     left: 0,
-    image:  "/images/icons/numberOfRatingsPerson.png"
+    image:  '/images/icons/numberOfRatingsPerson.png'
 }

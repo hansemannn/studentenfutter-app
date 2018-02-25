@@ -1,18 +1,18 @@
 
-".container": {
+'.container': {
     height: 40,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     top: 0
 }
 
-"#tabbedBar": {
+'#tabbedBar': {
     height : 25,
     width: 200,
     backgroundColor : Alloy.CFG.styles.tintColor
 }
 
-".sep": {
+'.sep': {
     height: 1,
     bottom: 0,
-    backgroundColor: "#e8e8e8"
+    backgroundColor: '#e8e8e8'
 }

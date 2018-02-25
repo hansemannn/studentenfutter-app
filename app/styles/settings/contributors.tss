@@ -1,33 +1,33 @@
-"#list[platform=ios]": {
+'#list[platform=ios]': {
     style: Ti.UI.iOS.ListViewStyle.GROUPED,
     listSeparatorInsets: {
         left: 40
 	},
 }
 
-"#list": {
-    defaultItemTemplate: "contrib"
+'#list': {
+    defaultItemTemplate: 'contrib'
 }
 
-".title": {
+'.title': {
 	left: 40,
     top: 8,
-    color: "#000",
+    color: '#000',
 	font: {
         fontSize: 15
 	}
 }
 
-".subtitle": {
+'.subtitle': {
     left: 40,
     bottom: 8,
-    color: "#aaa",
+    color: '#aaa',
     font: {
         fontSize: 12
     }
 }
 
-".avatar": {
+'.avatar': {
     width: 24,
     height: 24,
     defaultImage: 'images/profile-small.png',
@@ -35,6 +35,6 @@
     left: 8
 }
 
-".cell": {
+'.cell': {
     height: 50
 }

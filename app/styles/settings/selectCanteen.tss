@@ -1,12 +1,12 @@
 
-"#list": {
+'#list': {
 	tintColor: Alloy.CFG.styles.tintColor,
 }
 
-"#list[platform=android]": {
-	backgroundColor: "white"
+'#list[platform=android]': {
+	backgroundColor: 'white'
 }
 
-"#list[platform=ios]": {
-	footerTitle: ""
+'#list[platform=ios]': {
+	footerTitle: ''
 }

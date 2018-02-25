@@ -29,8 +29,8 @@ exports.definition = {
                 return this.get("total");
             },
 			getFormattedTotal: function() {				
-				var val = this.get("total").toFixed(2);
-				if (val===0) {
+				const val = this.get("total").toFixed(2);
+				if (val === 0) {
 					return "0,00 €";
 				}
 				return String(val).replace(".", ",") + " €";

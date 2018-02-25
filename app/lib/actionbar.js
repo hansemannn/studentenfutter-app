@@ -1,139 +1,105 @@
 /* 
-* ActionBar Helper Class for Appcelerator Titanium
-* Author: Ricardo Alcocer
-* 
-* Licensed under the MIT License (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://alco.mit-license.org/
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * ActionBar Helper Class for Appcelerator Titanium
+ * Author: Ricardo Alcocer
+ * 
+ * Licensed under the MIT License (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://alco.mit-license.org/
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-var OS_ANDROID = Ti.Platform.osname==="android";
+export default class ActionBarHelper {  
+  constructor(window) {
+    if (!Ti.Platform.osname === 'android') {
+      return;
+    }
 
-var actionBarHelper=function(win){
-	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){
-		this.win=win;
-		this.activity=win.getActivity();
-		this.actionBar=this.activity.actionBar;
-	}else{
-		console.log('This is an Android-only library.');
-	}
-};
+    this.win = window;
+    this.activity = win.getActivity();
+    this.actionBar = this.activity.actionBar;
+  }
 
-actionBarHelper.prototype.setTitle=function(title){
-	var that=this;
-	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){
-		if (!that.activity){
-			console.log('Error: Unable to get activity...weird');
-		}else{
-			if (that.actionBar){
-				that.actionBar.title = title;		
-			}else{
-				console.log('(Keine ActionBar vorhanden)');
-			}	
-		}		
-	}
-};
+  setTitle(title) {
+    if (!_isValidActivity()) {
+      return;
+    }
 
-actionBarHelper.prototype.setUpAction=function(action){
-	var that=this;
-	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){
-		if (!that.activity){
-			console.log('Error: Unable to get activity...weird');
-		}else{
-			if (that.actionBar){
-				if(action){
-					that.actionBar.displayHomeAsUp=true;	
-					that.actionBar.onHomeIconItemSelected=action;
-				}else{
-					that.actionBar.displayHomeAsUp=false;
-					that.actionBar.onHomeIconItemSelected=null;
-				}
-			}else{
-				console.log('(Keine ActionBar vorhanden)');
-			}	
-		}		
-	}
-};
+    this.actionBar.title = title;
+  }
 
-actionBarHelper.prototype.setBackgroundImage=function(image){
-	var that=this;
-	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){
-		if (!that.activity){
-			console.log('Error: Unable to get activity...weird');
-		}else{
-			if (that.actionBar){
-				that.actionBar.backgroundImage=image;	
-			}else{
-				console.log('(Keine ActionBar vorhanden)');
-			}	
-		}		
-	}
-};
+  setUpAction(action) {
+    if (!_isValidActivity()) {
+      return;
+    }
 
-actionBarHelper.prototype.setIcon=function(icon){
-	var that=this;
-	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){
-		if (!that.activity){
-			console.log('Error: Unable to get activity...weird');
-		}else{
-			if (that.actionBar){
-				that.actionBar.icon=icon;	
-				that.actionBar.logo=icon;
-			}else{
-				console.log('(Keine ActionBar vorhanden)');
-			}	
-		}		
-	}
-};
+    if (action) {
+      this.actionBar.displayHomeAsUp = true;
+      this.actionBar.onHomeIconItemSelected = action;
+    } else {
+      this.actionBar.displayHomeAsUp = false;
+      this.actionBar.onHomeIconItemSelected = null;
+    }
+  }
 
-actionBarHelper.prototype.hide=function(){
-	var that=this;
-	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){
-		if (!that.activity){
-			console.log('Error: Unable to get activity...weird');
-		}else{
-			if (that.actionBar){
-				that.actionBar.hide();
-			}else{
-				console.log('(Keine ActionBar vorhanden)');
-			}	
-		}		
-	}
-};
+  setBackgroundImage(image) {
+    if (!_isValidActivity()) {
+      return;
+    }
 
-actionBarHelper.prototype.show=function(){
-	var that=this;
-	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){
-		if (!that.activity){
-			console.log('Error: Unable to get activity...weird');
-		}else{
-			if (that.actionBar){
-				that.actionBar.show();
-			}else{
-				console.log('(Keine ActionBar vorhanden)');
-			}	
-		}		
-	}
-};
+    this.actionBar.backgroundImage = image;
+  }
 
-actionBarHelper.prototype.reloadMenu=function(){
-	var that=this;
-	if (OS_ANDROID && Ti.Platform.Android.API_LEVEL > 11){
-		if (!that.activity){
-			console.log('Error: Unable to get activity...weird');
-		}else{
-			that.activity.invalidateOptionsMenu();
-		}		
-	}
-};
+  setIcon(icon) {
+    if (!_isValidActivity()) {
+      return;
+    }
 
-//
-exports.actionBarHelper=actionBarHelper;
+    this.actionBar.icon = icon;
+    this.actionBar.logo = icon;
+  }
+
+  hide() {
+    if (!_isValidActivity()) {
+      return;
+    }
+
+    this.actionBar.hide();
+  }
+
+  show() {
+    if (!_isValidActivity()) {
+      return;
+    }
+
+    this.actionBar.show();
+  }
+
+  reloadMenu() {
+    if (!_isValidActivity()) {
+      return;
+    }
+
+    this.activity.invalidateOptionsMenu();
+  }
+  
+  _isValidActivity() {
+    if (!this.activity) {
+      Ti.API.error('Unable to get activity. Did you open your window alread?');
+      return false;
+    }
+
+    if (this.actionBar) {
+      Ti.API.error('No ActionBar available');
+      return false
+    }
+    
+    return true;
+  }
+}

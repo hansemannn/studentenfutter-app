@@ -1,4 +1,4 @@
-var cb;
+let cb;
 
 /**
  *  Constructor

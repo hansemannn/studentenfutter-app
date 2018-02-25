@@ -1,4 +1,4 @@
-var pathIdentifier;
+let pathIdentifier;
 
 /**
  * Constructor
@@ -13,7 +13,7 @@ var pathIdentifier;
 })(arguments[0] || null);
 
 function initializeWebView() {
-    var path = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'html/' + pathIdentifier + '.html');
+    const path = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'html/' + pathIdentifier + '.html');
     
     if (!path.exists()) {
         Ti.API.error('File at path not found: ' + path.nativePath);
