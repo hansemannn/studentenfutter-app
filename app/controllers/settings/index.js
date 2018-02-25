@@ -79,9 +79,11 @@ function selectAction(e) {
       break;
       case 'reportError': 
       reportError();
+      case 'togglePriceCategoryAndroid':
+      togglePriceCategoryAndroid();
       break;
       default:
-      console.log(action);
+      console.log(`Unhandled action: ${action}`);
     }
     
     OS_IOS && $.list.deselectItem(e.sectionIndex, e.itemIndex);
