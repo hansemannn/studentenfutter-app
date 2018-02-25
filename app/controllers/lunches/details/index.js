@@ -1,8 +1,10 @@
 var nav,
 	product,
-	utils,
 	onRatingUpdated,
-	ListAction;
+	ListAction,
+	utils = require('/utils'),
+	LoaderInstance = require('/loader'),
+	api = require('/api');
 
 /**
  *  Constructor
@@ -10,7 +12,6 @@ var nav,
 (function constructor(args) {
 	product = args.product;
 	onRatingUpdated = args.onRatingUpdated;
-	utils = require('/utils');
 	
 	if (OS_IOS) {
 		nav = Ti.UI.iOS.createNavigationWindow({
@@ -205,13 +206,15 @@ function sendGeneratedDemoImage() {
 }
 
 function sendProductImage(image) {
-	var api = require('/api');
-	
+	loader = new LoaderInstance($.window);
+	loader.show();
+
 	api.postProductImage({
 		'image[productId]': product.id,
 		'image[userId]': Ti.Platform.getId(),
 		'image[originalResource]': image
 	}, function(e) {
+		loader.hide();
 		
 		if (!e.awaitingModeration) {
 			var title = L(e.feedbackTitle || 'upload_success', 'upload_success');
