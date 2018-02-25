@@ -26,7 +26,7 @@ You can download the app for free from the iOS App Store and Android Play Store:
 - [x] REST-API / JSON
 - [x] iPhone X / iOS 11+ support
 - [x] Latest Titanium SDK compatible
-
+- [x] ES6+ based (classes, imports / exports, arrow functions, ...)
 
 ### Used Titanum API's (Selection)
 
