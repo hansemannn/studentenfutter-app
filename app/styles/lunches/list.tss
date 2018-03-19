@@ -1,3 +1,8 @@
+'#window[platform=ios]': {
+    extendEdges: [Ti.UI.EXTEND_EDGE_TOP],
+    translucent: true
+}
+
 '#leftButton': {
     image: 'images/icons/leftArrow.png'
 }
@@ -16,6 +21,10 @@
 '#listView[platform=ios]':{
     style: Ti.UI.iOS.ListViewStyle.GROUPED,
     footerTitle: ''
+}
+
+'#refresh[platform=ios]': {
+    tintColor: Alloy.Globals.listRefreshTintColor
 }
 
 '.cell': {
