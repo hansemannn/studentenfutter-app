@@ -40,7 +40,6 @@ function setUI() {
 
 function setImages() {
 	const images = product.images || null;
-	let views = [];
 		
 	if (!images || images.length === 0) {
 		return;
