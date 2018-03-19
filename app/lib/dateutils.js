@@ -2,8 +2,9 @@ const ONE_DAY = 86400000;
 
 export default class DateUtils {
 		constructor() {
-			this.currentLanguage = Ti.Locale.getCurrentLanguage();
+			this.days = new Array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
 			this.date = new Date();
+			this.currentLanguage = Ti.Locale.getCurrentLanguage();
 		}
 		
 		set today(newDate) {
@@ -26,7 +27,7 @@ export default class DateUtils {
 				return L('yesterday') + ', ' + this.date.toLocaleDateString();
 			}
 			
-			return this.date.toLocaleDateString(); // return this.date.format('dd[, ]DD.MM.YYYY');
+			return `${L(this.days[this.date.getDay()])}, ${this.date.toLocaleDateString()}`;
 		};
 		
 		isSameDay(date1, date2) {
@@ -59,7 +60,6 @@ export default class DateUtils {
 		}
 		
 		addedDate(_date) {
-			Ti.API.warn(_date);
 			return new Date(_date.getTime() + ONE_DAY);
 		}
 		
