@@ -19,7 +19,7 @@ let location,
 })(arguments[0] || {});
 
 function setMap() {
-	if (OS_ANDROID && !Alloy.Globals.isGooglePlayServicesAvailable) {
+	if (OS_ANDROID && !Alloy.Globals.isMapSupported) {
 		Ti.API.warn('Google Maps is not configured correctly. Please set your API key in the tiapp.xml, clean and try again!');
 		return;
 	}
@@ -97,7 +97,7 @@ function setUI() {
 }
 
 function selectAnnotation(e) {
-	if (!Alloy.Globals.isGooglePlayServicesAvailable || firstOpenDone) {
+	if (!Alloy.Globals.isMapSupported || firstOpenDone) {
 		return;
 	}
 	
