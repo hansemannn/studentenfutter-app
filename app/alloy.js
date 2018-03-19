@@ -2,6 +2,7 @@ import ActionBarHelper from 'actionbar';
 import Map from 'ti.map';
 
 const isiPhoneX = (Ti.Platform.displayCaps.platformWidth === 375 && Ti.Platform.displayCaps.platformHeight === 812 && Ti.Platform.displayCaps.logicalDensityFactor === 3);
+const isiOS11 = (Ti.Platform.osname === 'iphone' || Ti.Platform.osname === 'ipad') && (parseInt(Titanium.Platform.version.split('.')[0]) >= 11);
 
 let PlayServices = null;
 
@@ -17,6 +18,7 @@ Alloy.Models.cart = Alloy.createModel('cart');
 Alloy.Globals.displayWidth = Ti.Platform.getDisplayCaps().getPlatformWidth();
 Alloy.Globals.isGooglePlayServicesAvailable = PlayServices && PlayServices.isGooglePlayServicesAvailable();
 Alloy.Globals.footerHeight = isiPhoneX ? 64 : 44;
+Alloy.Globals.listRefreshTintColor = isiOS11 ? '#fff' : null;
 
 Alloy.Globals.setAndroidBackButton = function(_window) {
 	if (!OS_ANDROID) { return; }
