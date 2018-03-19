@@ -65,7 +65,6 @@ function setUI() {
 	
 	for (let i = 0; i < openings.length;i++) {
 		const opening = openings[i];
-		let items = [];
 		
 		let attrs = {
 			properties: {
