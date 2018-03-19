@@ -1,47 +1,69 @@
-const moment = require('alloy/moment');
-let date;
+const ONE_DAY = 86400000;
 
-(function constructor() {
-	const currentLanguage = Ti.Locale.currentLanguage;
-	
-	moment.locale(Alloy.CFG.languages.indexOf(currentLanguage) === -1 ? 'en' : currentLanguage);
-	date = moment(new Date());
-})();
+export default class DateUtils {
+		constructor() {
+			this.currentLanguage = Ti.Locale.getCurrentLanguage();
+			this.date = new Date();
+		}
+		
+		set today(newDate) {
+			this.date = newDate;
+		}
 
-/**
- * Public API
- */
-exports.setToday = function(newDate) {
-	date = newDate;
-};
+		get today() {
+			return new Date().toLocaleDateString();
+		};
 
-exports.getToday = function() {
-	return moment(new Date()).format('DD.MM.YYYY');
-};
+		get formattedDate() {
+			const tomorrow = this.addedDate(new Date());
+			const yesterday = this.substractedDate(new Date());
 
-exports.getFormattedDate = function() {
-	const tomorrow = moment(new Date).add(1, 'day');
-	const yesterday = moment(new Date).subtract(1, 'day');
+			if (this.isSameDay(this.date, new Date())) {
+				return L('today') + ', ' + this.date.toLocaleDateString();
+			} else if (this.isSameDay(this.date, tomorrow)) {
+				return L('tomorrow') + ', ' + this.date.toLocaleDateString();
+			} else if (this.isSameDay(this.date, yesterday)) {
+				return L('yesterday') + ', ' + this.date.toLocaleDateString();
+			}
+			
+			return this.date.toLocaleDateString(); // return this.date.format('dd[, ]DD.MM.YYYY');
+		};
+		
+		isSameDay(date1, date2) {
+			return date1.toDateString() === date2.toDateString();
+		}
 
-	if (date.isSame(moment(new Date()), 'day')) {
-		return L('today') + ', ' + date.format('DD.MM.YYYY');
-	} else if (date.isSame(tomorrow, 'day')) {
-		return L('tomorrow') + ', ' + date.format('DD.MM.YYYY');
-	} else if (date.isSame(yesterday, 'day')) {
-		return L('yesterday') + ', ' + date.format('DD.MM.YYYY');
-	}
-	
-	return date.format('dd[, ]DD.MM.YYYY');
-};
+		get currentDateSlug() {
+	    const d = new Date(this.date);
+	    const year = d.getFullYear();
+			let month = '' + (d.getMonth() + 1);
+	    let day = '' + d.getDate();
 
-exports.increment = function() {
-	exports.setToday(moment(date).add(1, 'day'));
-};
+	    if (month.length < 2) {
+				month = '0' + month;
+			}
 
-exports.decrement = function() {
-	exports.setToday(moment(date).subtract(1, 'day'));
-};
+	    if (day.length < 2) {
+				day = '0' + day;
+			}
 
-exports.getCurrentDateSlug = function() {
-	return date.format('YYYY-MM-DD');
-};
+	    return [year, month, day].join('-');
+		};
+
+		increment() {
+			this.date = this.addedDate(this.date);
+		}
+
+		decrement() {
+			this.date = this.substractedDate(this.date);
+		}
+		
+		addedDate(_date) {
+			Ti.API.warn(_date);
+			return new Date(_date.getTime() + ONE_DAY);
+		}
+		
+		substractedDate(_date) {
+			return new Date(_date.getTime() - ONE_DAY);
+		}
+}
