@@ -21,7 +21,11 @@ let nav;
 			zoomScale: 1,
 		});
 
-		scrollView.addEventListener('doubletap', zoom);
+		scrollView.addEventListener('doubletap', e => {
+			$.images.setZoomScale(($.images.getZoomScale() === 1) ? 2 : 1, {
+				animated:true
+			});
+		});
 		scrollView.add(Ti.UI.createImageView({
 			image: image,
 			width: Ti.Platform.displayCaps.platformWidth
@@ -57,9 +61,3 @@ exports.show = function() {
 		$.window.open();
 	}
 };
-
-function zoom() {
-	$.images.setZoomScale(($.images.getZoomScale() === 1) ? 2 : 1, {
-		animated:true
-	});
-}
