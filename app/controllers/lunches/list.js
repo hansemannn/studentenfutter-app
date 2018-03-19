@@ -1,5 +1,5 @@
 import utils from '/utils';
-import dateutils from '/dateutils';
+import DateUtils from '/dateutils';
   
 const cart = Alloy.Models.cart;     
 const LunchState = {
@@ -11,12 +11,15 @@ let nav;
 let loader;
 let LoaderInstance;
 let lunches;
-let currentLunchState = LunchState.Student;      
+let currentLunchState = LunchState.Student;    
+let dateutils;  
 
 /**
  *  Constructor
  */
 (function constructor(args) {     
+    dateutils = new DateUtils();
+
     $.footer.onSettingsUpdated(onSettingsUpdated);
     
     cart.on('update', function(summary) {
@@ -105,7 +108,7 @@ function initializeLoader() {
 }
 
 function initializeDate() {
-    $.window.setTitle(dateutils.getFormattedDate());
+    $.window.setTitle(dateutils.formattedDate);
 }
 
 function createNavigationWindow() {
@@ -178,7 +181,7 @@ function fetchData(args) {
     
     const api = require('/api');
     api.getLunches({
-        date: dateutils.getCurrentDateSlug(), 
+        date: dateutils.currentDateSlug, 
         location: Ti.App.Properties.getInt('currentLocationID', Alloy.CFG.defaultCanteen.id)
     }, function(e) {
         lunches = e;
@@ -283,7 +286,7 @@ function setUI() {
     });
     
     $.listView.setSections(sections);
-    $.window.setTitle(dateutils.getFormattedDate());
+    $.window.setTitle(dateutils.formattedDate);
     $.placeholder[sections.length > 0 ? 'hide' : 'show']();
 }
 

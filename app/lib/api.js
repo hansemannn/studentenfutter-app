@@ -123,7 +123,6 @@ exports.getLunches = function(params, cb) {
 		});
 		request.load();
 	} catch(e) {
-		alert(e);
 		Ti.API.error(e);
 
 		performFallback(cb);
