@@ -21,8 +21,8 @@ let nav;
 			zoomScale: 1,
 		});
 
-		scrollView.addEventListener('doubletap', e => {
-			$.images.setZoomScale(($.images.getZoomScale() === 1) ? 2 : 1, {
+		scrollView.addEventListener('doubletap', () => {
+			scrollView.setZoomScale((scrollView.zoomScale === 1) ? 2 : 1, {
 				animated:true
 			});
 		});
