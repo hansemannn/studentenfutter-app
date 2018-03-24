@@ -6,8 +6,8 @@ let nav;
 (function constructor(args) {
 	const images = args.images;
 	const index = args.currentIndex;
-	
-	images.forEach(function(image) {
+
+	images.forEach(function (image) {
 		const scrollView = Ti.UI.createScrollView({
 			contentWidth: 'auto',
 			contentHeight: 'auto',
@@ -23,23 +23,23 @@ let nav;
 
 		scrollView.addEventListener('doubletap', () => {
 			scrollView.setZoomScale((scrollView.zoomScale === 1) ? 2 : 1, {
-				animated:true
+				animated: true
 			});
 		});
 		scrollView.add(Ti.UI.createImageView({
 			image: image,
 			width: Ti.Platform.displayCaps.platformWidth
 		}));
-		
+
 		$.images.addView(scrollView);
 	});
-	
+
 	$.images.setCurrentPage(index);
-		
+
 	if (OS_ANDROID) {
-    Alloy.Globals.setAndroidBackButton($.window);
-  }
-})(arguments[0] || {});
+		Alloy.Globals.setAndroidBackButton($.window);
+	}
+}(arguments[0] || {}));
 
 function close() {
 	image = null;
@@ -51,12 +51,12 @@ function close() {
 	}
 }
 
-exports.show = function() {
+exports.show = function () {
 	if (OS_IOS) {
 		nav = Ti.UI.iOS.createNavigationWindow({
 			window: $.window
 		});
-		nav.open({modal: true});
+		nav.open({ modal: true });
 	} else {
 		$.window.open();
 	}

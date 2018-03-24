@@ -1,7 +1,7 @@
-exports.show = function() {
-    $.placeholder.setVisible(true);
+exports.show = function () {
+	$.placeholder.setVisible(true);
 };
 
-exports.hide = function() {
-    $.placeholder.setVisible(false);
+exports.hide = function () {
+	$.placeholder.setVisible(false);
 };

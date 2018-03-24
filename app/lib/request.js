@@ -1,4 +1,4 @@
-const Request = function(_args) {
+const Request = function (_args) {
 	const args = _args;
 	const reqType = (args.type) ? args.type.toUpperCase() : 'GET';
 	const _this = this;
@@ -38,7 +38,7 @@ const Request = function(_args) {
 
 				const returnValue = (f.text.length > 0) ? JSON.parse(f) : null;
 				return returnValue;
-			} catch(e) {
+			} catch (e) {
 				Ti.API.error('JSON-Parse-Error: ' + e);
 			}
 		}
@@ -48,26 +48,25 @@ const Request = function(_args) {
 
 	function showNoNetworkWarning() {
 		Ti.UI.createAlertDialog({
-			title : 'No Internet Connection',
+			title: 'No Internet Connection',
 			message: 'You are currently not connected to the internet.',
-			buttonNames: ['OK']
+			buttonNames: [ 'OK' ]
 		}).show();
 
-		if (args.anyway)
-			args.anyway();
+		if (args.anyway) { args.anyway(); }
 
 		if (args.error) {
 			args.error('-> [' + JSON.stringify({
-				code : 0,
-				message : 'No Internet Connection'
+				code: 0,
+				message: 'No Internet Connection'
 			}) + ']');
 		}
-	};
-	
-	function getCredentials() {		
+	}
+
+	function getCredentials() {
 		// Don't try to call this method, it will fail
 		return require('/auth').getCredentials();
-	};
+	}
 
 	function refreshCache() {
 		httpClient = Titanium.Network.createHTTPClient({
@@ -84,7 +83,7 @@ const Request = function(_args) {
 
 				const json = httpClient.responseText;
 				let response = null;
-				
+
 				try {
 					response = (json) ? JSON.parse(json) : null;
 				} catch (e) {
@@ -110,8 +109,7 @@ const Request = function(_args) {
 					args.success(response);
 				}
 
-				if (args.anyway)
-					args.anyway();
+				if (args.anyway) { args.anyway(); }
 			},
 
 			onerror: (e) => {
@@ -122,31 +120,31 @@ const Request = function(_args) {
 
 				try {
 					response = JSON.parse(httpClient.responseText);
-				} catch(e) {
+				} catch (e) {
 					response = null;
 				}
 
 				if (status === 400 && response && response.error && response.error.code === 104) {
 					const api = require('/api');
-					api.reauth(function() {
+					api.reauth(function () {
 						_this.load();
 					});
 					return;
 				}
 
 				const errorResponse = {
-					code : e.code,
-					response : response,
-					evt : e
+					code: e.code,
+					response: response,
+					evt: e
 				};
 
 				if (args.error) {
 					args.error(errorResponse);
 				}
-				
+
 				try {
 					Ti.API.error('-> [Error: ' + JSON.stringify(errorResponse) + ']');
-				} catch(e) {}
+				} catch (e) {}
 
 				// Cache? => alte datei zurückliefern als Fallback
 				if (args.cacheName) {
@@ -157,25 +155,24 @@ const Request = function(_args) {
 					}
 				}
 
-				if (args.anyway)
-					args.anyway();
+				if (args.anyway) { args.anyway(); }
 			}
 		});
 
 		if (args.process) {
-			httpClient.onsendstream = function(e) {
+			httpClient.onsendstream = function (e) {
 				if (args.process) {
-					args.process({value: e.progress});
+					args.process({ value: e.progress });
 				}
 			};
 		}
 
 		httpClient.open(reqType, url);
-		
+
 		if (!args.external) {
 			httpClient.setRequestHeader('Authorization', 'Basic ' + getCredentials());
 		}
-			
+
 		args.headers && args.headers.forEach(header => {
 			if (header.length != 2) {
 				Ti.API.error('request header needs to have 2 arguments ');
@@ -189,7 +186,7 @@ const Request = function(_args) {
 		}
 
 		httpClient.setRequestHeader('User-Agent', getUserAgent());
-		
+
 		if (args.isFileUpload) {
 			httpClient.setRequestHeader('enctype', 'multipart/form-data');
 		}
@@ -202,41 +199,38 @@ const Request = function(_args) {
 		}
 	}
 
-	this.load = function() {
-		const post = (args.data) ? ' ~ '+JSON.stringify(args.data) : '';
-		Ti.API.info('['+reqType+' '+url+post+']');
+	this.load = function () {
+		const post = (args.data) ? ' ~ ' + JSON.stringify(args.data) : '';
+		Ti.API.info('[' + reqType + ' ' + url + post + ']');
 
 		if (args.cacheName && (!args.forceRefresh || !Ti.Network.online)) {
 
 			const file = Titanium.Filesystem.getFile(Ti.Filesystem.getApplicationCacheDirectory(), args.cacheName);
 			if (file.exists() && (file.modificationTimestamp() >= Ti.App.Properties.getInt('starttime') * 1000 || !Ti.Network.online) && !args.clearContentType) {
-				Ti.API.info('-> [Cache available - '+args.cacheName+']');
+				Ti.API.info('-> [Cache available - ' + args.cacheName + ']');
 				const f = file.read();
 				args.success((f.text.length > 0) ? JSON.parse(f) : null);
 
-				if (Ti.Network.online)
-					refreshCache();
+				if (Ti.Network.online) { refreshCache(); }
 			} else {
 				(Ti.Network.online) ? refreshCache() : showNoNetworkWarning();
 			}
+		} else if (Ti.Network.online) {
+			refreshCache();
 		} else {
-			if (Ti.Network.online) {
-				refreshCache();
-			} else {
-				showNoNetworkWarning();
-			}
+			showNoNetworkWarning();
 		}
 	};
 
-	this.setBaseUrl = function(_base) {
+	this.setBaseUrl = function (_base) {
 		base = _base;
 	};
 
-	this.setRequestPath = function(_url) {
+	this.setRequestPath = function (_url) {
 		url = base + _url;
 	};
 
-	this.abort = function() {
+	this.abort = function () {
 		if (c != null) {
 			httpClient.abort();
 			Ti.API.info('-> [Request abgebrochen]');

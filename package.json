@@ -1,0 +1,31 @@
+{
+  "name": "studentenfutter-alloy",
+  "version": "1.0.0",
+  "description": "A canteen app made with Appcelerator Titanium",
+  "main": "app/index.js",
+  "scripts": {
+    "lint": "eslint --config axway/env-titanium app --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hansemannn/studentenfutter-app.git"
+  },
+  "keywords": [
+    "titanium",
+    "javascript",
+    "canteen",
+    "osnabrueck",
+    "appcelerator",
+    "native"
+  ],
+  "author": "Hans Knöchel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hansemannn/studentenfutter-app/issues"
+  },
+  "homepage": "https://github.com/hansemannn/studentenfutter-app#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-axway": "^2.0.12"
+  }
+}
