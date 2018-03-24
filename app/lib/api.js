@@ -2,15 +2,15 @@ import RequestInstance from '/request';
 
 function performFallback(cb) {
 	const dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/lunches.json');
-				
-	// Simulate HTTP request	
-	setTimeout(function() {
+
+	// Simulate HTTP request
+	setTimeout(function () {
 		try {
-			cb(Object.assign(JSON.parse(dummyLunches.read()), {success: true}));
-		} catch(e) {
+			cb(Object.assign(JSON.parse(dummyLunches.read()), { success: true }));
+		} catch (e) {
 			Ti.API.error('Unable to parse JSON: ' + e);
-			cb({success: false});
-		} 
+			cb({ success: false });
+		}
 	}, 1000);
 }
 
@@ -19,69 +19,69 @@ function performFallback(cb) {
  */
 function contribFallback(cb) {
 	const dummyContrib = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/contributors.json');
-				
-	// Simulate HTTP request	
-	setTimeout(function() {
+
+	// Simulate HTTP request
+	setTimeout(function () {
 		try {
-			cb(Object.assign(JSON.parse(dummyContrib.read()), {success: true}));
-		} catch(e) {
+			cb(Object.assign(JSON.parse(dummyContrib.read()), { success: true }));
+		} catch (e) {
 			Ti.API.error('Unable to parse JSON: ' + e);
-			cb({success: false});
-		} 
+			cb({ success: false });
+		}
 	}, 1000);
 }
 
 /**
  *	Posts a new product image.
- *	@param {Object} data The POST parameter containing the image data. 
+ *	@param {Object} data The POST parameter containing the image data.
  *	@param {Callback} cb The callback to be invoked after the asyncronous request.
  *	@return void
  */
-exports.postProductImage = function(params, cb, onProcess) {
+exports.postProductImage = function (params, cb, onProcess) {
 	try {
 		const auth = require('/auth');
-				
+
 		const request = new RequestInstance({
-			url : '/images/new',
-			type : 'POST',
+			url: '/images/new',
+			type: 'POST',
 			data: params,
 			isFileUpload: true,
 			process: (e) => {
 				onProcess && onProcess(e);
 			},
 			success: json => {
-				cb(Object.assign(json, {success: true}));
+				cb(Object.assign(json, { success: true }));
 			},
 			error: () => {
-				cb({success: false});
+				cb({ success: false });
 			}
 		});
 		request.load();
-	} catch(e) {
+	} catch (e) {
 		performFallback(cb);
 	}
 };
 
 /**
  *	Posts a new rating.
- *	@param {Object} data The POST parameter containing the rating value. 
+ *	@param {Object} data The POST parameter containing the rating value.
  *	@param {Callback} cb The callback to be invoked after the asyncronous request.
  *	@return void
  */
-exports.postRating = function(params, cb) {
+exports.postRating = function (params, cb) {
 	const productIdentifier = 'rating-' + params.productId + '-' + Ti.Platform.id;
-	
+
 	if (Ti.App.Properties.getBool(productIdentifier, false)) {
-		cb({success: false});
+		cb({ success: false });
 		return;
 	}
-	
+
 	try {
 		const auth = require('/auth');
-				
+
 		const request = new RequestInstance({
-			url : '/ratings/new',
-			type : 'POST',
+			url: '/ratings/new',
+			type: 'POST',
 			data: {
 				productId: params.productId,
 				userId: Ti.Platform.id,
@@ -92,11 +92,11 @@ exports.postRating = function(params, cb) {
 				cb(json);
 			},
 			error: () => {
-				cb({success: false});
+				cb({ success: false });
 			}
 		});
 		request.load();
-	} catch(e) {
+	} catch (e) {
 		performFallback(cb);
 	}
 };
@@ -107,22 +107,22 @@ exports.postRating = function(params, cb) {
  *	@param {Callback} cb The callback to be invoked after the asyncronous request.
  *	@return void
  */
-exports.getLunches = function(params, cb) {
+exports.getLunches = function (params, cb) {
 	try {
 		const auth = require('/auth');
-		
+
 		const request = new RequestInstance({
-			url : '/lunches/list/' + params.date + '/' + params.location,
-			type : 'GET',
+			url: '/lunches/list/' + params.date + '/' + params.location,
+			type: 'GET',
 			success: json => {
-				cb(Object.assign(json, {success: true}));
+				cb(Object.assign(json, { success: true }));
 			},
-			error : () => {
-				cb({success: false});
+			error: () => {
+				cb({ success: false });
 			}
 		});
 		request.load();
-	} catch(e) {
+	} catch (e) {
 		Ti.API.error(e);
 
 		performFallback(cb);
@@ -135,21 +135,21 @@ exports.getLunches = function(params, cb) {
  * @param {Callback} cb The callback to be invoked after the asyncronous request.
  * @return void
  */
-exports.getContrib = function(cb) {
+exports.getContrib = function (cb) {
 	try {
 		const request = new RequestInstance({
-			url : 'https://api.github.com/repos/hansemannn/studentenfutter-app/contributors',
+			url: 'https://api.github.com/repos/hansemannn/studentenfutter-app/contributors',
 			external: true,
-			type : 'GET',
+			type: 'GET',
 			success: json => {
-				cb(Object.assign(json, {success: true}));
+				cb(Object.assign(json, { success: true }));
 			},
-			error : () => {
-				cb({success: false});
+			error: () => {
+				cb({ success: false });
 			}
 		});
 		request.load();
-	} catch(ex) {
+	} catch (ex) {
 		contribFallback(cb);
 	}
 };

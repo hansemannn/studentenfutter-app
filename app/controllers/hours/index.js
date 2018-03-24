@@ -1,7 +1,7 @@
 import Map from 'ti.map';
 
 let location,
-		firstOpenDone;
+	firstOpenDone;
 
 /**
  *  Constructor
@@ -12,18 +12,18 @@ let location,
 
 	if (OS_ANDROID) {
   		Alloy.Globals.setAndroidBackButton($.index);
-  }
-	
+	}
+
 	setMap();
 	setUI();
-})(arguments[0] || {});
+}(arguments[0] || {}));
 
 function setMap() {
 	if (OS_ANDROID && !Alloy.Globals.isMapSupported) {
 		Ti.API.warn('Google Maps is not configured correctly. Please set your API key in the tiapp.xml, clean and try again!');
 		return;
 	}
-	
+
 	const pin = Map.createAnnotation({
 		latitude: location.location.lat,
 		longitude: location.location.lon,
@@ -31,12 +31,12 @@ function setMap() {
 		subtitle: location.location.address
 	});
 	$.map.addAnnotation(pin);
-	
+
 	$.map.setRegion({
 		latitude: location.location.lat,
 		longitude: location.location.lon,
-		latitudeDelta : 0.05,
-		longitudeDelta : 0.05
+		latitudeDelta: 0.05,
+		longitudeDelta: 0.05
 	});
 }
 
@@ -44,7 +44,7 @@ function askForRoute() {
 	const dia = Ti.UI.createAlertDialog({
 		title: L('show_route'),
 		message: L('show_route_msg'),
-		buttonNames: [L('cancel'), L('show')],
+		buttonNames: [ L('cancel'), L('show') ],
 		preferred: 1,
 		cancel: 0
 	});
@@ -52,7 +52,7 @@ function askForRoute() {
 	dia.addEventListener('click', (e) => {
 		if (e.index === 1) {
 			const prefix = (OS_ANDROID) ? 'http://maps.google.com/?' : 'maps:';
-			Ti.Platform.openURL(prefix + 'f=d&hl=en&geocode=&saddr=&sll=&daddr=' +  encodeURIComponent(location.location.address))
+			Ti.Platform.openURL(prefix + 'f=d&hl=en&geocode=&saddr=&sll=&daddr=' +  encodeURIComponent(location.location.address));
 		}
 	});
 
@@ -62,17 +62,17 @@ function askForRoute() {
 function setUI() {
 	const openings = location.openings;
 	let sections = [];
-	
-	for (let i = 0; i < openings.length;i++) {
+
+	for (let i = 0; i < openings.length; i++) {
 		const opening = openings[i];
-		
+
 		let attrs = {
 			properties: {
 				height: 43,
 				title: opening.time
 			}
 		};
-		
+
 		if (OS_ANDROID) {
 			attrs = {
 				properties: Object.assign(attrs.properties, {
@@ -87,11 +87,11 @@ function setUI() {
 
 		const section = Ti.UI.createListSection({
 			headerTitle: opening.date,
-			items: [attrs]
+			items: [ attrs ]
 		});
 		sections.push(section);
 	}
-	
+
 	$.list.setSections(sections);
 }
 
@@ -99,9 +99,9 @@ function selectAnnotation(e) {
 	if (!Alloy.Globals.isMapSupported || firstOpenDone) {
 		return;
 	}
-	
+
 	firstOpenDone = true;
-	
+
 	if (OS_IOS) {
 		$.map.visibleMapRect = {
 			animated: true,
@@ -110,6 +110,6 @@ function selectAnnotation(e) {
 			}
 		};
 	}
-	
+
 	$.map.selectAnnotation($.map.annotations[0]);
 }

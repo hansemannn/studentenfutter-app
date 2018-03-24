@@ -13,20 +13,20 @@ if (OS_ANDROID) {
 		isGooglePlayServicesAvailable: () => {
 			return true;
 		}
-	}
+	};
 }
 
 Ti.UI.setBackgroundColor('#fff');
 
 Alloy.Globals.footerBarHeight = (OS_IOS && Ti.Platform.displayCaps.platformHeight === 812) ? 64 : 44;
 Alloy.Collections.lunch = Alloy.createCollection('lunch');
-Alloy.Models.cart = Alloy.createModel('cart'); 
+Alloy.Models.cart = Alloy.createModel('cart');
 Alloy.Globals.displayWidth = Ti.Platform.getDisplayCaps().getPlatformWidth();
 Alloy.Globals.isMapSupported = PlayServices.isGooglePlayServicesAvailable();
 Alloy.Globals.footerHeight = isiPhoneX ? 64 : 44;
 Alloy.Globals.listRefreshTintColor = isiOS11 ? '#fff' : null;
 
-Alloy.Globals.setAndroidBackButton = function(_window) {
+Alloy.Globals.setAndroidBackButton = function (_window) {
 	if (!OS_ANDROID) { return; }
 
 	_window.addEventListener('open', () => {

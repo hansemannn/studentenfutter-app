@@ -1,15 +1,15 @@
 /*
 	Cross-platform segmented control (TabbedBar)
 	by @skypanther
-	
+
 	Requires Ti SDK 1.8+ (or modify makeTabbedBar to use Ti.UI.createTabbedBar instead of Ti.UI.iOS.createTabbedBar)
-	
+
 	Usage:
 	const tbar = require('/path/custTabBar').makeTabbedBar({paramObj}, _fn);
-	
-	Params: 
+
+	Params:
 		{paramObj} is map of properties to match those defined by Ti.UI.iOS.TabbedBar, see DEFAULTS below for list of params that can be set on Android (all the native props are supported on iOS)
-		_fn is a is a function to be called when a button on the tabbed bar is clicked, it will be passed the index of the button clicked 
+		_fn is a is a function to be called when a button on the tabbed bar is clicked, it will be passed the index of the button clicked
 
 	iOS: returns an instance of Ti.UI.iOS.TabbedBar
 	Android: returns custom UI control to mimic TabbedBar
@@ -17,7 +17,7 @@
 */
 
 const DEFAULTS = {
-	labels: ['One', 'Two'],
+	labels: [ 'One', 'Two' ],
 	index: 1,
 	width: 300,
 	backgroundColor: '#ccc',
@@ -31,14 +31,14 @@ const DEFAULTS = {
 	fontSize: 16
 };
 
-//Extend an object with the properties from another 
-//(thanks Dojo - http://docs.dojocampus.org/dojo/mixin)
+// Extend an object with the properties from another
+// (thanks Dojo - http://docs.dojocampus.org/dojo/mixin)
 let empty = {};
-function mixin(/*Object*/ target, /*Object*/ source) {
+function mixin(/* Object*/ target, /* Object*/ source) {
 	let name;
-	let s; 
+	let s;
 	let i;
-	
+
 	for (name in source) {
 		s = source[name];
 		if (!(name in target) || (target[name] !== s && (!(name in empty) || empty[name] !== s))) {
@@ -50,12 +50,12 @@ function mixin(/*Object*/ target, /*Object*/ source) {
 
 const osname = Ti.Platform.osname;
 
-exports.makeTabbedBar = function(/*map*/_params, /*function*/ _fn) {
-    if (osname === 'android') {
+exports.makeTabbedBar = function (/* map*/_params, /* function*/ _fn) {
+	if (osname === 'android') {
 		// build pseudo tabbed bar for Android
-        const wrapper = Ti.UI.createView({
+		const wrapper = Ti.UI.createView({
         	id: 'root',
-			width:(_params.width) ? _params.width : DEFAULTS.width,
+			width: (_params.width) ? _params.width : DEFAULTS.width,
 			height: (_params.height) ? _params.height : DEFAULTS.androidHeight,
 			top: (_params.top) ? _params.top : DEFAULTS.top,
 			left: (_params.left) ? _params.left : DEFAULTS.left
@@ -64,16 +64,16 @@ exports.makeTabbedBar = function(/*map*/_params, /*function*/ _fn) {
 		// need to calculate width of sub-buttons, but view.width could have been set as a string
 		const tmpWidth = (_params.width) ? _params.width : DEFAULTS.width;
 		let subBtnWidth = 0;
-		if (typeof(tmpWidth)=='number') {
-			subBtnWidth = Math.round(tmpWidth/numButtons);
-		} else if (typeof(tmpWidth)=='string' && !isNaN(parseInt(tmpWidth))) {
+		if (typeof(tmpWidth) === 'number') {
+			subBtnWidth = Math.round(tmpWidth / numButtons);
+		} else if (typeof(tmpWidth) === 'string' && !isNaN(parseInt(tmpWidth))) {
 			// looks like we've got a percentage width
-			subBtnWidth = Math.round((parseInt(tmpWidth)/100 * Ti.Platform.displayCaps.platformWidth)/numButtons);
+			subBtnWidth = Math.round((parseInt(tmpWidth) / 100 * Ti.Platform.displayCaps.platformWidth) / numButtons);
 		} else {
 			// looks like 'auto' was used
-			subBtnWidth = Math.round((0.9 * Ti.Platform.displayCaps.platformWidth)/numButtons);
+			subBtnWidth = Math.round((0.9 * Ti.Platform.displayCaps.platformWidth) / numButtons);
 		}
-		
+
 		let btnArray = [];
 		for (let i = 0; i < numButtons; i++) {
 			// create the sub-buttons
@@ -81,7 +81,7 @@ exports.makeTabbedBar = function(/*map*/_params, /*function*/ _fn) {
 				backgroundColor: (_params.backgroundColor) ? _params.backgroundColor : DEFAULTS.backgroundColor,
 				borderColor: (_params.borderColor) ? _params.borderColor : DEFAULTS.borderColor,
 				borderWidth: (_params.borderWidth) ? _params.borderWidth : DEFAULTS.borderWidth,
-				left: (i * subBtnWidth)+3,
+				left: (i * subBtnWidth) + 3,
 				width: subBtnWidth,
 				height: (_params.height) ? _params.height : DEFAULTS.androidHeight,
 				myIndex: i
@@ -104,16 +104,16 @@ exports.makeTabbedBar = function(/*map*/_params, /*function*/ _fn) {
 				width: subBtnWidth
 			}));
 
-			if (i==_params.index) {
+			if (i == _params.index) {
 				subBtn.children[1].backgroundColor = (_params.backgroundSelectedColor) ? _params.backgroundSelectedColor : DEFAULTS.backgroundSelectedColor;
 				// subBtn.backgroundColor = (_params.backgroundSelectedColor) ? _params.backgroundSelectedColor : DEFAULTS.backgroundSelectedColor;
 			}
-			
+
 			btnArray.push(subBtn);
 			wrapper.add(subBtn);
 		}
-        wrapper.addEventListener('click', (e) => {
-			for (let i=0; i < numButtons; i++) {
+		wrapper.addEventListener('click', (e) => {
+			for (let i = 0; i < numButtons; i++) {
 				btnArray[i].children[0].setColor('#51ccf3');
 				btnArray[i].children[1].backgroundColor = (_params.backgroundColor) ? _params.backgroundColor : DEFAULTS.backgroundColor;
 			}
@@ -125,11 +125,11 @@ exports.makeTabbedBar = function(/*map*/_params, /*function*/ _fn) {
 				e.source.parent.children[1].backgroundColor =  (_params.backgroundSelectedColor) ? _params.backgroundSelectedColor : DEFAULTS.backgroundSelectedColor;
 				// e.source.parent.backgroundColor =  (_params.backgroundSelectedColor) ? _params.backgroundSelectedColor : DEFAULTS.backgroundSelectedColor;
 			}
-			
+
 	        if (_fn) {
 	            _fn((e.source.myIndex) ? e.source.myIndex : (e.source.parent.myIndex) ? e.source.parent.myIndex : 0);
 	        }
-        });
+		});
 		return wrapper;
 	}
 }; // end makeTabbedBar
