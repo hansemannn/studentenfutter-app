@@ -1,8 +1,7 @@
 <Alloy>
 	<Window titleid="canteen_details" onFocus="selectAnnotation">
 		<View id="mapView" onClick="askForRoute">
-			<Module if="Alloy.Globals.isMapSupported" id="map" module="ti.map" method="createView" />
-			<Label if="!Alloy.Globals.isMapSupported" class="noPlayServices" textid="no_play_services" />
+			<Module if="" id="map" module="ti.map" method="createView" />
 			<View class="sep" />
 		</View>
 		<ListView id="list">

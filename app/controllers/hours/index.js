@@ -19,11 +19,6 @@ let location,
 }(arguments[0] || {}));
 
 function setMap() {
-	if (OS_ANDROID && !Alloy.Globals.isMapSupported) {
-		Ti.API.warn('Google Maps is not configured correctly. Please set your API key in the tiapp.xml, clean and try again!');
-		return;
-	}
-
 	const pin = Map.createAnnotation({
 		latitude: location.location.lat,
 		longitude: location.location.lon,
@@ -41,6 +36,9 @@ function setMap() {
 }
 
 function askForRoute() {
+	// Android has route buttons inside the map (on tap)
+	if (OS_ANDROID) { return; }
+
 	const dia = Ti.UI.createAlertDialog({
 		title: L('show_route'),
 		message: L('show_route_msg'),
@@ -96,7 +94,7 @@ function setUI() {
 }
 
 function selectAnnotation(e) {
-	if (!Alloy.Globals.isMapSupported || firstOpenDone) {
+	if (firstOpenDone) {
 		return;
 	}
 
