@@ -7,7 +7,7 @@
 		
 		<!-- Android-only -->
 		<Menu platform="android">
-			<MenuItem icon="Ti.Android.R.drawable.ic_menu_camera" onClick="showCamera"></MenuItem>
+			<MenuItem icon="/images/icons/camera.png" onClick="showCamera"></MenuItem>
 		</Menu>
 		
 		<ListView id="list" onItemclick="handleAction">
