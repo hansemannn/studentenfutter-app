@@ -1,10 +1,10 @@
 
-"#window": {
-	backgroundColor: "black",
-	barColor: "#111"
+'#window': {
+	backgroundColor: 'black',
+	barColor: '#111'
 }
 
-"#window[platform=ios]": {
+'#window[platform=ios]': {
 	translucent: true,
 	largeTitleEnabled: false
 }

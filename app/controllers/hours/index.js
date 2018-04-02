@@ -10,8 +10,8 @@ let location,
 	location = require('/locations').getCurrentLocation();
 	firstOpenDone = false;
 
-	if (OS_ANDROID) {
-  		Alloy.Globals.setAndroidBackButton($.index);
+	if (OS_ANDROID) {
+		Alloy.Globals.setAndroidBackButton($.index);
 	}
 
 	setMap();
@@ -78,7 +78,7 @@ function setUI() {
 				properties: Object.assign(attrs.properties, {
 					left: 15,
 					color: '#000',
-					font: {
+					font: {
 						fontSize: 15
 					}
 				})

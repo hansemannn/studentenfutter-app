@@ -66,7 +66,8 @@
     <module platform="ios" version="1.0.1">ti.reviewdialog</module>
     <module platform="ios" version="3.1.0">ti.map</module>
     <module platform="ios" version="1.2.1">ti.imagefactory</module>
-    <module platform="ios" version="1.1.1">ti.safaridialog</module>
+    <module platform="ios" version="1.0.0">ti.webdialog</module>
+    <module platform="android" version="1.0.0">ti.webdialog</module>
     <module platform="android" version="4.1.1">ti.map</module>
     <module platform="android" version="11.0.40">ti.playservices</module>
     <module platform="android" version="4.0.0">ti.imagefactory</module>
@@ -77,7 +78,7 @@
     <target device="iphone">true</target>
     <target device="mobileweb">false</target>
   </deployment-targets>
-  <sdk-version>7.1.0.v20180223174212</sdk-version>
+  <sdk-version>7.1.0.GA</sdk-version>
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>

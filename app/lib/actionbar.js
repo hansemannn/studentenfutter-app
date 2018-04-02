@@ -95,7 +95,7 @@ export default class ActionBarHelper {
 			return false;
 		}
 
-		if (this.actionBar) {
+		if (!this.actionBar) {
 			Ti.API.error('No ActionBar available');
 			return false;
 		}

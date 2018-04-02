@@ -1,125 +1,118 @@
-"#images": {
-/*	showPagingControl: true,
-	pagingControlAlpha: 0.5,
-	currentPageIndicatorColor: Alloy.CFG.styles.tintColor,
-	pagingControlColor: "#f0f0f0",
-	pageIndicatorColor: "#888",*/
+'#images': {
 	showVerticalScrollIndicator: false,
     showHorizontalScrollIndicator: true,
-	layout: "horizontal",
+	layout: 'horizontal',
+	scrollType: 'horizontal',
 	height: 230,
 	width: Ti.UI.FILL
 }
 
-"#list[platform=ios]": {
-	footerTitle: "",
+'#list[platform=ios]': {
+	footerTitle: '',
 	listSeparatorInsets: {
 		left: 0
 	}
 }
 
-".titleOverlay": {
+'.titleOverlay': {
 	bottom: 0,
 	height: 45,
 	width: Ti.UI.FILL,
 }
 
-".titleOverlay[platform=android]": {
-	backgroundColor: "#6D000000"
+'.titleOverlay[platform=android]': {
+	backgroundColor: '#6D000000'
 }
 
-".titleOverlay[platform=ios]": {
+'.titleOverlay[platform=ios]': {
 	effect: Ti.UI.iOS.BLUR_EFFECT_STYLE_DARK
 }
 
-"#title": {
-	color: "white",
-	textAlign: "left",
+'#title': {
+	color: 'white',
+	textAlign: 'left',
 	left: 15,
 	right: 15,
 	font: {
 		fontSize: 14,
-		fontWeight: "bold"
+		fontWeight: 'bold'
 	}
 }
 
-".placeholderImage": {
-	image: "/images/noImage.png",
+'.placeholderImage': {
+	image: '/images/noImage.png',
 	width: 150,
 	height: 150,
 	opacity: 0.7,
 	top: 0
 }
 
-".placeholderText": {
+'.placeholderText': {
 	bottom: 90,
-	color: "#fff",
+	color: '#fff',
 	opacity: 0.7,
 	font: {
-		fontWeight: "bold",
+		fontWeight: 'bold',
 		fontSize: 16
 	},
-	textid: "upload_first_photo_now"
+	textid: 'upload_first_photo_now'
 }
 
-"#placeholder": {
+'#placeholder': {
 	height: 230
 }
 
-".placeholderBlur": {
+'.placeholderBlur': {
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL
 }
 
-".placeholderBlur[platform=ios]": {
+'.placeholderBlur[platform=ios]': {
 	effect: Ti.UI.iOS.BLUR_EFFECT_STYLE_LIGHT
 }
 
-".imageContainer": {
+'.imageContainer': {
 	width: Ti.UI.FILL,
-	height: 230
+	height: 230,
+	backgroundImage: '/images/lunch.jpg',
 }
 
-".imageContainer[platform=ios]": {
-	backgroundImage: "/images/lunch.jpg",
-}
-
-".textLabel": {
+'.textLabel': {
 	left: 15,
 	font: {
 		fontSize: 16
 	},
-	color: "#000"
+	color: '#000'
 }
 
-".ratingImage": {
+'.ratingImage': {
 	right: 5,
 	height: 24
 }
 
-".ratingImage[platform=android]": {
-	right: 15
+'.ratingImage[platform=android]': {
+	right: 25
 }
 
-".staticRow": {
+'.staticRow': {
 	height: 45
 }
 
-".additivesBackground": {
+'.additivesBackground': {
 	width: 24,
 	height: 24,
-	backgroundImage: "/images/additivesBackground.png",
+	backgroundImage: '/images/additivesBackground.png',
 	right: 5
 }
 
-".additivesBackground[platform=android]": {
-	right: 15
+'.additivesBackground[platform=android]': {
+	right: 25
 }
 
-".additives": {
+'.additives': {
 	font: {
 		fontSize: 14	
 	},
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	color: "white"
+	color: 'white'
 }

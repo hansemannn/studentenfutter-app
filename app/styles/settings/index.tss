@@ -13,7 +13,6 @@
 }
 
 'ListItem[platform=android]': {
-	left: 10,
 	height: 43,
 	font: {
 		fontSize: 15

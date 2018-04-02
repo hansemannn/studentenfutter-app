@@ -142,18 +142,11 @@ function handleListItemClick(e) {
 }
 
 function openDetails(itemId, animated) {
-	// TODO: Move all products to Models
-	let product;
-
-	// FIXME: Use better underscore-method to find the ID. Problem was Android here
-	_.each(lunches, function (lunch) {
-		if (lunch.id === itemId) {
-			product = lunch;
-		}
-	});
+	const productID = Number(itemId);
+	const product = lunches.find(lunch => lunch.id === productID);
 
 	if (!product) {
-		Ti.API.error('Could not find product with ID = ' + itemId);
+		Ti.API.error('Could not find product with ID = ' + productID);
 		Ti.API.error(JSON.stringify(lunches));
 		return;
 	}
