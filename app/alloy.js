@@ -4,17 +4,7 @@ import Map from 'ti.map';
 const isiPhoneX = (Ti.Platform.displayCaps.platformWidth === 375 && Ti.Platform.displayCaps.platformHeight === 812 && Ti.Platform.displayCaps.logicalDensityFactor === 3);
 const isiOS11 = (Ti.Platform.osname === 'iphone' || Ti.Platform.osname === 'ipad') && (parseInt(Titanium.Platform.version.split('.')[0]) >= 11);
 
-let PlayServices = {};
-
-if (OS_ANDROID) {
-	PlayServices = require('ti.playservices');
-} else {
-	PlayServices = {
-		isGooglePlayServicesAvailable: () => {
-			return true;
-		}
-	};
-}
+Ti.API.error(PlayServices.isGooglePlayServicesAvailable());
 
 Ti.UI.setBackgroundColor('#fff');
 
@@ -22,7 +12,6 @@ Alloy.Globals.footerBarHeight = (OS_IOS && Ti.Platform.displayCaps.platformHeigh
 Alloy.Collections.lunch = Alloy.createCollection('lunch');
 Alloy.Models.cart = Alloy.createModel('cart');
 Alloy.Globals.displayWidth = Ti.Platform.getDisplayCaps().getPlatformWidth();
-Alloy.Globals.isMapSupported = PlayServices.isGooglePlayServicesAvailable();
 Alloy.Globals.footerHeight = isiPhoneX ? 64 : 44;
 Alloy.Globals.listRefreshTintColor = isiOS11 ? '#fff' : null;
 
