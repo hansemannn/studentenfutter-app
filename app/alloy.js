@@ -4,8 +4,6 @@ import Map from 'ti.map';
 const isiPhoneX = (Ti.Platform.displayCaps.platformWidth === 375 && Ti.Platform.displayCaps.platformHeight === 812 && Ti.Platform.displayCaps.logicalDensityFactor === 3);
 const isiOS11 = (Ti.Platform.osname === 'iphone' || Ti.Platform.osname === 'ipad') && (parseInt(Titanium.Platform.version.split('.')[0]) >= 11);
 
-Ti.API.error(PlayServices.isGooglePlayServicesAvailable());
-
 Ti.UI.setBackgroundColor('#fff');
 
 Alloy.Globals.footerBarHeight = (OS_IOS && Ti.Platform.displayCaps.platformHeight === 812) ? 64 : 44;

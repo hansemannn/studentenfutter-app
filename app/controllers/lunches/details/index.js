@@ -205,7 +205,7 @@ function sendGeneratedDemoImage() {
 }
 
 function sendProductImage(image) {
-	loader = new LoaderInstance($.window);
+	const loader = new LoaderInstance($.window);
 	loader.show();
 
 	api.postProductImage({
