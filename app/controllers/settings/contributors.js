@@ -1,5 +1,6 @@
 import api from '/api';
 import LoaderInstance from '/loader';
+import WebDialog from 'ti.webdialog';
 
 /**
 *  Constructor
@@ -47,19 +48,13 @@ function showContributorPage(e) {
 	const username = item.properties.username;
 	const githubURL = 'https://github.com/' + username;
 
-	if (OS_ANDROID) {
+	if (!WebDialog.isSupported()) {
 		Ti.Platform.openURL(githubURL);
 	} else {
-		const safariDialog = require('ti.safaridialog');
-
-		if (!safariDialog.isSupported()) {
-			Ti.Platform.openURL(githubURL);
-		} else {
-			safariDialog.open({
-				url: githubURL,
-				tintColor: Alloy.CFG.styles.tintColor,
-				animted: true
-			});
-		}
+		WebDialog.open({
+			url: githubURL,
+			tintColor: Alloy.CFG.styles.tintColor,
+			animted: true
+		});
 	}
 }

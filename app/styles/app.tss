@@ -1,85 +1,85 @@
-"Window": {
-	backgroundColor: "#fff"
+'Window': {
+	backgroundColor: '#fff'
 }
 
-"Button": {
+'Button': {
 	tintColor: Alloy.CFG.styles.tintColor
 }
 
-"Label": {
+'Label': {
     font: {
         fontSize: 15
     }
 }
 
-"ListView": {
-	backgroundColor : "#f4f4f4"
+'ListView': {
+	backgroundColor : '#f4f4f4'
 }
 
-".selectable[platform=ios]": {
+'.selectable': {
 	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
 }
 
 /** iOS **/
 
-"Window[platform=ios]": {
-	navTintColor: "#fff",
+'Window[platform=ios]': {
+	navTintColor: '#fff',
 	barColor: Alloy.CFG.styles.tintColor,
-	backButtonTitle: "",
+	backButtonTitle: '',
 	translucent: false,
 	largeTitleEnabled: true,
 	titleAttributes: {
-		color: "#fff"
+		color: '#fff'
 	}
 }
 
-".closeButton[platform=ios]": {
-	image: "/images/icons/close.png"
+'.closeButton[platform=ios]': {
+	image: '/images/icons/close.png'
 }
 
 /** Android **/
 
-"Window[platform=android]": {
+'Window[platform=android]': {
 	windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN
 }
 
-"MenuItem[platform=android]": {
+'MenuItem[platform=android]': {
 	showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
 }
 
-"TextField[platform=android]": {
+'TextField[platform=android]': {
 	// softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS
 }
 
-"Button[platform=android]": {
+'Button[platform=android]': {
 	borderRadius: 0,
-	backgroundColor: "transparent",
+	backgroundColor: 'transparent',
 	borderWidth: 0,
-	color: "#000",
+	color: '#000',
 	width: Ti.UI.SIZE
 }
 
-"ActionBar": {
+'ActionBar': {
 	displayHomeAsUp: true,
 	homeButtonEnabled: true
 }
 
-".closeButton[platform=android]": {
-	icon: "/images/icons/close.png"
+'.closeButton[platform=android]': {
+	icon: '/images/icons/close.png'
 }
 
-".sectionContainer": {
-    backgroundColor : "#f4f4f4",
+'.sectionContainer': {
+    backgroundColor : '#f4f4f4',
     top : 0,
     height : 34,
     bottom : 0
 }
 
-".sectionTitle": {
+'.sectionTitle': {
 	left : 15,
 	bottom : 8,
 	font : {
 		fontSize : 14
 	},
-	color : "#7d7d7d"
+	color : '#7d7d7d'
 }

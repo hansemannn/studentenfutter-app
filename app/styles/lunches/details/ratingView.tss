@@ -1,63 +1,63 @@
-"#container": {
-	backgroundColor: "#80000000", // 50 % opacity
+'#container': {
+	backgroundColor: '#80000000', // 50 % opacity
 	opacity: 0.0
 }
 
-"#content": {
-	backgroundColor: "#fff",
+'#content': {
+	backgroundColor: '#fff',
 	width: 280,
 	height: 110,
 	borderRadius: 15,
 	bubbleParent: false
 }
 
-"#rating": {
+'#rating': {
 	top: 55,
-	layout: "horizontal",
+	layout: 'horizontal',
 	height: 30,
 	width: 150
 }
 
-".button": {
+'.button': {
 	width: 100,
 	font: {
 		fontSize: 16
 	}
 }
 
-"#cancel": {
+'#cancel': {
 	left: 20,
-	tintColor: "#bfbfbf"
+	tintColor: '#bfbfbf'
 }
 
-"#submit": {
+'#submit': {
 	enabled: false,
 	right: 20
 }
 
-".header": {
-	color: "#555",
+'.header': {
+	color: '#555',
 	top: 20,
 	font: {
 		fontSize: 16
 	}
 }
 
-"#buttons": {
+'#buttons': {
 	height: Ti.UI.SIZE,
 	width: Ti.UI.FILL,
 	bottom: 10
 }
 
-"#innerContent": {
+'#innerContent': {
 
 }
 
-"#loader": {
+'#loader': {
 	visible: false,
 	style: Ti.UI.ActivityIndicatorStyle.BIG
 }
 
-"#loader[platform=ios]": {
-	indicatorColor: "#333"
+'#loader[platform=ios]': {
+	indicatorColor: '#333'
 }
