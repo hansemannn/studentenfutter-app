@@ -15,7 +15,7 @@
 	top: 55,
 	layout: 'horizontal',
 	height: 30,
-	width: 150
+	width: Ti.UI.SIZE
 }
 
 '.button': {
@@ -46,7 +46,7 @@
 '#buttons': {
 	height: Ti.UI.SIZE,
 	width: Ti.UI.FILL,
-	bottom: 10
+	bottom: 8
 }
 
 '#innerContent': {
