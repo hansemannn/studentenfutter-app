@@ -205,7 +205,15 @@ function sendGeneratedDemoImage() {
 }
 
 function sendProductImage(image) {
-	const loader = new LoaderInstance($.window);
+	let loader;
+
+	if (OS_IOS) {
+		$.images.hide();
+		$.placeholder.hide();
+		loader = new LoaderInstance($.innerContainer);
+	} else {
+		loader = new LoaderInstance($.details);
+	}
 	loader.show();
 
 	api.postProductImage({
@@ -213,6 +221,14 @@ function sendProductImage(image) {
 		'image[userId]': Ti.Platform.getId(),
 		'image[originalResource]': image
 	}, (e) => {
+		if (OS_IOS) {
+			if (!product.images || (product.images && product.images.length === 0)) {
+				$.placeholder.show();
+				$.images.hide();
+			} else {
+				$.images.show();
+			}
+		}
 		loader.hide();
 
 		if (!e.awaitingModeration) {
@@ -227,7 +243,7 @@ function sendProductImage(image) {
 			dia.show();
 		}
 	}, (e) => {
-		Ti.API.info('Process:' + e.value);
+		Ti.API.info('Process: ' + e.value);
 	});
 }
 
