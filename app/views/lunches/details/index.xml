@@ -24,7 +24,7 @@
 				</ItemTemplate>
 			</Templates>
 			<HeaderView>
-				<View class="imageContainer">
+				<View class="imageContainer" id="innerContainer">
 					<ScrollView id="images" />
 					
 					<!-- iOS-only -->
