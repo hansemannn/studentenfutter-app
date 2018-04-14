@@ -3,7 +3,7 @@
   xmlns:ti="http://ti.appcelerator.org">
   <id>de.ncn.mensaapp</id>
   <name>Mensa</name>
-  <version>5.2.0.0</version>
+  <version>5.2.1.0</version>
   <publisher>Hans Knoechel</publisher>
   <url>http://studentenfutter-os.de</url>
   <description>not specified</description>
@@ -21,7 +21,7 @@
     <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
     <use-app-thinning>true</use-app-thinning>
     <use-new-build-system>true</use-new-build-system>
-    <team-id>YOUR_TEAM_ID</team-id>
+    <team-id>6K4KHD4NQF</team-id>
     <plist>
       <dict>
         <key>UIApplicationShortcutItems</key>
@@ -46,18 +46,13 @@
   </ios>
   <android 
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <manifest android:installLocation="preferExternal" android:versionCode="20" android:versionName="3.0.0" package="de.ncn.mensaapp">
+    <manifest android:installLocation="preferExternal" android:versionCode="24" android:versionName="4.0.1" package="de.ncn.mensaapp">
       <uses-sdk android:minSdkVersion="16"/>
       <uses-permission android:name="android.permission.INTERNET"/>
       <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-      <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
       <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-      <uses-permission android:name="de.ncn.mensaapp.permission.MAPS_RECEIVE"/>
-      <permission android:name="de.ncn.mensaapp.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
-      <application android:screenOrientation="portrait" android:theme="@style/Theme.Studentenfutter"> 
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyD1EMzxNRmDy_jeMoPyOlb0VGssbQAGzsM"/>
+      <application android:screenOrientation="portrait" android:theme="@style/Theme.Studentenfutter">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCYFuHPUVaHWSQWVwhv8v7Pgks7s1UlnCU"/>
       </application>
     </manifest>
   </android>
