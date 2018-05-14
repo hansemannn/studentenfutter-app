@@ -11,4 +11,4 @@ keystore
 /tiapp.prod.xml
 /package-lock.json
 /node_modules
-/plugins/ti.alloy
+/plugins/ti.alloy/*

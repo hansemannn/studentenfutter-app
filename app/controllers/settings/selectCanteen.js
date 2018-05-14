@@ -1,4 +1,4 @@
-import Locations from '/locations';
+import Locations from 'locations';
 
 let nav;
 let selectedCanteen;

@@ -1,4 +1,4 @@
-import Utils from '/utils';
+import { selectionChanged, isEmulator } from '/utils';
 
 const priceCategories = [ L('student'), L('employee') ];
 
@@ -49,6 +49,7 @@ function configureCells() {
 	generalSection.updateItemAt(1, selectCanteenCell);
 }
 
+// eslint-disable-next-line no-unused-vars
 function changePreference(e) {
 	Ti.App.Properties.setBool(e.section.getItemAt(e.itemIndex).properties.identifier, e.value);
 	onSettingsUpdated({
@@ -56,6 +57,7 @@ function changePreference(e) {
 	});
 }
 
+// eslint-disable-next-line no-unused-vars
 function selectAction(e) {
 	const item = e.section.getItemAt(e.itemIndex);
 	const action = item.properties.action;
@@ -124,17 +126,16 @@ function rateApp() {
 }
 
 function showProductDialog() {
-	const TiStoreView = require('com.dezinezync.storeview');
 	const TiReviewDialog = require('ti.reviewdialog');
 
-	if (!TiReviewDialog.isSupported() && Utils.isEmulator()) {
+	if (!TiReviewDialog.isSupported() && isEmulator()) {
 		Ti.API.warn('The Ti.StoreView dialog is only supposed to work on device!');
 		return;
 	}
 
 	if (!TiReviewDialog.isSupported()) {
 		const TiStoreView = require('com.dezinezync.storeview');
-		const LoaderInstance = require('/loader');
+		const LoaderInstance = require('loader');
 		const loader = new LoaderInstance($.window);
 
 		TiStoreView.addEventListener('loading', () => {
@@ -157,6 +158,7 @@ function showProductDialog() {
 	}
 }
 
+// eslint-disable-next-line no-unused-vars
 function openAbout() {
 	const aboutPage = Alloy.createController('/settings/webview', 'about').getView();
 
@@ -185,6 +187,7 @@ function reportError() {
 	mail.open();
 }
 
+// eslint-disable-next-line no-unused-vars
 function close() {
 	if (OS_IOS) {
 		nav.close();
@@ -193,10 +196,12 @@ function close() {
 	}
 }
 
+// eslint-disable-next-line no-unused-vars
 function onOpen() {
 	Ti.App.addEventListener('shortcut:canteenSelected', configureCells);
 }
 
+// eslint-disable-next-line no-unused-vars
 function onClose() {
 	Ti.App.removeEventListener('shortcut:canteenSelected', configureCells);
 }
@@ -215,7 +220,7 @@ exports.open = function () {
 function togglePriceCategory(e) {
 	Ti.App.Properties.setInt('currentPersonID', e.index);
 
-	Utils.selectionChanged();
+	selectionChanged();
 
 	onSettingsUpdated({
 		action: 'changePreference'

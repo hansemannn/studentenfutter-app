@@ -1,7 +1,7 @@
-import Utils from '/utils';
-import LoaderInstance from '/loader';
-import api from '/api';
-import { ImageFactory } from 'ti.imagefactory';
+import { formattedStars, isEmulator } from '/utils';
+import LoaderInstance from 'loader';
+import api from 'api';
+import ImageFactory from 'ti.imagefactory';
 
 const ListAction = {
 	PerformRating: 'rating',
@@ -23,7 +23,7 @@ let onRatingUpdated;
 		nav = Ti.UI.iOS.createNavigationWindow({
 			window: $.details
 		});
-	} else if (OS_ANDROID) {
+	} else if (OS_ANDROID) {
 		Alloy.Globals.setAndroidBackButton($.details);
 	}
 
@@ -108,7 +108,7 @@ function setRating(rating) {
 	const section = $.list.sections[0];
 	const ratingCell = section.items[0];
 
-	ratingCell.rating.image = Utils.formattedStars(rating);
+	ratingCell.rating.image = formattedStars(rating);
 	section.updateItemAt(0, ratingCell);
 }
 
@@ -164,7 +164,7 @@ function showCamera() {
 	}
 
 	// Send red sqare on Simulator
-	if (Utils.isEmulator()) {
+	if (isEmulator()) {
 		sendGeneratedDemoImage();
 		return;
 	}
