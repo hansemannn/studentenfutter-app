@@ -1,5 +1,5 @@
-import Utils from '/utils';
-import DateUtils from '/dateutils';
+import { selectionChanged, formattedStars } from '/utils';
+import DateUtils from 'dateutils';
 
 const cart = Alloy.Models.cart;
 const LunchState = {
@@ -258,7 +258,7 @@ function setUI() {
 
 			if (showRatings) {
 				attr['fullStars'] = {
-					image: Utils.formattedStars(lunch.rating)
+					image: formattedStars(lunch.rating)
 				};
 				attr['scoreOfRating'] = {
 					text: lunch.rating ? lunch.rating.value : 0
@@ -316,7 +316,7 @@ function incrementPrice(e) {
 	}
 
 	e.section.updateItemAt(e.itemIndex, item);
-	Utils.selectionChanged();
+	selectionChanged();
 }
 
 function decrementPrice(e) {
@@ -335,7 +335,7 @@ function decrementPrice(e) {
 	}
 
 	e.section.updateItemAt(e.itemIndex, item);
-	Utils.selectionChanged();
+	selectionChanged();
 }
 
 exports.open = open;

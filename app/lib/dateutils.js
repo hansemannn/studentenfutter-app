@@ -2,7 +2,7 @@ const ONE_DAY = 86400000;
 
 export default class DateUtils {
 	constructor() {
-		this.days = new Array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+		this.days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 		this.date = new Date();
 		this.currentLanguage = Ti.Locale.getCurrentLanguage();
 	}
@@ -35,20 +35,20 @@ export default class DateUtils {
 	}
 
 	get currentDateSlug() {
-	    const d = new Date(this.date);
-	    const year = d.getFullYear();
+		const d = new Date(this.date);
+		const year = d.getFullYear();
 		let month = '' + (d.getMonth() + 1);
-	    let day = '' + d.getDate();
+		let day = '' + d.getDate();
 
-	    if (month.length < 2) {
+		if (month.length < 2) {
 			month = '0' + month;
 		}
 
-	    if (day.length < 2) {
+		if (day.length < 2) {
 			day = '0' + day;
 		}
 
-	    return [ year, month, day ].join('-');
+		return [ year, month, day ].join('-');
 	}
 
 	increment() {

@@ -3,7 +3,7 @@
   xmlns:ti="http://ti.appcelerator.org">
   <id>de.ncn.mensaapp</id>
   <name>Mensa</name>
-  <version>5.2.1.0</version>
+  <version>5.2.2.1</version>
   <publisher>Hans Knoechel</publisher>
   <url>http://studentenfutter-os.de</url>
   <description>not specified</description>
@@ -21,7 +21,7 @@
     <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
     <use-app-thinning>true</use-app-thinning>
     <use-new-build-system>true</use-new-build-system>
-    <team-id>6K4KHD4NQF</team-id>
+    <team-id>YOUR_TEAM_ID</team-id>
     <plist>
       <dict>
         <key>UIApplicationShortcutItems</key>
@@ -46,8 +46,8 @@
   </ios>
   <android 
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <manifest android:installLocation="preferExternal" android:versionCode="24" android:versionName="4.0.1" package="de.ncn.mensaapp">
-      <uses-sdk android:minSdkVersion="16"/>
+    <manifest android:installLocation="preferExternal" android:versionCode="26" android:versionName="4.0.2" package="de.ncn.mensaapp">
+      <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="26"/>
       <uses-permission android:name="android.permission.INTERNET"/>
       <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
       <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
@@ -73,7 +73,7 @@
     <target device="iphone">true</target>
     <target device="mobileweb">false</target>
   </deployment-targets>
-  <sdk-version>7.1.0.GA</sdk-version>
+  <sdk-version>7.1.1.GA</sdk-version>
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>

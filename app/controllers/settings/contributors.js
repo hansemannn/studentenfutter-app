@@ -1,5 +1,5 @@
-import api from '/api';
-import LoaderInstance from '/loader';
+import api from 'api';
+import LoaderInstance from 'loader';
 import WebDialog from 'ti.webdialog';
 
 /**
