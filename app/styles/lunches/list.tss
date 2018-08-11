@@ -23,6 +23,10 @@
     footerTitle: ''
 }
 
+'#listView[platform=android]':{
+  separatorColor: '#eee'
+}
+
 '#refresh[platform=ios]': {
     tintColor: Alloy.Globals.listRefreshTintColor
 }
