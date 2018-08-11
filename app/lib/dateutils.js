@@ -12,7 +12,7 @@ export default class DateUtils {
 	}
 
 	get today() {
-		return new Date().toLocaleDateString();
+		return this.localeDateString(new Date());
 	}
 
 	get formattedDate() {
@@ -20,14 +20,18 @@ export default class DateUtils {
 		const yesterday = this.substractedDate(new Date());
 
 		if (this.isSameDay(this.date, new Date())) {
-			return L('today') + ', ' + this.date.toLocaleDateString();
+			return L('today') + ', ' + this.localeDateString(this.date);
 		} else if (this.isSameDay(this.date, tomorrow)) {
-			return L('tomorrow') + ', ' + this.date.toLocaleDateString();
+			return L('tomorrow') + ', ' + this.localeDateString(this.date);
 		} else if (this.isSameDay(this.date, yesterday)) {
-			return L('yesterday') + ', ' + this.date.toLocaleDateString();
+			return L('yesterday') + ', ' + this.localeDateString(this.date);
 		}
 
-		return `${L(this.days[this.date.getDay()])}, ${this.date.toLocaleDateString()}`;
+		return `${L(this.days[this.date.getDay()])}, ${this.localeDateString(this.date)}`;
+	}
+
+	localeDateString(date) {
+		return date.toLocaleDateString(Ti.Locale.currentLanguage);
 	}
 
 	isSameDay(date1, date2) {
