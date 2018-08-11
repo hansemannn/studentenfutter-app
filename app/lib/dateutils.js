@@ -1,10 +1,17 @@
+import format from 'date-fns/format';
+
 const ONE_DAY = 86400000;
 
 export default class DateUtils {
 	constructor() {
+		try {
+			this.lang = require('date-fns/locale/' + Ti.Locale.currentLanguage);
+		} catch (e) {
+			this.lang = 'de';
+		}
+
 		this.days = [ 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' ];
 		this.date = new Date();
-		this.currentLanguage = Ti.Locale.getCurrentLanguage();
 	}
 
 	set today(newDate) {
@@ -16,6 +23,7 @@ export default class DateUtils {
 	}
 
 	get formattedDate() {
+
 		const tomorrow = this.addedDate(new Date());
 		const yesterday = this.substractedDate(new Date());
 
@@ -27,11 +35,11 @@ export default class DateUtils {
 			return L('yesterday') + ', ' + this.localeDateString(this.date);
 		}
 
-		return `${L(this.days[this.date.getDay()])}, ${this.localeDateString(this.date)}`;
+		return `${format(this.date, 'dddd', { locale: this.lang })}, ${this.localeDateString(this.date)}`;
 	}
 
 	localeDateString(date) {
-		return date.toLocaleDateString(Ti.Locale.currentLanguage);
+		return format(date, 'DD.MM.YYYY', { locale: this.lang });
 	}
 
 	isSameDay(date1, date2) {
