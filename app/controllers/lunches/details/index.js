@@ -69,8 +69,8 @@ function setImages() {
 		});
 
 		// Android currently doesn't support this due to TIMOB-24379
-		OS_IOS && productImage.addEventListener('click', (e) => {
-			openFullscreenImage(images, _index);
+		productImage.addEventListener('click', () => {
+			OS_IOS && openFullscreenImage(images, _index);
 		});
 
 		view.add(productImage);

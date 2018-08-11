@@ -1,3 +1,5 @@
+import ImageFactory from 'ti.imagefactory';
+
 let nav;
 
 /**
@@ -7,7 +9,7 @@ let nav;
 	const images = args.images;
 	const index = args.currentIndex;
 
-	images.forEach(function (image) {
+	images.forEach(image => {
 		const scrollView = Ti.UI.createScrollView({
 			contentWidth: 'auto',
 			contentHeight: 'auto',
@@ -26,8 +28,9 @@ let nav;
 				animated: true
 			});
 		});
+
 		scrollView.add(Ti.UI.createImageView({
-			image: image,
+			image: downscaledImage(image),
 			width: Ti.Platform.displayCaps.platformWidth
 		}));
 
@@ -40,6 +43,17 @@ let nav;
 		Alloy.Globals.setAndroidBackButton($.window);
 	}
 }(arguments[0] || {}));
+
+function downscaledImage(image) {
+	if (OS_IOS) {
+		return image; // iOS does not need to down-size
+	}
+
+	// For Android, downsize until the Bitmap drawing bug is fixes
+	// TODO: Cache image to file, compress image, cleanup on close
+	// OR: Fix TIMOB-24379
+	return image;
+}
 
 function close() {
 	image = null;
