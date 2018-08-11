@@ -3,7 +3,7 @@ let onSettingsUpdated;
 /**
  *  Constructor
  */
-(function constructor(args) {
+(function constructor() {
 	$.amount.setText(`${L('total_amount')}: 0.00 €`);
 	$.location.setText(Ti.App.Properties.getString('currentLocationName', Alloy.CFG.defaultCanteen.title));
 }(arguments[0] || {}));

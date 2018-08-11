@@ -1,4 +1,5 @@
 import { selectionChanged, formattedStars } from '/utils';
+import Loader from 'loader';
 import DateUtils from 'dateutils';
 
 const cart = Alloy.Models.cart;
@@ -9,7 +10,6 @@ const LunchState = {
 
 let nav;
 let loader;
-let LoaderInstance;
 let lunches;
 let currentLunchState = LunchState.Student;
 let dateutils;
@@ -17,7 +17,7 @@ let dateutils;
 /**
  *  Constructor
  */
-(function constructor(args) {
+(function constructor() {
 	dateutils = new DateUtils();
 
 	$.footer.onSettingsUpdated(onSettingsUpdated);
@@ -103,8 +103,7 @@ function onSettingsUpdated(e) {
 }
 
 function initializeLoader() {
-	LoaderInstance = require('/loader');
-	loader = new LoaderInstance($.window);
+	loader = new Loader($.window);
 }
 
 function initializeDate() {
@@ -157,7 +156,7 @@ function openDetails(itemId, animated) {
 	}).open(animated);
 }
 
-function onRatingUpdated(e) {
+function onRatingUpdated() {
 	fetchData({
 		force: true
 	});
@@ -172,7 +171,7 @@ function fetchData(args) {
 
 	$.window.setTitle(L('loading'));
 
-	const api = require('/api');
+	const api = require('api');
 	api.getLunches({
 		date: dateutils.currentDateSlug,
 		location: Ti.App.Properties.getInt('currentLocationID', Alloy.CFG.defaultCanteen.id)
@@ -201,7 +200,7 @@ function setUI() {
 
 	cart.resetTotal(false);
 
-	_.each(categories, function (category, index) {
+	categories.forEach((category, index) => {
 		const section = Alloy.createController('/lunches/section', {
 			title: category,
 			index: index
@@ -209,8 +208,8 @@ function setUI() {
 
 		let cells = [];
 
-		_.each(lunches, function (lunch) {
-			if (L(lunch.category, lunch.category) != category) {
+		lunches.forEach(lunch => {
+			if (L(lunch.category, lunch.category) !== category) {
 				return;
 			}
 

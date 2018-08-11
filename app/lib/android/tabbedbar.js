@@ -31,30 +31,11 @@ const DEFAULTS = {
 	fontSize: 16
 };
 
-// Extend an object with the properties from another
-// (thanks Dojo - http://docs.dojocampus.org/dojo/mixin)
-let empty = {};
-function mixin(/* Object*/ target, /* Object*/ source) {
-	let name;
-	let s;
-	let i;
-
-	for (name in source) {
-		s = source[name];
-		if (!(name in target) || (target[name] !== s && (!(name in empty) || empty[name] !== s))) {
-			target[name] = s;
-		}
-	}
-	return target; // Object
-}
-
-const osname = Ti.Platform.osname;
-
 exports.makeTabbedBar = function (/* map*/_params, /* function*/ _fn) {
-	if (osname === 'android') {
+	if (OS_ANDROID) {
 		// build pseudo tabbed bar for Android
 		const wrapper = Ti.UI.createView({
-        	id: 'root',
+			id: 'root',
 			width: (_params.width) ? _params.width : DEFAULTS.width,
 			height: (_params.height) ? _params.height : DEFAULTS.androidHeight,
 			top: (_params.top) ? _params.top : DEFAULTS.top,
@@ -104,7 +85,7 @@ exports.makeTabbedBar = function (/* map*/_params, /* function*/ _fn) {
 				width: subBtnWidth
 			}));
 
-			if (i == _params.index) {
+			if (i === _params.index) {
 				subBtn.children[1].backgroundColor = (_params.backgroundSelectedColor) ? _params.backgroundSelectedColor : DEFAULTS.backgroundSelectedColor;
 				// subBtn.backgroundColor = (_params.backgroundSelectedColor) ? _params.backgroundSelectedColor : DEFAULTS.backgroundSelectedColor;
 			}
@@ -126,9 +107,9 @@ exports.makeTabbedBar = function (/* map*/_params, /* function*/ _fn) {
 				// e.source.parent.backgroundColor =  (_params.backgroundSelectedColor) ? _params.backgroundSelectedColor : DEFAULTS.backgroundSelectedColor;
 			}
 
-	        if (_fn) {
-	            _fn((e.source.myIndex) ? e.source.myIndex : (e.source.parent.myIndex) ? e.source.parent.myIndex : 0);
-	        }
+			if (_fn) {
+				_fn(e.source.myIndex >= 0 ? e.source.myIndex : (e.source.parent.myIndex) ? e.source.parent.myIndex : 0);
+			}
 		});
 		return wrapper;
 	}

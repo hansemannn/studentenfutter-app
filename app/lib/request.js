@@ -1,4 +1,4 @@
-const Request = function (_args) {
+export default function Request (_args) {
 	const args = _args;
 	const reqType = (args.type) ? args.type.toUpperCase() : 'GET';
 	const _this = this;
@@ -17,7 +17,7 @@ const Request = function (_args) {
 			data1 = data1.read().text;
 		}
 
-		return (JSON.stringify(data1) != JSON.stringify(data2));
+		return (JSON.stringify(data1) !== JSON.stringify(data2));
 	}
 
 	function getUserAgent() {
@@ -53,7 +53,9 @@ const Request = function (_args) {
 			buttonNames: [ 'OK' ]
 		}).show();
 
-		if (args.anyway) { args.anyway(); }
+		if (args.anyway) {
+			args.anyway();
+		}
 
 		if (args.error) {
 			args.error('-> [' + JSON.stringify({
@@ -65,7 +67,7 @@ const Request = function (_args) {
 
 	function getCredentials() {
 		// Don't try to call this method, it will fail
-		return require('/auth').getCredentials();
+		return require('auth').encodedCredentials();
 	}
 
 	function refreshCache() {
@@ -73,8 +75,8 @@ const Request = function (_args) {
 			cache: false,
 			timeout: 10000,
 			validatesSecureCertificate: false,
-			onload: (e) => {
-				Ti.API.info('[' + httpClient.getStatus() + ' ' + url + ']');
+			onload: () => {
+				Ti.API.debug('[' + httpClient.getStatus() + ' ' + url + ']');
 
 				if (args.clearContentType) {
 					args.success(httpClient.responseData);
@@ -90,26 +92,26 @@ const Request = function (_args) {
 					response = [];
 				}
 
-				const file = (parseJsonFile(args.cacheName)) ? parseJsonFile(args.cacheName) : null;
-
 				if (args.cacheName) {
 					if (dataHasChanged(httpClient.responseText)) {
 						const f = Titanium.Filesystem.getFile(getCacheDir(), args.cacheName);
 						f.write(httpClient.responseText);
 
-						Ti.API.info('-> [Cache updated - ' + args.cacheName + ']');
+						Ti.API.debug('-> [Cache updated - ' + args.cacheName + ']');
 
 						// Neue Daten -> Callback
 						args.success(response);
 					} else {
-						Ti.API.info('-> [Cache not updated - No change]');
+						Ti.API.debug('-> [Cache not updated - No change]');
 					}
 				} else {
 					// Neue Daten -> Callback
 					args.success(response);
 				}
 
-				if (args.anyway) { args.anyway(); }
+				if (args.anyway) {
+					args.anyway();
+				}
 			},
 
 			onerror: (e) => {
@@ -120,12 +122,13 @@ const Request = function (_args) {
 
 				try {
 					response = JSON.parse(httpClient.responseText);
-				} catch (e) {
+				} catch (err) {
+					Ti.API.error(err);
 					response = null;
 				}
 
 				if (status === 400 && response && response.error && response.error.code === 104) {
-					const api = require('/api');
+					const api = require('api');
 					api.reauth(function () {
 						_this.load();
 					});
@@ -144,18 +147,22 @@ const Request = function (_args) {
 
 				try {
 					Ti.API.error('-> [Error: ' + JSON.stringify(errorResponse) + ']');
-				} catch (e) {}
+				} catch (err) {
+					Ti.API.error('Error parsing error response: ' + err);
+				}
 
 				// Cache? => alte datei zurückliefern als Fallback
 				if (args.cacheName) {
 					const file = parseJsonFile(args.cacheName);
 					if (file) {
-						Ti.API.info('-> [Cache available - ' + args.cacheName + ']');
+						Ti.API.debug('-> [Cache available - ' + args.cacheName + ']');
 						args.success(file);
 					}
 				}
 
-				if (args.anyway) { args.anyway(); }
+				if (args.anyway) {
+					args.anyway();
+				}
 			}
 		});
 
@@ -174,7 +181,7 @@ const Request = function (_args) {
 		}
 
 		args.headers && args.headers.forEach(header => {
-			if (header.length != 2) {
+			if (header.length !== 2) {
 				Ti.API.error('request header needs to have 2 arguments ');
 				return;
 			}
@@ -192,7 +199,7 @@ const Request = function (_args) {
 		}
 
 		if (args.data) {
-			Ti.API.info('[DATA - ' + JSON.stringify(args.data) + ']');
+			Ti.API.debug('[DATA - ' + JSON.stringify(args.data) + ']');
 			httpClient.send(args.data);
 		} else {
 			httpClient.send();
@@ -201,17 +208,19 @@ const Request = function (_args) {
 
 	this.load = function () {
 		const post = (args.data) ? ' ~ ' + JSON.stringify(args.data) : '';
-		Ti.API.info('[' + reqType + ' ' + url + post + ']');
+		Ti.API.debug('[' + reqType + ' ' + url + post + ']');
 
 		if (args.cacheName && (!args.forceRefresh || !Ti.Network.online)) {
 
 			const file = Titanium.Filesystem.getFile(Ti.Filesystem.getApplicationCacheDirectory(), args.cacheName);
-			if (file.exists() && (file.modificationTimestamp() >= Ti.App.Properties.getInt('starttime') * 1000 || !Ti.Network.online) && !args.clearContentType) {
-				Ti.API.info('-> [Cache available - ' + args.cacheName + ']');
+			if (file.exists() && (file.modificationTimestamp() >= Ti.App.Properties.getInt('starttime') * 1000 || !Ti.Network.online) && !args.clearContentType) {
+				Ti.API.debug('-> [Cache available - ' + args.cacheName + ']');
 				const f = file.read();
 				args.success((f.text.length > 0) ? JSON.parse(f) : null);
 
-				if (Ti.Network.online) { refreshCache(); }
+				if (Ti.Network.online) {
+					refreshCache();
+				}
 			} else {
 				(Ti.Network.online) ? refreshCache() : showNoNetworkWarning();
 			}
@@ -231,11 +240,9 @@ const Request = function (_args) {
 	};
 
 	this.abort = function () {
-		if (c != null) {
+		if (httpClient !== null) {
 			httpClient.abort();
-			Ti.API.info('-> [Request abgebrochen]');
+			Ti.API.debug('-> [Request cancelled]');
 		}
 	};
-};
-
-module.exports = Request;
+}

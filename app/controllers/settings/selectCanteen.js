@@ -15,7 +15,7 @@ let locations;
 		nav = Ti.UI.iOS.createNavigationWindow({
 			window: $.window
 		});
-	} else if (OS_ANDROID) {
+	} else if (OS_ANDROID) {
 		Alloy.Globals.setAndroidBackButton($.window);
 	}
 }(arguments[0] || {}));
@@ -34,15 +34,15 @@ function populateLocations() {
 
 	for (let i = 0; i < locations.length; i++) {
 		let attrs = {
-    			properties: {
+			properties: {
 				itemId: locations[i].id,
-    				  title: locations[i].title
-    			}
-		    };
+				title: locations[i].title
+			}
+		};
 
 		if (currentCanteenName === locations[i].title) {
 			attrs.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK;
-		} else if (OS_IOS) {
+		} else if (OS_IOS) {
 			attrs.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE; // No custom disclosure on Android
 		}
 
@@ -50,9 +50,9 @@ function populateLocations() {
 			attrs = {
 				properties: Object.assign(attrs.properties, {
 					left: 15,
-            	       height: 43,
-            	       color: '#000',
-            	       font: {
+					height: 43,
+					color: '#000',
+					font: {
 						fontSize: 15
 					}
 				})

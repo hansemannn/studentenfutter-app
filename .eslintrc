@@ -1,5 +1,7 @@
 {
   "extends": "axway/env-titanium",
   "globals": {},
-  "rules": {}
+  "rules": {
+    "import/no-absolute-path": "off"
+  }
 }

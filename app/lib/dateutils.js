@@ -2,7 +2,7 @@ const ONE_DAY = 86400000;
 
 export default class DateUtils {
 	constructor() {
-		this.days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+		this.days = [ 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' ];
 		this.date = new Date();
 		this.currentLanguage = Ti.Locale.getCurrentLanguage();
 	}

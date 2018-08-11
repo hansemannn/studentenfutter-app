@@ -1,7 +1,7 @@
 /**
  *  Constructor
  */
-(function constructor(args) {
+(function constructor() {
 	OS_IOS && Ti.App.iOS.addEventListener('shortcutitemclick', (e) => {
 		switch (e.itemtype) {
 			case 'SelectCanteen': openCanteenSelector();

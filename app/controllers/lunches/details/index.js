@@ -1,5 +1,5 @@
 import { formattedStars, isEmulator } from '/utils';
-import LoaderInstance from 'loader';
+import Loader from 'loader';
 import api from 'api';
 import ImageFactory from 'ti.imagefactory';
 
@@ -210,9 +210,9 @@ function sendProductImage(image) {
 	if (OS_IOS) {
 		$.images.hide();
 		$.placeholder.hide();
-		loader = new LoaderInstance($.innerContainer);
+		loader = new Loader($.innerContainer);
 	} else {
-		loader = new LoaderInstance($.details);
+		loader = new Loader($.details);
 	}
 	loader.show();
 
@@ -231,7 +231,7 @@ function sendProductImage(image) {
 		}
 		loader.hide();
 
-		if (!e.awaitingModeration) {
+		if (!e.awaitingModeration) {
 			const title = L(e.feedbackTitle || 'upload_success', 'upload_success');
 			const message = L(e.feedbackMessage || 'upload_success_msg', 'upload_success_msg');
 

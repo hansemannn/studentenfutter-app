@@ -1,4 +1,4 @@
-import RequestInstance from 'request';
+import Request from 'request';
 
 function performFallback(cb) {
 	const dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/lunches.json');
@@ -36,13 +36,11 @@ function contribFallback(cb) {
  * Posts a new product image.
  * @param {Object} params The POST parameter containing the image data.
  * @param {Function} cb The callback to be invoked after the asyncronous request.
- * @param {Function} onProgess The callback to be invoked after a progress is received. 
+ * @param {Function} onProgess The callback to be invoked after a progress is received.
  */
 exports.postProductImage = function (params, cb, onProgess) {
 	try {
-		const auth = require('/auth');
-
-		const request = new RequestInstance({
+		const request = new Request({
 			url: '/images/new',
 			type: 'POST',
 			data: params,
@@ -77,9 +75,7 @@ exports.postRating = function (params, cb) {
 	}
 
 	try {
-		const auth = require('/auth');
-
-		const request = new RequestInstance({
+		const request = new Request({
 			url: '/ratings/new',
 			type: 'POST',
 			data: {
@@ -108,7 +104,7 @@ exports.postRating = function (params, cb) {
  */
 exports.getLunches = function (params, cb) {
 	try {
-		const request = new RequestInstance({
+		const request = new Request({
 			url: '/lunches/list/' + params.date + '/' + params.location,
 			type: 'GET',
 			success: json => {
@@ -131,7 +127,7 @@ exports.getLunches = function (params, cb) {
  */
 exports.getContrib = function (cb) {
 	try {
-		const request = new RequestInstance({
+		const request = new Request({
 			url: 'https://api.github.com/repos/hansemannn/studentenfutter-app/contributors',
 			external: true,
 			type: 'GET',

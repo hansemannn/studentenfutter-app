@@ -3,7 +3,7 @@ let cb;
 /**
  *  Constructor
  */
-(function constructor(args) {
+(function constructor() {
 	$.tabbedBar.setIndex(Ti.App.Properties.getInt('currentPersonID', 0));
 }(arguments[0] || {}));
 

@@ -39,7 +39,7 @@ let nav;
 
 	$.images.setCurrentPage(index);
 
-	if (OS_ANDROID) {
+	if (OS_ANDROID) {
 		Alloy.Globals.setAndroidBackButton($.window);
 	}
 }(arguments[0] || {}));
@@ -56,8 +56,6 @@ function downscaledImage(image) {
 }
 
 function close() {
-	image = null;
-
 	if (OS_IOS) {
 		nav.close();
 	} else {

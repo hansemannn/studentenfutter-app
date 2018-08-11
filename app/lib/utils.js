@@ -52,7 +52,9 @@ export function isiOS10() {
  * Triggers a new haptic selection on supported devices.
  */
 export function selectionChanged() {
-	if (!OS_IOS) { return }
+	if (!OS_IOS) {
+		return;
+	}
 
 	const feedback = Ti.UI.iOS.createFeedbackGenerator({
 		type: Ti.UI.iOS.FEEDBACK_GENERATOR_TYPE_SELECTION

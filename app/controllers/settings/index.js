@@ -1,4 +1,5 @@
-import { selectionChanged, isEmulator } from '/utils';
+import { selectionChanged, isEmulator } from 'utils';
+import Loader from 'loader';
 
 const priceCategories = [ L('student'), L('employee') ];
 
@@ -92,7 +93,7 @@ function selectAction(e) {
 	OS_IOS && $.list.deselectItem(e.sectionIndex, e.itemIndex);
 }
 
-function selectCanteen(e) {
+function selectCanteen() {
 	Alloy.createController('/settings/selectCanteen', {
 		selectedCanteen: (e) => {
 			const generalSection = $.list.getSections()[0];
@@ -135,8 +136,7 @@ function showProductDialog() {
 
 	if (!TiReviewDialog.isSupported()) {
 		const TiStoreView = require('com.dezinezync.storeview');
-		const LoaderInstance = require('loader');
-		const loader = new LoaderInstance($.window);
+		const loader = new Loader($.window);
 
 		TiStoreView.addEventListener('loading', () => {
 			loader.show();

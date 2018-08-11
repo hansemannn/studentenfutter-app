@@ -21,7 +21,7 @@ exports.definition = {
 	extendModel: Model => {
 		return Model;
 	},
-	extendCollection: Collection => {
+	extendCollection: () => {
 
 	}
 };

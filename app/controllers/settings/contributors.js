@@ -1,25 +1,25 @@
 import api from 'api';
-import LoaderInstance from 'loader';
+import Loader from 'loader';
 import WebDialog from 'ti.webdialog';
 
 /**
 *  Constructor
 */
-(function constructor(args) {
-	if (OS_ANDROID) {
+(function constructor() {
+	if (OS_ANDROID) {
 		Alloy.Globals.setAndroidBackButton($.window);
 	}
 }(arguments[0] || {}));
 
 function populateContributors() {
-	const loader = new LoaderInstance($.window);
+	const loader = new Loader($.window);
 
 	loader.show();
 
-	api.getContrib(function (e) {
-		let items = [];
+	api.getContrib(contributions => {
+		const items = [];
 
-		e.map(function (contributor) {
+		contributions.forEach(contributor => {
 			items.push({
 				properties: {
 					itemId: contributor.id,

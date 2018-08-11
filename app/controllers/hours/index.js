@@ -6,8 +6,8 @@ let location,
 /**
  *  Constructor
  */
-(function constructor(args) {
-	location = require('/locations').getCurrentLocation();
+(function constructor() {
+	location = require('locations').getCurrentLocation();
 	firstOpenDone = false;
 
 	if (OS_ANDROID) {
@@ -37,7 +37,9 @@ function setMap() {
 
 function askForRoute() {
 	// Android has route buttons inside the map (on tap)
-	if (OS_ANDROID) { return; }
+	if (OS_ANDROID) {
+		return;
+	}
 
 	const dia = Ti.UI.createAlertDialog({
 		title: L('show_route'),
@@ -93,7 +95,7 @@ function setUI() {
 	$.list.setSections(sections);
 }
 
-function selectAnnotation(e) {
+function selectAnnotation() {
 	if (firstOpenDone) {
 		return;
 	}

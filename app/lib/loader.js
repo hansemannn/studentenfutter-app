@@ -1,12 +1,14 @@
-const Loader = function (_view) {
+export default function Loader (_view) {
 	const view = _view;
+
 	let loggingInView = null;
+	let loggingInIndicator = null;
 	let spinner = null;
 	let visible = false;
 
-	this.show = function () {
+	this.show = () => {
 
-		if (Ti.Platform.osname === 'android') {
+		if (OS_ANDROID) {
 			loggingInView = Ti.UI.Android.createProgressIndicator({
 				message: L('loading'),
 				location: Ti.UI.Android.PROGRESS_INDICATOR_DIALOG, // display in dialog
@@ -17,7 +19,6 @@ const Loader = function (_view) {
 		} else {
 			loggingInView = Ti.UI.createView({ width: Ti.UI.FILL, height: Ti.UI.FILL });
 			spinner = Ti.UI.createView({
-				borderRadius: 10,
 				width: 52,
 				height: 52,
 				borderRadius: 26,
@@ -48,7 +49,7 @@ const Loader = function (_view) {
 		this.setVisible(true);
 	};
 
-	this.hide = function (_type) {
+	this.hide = () => {
 		if (!loggingInView) {
 			return;
 		}
@@ -67,13 +68,11 @@ const Loader = function (_view) {
 		this.setVisible(false);
 	};
 
-	this.setVisible = function (_visible) {
+	this.setVisible = (_visible) => {
 		visible = _visible;
 	};
 
-	this.isVisible = function () {
+	this.isVisible = () => {
 		return visible;
 	};
-};
-
-module.exports = Loader;
+}
