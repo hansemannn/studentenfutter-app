@@ -5,7 +5,7 @@ let pathIdentifier;
  **/
 (function constructor(_pathIdentifier) {
 	pathIdentifier = _pathIdentifier;
-	$.webview.setTitle(L(pathIdentifier) || '');
+	$.webview.title = L(pathIdentifier) || '';
 
 	if (OS_ANDROID) {
 		Alloy.Globals.setAndroidBackButton($.webview);
@@ -13,7 +13,7 @@ let pathIdentifier;
 }(arguments[0] || null));
 
 function initializeWebView() {
-	const path = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'html/' + pathIdentifier + '.html');
+	const path = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'html/' + pathIdentifier + '.html');
 
 	if (!path.exists()) {
 		Ti.API.error('File at path not found: ' + path.nativePath);

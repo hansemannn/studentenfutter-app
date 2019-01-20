@@ -1,78 +1,124 @@
-export default function Loader (_view) {
-	const view = _view;
+/**
+ * A loader class to show a modal loading indicator
+ * above the current context (even above modal).
+ *
+ * Author: Hans Knöchel
+ *
+ */
+export default class Loader {
 
-	let loggingInView = null;
-	let loggingInIndicator = null;
-	let spinner = null;
-	let visible = false;
+	/**
+	 * The constructor of the loading indicator. It
+	 * configures the native API's based on the platform.
+	 * @param {Object} options The options passed to the loader.
+	 * @param {String} options.view The view to show on the loader (optional).
+	 * @param {String} options.title The title to show on the loader (optional).
+	 */
+	constructor(options = {}) {
+		this.view = !this.isAndroid ? Ti.UI.createWindow() : undefined;
+		this.title = options.title || L('loading');
+		this.viewBased = options.view !== undefined && options.view !== null;
 
-	this.show = () => {
+		if (options.view) {
+			this.view = options.view;
+		}
 
-		if (OS_ANDROID) {
-			loggingInView = Ti.UI.Android.createProgressIndicator({
-				message: L('loading'),
-				location: Ti.UI.Android.PROGRESS_INDICATOR_DIALOG, // display in dialog
-				type: Ti.UI.Android.PROGRESS_INDICATOR_INDETERMINANT, // display a spinner
-				cancelable: true
+		if (this.isAndroid) {
+			this.activityIndicator = Ti.UI.Android.createProgressIndicator({
+				message: this.title,
+				location: Ti.UI.Android.PROGRESS_INDICATOR_DIALOG,
+				type: Ti.UI.Android.PROGRESS_INDICATOR_INDETERMINANT,
+				cancelable: false
 			});
-			loggingInView.show();
 		} else {
-			loggingInView = Ti.UI.createView({ width: Ti.UI.FILL, height: Ti.UI.FILL });
-			spinner = Ti.UI.createView({
-				width: 52,
-				height: 52,
-				borderRadius: 26,
-				backgroundColor: '#CC000000',
-				zIndex: 8888
+			this.activityIndicator = Ti.UI.createActivityIndicator({
+				style: Ti.UI.ActivityIndicatorStyle.BIG,
+				indicatorColor: '#444',
+				top: 40
+			});
+			this.containerView = Ti.UI.createView({ backgroundColor: '#55000000', opacity: 0.0 });
+			const indicatorView = Ti.UI.iOS.createBlurView({
+				effect: Ti.UI.iOS.BLUR_EFFECT_STYLE_LIGHT,
+				width: 200,
+				height: 150,
+				borderRadius: 20
 			});
 
-			loggingInIndicator = Ti.UI.createActivityIndicator({
-				height: 50,
-				zIndex: 9999,
-				style: Ti.UI.ActivityIndicatorStyle.BIG
+			const label = Ti.UI.createLabel({
+				text: this.title,
+				top: 100,
+				width: 160,
+				textAlign: 'center',
+				height: Ti.UI.SIZE,
+				font: {
+					fontWeight: 'semibold',
+					fontSize: 15
+				},
+				color: '#000'
 			});
 
-			spinner.add(loggingInIndicator);
-			loggingInView.add(spinner);
-			loggingInIndicator.show();
+			indicatorView.add(this.activityIndicator);
+			indicatorView.add(label);
+			this.containerView.add(indicatorView);
 
-			view.add(loggingInView);
-
-			spinner.animate({
-				duration: 150,
-				transform: Ti.UI.create2DMatrix({
-					scale: 1.0
-				}),
-			});
+			this.view.add(this.containerView);
 		}
+	}
 
-		this.setVisible(true);
-	};
+	/**
+	 * A utility getter to determine if we are on Android or not.
+	 *
+	 * @return {Boolean} Whether or not the current process runs on Android or not.
+	 */
+	get isAndroid() {
+		return Ti.Platform.osname === 'android';
+	}
 
-	this.hide = () => {
-		if (!loggingInView) {
-			return;
-		}
-
-		if (OS_ANDROID) {
-			loggingInView.hide();
+	/**
+	 * Shows the loader. On iOS, it uses a animation to fade in
+	 * the parent view before showing the actual loader.
+	 */
+	show() {
+		if (!this.isAndroid) {
+			this.activityIndicator.show();
+			if (this.viewBased) {
+				this.view.add(this.containerView);
+			} else {
+				this.view.navBarHidden = true;
+				this.navigationWindow = Ti.UI.createNavigationWindow({
+					window: this.view
+				});
+				// Using this navigation window config, we can even show loaders above modal windows
+				this.navigationWindow.open({
+					modal: true,
+					modalStyle: Ti.UI.iOS.MODAL_PRESENTATION_OVER_CURRENT_FULL_SCREEN,
+					modalTransitionStyle: Ti.UI.iOS.MODAL_TRANSITION_STYLE_CROSS_DISSOLVE,
+					animated: false
+				});
+			}
+			this.containerView.animate({
+				opacity: 1.0
+			});
 		} else {
-			spinner.animate({
-				opacity: 0,
-				duration: 250
-			}, () => {
-				view.remove(loggingInView);
-			});
+			this.activityIndicator.show();
 		}
+	}
 
-		this.setVisible(false);
-	};
-
-	this.setVisible = (_visible) => {
-		visible = _visible;
-	};
-
-	this.isVisible = () => {
-		return visible;
-	};
+	/**
+	 * Hides the loader. On iOS, it uses a animation to fade out
+	 * the parent view before hiding the actual loader.
+	 */
+	hide() {
+		if (!this.isAndroid) {
+			if (this.viewBased) {
+				this.view.remove(this.containerView);
+			} else {
+				setTimeout(() => {
+					this.navigationWindow.close();
+				}, 500);
+			}
+		} else {
+			this.activityIndicator.hide();
+		}
+	}
 }

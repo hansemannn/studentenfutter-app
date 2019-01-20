@@ -21,7 +21,7 @@ export default function Request (_args) {
 	}
 
 	function getUserAgent() {
-		return (Ti.App.getName() + ' (' + Ti.App.getVersion() + '), ' + Ti.Platform.getName() + ' (' + Ti.Platform.getVersion() + ')');
+		return (Ti.App.name + ' (' + Ti.App.version + '), ' + Ti.Platform.name + ' (' + Ti.Platform.version + ')');
 	}
 
 	function getCacheDir() {
@@ -76,7 +76,7 @@ export default function Request (_args) {
 			timeout: 10000,
 			validatesSecureCertificate: false,
 			onload: () => {
-				Ti.API.debug('[' + httpClient.getStatus() + ' ' + url + ']');
+				Ti.API.debug('[' + httpClient.status + ' ' + url + ']');
 
 				if (args.clearContentType) {
 					args.success(httpClient.responseData);
@@ -116,7 +116,7 @@ export default function Request (_args) {
 
 			onerror: (e) => {
 				let response;
-				const status = httpClient.getStatus();
+				const status = httpClient.status;
 
 				Ti.API.error('[' + status + ' ' + url + ']');
 
@@ -177,6 +177,7 @@ export default function Request (_args) {
 		httpClient.open(reqType, url);
 
 		if (!args.external) {
+			console.log(getCredentials());
 			httpClient.setRequestHeader('Authorization', 'Basic ' + getCredentials());
 		}
 

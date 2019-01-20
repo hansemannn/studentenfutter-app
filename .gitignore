@@ -12,3 +12,4 @@ keystore
 /package-lock.json
 /node_modules
 /plugins/ti.alloy/*
+/app/lib/auth.js

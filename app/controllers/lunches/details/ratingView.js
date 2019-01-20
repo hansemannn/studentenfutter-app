@@ -35,7 +35,7 @@ function setRating(e) {
 		}
 	}
 
-	$.submit.setEnabled(true);
+	$.submit.enabled = true;
 }
 
 function submitRating() {
@@ -45,12 +45,12 @@ function submitRating() {
 	}
 
 	$.innerContent.hide();
-	$.loader.setVisible(true);
+	$.loader.visible = true;
 	$.loader.show();
 
 	api.postRating({
 		productId: productId,
-		userId: Ti.Platform.getId(),
+		userId: Ti.Platform.id,
 		rating: rating
 	}, (e) => {
 		if (!e.success) {

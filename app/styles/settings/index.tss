@@ -54,13 +54,8 @@
 	right: 15
 }
 
-'.selectedCategory[platform=android]': {	
-    right: 30,
-	color: Alloy.CFG.styles.tintColor
-}
-
 '.contactSection[platform=ios]': {
-	footerTitle: 'Made with ⚒ in Osnabrück, 🇩🇪' // TODO: Localize properly
+	footerTitle: 'Made with ⚒ in Osnabrück 🇩🇪' // TODO: Localize properly
 }
 
 '#picker': {

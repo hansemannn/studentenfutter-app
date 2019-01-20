@@ -1,7 +1,7 @@
 import Request from 'request';
 
 function performFallback(cb) {
-	const dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/lunches.json');
+	const dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'json/lunches.json');
 
 	// Simulate HTTP request
 	setTimeout(function () {
@@ -19,7 +19,7 @@ function performFallback(cb) {
  * @param {Function} cb The Callback to invoke once finished loading contributors.
  */
 function contribFallback(cb) {
-	const dummyContrib = Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/contributors.json');
+	const dummyContrib = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'json/contributors.json');
 
 	// Simulate HTTP request
 	setTimeout(function () {

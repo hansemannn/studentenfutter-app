@@ -5,6 +5,7 @@ const ONE_DAY = 86400000;
 export default class DateUtils {
 	constructor() {
 		try {
+			// eslint-disable-next-line security/detect-non-literal-require
 			this.lang = require('date-fns/locale/' + Ti.Locale.currentLanguage);
 		} catch (e) {
 			this.lang = 'de';

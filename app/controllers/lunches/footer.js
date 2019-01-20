@@ -4,8 +4,8 @@ let onSettingsUpdated;
  *  Constructor
  */
 (function constructor() {
-	$.amount.setText(`${L('total_amount')}: 0.00 €`);
-	$.location.setText(Ti.App.Properties.getString('currentLocationName', Alloy.CFG.defaultCanteen.title));
+	$.amount.text = `${L('total_amount')}: 0.00 €`;
+	$.location.text = Ti.App.Properties.getString('currentLocationName', Alloy.CFG.defaultCanteen.title);
 }(arguments[0] || {}));
 
 function openSettings() {
@@ -13,7 +13,7 @@ function openSettings() {
 		onSettingsUpdated: (e) => {
 			switch (e.action) {
 				case 'selectCanteen':
-					$.location.setText(e.title);
+					$.location.text = e.title;
 					break;
 			}
 			onSettingsUpdated(e);
@@ -30,9 +30,9 @@ exports.onSettingsUpdated = function (_onSettingsUpdated) {
 };
 
 exports.updateTotalSummary = function (_summary) {
-	$.amount.setText(`${L('total_amount')}: ${_summary}`);
+	$.amount.text = `${L('total_amount')}: ${_summary}`;
 };
 
 exports.updateCurrentCanteen = function (_text) {
-	$.location.setText(_text);
+	$.location.text = _text;
 };

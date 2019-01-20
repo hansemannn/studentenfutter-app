@@ -12,7 +12,7 @@ import WebDialog from 'ti.webdialog';
 }(arguments[0] || {}));
 
 function populateContributors() {
-	const loader = new Loader($.window);
+	const loader = new Loader({ view: $.window });
 
 	loader.show();
 

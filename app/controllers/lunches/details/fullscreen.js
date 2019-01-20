@@ -1,5 +1,3 @@
-import ImageFactory from 'ti.imagefactory';
-
 let nav;
 
 /**
@@ -37,7 +35,7 @@ let nav;
 		$.images.addView(scrollView);
 	});
 
-	$.images.setCurrentPage(index);
+	$.images.currentPage = index;
 
 	if (OS_ANDROID) {
 		Alloy.Globals.setAndroidBackButton($.window);
@@ -65,7 +63,7 @@ function close() {
 
 exports.show = function () {
 	if (OS_IOS) {
-		nav = Ti.UI.iOS.createNavigationWindow({
+		nav = Ti.UI.createNavigationWindow({
 			window: $.window
 		});
 		nav.open({ modal: true });

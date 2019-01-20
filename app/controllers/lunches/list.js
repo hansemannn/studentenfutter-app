@@ -57,7 +57,7 @@ function createPreviewContext() {
 	previewContext.addEventListener('peek', function (e) {
 		const product = _.findWhere(lunches, { id: e.itemId });
 		const images = product ? product.images : null;
-		const preview = $.listView.getPreviewContext().preview;
+		const preview = $.listView.previewContext.preview;
 
 		if (images && images.length > 0) {
 			preview.children[0].setImage(images[0]);
@@ -103,15 +103,15 @@ function onSettingsUpdated(e) {
 }
 
 function initializeLoader() {
-	loader = new Loader($.window);
+	loader = new Loader({ view: $.window, title: L('loading_menu') });
 }
 
 function initializeDate() {
-	$.window.setTitle(dateutils.formattedDate);
+	$.window.title = dateutils.formattedDate;
 }
 
 function createNavigationWindow() {
-	return Ti.UI.iOS.createNavigationWindow({
+	return Ti.UI.createNavigationWindow({
 		window: $.window
 	});
 }
@@ -169,7 +169,7 @@ function fetchData(args) {
 		loader.show();
 	}
 
-	$.window.setTitle(L('loading'));
+	$.window.title = L('loading');
 
 	const api = require('api');
 	api.getLunches({
@@ -274,10 +274,10 @@ function setUI() {
 			cells.push(attr);
 		});
 		section.setItems(cells);
-		section.getItems().length > 0 && sections.push(section);
+		section.items.length > 0 && sections.push(section);
 	});
 
-	$.listView.setSections(sections);
+	$.listView.sections = sections;
 	$.window.setTitle(dateutils.formattedDate);
 	$.placeholder[sections.length > 0 ? 'hide' : 'show']();
 }

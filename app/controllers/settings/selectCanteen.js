@@ -12,7 +12,7 @@ let locations;
 	selectedCanteen = args.selectedCanteen;
 
 	if (OS_IOS) {
-		nav = Ti.UI.iOS.createNavigationWindow({
+		nav = Ti.UI.createNavigationWindow({
 			window: $.window
 		});
 	} else if (OS_ANDROID) {

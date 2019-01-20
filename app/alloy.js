@@ -8,7 +8,7 @@ Ti.UI.setBackgroundColor('#fff');
 Alloy.Globals.footerBarHeight = (OS_IOS && Ti.Platform.displayCaps.platformHeight === 812) ? 64 : 44;
 Alloy.Collections.lunch = Alloy.createCollection('lunch');
 Alloy.Models.cart = Alloy.createModel('cart');
-Alloy.Globals.displayWidth = Ti.Platform.getDisplayCaps().getPlatformWidth();
+Alloy.Globals.displayWidth = Ti.Platform.displayCaps.platformWidth;
 Alloy.Globals.footerHeight = isiPhoneX ? 64 : 44;
 Alloy.Globals.listRefreshTintColor = isiOS11 ? '#fff' : null;
 

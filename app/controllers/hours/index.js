@@ -92,7 +92,7 @@ function setUI() {
 		sections.push(section);
 	}
 
-	$.list.setSections(sections);
+	$.list.sections = sections;
 }
 
 function selectAnnotation() {

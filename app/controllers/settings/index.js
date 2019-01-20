@@ -1,7 +1,5 @@
-import { selectionChanged, isEmulator } from 'utils';
+import { selectionChanged, isEmulator } from 'app-utils';
 import Loader from 'loader';
-
-const priceCategories = [ L('student'), L('employee') ];
 
 let nav;
 let onSettingsUpdated;
@@ -14,7 +12,7 @@ let appStoreIdentifier;
 	onSettingsUpdated = args.onSettingsUpdated;
 
 	if (OS_IOS) {
-		nav = Ti.UI.iOS.createNavigationWindow({
+		nav = Ti.UI.createNavigationWindow({
 			window: $.window
 		});
 		appStoreIdentifier = '722993370';
@@ -22,7 +20,6 @@ let appStoreIdentifier;
 		appStoreIdentifier = Ti.App.getId();
 
 		let item = $.list.sections[0].items[0];
-		item.selectedCategory.text = priceCategories[Ti.App.Properties.getInt('currentPersonID', 0)];
 
 		if (OS_IOS) {
 			item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
@@ -37,8 +34,8 @@ let appStoreIdentifier;
 
 function configureCells() {
 	const generalSection = $.list.getSections()[0];
-	const selectedPriceCategory = generalSection.getItems()[0];
-	const selectCanteenCell = generalSection.getItems()[1];
+	const selectedPriceCategory = generalSection.items[0];
+	const selectCanteenCell = generalSection.items[1];
 
 	selectedPriceCategory.tabbedBar.index = Ti.App.Properties.getInt('currentPersonID', 0);
 
@@ -50,7 +47,7 @@ function configureCells() {
 	generalSection.updateItemAt(1, selectCanteenCell);
 }
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line alloy/no-unused-vars
 function changePreference(e) {
 	Ti.App.Properties.setBool(e.section.getItemAt(e.itemIndex).properties.identifier, e.value);
 	onSettingsUpdated({
@@ -63,7 +60,7 @@ function selectAction(e) {
 	const item = e.section.getItemAt(e.itemIndex);
 	const action = item.properties.action;
 
-	if (!action || (OS_IOS && action === 'togglePriceCategoryAndroid')) {
+	if (!action) {
 		return;
 	}
 
@@ -83,9 +80,6 @@ function selectAction(e) {
 		case 'reportError':
 			reportError();
 			break;
-		case 'togglePriceCategoryAndroid':
-			togglePriceCategoryAndroid();
-			break;
 		default:
 			console.log(`Unhandled action: ${action}`);
 	}
@@ -97,7 +91,7 @@ function selectCanteen() {
 	Alloy.createController('/settings/selectCanteen', {
 		selectedCanteen: (e) => {
 			const generalSection = $.list.getSections()[0];
-			const selectCanteenCell = generalSection.getItems()[1];
+			const selectCanteenCell = generalSection.items[1];
 
 			selectCanteenCell.template = Ti.UI.LIST_ITEM_TEMPLATE_SUBTITLE;
 			selectCanteenCell.properties.subtitle = e.title;
@@ -136,7 +130,7 @@ function showProductDialog() {
 
 	if (!TiReviewDialog.isSupported()) {
 		const TiStoreView = require('com.dezinezync.storeview');
-		const loader = new Loader($.window);
+		const loader = new Loader({ view: $.window });
 
 		TiStoreView.addEventListener('loading', () => {
 			loader.show();
@@ -158,7 +152,7 @@ function showProductDialog() {
 	}
 }
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line alloy/no-unused-vars
 function openAbout() {
 	const aboutPage = Alloy.createController('/settings/webview', 'about').getView();
 
@@ -225,31 +219,4 @@ function togglePriceCategory(e) {
 	onSettingsUpdated({
 		action: 'changePreference'
 	});
-}
-
-function togglePriceCategoryAndroid() {
-	const options = Ti.UI.createOptionDialog({
-		title: L('price_category'),
-		options: priceCategories.concat([ L('cancel') ]),
-		cancel: 2
-	});
-
-	options.addEventListener('click', (e) => {
-		if (e.cancel) {
-			return;
-		}
-
-		togglePriceCategory(e);
-
-		let item = $.list.sections[0].items[0];
-		item.selectedCategory.text = priceCategories[e.index];
-
-		if (OS_IOS) {
-			item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE;
-		}
-
-		$.list.sections[0].updateItemAt(0, item);
-	});
-
-	options.show();
 }

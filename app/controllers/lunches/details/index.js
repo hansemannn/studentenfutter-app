@@ -20,7 +20,7 @@ let onRatingUpdated;
 	onRatingUpdated = args.onRatingUpdated;
 
 	if (OS_IOS) {
-		nav = Ti.UI.iOS.createNavigationWindow({
+		nav = Ti.UI.createNavigationWindow({
 			window: $.details
 		});
 	} else if (OS_ANDROID) {
@@ -31,7 +31,7 @@ let onRatingUpdated;
 }(arguments[0] || {}));
 
 function setUI() {
-	$.title.setText(product.name);
+	$.title.text = product.name;
 
 	setImages();
 	setRating(product.rating);
@@ -210,15 +210,15 @@ function sendProductImage(image) {
 	if (OS_IOS) {
 		$.images.hide();
 		$.placeholder.hide();
-		loader = new Loader($.innerContainer);
+		loader = new Loader({ view: $.innerContainer });
 	} else {
-		loader = new Loader($.details);
+		loader = new Loader({ view: $.details });
 	}
 	loader.show();
 
 	api.postProductImage({
 		'image[productId]': product.id,
-		'image[userId]': Ti.Platform.getId(),
+		'image[userId]': Ti.Platform.id,
 		'image[originalResource]': image
 	}, (e) => {
 		if (OS_IOS) {
@@ -329,7 +329,7 @@ function showAdditives() {
 	}
 
 	try {
-		const additives = JSON.parse(Ti.Filesystem.getFile(Ti.Filesystem.getResourcesDirectory(), 'json/additives.json').read());
+		const additives = JSON.parse(Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'json/additives.json').read());
 		let result = [];
 
 		additives.forEach(additive => {
