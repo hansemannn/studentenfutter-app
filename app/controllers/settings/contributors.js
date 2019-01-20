@@ -38,7 +38,7 @@ function populateContributors() {
 			});
 		});
 
-		$.section.setItems(items);
+		$.section.items = items;
 		loader.hide();
 	});
 }

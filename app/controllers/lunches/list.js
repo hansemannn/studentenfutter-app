@@ -290,12 +290,12 @@ function setUI() {
 
 			cells.push(attr);
 		});
-		section.setItems(cells);
+		section.items = cells;
 		section.items.length > 0 && sections.push(section);
 	});
 
 	$.listView.sections = sections;
-	$.window.setTitle(dateutils.formattedDate);
+	$.window.title = dateutils.formattedDate;
 	$.placeholder[sections.length > 0 ? 'hide' : 'show']();
 
 	promptForRating();

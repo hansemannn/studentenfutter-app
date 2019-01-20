@@ -62,7 +62,7 @@ function populateLocations() {
 		items.push(attrs);
 	}
 
-	$.section.setItems(items);
+	$.section.items = items;
 }
 
 function selectLocation(e) {
