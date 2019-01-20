@@ -177,7 +177,6 @@ export default function Request (_args) {
 		httpClient.open(reqType, url);
 
 		if (!args.external) {
-			console.log(getCredentials());
 			httpClient.setRequestHeader('Authorization', 'Basic ' + getCredentials());
 		}
 
