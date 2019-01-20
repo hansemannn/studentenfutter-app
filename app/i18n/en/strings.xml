@@ -10,7 +10,7 @@
 	<string name="show_location">Show location</string>
 	<string name="request_contact">Contact support</string>
 	<string name="rate_app">Rate</string>
-	<string name="upload_process">Uploading image ...</string>
+	<string name="upload_process">Uploading image …</string>
 	<string name="upload_success">Image successfully uploaded!</string>
 	<string name="upload_success_msg">Your image was uploaded successfully and will be reviewed, soon. Thank you!</string>
 	<string name="show_route">Show route</string>
@@ -23,7 +23,7 @@
 	<string name="yesterday">Yesterday</string>
 	<string name="tomorrow">Tomorrow</string>
 	<string name="current_week">Week View</string>
-	<string name="loading">Loading ...</string>
+	<string name="loading">Loading …</string>
 	<string name="canteen">Canteen</string>
 	<string name="later">Later</string>
 	<string name="choise">Choose</string>
@@ -39,7 +39,7 @@
 	<string name="guest">Guest</string>
 	<string name="student">Student</string>
 	<string name="employee">Employee</string>
-	<string name="loading_menu">Loading menu...</string>
+	<string name="loading_menu">Loading menu …</string>
 	<string name="no_menu_found">No Menu available</string>
 	<string name="monday">Monday</string>
 	<string name="tuesday">Tuesday</string>
@@ -60,7 +60,7 @@
 	<string name="footer_disclaimer">All dishes are used under the permission of the Studentenwerk Osnabrueck. There is no claim to correctness of the data.</string>
 	<string name="minimum_one_star">At least 1 Star</string>
 	<string name="minimum_one_star_message">The minimum amount of stars is one star. Is the lunch soooo bad? ;-)</string>
-	<string name="send_rating">Sending rating...</string>
+	<string name="send_rating">Sending rating …</string>
 	<string name="no_rating">(No ratings, yet)</string>
 	<string name="rating_error">Rating not possible</string>
 	<string name="what_would_you_do">What do you want to do?</string>
@@ -86,7 +86,7 @@
 	<string name="Essen_Hochschulbedienstete">Lunch Employees</string>
 	<string name="Eintopf_Teller">Stew Plate</string>
 	<string name="Tagessalat">Daily Salad</string>
-	<string name="pull_to_refresh">Pull to Refresh...</string>
+	<string name="pull_to_refresh">Pull to Refresh …</string>
 	<string name="last_update">Last Update:</string>
 	<string name="selected">selected</string>
 	<string name="already_voted">You've already rated this lunch in the past! 😋</string>
@@ -101,7 +101,7 @@
 	<string name="contactUpper">CONTACT</string>
 	<string name="canteen_details">Canteen Details</string>
 	<string name="rating">Rating</string>
-	<string name="upload_first_photo_now">Upload first Photo now ...</string>
+	<string name="upload_first_photo_now">Upload first Photo now …</string>
 	<string name="up_or_down">👍 or 👎</string>
 	<string name="price_category">Price Category</string>
 	<string name="contributors">Contributors</string>

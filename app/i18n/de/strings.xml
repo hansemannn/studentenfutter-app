@@ -10,7 +10,7 @@
 	<string name="show_location">Standort anzeigen</string>
 	<string name="request_contact">Kontakt aufnehmen</string>
 	<string name="rate_app">Bewerten</string>
-	<string name="upload_process">Bild hochladen ...</string>
+	<string name="upload_process">Bild hochladen …</string>
 	<string name="upload_success">Bild erfolgreich hochgeladen!</string>
 	<string name="upload_success_msg">Dein Bild wurde erfolgreich hochgeladen und wird in Kürze freigeschaltet. Vielen Dank!</string>
 	<string name="show_route">Route anzeigen</string>
@@ -24,7 +24,7 @@
 	<string name="tomorrow">Morgen</string>
 	<string name="current_week">Wochenansicht</string>
 	<string name="canteen">Mensa</string>
-	<string name="loading">Laden ...</string>
+	<string name="loading">Laden …</string>
 	<string name="later">Später</string>
 	<string name="choise">Auswählen</string>
 	<string name="choise_manually">Manuelle Auswahl</string>
@@ -39,7 +39,7 @@
 	<string name="guest">Gast</string>
 	<string name="student">Student</string>
 	<string name="employee">Mitarbeiter</string>
-	<string name="loading_menu">Speiseplan laden...</string>
+	<string name="loading_menu">Speiseplan laden …</string>
 	<string name="no_menu_found">Kein Speiseplan\nvorhanden</string>
 	<string name="monday">Montag</string>
 	<string name="tuesday">Dienstag</string>
@@ -60,7 +60,7 @@
 	<string name="footer_disclaimer">Alle Gerichte werden unter Freigabe des Studentenwerks Osnabrücks bereitgestellt. Es besteht kein Anspruch auf die Zuverlässigkeit der Daten.</string>
 	<string name="minimum_one_star">Mindestens 1 Stern</string>
 	<string name="minimum_one_star_message">Die Mindestanzahl für Bewertungen liegt bei einem Stern. Ist das Essen soooo schlimm? ;-)</string>
-	<string name="send_rating">Bewertung senden...</string>
+	<string name="send_rating">Bewertung senden …</string>
 	<string name="no_ratings">(Noch keine Bewertungen)</string>
 	<string name="rating_error">Bewertung nicht möglich</string>
 	<string name="what_would_you_do">Was möchtest du tun?</string>
@@ -86,8 +86,8 @@
 	<string name="Essen_Hochschulbedienstete">Essen Hochschulbedienstete</string>
 	<string name="Eintopf_Teller">Eintopf Teller</string>
 	<string name="Tagessalat">Tagessalat</string>
-	<string name="release_to_refresh">Loslassen zum Aktualisieren...</string>
-	<string name="updating">Wird aktualisiert...</string>
+	<string name="release_to_refresh">Loslassen zum Aktualisieren…</string>
+	<string name="updating">Wird aktualisiert …</string>
 	<string name="selected">ausgewählt</string>
 	<string name="already_voted">Du hast das Gericht bereits in der Vergangenheit bewertet! 😋</string>
 	<string name="already_voted_short">Bereits bewertet</string>
@@ -101,7 +101,7 @@
 	<string name="contactUpper">KONTAKT</string>
 	<string name="canteen_details">Mensa Details</string>
 	<string name="rating">Bewertung</string>
-	<string name="upload_first_photo_now">Lade jetzt das erste Foto hoch ...</string>
+	<string name="upload_first_photo_now">Lade jetzt das erste Foto hoch …</string>
 	<string name="up_or_down">👍 oder 👎</string>
 	<string name="price_category">Preiskategorie</string>
 	<string name="contributors">Mitwirkende</string>

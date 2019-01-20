@@ -210,7 +210,7 @@ function sendProductImage(image) {
 	if (OS_IOS) {
 		$.images.hide();
 		$.placeholder.hide();
-		loader = new Loader({ view: $.innerContainer });
+		loader = new Loader();
 	} else {
 		loader = new Loader({ view: $.details });
 	}

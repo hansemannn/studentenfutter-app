@@ -103,7 +103,7 @@ function onSettingsUpdated(e) {
 }
 
 function initializeLoader() {
-	loader = new Loader({ view: $.window, title: L('loading_menu') });
+	loader = new Loader({ title: L('loading_menu') });
 }
 
 function initializeDate() {

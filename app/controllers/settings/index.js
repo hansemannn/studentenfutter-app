@@ -33,7 +33,7 @@ let appStoreIdentifier;
 }(arguments[0] || {}));
 
 function configureCells() {
-	const generalSection = $.list.getSections()[0];
+	const generalSection = $.list.sections[0];
 	const selectedPriceCategory = generalSection.items[0];
 	const selectCanteenCell = generalSection.items[1];
 
@@ -90,7 +90,7 @@ function selectAction(e) {
 function selectCanteen() {
 	Alloy.createController('/settings/selectCanteen', {
 		selectedCanteen: (e) => {
-			const generalSection = $.list.getSections()[0];
+			const generalSection = $.list.sections[0];
 			const selectCanteenCell = generalSection.items[1];
 
 			selectCanteenCell.template = Ti.UI.LIST_ITEM_TEMPLATE_SUBTITLE;
@@ -130,7 +130,7 @@ function showProductDialog() {
 
 	if (!TiReviewDialog.isSupported()) {
 		const TiStoreView = require('com.dezinezync.storeview');
-		const loader = new Loader({ view: $.window });
+		const loader = new Loader();
 
 		TiStoreView.addEventListener('loading', () => {
 			loader.show();
