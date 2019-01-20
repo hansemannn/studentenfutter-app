@@ -1,4 +1,4 @@
-import { selectionChanged, formattedStars } from '/utils';
+import { selectionChanged, formattedStars } from 'app-utils';
 import Loader from 'loader';
 import DateUtils from 'dateutils';
 

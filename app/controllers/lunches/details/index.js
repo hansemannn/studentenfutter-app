@@ -1,4 +1,4 @@
-import { formattedStars, isEmulator } from '/utils';
+import { formattedStars, isEmulator } from 'app-utils';
 import Loader from 'loader';
 import api from 'api';
 import ImageFactory from 'ti.imagefactory';
