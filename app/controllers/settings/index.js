@@ -123,7 +123,7 @@ function rateApp() {
 function showProductDialog() {
 	const TiReviewDialog = require('ti.reviewdialog');
 
-	if (!TiReviewDialog.isSupported() && isEmulator()) {
+	if (!TiReviewDialog.isSupported() || isEmulator()) {
 		Ti.API.warn('The Ti.StoreView dialog is only supposed to work on device!');
 		return;
 	}

@@ -40,11 +40,9 @@ let dateutils;
 
 	initializeLoader();
 	initializeDate();
-
 }(arguments[0] || {}));
 
 function createPreviewContext() {
-
 	if (!OS_IOS || Ti.UI.iOS.forceTouchSupported === false) {
 		return;
 	}
@@ -162,7 +160,26 @@ function onRatingUpdated() {
 	});
 }
 
-function fetchData(args) {
+function onOpen() {
+	fetchData({ force: false });
+}
+
+function promptForRating() {
+	if (!OS_IOS) return;
+
+	const TiReviewDialog = require('ti.reviewdialog');
+	let numberOfLaunches = Ti.App.Properties.getInt('kStudentenfutterAppLaunches', 0);
+	numberOfLaunches++;
+	Ti.App.Properties.setInt('kStudentenfutterAppLaunches', numberOfLaunches);
+
+	Ti.API.debug(`Number of launches: ${numberOfLaunches}`);
+
+	if (numberOfLaunches === 3 &&  TiReviewDialog.isSupported()) {
+		TiReviewDialog.requestReview();
+	}
+}
+
+function fetchData(args = {}) {
 	if (!args.force) {
 		$.placeholder.hide();
 		loader.hide();
@@ -280,6 +297,8 @@ function setUI() {
 	$.listView.sections = sections;
 	$.window.setTitle(dateutils.formattedDate);
 	$.placeholder[sections.length > 0 ? 'hide' : 'show']();
+
+	promptForRating();
 }
 
 function formattedAdditives(count) {

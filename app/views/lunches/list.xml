@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="window" onOpen="fetchData">
+	<Window id="window" onOpen="onOpen">
 		
 		<!-- iOS-only -->
 		<LeftNavButton platform="ios" id="leftButton" onClick="togglePreviousDay" />
