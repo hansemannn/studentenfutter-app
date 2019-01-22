@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
+<?xml version="1.0" encoding="UTF-8"?><resources>
 	<string name="details">Detalhes</string>
 	<string name="warning">Cuidado</string>
+	<string name="and">and</string>
 	<string name="camera_warning_text">Certifique-se de que o aplicativo está autorizado a tirar fotos e tente novamente!</string>
 	<string name="all_right">Muito bem!</string>
 	<string name="select_canteen">Selecionar cantina</string>
@@ -107,4 +107,7 @@
 	<string name="no_play_services">No valid Google Maps API Key provided</string>
 	<string name="upload_message_no_food">Espere um momento, isto não é nenhum alimento! Desculpe, não posso!</string>
 	<string name="upload_message_person">Delicioso como comida, mas ainda é uma pessoa, não comida. Desculpe, não posso!</string>
+	<string name="cannot_load_lunches">The lunches could not be loaded</string>
+	<string name="please_try_again">Please try again!</string>
+	<string name="cannot_post_lunch_image">Lunch image could not be uploaded</string>
 </resources>

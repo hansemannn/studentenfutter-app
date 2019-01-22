@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
+<?xml version="1.0" encoding="UTF-8"?><resources>
 	<string name="details">Detalles</string>
 	<string name="warning">Precaución</string>
 	<string name="and">y</string>
@@ -109,4 +108,7 @@
 	<string name="no_play_services">Google Maps API Key inválida</string>
 	<string name="upload_message_no_food">Espera un segundo, ¡esto no es comida! ¡Lo siento, no puedo aceptarla</string>
 	<string name="upload_message_person">Delicioso como comida, pero sigue siendo una persona, no comida. ¡Lo siento, no puedo aceptarla!</string>
+	<string name="cannot_load_lunches">The lunches could not be loaded</string>
+	<string name="please_try_again">Please try again!</string>
+	<string name="cannot_post_lunch_image">Lunch image could not be uploaded</string>
 </resources>

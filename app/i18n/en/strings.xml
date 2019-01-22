@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
+<?xml version="1.0" encoding="UTF-8"?><resources>
 	<string name="details">Details</string>
 	<string name="warning">Caution</string>
 	<string name="and">and</string>
@@ -110,4 +109,7 @@
 	<string name="upload_title_whoops">Whooops!</string>
 	<string name="upload_message_no_food">Wait a second, this is no food! Sorry, cannot take it!</string>
 	<string name="upload_message_person">Delicious as food, but still a person, not food. Sorry, cannot take it!</string>
+	<string name="cannot_load_lunches">The lunches could not be loaded</string>
+	<string name="please_try_again">Please try again!</string>
+	<string name="cannot_post_lunch_image">Lunch image could not be uploaded</string>
 </resources>
