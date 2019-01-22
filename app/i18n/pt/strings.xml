@@ -110,4 +110,5 @@
 	<string name="cannot_load_lunches">The lunches could not be loaded</string>
 	<string name="please_try_again">Please try again!</string>
 	<string name="cannot_post_lunch_image">Lunch image could not be uploaded</string>
+  	<string name="no_additives">No Additives</string>
 </resources>
