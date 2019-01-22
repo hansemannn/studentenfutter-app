@@ -1,33 +1,15 @@
 import Request from 'request';
 
-function performFallback(cb) {
-	const dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'json/lunches.json');
+function performFallback(path, cb) {
+	const dummyLunches = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, path);
 
 	// Simulate HTTP request
 	setTimeout(function () {
 		try {
-			cb(Object.assign(JSON.parse(dummyLunches.read()), { success: true }));
+			cb(JSON.parse(dummyLunches.read()));
 		} catch (e) {
 			Ti.API.error('Unable to parse JSON: ' + e);
-			cb({ success: false });
-		}
-	}, 1000);
-}
-
-/**
- * Fallback for contributors
- * @param {Function} cb The Callback to invoke once finished loading contributors.
- */
-function contribFallback(cb) {
-	const dummyContrib = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'json/contributors.json');
-
-	// Simulate HTTP request
-	setTimeout(function () {
-		try {
-			cb(Object.assign(JSON.parse(dummyContrib.read()), { success: true }));
-		} catch (e) {
-			Ti.API.error('Unable to parse JSON: ' + e);
-			cb({ success: false });
+			cb(null, 'Cannot fetch data');
 		}
 	}, 1000);
 }
@@ -48,16 +30,14 @@ exports.postProductImage = function (params, cb, onProgess) {
 			process: (e) => {
 				onProgess && onProgess(e);
 			},
-			success: json => {
-				cb(Object.assign(json, { success: true }));
-			},
+			success: cb,
 			error: () => {
-				cb({ success: false });
+				cb(null, 'Cannot fetch data');
 			}
 		});
 		request.load();
 	} catch (e) {
-		performFallback(cb);
+		performFallback('json/lunches.json', cb);
 	}
 };
 
@@ -70,7 +50,7 @@ exports.postRating = function (params, cb) {
 	const productIdentifier = 'rating-' + params.productId + '-' + Ti.Platform.id;
 
 	if (Ti.App.Properties.getBool(productIdentifier, false)) {
-		cb({ success: false });
+		cb(null, 'Cannot post data');
 		return;
 	}
 
@@ -88,12 +68,12 @@ exports.postRating = function (params, cb) {
 				cb(json);
 			},
 			error: () => {
-				cb({ success: false });
+				cb(null, 'Cannot post data');
 			}
 		});
 		request.load();
 	} catch (e) {
-		performFallback(cb);
+		performFallback('json/lunches.json', cb);
 	}
 };
 
@@ -107,11 +87,9 @@ exports.getLunches = function (params, cb) {
 		const request = new Request({
 			url: '/lunches/list/' + params.date + '/' + params.location,
 			type: 'GET',
-			success: json => {
-				cb(Object.assign(json, { success: true }));
-			},
+			success: cb,
 			error: () => {
-				cb({ success: false });
+				cb(null, 'Cannot fetch data');
 			}
 		});
 		request.load();
@@ -125,21 +103,19 @@ exports.getLunches = function (params, cb) {
  * Get all contributors
  * @param {Function} cb The callback to be invoked after the asyncronous request.
  */
-exports.getContrib = function (cb) {
+exports.getContributors = function (cb) {
 	try {
 		const request = new Request({
 			url: 'https://api.github.com/repos/hansemannn/studentenfutter-app/contributors',
 			external: true,
 			type: 'GET',
-			success: json => {
-				cb(Object.assign(json, { success: true }));
-			},
+			success: cb,
 			error: () => {
-				cb({ success: false });
+				cb(null, 'Cannot fetch data');
 			}
 		});
 		request.load();
 	} catch (ex) {
-		contribFallback(cb);
+		performFallback('json/contributors.json', cb);
 	}
 };

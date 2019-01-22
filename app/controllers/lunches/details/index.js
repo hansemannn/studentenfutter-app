@@ -1,4 +1,4 @@
-import { formattedStars, isEmulator } from 'app-utils';
+import { formattedStars, isEmulator, showAlert } from 'app-utils';
 import Loader from 'loader';
 import api from 'api';
 import ImageFactory from 'ti.imagefactory';
@@ -220,7 +220,13 @@ function sendProductImage(image) {
 		'image[productId]': product.id,
 		'image[userId]': Ti.Platform.id,
 		'image[originalResource]': image
-	}, (e) => {
+	}, (data, err) => {
+		loader.hide();
+		if (err) {
+			showAlert({ title: L('cannot_post_lunch_image'), message: L('please_try_again') });
+			return;
+		}
+
 		if (OS_IOS) {
 			if (!product.images || (product.images && product.images.length === 0)) {
 				$.placeholder.show();
@@ -229,11 +235,10 @@ function sendProductImage(image) {
 				$.images.show();
 			}
 		}
-		loader.hide();
 
-		if (!e.awaitingModeration) {
-			const title = L(e.feedbackTitle || 'upload_success', 'upload_success');
-			const message = L(e.feedbackMessage || 'upload_success_msg', 'upload_success_msg');
+		if (!data.awaitingModeration) {
+			const title = L(data.feedbackTitle || 'upload_success', 'upload_success');
+			const message = L(data.feedbackMessage || 'upload_success_msg', 'upload_success_msg');
 
 			const dia = Ti.UI.createAlertDialog({
 				title: title,
@@ -242,8 +247,8 @@ function sendProductImage(image) {
 			});
 			dia.show();
 		}
-	}, (e) => {
-		Ti.API.info('Process: ' + e.value);
+	}, progress => {
+		Ti.API.info('Progress: ' + progress.value);
 	});
 }
 
@@ -264,11 +269,11 @@ function processImage(image) {
 		let newHeight;
 
 		if (image.width > image.height) {
-			// Querformat-Bilder auf eine Breite von 1024 fixieren
+			// Fix wide images to 1024px width
 			newWidth = maxImageWidth;
 			newHeight = image.height / image.width * newWidth;
 		} else {
-			// Hochformat-Bilder auf eine Höhe von 1024 fixieren
+			// Fix tall images to 1024px height
 			newHeight = maxImageWidth;
 			newWidth = image.width / image.height * newHeight;
 		}

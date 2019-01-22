@@ -52,8 +52,8 @@ function submitRating() {
 		productId: productId,
 		userId: Ti.Platform.id,
 		rating: rating
-	}, (e) => {
-		if (!e.success) {
+	}, (_, err) => {
+		if (!err) {
 			Ti.UI.createAlertDialog({
 				title: L('rating_error'),
 				message: L('already_voted') + '\uE00E',

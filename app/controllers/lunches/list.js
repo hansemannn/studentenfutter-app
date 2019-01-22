@@ -1,4 +1,4 @@
-import { selectionChanged, formattedStars } from 'app-utils';
+import { selectionChanged, formattedStars, showAlert } from 'app-utils';
 import Loader from 'loader';
 import DateUtils from 'dateutils';
 
@@ -182,7 +182,6 @@ function promptForRating() {
 function fetchData(args = {}) {
 	if (!args.force) {
 		$.placeholder.hide();
-		loader.hide();
 		loader.show();
 	}
 
@@ -192,15 +191,22 @@ function fetchData(args = {}) {
 	api.getLunches({
 		date: dateutils.currentDateSlug,
 		location: Ti.App.Properties.getInt('currentLocationID', Alloy.CFG.defaultCanteen.id)
-	}, function (e) {
-		lunches = e;
+	}, (data, err) => {
+		$.refresh.endRefreshing();
+		if (!args.force) {
+			loader.hide();
+		}
+
+		if (err) {
+			showAlert({ title: L('cannot_load_lunches'), message: L('please_try_again') });
+			return;
+		}
+		lunches = data;
 		setUI();
-		!args.force && loader.hide();
 	});
 }
 
 function setUI() {
-	$.refresh.endRefreshing();
 
 	const showAdditives = Ti.App.Properties.getBool('showAdditives', true);
 	const showRatings = Ti.App.Properties.getBool('showRatings', true);

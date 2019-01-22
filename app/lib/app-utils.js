@@ -32,12 +32,20 @@ export function formattedStars(rating) {
 	return path + '0_0.png';
 }
 
+export function showAlert(opts = {}) {
+	Ti.UI.createAlertDialog({
+		title: opts.title,
+		message: opts.message,
+		buttonNames: [ 'OK' ]
+	}).show();
+}
+
 /**
  * Detect whether we're running inside a simulator or not.
  * @return {Boolean} `true` when running on emulator, `false` otherwise.
  */
 export function isEmulator() {
-	return (Ti.Platform.manufacturer === 'Genymotion' || Ti.Platform.model === 'Simulator' || Ti.Platform.model.indexOf('sdk') !== -1);
+	return (Ti.Platform.manufacturer === 'Genymotion' || Ti.Platform.model.indexOf('Simulator') !== -1 || Ti.Platform.model.indexOf('sdk') !== -1);
 }
 
 /**

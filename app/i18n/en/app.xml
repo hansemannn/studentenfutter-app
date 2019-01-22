@@ -3,6 +3,5 @@
 	<string name="select_canteen">Select canteen</string>
 	<string name="NSCameraUsageDescription">Can we use your camera so you can take pictures?</string>
 	<string name="NSPhotoLibraryUsageDescription">Can we use your photo roll so you can select pictures?</string>
-	<string name="NSAppleMusicUsageDescription">Can we use your music roll so you can select music?</string>
 	<string name="NSLocationWhenInUseUsageDescription">Are we allowed to use your location on this map to show you the distance to your canteen?</string>
 </resources>

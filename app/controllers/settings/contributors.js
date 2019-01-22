@@ -1,6 +1,7 @@
 import api from 'api';
 import Loader from 'loader';
 import WebDialog from 'ti.webdialog';
+import { showAlert } from 'app-utils';
 
 /**
 *  Constructor
@@ -16,7 +17,12 @@ function populateContributors() {
 
 	loader.show();
 
-	api.getContrib(contributions => {
+	api.getContributors((contributions, err) => {
+		if (err) {
+			showAlert({ title: L('cannot_load_lunches'), message: L('please_try_again') });
+			return;
+		}
+
 		const items = [];
 
 		contributions.forEach(contributor => {

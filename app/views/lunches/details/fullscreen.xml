@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="window" titleid="details">
-		<LeftNavButton platform="ios" systemButton="CANCEL" onClick="close" />
+		<LeftNavButton platform="ios" class="closeButton" onClick="close" />
 		<ScrollableView id="images" />
 	</Window>
 </Alloy>
