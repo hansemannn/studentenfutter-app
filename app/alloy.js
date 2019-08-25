@@ -1,6 +1,15 @@
 import ActionBarHelper from 'actionbar';
 
-const isiPhoneX = (Ti.Platform.displayCaps.platformWidth === 375 && Ti.Platform.displayCaps.platformHeight === 812 && Ti.Platform.displayCaps.logicalDensityFactor === 3);
+const isiPhoneX = () => {
+	if (!OS_IOS) {
+		return false;
+	}
+
+	return (Ti.Platform.displayCaps.platformWidth === 375 && Ti.Platform.displayCaps.platformHeight === 812
+		|| Ti.Platform.displayCaps.platformWidth === 414 && Ti.Platform.displayCaps.platformHeight === 896)
+		&& (Ti.Platform.displayCaps.logicalDensityFactor === 3 || Ti.Platform.displayCaps.logicalDensityFactor === 2);
+};
+
 const isiOS11 = (Ti.Platform.osname === 'iphone' || Ti.Platform.osname === 'ipad') && (parseInt(Titanium.Platform.version.split('.')[0]) >= 11);
 
 Ti.UI.setBackgroundColor('#fff');
@@ -9,7 +18,7 @@ Alloy.Globals.footerBarHeight = (OS_IOS && Ti.Platform.displayCaps.platformHeigh
 Alloy.Collections.lunch = Alloy.createCollection('lunch');
 Alloy.Models.cart = Alloy.createModel('cart');
 Alloy.Globals.displayWidth = Ti.Platform.displayCaps.platformWidth;
-Alloy.Globals.footerHeight = isiPhoneX ? 64 : 44;
+Alloy.Globals.footerHeight = isiPhoneX() ? 64 : 44;
 Alloy.Globals.listRefreshTintColor = isiOS11 ? '#fff' : null;
 
 Alloy.Globals.setAndroidBackButton = function (_window) {
