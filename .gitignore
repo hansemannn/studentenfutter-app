@@ -14,3 +14,4 @@ keystore
 /plugins/ti.alloy/*
 /app/lib/auth.js
 .DS_Store
+/tiapp.xml
