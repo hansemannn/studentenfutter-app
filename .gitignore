@@ -13,3 +13,4 @@ keystore
 /node_modules
 /plugins/ti.alloy/*
 /app/lib/auth.js
+.DS_Store
